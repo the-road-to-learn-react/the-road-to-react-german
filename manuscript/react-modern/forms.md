@@ -128,10 +128,10 @@ const App = () => {
 
 Forms aren't much different in React than HTML. When we have input fields and a button to submit data from them, we can give our HTML more structure by wrapping it into a form element with a `onSubmit` handler. The button that executes the submission needs only the "submit" `type`.
 
-### Exercises:
+### Übungen:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Forms-in-React).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Async-Await-in-React...hs/Forms-in-React?expand=1).
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Forms-in-React).
+  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Async-Await-in-React...hs/Forms-in-React?expand=1).
 * Try the code without `preventDefault`.
-* Read more about [preventDefault for Events in React](https://www.robinwieruch.de/react-preventdefault).
-* Read more about [React Component Composition](https://www.robinwieruch.de/react-component-composition).
+* Lese mehr zum Thema [preventDefault for Events in React](https://www.robinwieruch.de/react-preventdefault).
+* Lese mehr zum Thema [React Component Composition](https://www.robinwieruch.de/react-component-composition).
