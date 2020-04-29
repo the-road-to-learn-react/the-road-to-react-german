@@ -68,10 +68,10 @@ If no side-effects and no state were used in legacy apps, we'd use a function co
 
 With the addition of React Hooks, function components worked the same as class components, with state and side-effects. And since there was no longer any practical difference between them, the community chose function components since they are more lightweight.
 
-### Exercises:
+### Übungen:
 
-* Read more about [JavaScript Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
-* Read more about [how to refactor from a class component to a function component](https://www.robinwieruch.de/react-hooks-migration).
+* Lese mehr zum Thema [JavaScript Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes).
+* Lese mehr zum Thema [how to refactor from a class component to a function component](https://www.robinwieruch.de/react-hooks-migration).
 * Learn more about a different [class component syntax](https://github.com/the-road-to-learn-react/react-alternative-class-component-syntax) which wasn't popular but more effective.
-* Read more about [class components in depth](https://reactjs.org/docs/react-component.html).
-* Read more about [other legacy and modern component types in React](https://www.robinwieruch.de/react-component-types).
+* Lese mehr zum Thema [class components in depth](https://reactjs.org/docs/react-component.html).
+* Lese mehr zum Thema [other legacy and modern component types in React](https://www.robinwieruch.de/react-component-types).
