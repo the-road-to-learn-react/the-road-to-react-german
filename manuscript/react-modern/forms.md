@@ -1,4 +1,8 @@
-## Forms in React
+## Formulare in React
+
+Wir haben vorhergehend eine Schaltfläche eingeführt, um Daten per Klick auf eine Schaltfläche abzurufen. Wir werden diese mithilfe eines HTML-Formulars verbessern, welches die Schaltfläche vom Eingabefeld für den Suchbegriff mit seiner Bezeichnung abkapselt.
+
+Formulare unterscheiden sich in Reacts JSX nicht wesentlich von denen in purem HTML. Wir werden alles in zwei Schritten mit HTML und JavaScript implementieren. Integrieren wir als erstes das Eingabefeld und die Schaltfläche in ein HTML-Formular:
 
 Earlier we introduced a new button to fetch data explicitly with a button click. We'll advance its use with a proper HTML form, which encapsulates the button and input field for the search term with its label.
 
@@ -126,7 +130,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Forms aren't much different in React than HTML. When we have input fields and a button to submit data from them, we can give our HTML more structure by wrapping it into a form element with a `onSubmit` handler. The button that executes the submission needs only the "submit" `type`.
+Formulare unterscheiden sich in React nicht wesentlich von HTML. Wenn wir Eingabefelder und eine Schaltfläche zum Übermitteln von Daten haben, verleihen wir unserem Dokument mehr Struktur, indem wir es mit einem `onSubmit`-Handler in ein Formularelement einschließen. Die Schaltfläche, die die Übermittlung ausführt, benötigt nur den Typ "submit".
 
 ### Übungen:
 
