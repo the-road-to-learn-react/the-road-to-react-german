@@ -14,7 +14,7 @@ const getAsyncStories = () =>
 # leanpub-end-insert
 ~~~~~~~
 
-Verwende in der App-Komponente anstelle von `initialStories` ein leeres Array. So initialisieren wir unsere Anwendung mit einer inhaltslosen Liste, um im nächsten Schritt den asynchronen Abrufen zu simulieren. Rufe in einem neuen `useEffect`-Hook die Funktion `getAsyncStories` auf und fordere so das Promise-Objekt auf die Daten asynchron abzufragen. Da das zweite Argument in `useEffect` (Array mit abhängigen Variablen) leer ist, wird der Seiteneffekt `useEffect` erstmals ausgelöst, wenn die Komponente gerendert wird:
+Verwende in der App-Komponente anstelle von `initialStories` ein leeres Array. So initialisieren wir unsere Anwendung mit einer inhaltslosen Liste, um im nächsten Schritt den asynchronen Abrufen zu simulieren. Rufe in einem neuen `useEffect`-Hook die Funktion `getAsyncStories` auf und fordere so das Promise-Objekt auf die Daten asynchron abzufragen. Da das zweite Argument in `useEffect` (Array mit abhängigen Variablen) leer ist, wird der Seiteneffekt `useEffect` erstmals ausgelöst, wenn die App-Komponente gerendert wird:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -37,7 +37,7 @@ const App = () => {
 };
 ~~~~~~~
 
-In der Theorie treffen die Daten beim ersten Aufruf der Anwendung asynchron ein. In der Praxis ist dies nicht sichtbar. Die Liste wird sofort gerendert. Lass uns dies ändern, indem wir eine Verzögerung einbauen. Erweitere zu diesem Zweck erst das Promise-Objekt:
+In der Theorie treffen die Daten beim ersten Aufruf der Anwendung asynchron ein. In der Praxis ist dies nicht sichtbar. Die Liste wird sofort gerendert. Lass uns dies ändern, indem wir eine Verzögerung einbauen. So simulieren wir die Übertragung der Daten über ein Netzwerk. Erweitere zu diesem Zweck erst das Promise-Objekt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
