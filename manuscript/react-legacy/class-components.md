@@ -8,9 +8,9 @@ In diesem Abschnitt werden wir eine [moderne React-Anwendung](https://codesandbo
 
 ## Reacts Klassenkomponenten
 
-Komponenten wurden in React häufig verändert – von **createClass-Komponenten** über **Klassenkomponenten** bis hin zu **Funktionskomponenten**. Wenn du heute eine in der Vergangenheit erstellt React-Anwendung ansiehst, wirst du zweifelsohne Klassenkomponenten neben den modernen Funktionskomponenten vorfinden.
+Komponenten wurden in React häufig verändert – von **createClass-Komponenten** über **Klassenkomponenten** bis hin zu **Funktionskomponenten**. Wenn du heute eine in der Vergangenheit erstellt React-Anwendung ansiehst, wirst du zweifelsohne Klassenkomponenten neben modernen Funktionskomponenten vorfinden.
 
-Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Komponentenfunktionen von React (beispielsweise Statusverwaltung und Methoden für Seiteneffekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (props) wird über die Klasseninstanz (`this`) zugegriffen:
+Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Funktionen (beispielsweise Status- und Lebenszyklusverwaltung, und Methoden für Seiteneffekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (props) wird über die Klasseninstanz (`this`) zugegriffen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -72,6 +72,6 @@ Seit der Einführung von React Hooks funktionieren Funktionskomponenten genauso 
 
 * Lese mehr zum Thema [JavaScript Klassen](https://de.developer.mozilla.org/de/docs/Web/JavaScript/Reference/Classes).
 * Lese mehr darüber, [wie man eine Klassenkomponente zu einer Funktionskomponente umarbeitet](https://www.robinwieruch.de/react-hooks-migration)(englisch).
-* Erfahre mehr über eine alternative [Syntax von Klassenkomponenten](https://github.com/the-road-to-learn-react/react-alternative-class-component-syntax), die nicht populär, aber effektiver war.
-* Verteife dein Wissen über die [Komponentenklasse `React.Component`](https://de.reactjs.org/docs/react-component.html).
+* Erfahre mehr über eine alternative [Syntax von Klassenkomponenten](https://github.com/the-road-to-learn-react/react-alternative-class-component-syntax), die nicht populär war, aber effektiv ist.
+* Verteife dein Wissen zur [Komponentenklasse `React.Component`](https://de.reactjs.org/docs/react-component.html).
 * Lese mehr über [andere ältere und moderne Komponententypen in React](https://www.robinwieruch.de/react-component-types)(englisch).
