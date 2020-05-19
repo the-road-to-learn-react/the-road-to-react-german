@@ -1,8 +1,8 @@
-## React State
+## Statusmanagement in React
 
-React Props are used to pass information down the component tree; **React state** is used to make applications interactive. We'll be able to change the application's appearance by interacting with it.
+Reacts Eigenschaften (Props) werden verwendet, um Informationen im Komponentenbaum weiterzugeben. Der **React Status (State)** dient dazu, eine Interaktion zu ermöglichen. Zum Beispiel verändern wir die Anzeige im Browser, indem wir mit der Anwendung interagieren.
 
-First, there is a utility function called `useState` that we take from `React` for managing state. The `useState` function is called a hook. There is more than one **React hook** -- related to state management but also other things in React -- and you will learn about them throughout the next sections. For now, let's focus on **React's `useState` hook**:
+Zu Beginn ist es wichtig, dass du die Funktion `useState` kennst. Wir übernehmen diese aus `React` zum Verwalten des Status. Die Funktion `useState` wird als Hook bezeichnet. Es gibt mehr als einen **React Hook** und du wirst in den nächsten Abschnitten mehr darüber erfahren. Konzentrieren wir uns vorerst auf **React's `useState` Hook**:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -17,9 +17,9 @@ const App = () => {
 };
 ~~~~~~~
 
-React's `useState` hook takes an *initial state* as an argument. We'll use an empty string, and the function will return an array with two values. The first value (`searchTerm`) represents the *current state*; the second value is a *function to update this state* (`setSearchTerm`). I will sometimes refer to this function as *state updater function*.
+Der `useState`-Hook in React verwendet einen *Anfangszustand* als Argument und die Funktion gibt ein Array mit zwei Werten zurück. Wir verwenden als Anfangszustand eine leere Zeichenfolge. Der erste Wert (`searchTerm`) steht für den *aktuellen Zustand*; Der zweite Wert ist eine *Funktion zum Aktualisieren dieses Status* (`setSearchTerm`). Ich werde die Funktion *Statusaktualisierungsfunktion* nennen.
 
-If you are not familiar with the syntax of the two values from the returned array, consider reading about [JavaScript array destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring). It is used to read from an array more concisely. This is array destructuring and its benefits visualized in a nutshell:
+Lies bitte den Text [Destrukturierung von JavaScript-Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destrukturierende_Zuweisung)  wenn du mit der Syntax der beiden Werte aus dem zurückgegebenen Array nicht vertraut bist. Destrukturierung  wird verwendet, um einem Array gezielter auszulesen. Das nächste Beispiel verdeutlicht die Vorteile der  Array-Destrukturierung:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -34,7 +34,7 @@ const itemTwo = list[1];
 const [firstItem, secondItem] = list;
 ~~~~~~~
 
-In the case of React, the React `useState` hook is a function which returns an array. Take again the following JavaScript example as comparison:
+Der React `useState`-Hook ist eine Funktion, die ein Array zurückgibt. Vergleiche ihn mit dem folgenden JavaScript-Beispiel:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -50,7 +50,7 @@ const itemTwo = getAlphabet()[1];
 const [firstItem, secondItem] = getAlphabet();
 ~~~~~~~
 
-Array destructuring is just a shorthand version of accessing each item one by one. If you express it without the array destructuring in React, it becomes less readable:
+Die Array-Destrukturierung ist nichts anderes als eine Kurzversion, mit der auf mehrere Elemente Nacheinander zugegriffen wird. Wenn Sie das Gleiche ohne die Array-Destrukturierung in React ausdrücken, wird es weniger lesbar:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -66,7 +66,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The React team chose array destructuring because of its concise syntax and ability to name destructured variables. The following code snippet is an example of array destructuring:
+Das React-Team entschied sich für die Array-Destrukturierung aufgrund seiner präzisen Syntax und der Fähigkeit, destrukturierte Variablen zu benennen. Das folgende Codefragment ist ein weiteres Beispiel für die Array-Destrukturierung:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -81,7 +81,7 @@ const App = () => {
 };
 ~~~~~~~
 
-After we initialize the state and have access to the current state and the state updater function, use them to display the current state and update it within the App component's event handler:
+Nachdem wir den Status initialisiert haben und Zugriff auf den aktuellen Status und die Statusaktualisierungsfunktion haben, verwenden wir diese, um den aktuellen Status anzuzeigen und im Ereignis-Handler der App-Komponente zu aktualisieren:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -117,11 +117,11 @@ const App = () => {
 };
 ~~~~~~~
 
-When the user types into the input field, the input field's change event is captured by the handler with its current internal value. The handler's logic uses the state updater function to set the new state. After the new state is set in a component, the component renders again, meaning the component function runs again. The new state becomes the current state and can be displayed in the component's JSX.
+Wenn der Benutzer eine Eingabe im Eingabefeld tätigt, wird dessen Änderungsereignis vom Handler mit dem aktuellen Wert erfasst. Der Handlers legt dann mithilfe der Statusaktualisierungsfunktion den neuen Status fest. Daraufhin wird die Komponente nochmals gerendert, was bedeutet, dass die Komponentenfunktion erneut ausgeführt wird. Der neue Status tritt anstelle des aktuellen und wird im JSX der Komponente angezeigt.
 
-### Exercises:
+### Übungen:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-State).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Props...hs/React-State?expand=1).
-* Read more about [JavaScript array destructuring](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring).
-* Read more about React's useState Hook ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://reactjs.org/docs/hooks-state.html)), as it makes your React components interactive.
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-State).
+  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Props...hs/React-State?expand=1).
+* Lese mehr zur [Destrukturierung von JavaScript-Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring).
+* Lese mehr zum Thema React's useState Hook ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://reactjs.org/docs/hooks-state.html)), da dieser deine React-Komponente interaktiv macht.
