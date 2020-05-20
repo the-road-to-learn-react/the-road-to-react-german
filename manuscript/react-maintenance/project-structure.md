@@ -14,7 +14,7 @@ cd src
 touch List.js InputWithLabel.js SearchForm.js
 ~~~~~~~
 
-Move every component from the *src/App.js* file in its own file, except for the List component which has to share its place with the Item component in the *src/List.js* file. Then in every file make sure to import React and to export the component which needs to be used from the file. For example, in *src/List.js* file:
+Verschiebe jede Komponente in eine eigene Datei, mit Ausnahme von Item. Diese teilt mit List die Datei *src/List.js*. Stelle dann überall sicher, dass du React importierst und wichtige Inhalte exportierst. Zum Beispiel in *src/List.js*:
 
 {title="src/List.js",lang="javascript"}
 ~~~~~~~
@@ -52,7 +52,7 @@ export default List;
 # leanpub-end-insert
 ~~~~~~~
 
-Since only the List component uses the Item component, we can keep it in the same file. If this changes because the Item component is used elsewhere, we can give the Item component its own file. The SearchForm component in the *src/SearchForm.js* file must import the InputWithLabel component. Like the Item component, we could have left the InputWithLabel component next to the SearchForm; but our goal is to make InputWithLabel component reusable with other components. We'll probably import it eventually.
+Da nur List die Item-Komponente verwendet, speichern wir beide in derselben Datei. Wenn sich dies ändert, weil Item an anderer Stelle genutzt wird, erstellen wir eine eigene. Searchform in der Datei *src/SearchForm.js* importiert die InputWithLabel. Es wäre möglich, InputWithLabel zusammen mit Searchform zu speichern, wie im Falle von Item. Unser Ziel ist es, die InputWithLabel-Komponente mit anderen wieder zu verwendbar. Deshalb speichern wir sie in einer separaten Datei und schaffen so die Voraussetzungen dafür.
 
 {title="src/SearchForm.js",lang="javascript"}
 ~~~~~~~
