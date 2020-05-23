@@ -1,12 +1,12 @@
-## Remember Last Searches
+## Speichere die letzten Suchaktionen
 
-**Task:** Remember the last five search terms to hit the API, and provide a button to move quickly between searches. When the buttons are clicked,  stories for the search term are fetched again.
+**Aufgabe:** Merke dir die letzten fünf Suchbegriffe, und zeige Schaltflächen an, mit deren Hilfe du schnell zwischen den Suchvorgängen wechselst. Wenn du auf eine der Schaltfläche klickst, werden die Suchergebnisse für den gespeicherten Begriff erneut abgerufen.
 
-**Optional Hints:**
+**Optionale Hinweise:**
 
-* Don't use a new state for this feature. Instead, reuse the `url` state and `setUrl` state updater function to fetch stories from the API. Adapt them to multiple `urls` as state, and to set multiple `urls` with `setUrls`. The last URL from `urls` can be used to fetch the data, and the last five URLs from `urls` can be used to display the buttons.
+* Verwende für dieses Feature keinen neuen Status. Nutze stattdessen den Status `url` und die Statusaktualisierungsfunktion `setUrl`, um Suchergebnise von der API abzurufen. Passe diese für die Verwendung mehrerer `urls` an und lege mit `setUrls` mehrere `urls` fest. Verwende die letzte URL von `urls` zum Abrufen der Daten, und die letzten fünf URLs von `urls` zum Anzeigen der Schaltflächen.
 
-First, we will refactor all `url` to `urls` state and all `setUrl` to `setUrls` state updater functions. Instead of initializing the state with a `url` as a string, make it an array with the initial `url` as its only entry:
+Zuerst werden wir an allen Stellen den Status `url` in `urls` und die Statusaktualisierungsfunktionen `setUrl` in `setUrls` umwandeln. Anstatt den Status mit einer `url` als Zeichenfolge zu initialisieren, konvertierst du ihn zu einem Array mit der anfänglichen `url` als einzigem Eintrag:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -25,7 +25,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Second, instead of using the current `url` state for data fetching, use the last `url` entry from the `urls` array. If another `url` is added to the list of `urls`, it is used to fetch data instead:
+Verwende anstelle des aktuellen `url`-Status zum Abrufen von Daten den letzten `url`-Eintrag aus dem `url`-Array. Wenn der Liste der `urls` eine andere `url` hinzugefügt wird, wird diese zum Abrufen der Daten verwendet:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -57,7 +57,7 @@ const App = () => {
 };
 ~~~~~~~
 
-And third, instead of storing `url` string as state with the state updater function, concat the new `url` with the previous `urls` in an array for the new state:
+Anstatt die `url` als Status mit der Statusaktualisierungsfunktion zu speichern, verknüpfe die neue `url` mit den vorherigen `urls` in einem Array. Dies ist der neue Status:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -77,7 +77,7 @@ const App = () => {
 };
 ~~~~~~~
 
-With each search, another URL is stored in our state of `urls`. Next, render a button for each of the last five URLs. We'll include a new universal handler for these buttons, and each passes a specific `url` with a more specific inline handler:
+Bei jeder Suche wird eine andere URL in unserem Status `urls` gespeichert. Rendere als Nächstes eine Schaltfläche für jede der letzten fünf URLs. Wir werden hierfür einen neuen universellen Handler hinzufügen. Jede übergibt eine `url` mit einem spezifischeren Inline-Handler:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -124,7 +124,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Next, instead of showing the whole URL of the last search in the button as button text, show only the search term by replacing the API's endpoint with an empty string:
+Anstatt die gesamte URL der letzten Suche in der Schaltfläche als Schaltflächentext anzuzeigen, wird als Nächstes nur der Suchbegriff angezeigt, indem der Endpunkt der API durch eine leere Zeichenfolge ersetzt wird:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -170,7 +170,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The `getLastSearches` function now returns search terms instead of URLs. The actual `searchTerm`is passed to the inline handler instead of the `url`. By mapping over the list of `urls` in `getLastSearches`, we can extract the search term for each `url` within the array's map method. Making it more concise, it can also look like this:
+Die Funktion `getLastSearches` gibt jetzt Suchbegriffe anstelle von URLs zurück. Das eigentliche `searchTerm` wird statt der `url` an den Inline-Handler übergeben. Durch Zuordnen über die Liste der `urls` in `getLastSearches` extrahieren wir den Suchbegriff für jede `url` innerhalb der Zuordnungsmethode des Arrays. Um es prägnanter und knapper zu gestalten, integrieren wir alles wie folgt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -180,7 +180,7 @@ const getLastSearches = urls =>
 # leanpub-end-insert
 ~~~~~~~
 
-Now we'll provide functionality for the new handler used by every button, since clicking one of these buttons should trigger another search. Since we use the `urls` state for fetching data, and since we know the last URL is always used for data fetching, concat a new `url` to the list of `urls` to trigger another search request:
+Jetzt stellen wir Funktionen für den neuen Handler bereit, der von jeder Schaltfläche verwendet wird --- das Klicken auf eine löst eine weitere Suche aus. Da wir den Status `urls` zum Abrufen von Daten verwenden und wissen, dass die letzte URL immer hierzu verwendet wird, füge der Liste der `urls` eine neue `url` hinzu. So löst du eine weitere Suchanforderung aus:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -198,7 +198,7 @@ const App = () => {
 };
 ~~~~~~~
 
-If you compare this new handler's implementation logic to the `handleSearchSubmit`, you may see some common functionality. Extract this common functionality to a new handler and a new extracted utility function:
+Wenn du die Implementierungslogik dieses neuen Handlers mit `handleSearchSubmit` vergleichst, siehst du einige allgemeine Funktionen. Extrahiere die Funktionalität in einen neuen Handler und eine neue extrahierte Dienstprogrammfunktion:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -236,7 +236,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The new utility function can be used somewhere else in the App component. If you extract functionality that can be used by two parties, always check to see if it can be used by a third party.
+Die neue Dienstprogrammfunktion ist an anderen Stellen in der App-Komponente verwendbar. Wenn du eine solche Funktion extrahierst, überprüfe immer, ob sie von Dritten verwendet wird.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -252,7 +252,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The functionality should work, but it complains or breaks if the same search term is used more than once, because `searchTerm` is used for each button element as `key` attribute. Make the key more specific by concatenating it with the `index` of the mapped array.
+Die Funktionalität ist zwar fertig umgesetzt; sie ist aber leider fehlerhaft. Beispielsweise wenn derselbe Suchbegriff mehrmals genutzt wird, da `searchTerm` für jedes Schaltflächenelement als `key`-Attribut verwendet wird. Verkette den Schlüssel mit dem `index` des zugeordneten Arrays, so ist er spezifischer und der zuvor beschriebene Fehler ist behoben.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -283,15 +283,16 @@ const App = () => {
 };
 ~~~~~~~
 
-It's not the perfect solution, because the `index` isn't a stable key (especially when adding items to the list; however, it doesn't break in this scenario. The feature works now, but you can add further UX improvements by following the tasks below.
+Dies ist keine perfekte Lösung, da `index` kein stabiler Schlüssel ist. Insbesondere das Hinzufügen von Elementen ist nicht sicher. Wir verbessern die Anwendung aber nicht weiter, denn für unser Szenario reicht die bisherige Implementierung. Die Funktion macht was man von ihr erwartet. Mir ist es wichtiger, dir UX-Verbesserungen anhand der folgenden Aufgaben vorzuschlagen.
 
-**More Tasks:**
 
-* (1) Do not show the current search as a button, only the five preceding searches. Hint: Adapt the `getLastSearches` function.
-* (2) Don't show duplicated searches. Searching twice for "React" shouldn't create two different buttons. Hint: Adapt the `getLastSearches` function.
-* (3) Set the SearchForm component's input field value with the last search term if one of the buttons is clicked.
+**Weitere Aufgaben:**
 
-The source of the five rendered buttons is the `getLastSearches` function. There, we take the array of `urls` and return the last five entries from it. Now we'll change this utility function to return the last six entries instead of five, removing the last one. Afterward, only the five *previous* searches are displayed as buttons.
+* (1) Zeige für die aktuelle Suche keine Schaltfläche an, erstelle diese nur für die fünf vorhergehenden Suchaktionen. Tipp: Passe die Funktion `getLastSearches` an.
+* (2) Zeige eine Suchanfrage nicht doppelt an. Erstelle beispielsweise keine verschiedenen Schaltflächen, wenn du zweimal nach "React" suchst. Tipp: Ändere die Funktion `getLastSearches`.
+* (3) Lege den Eingabefeldwert der SearchForm-Komponente mit dem letzten Suchbegriff fest, wenn du auf eine der Schaltflächen klickst.
+
+Die fünf Schaltflächen werden in der Funktion `getLastSearches` erstellt. Dort nehmen wir das Array `urls` und geben die neuesten fünf Einträge zurück. Jetzt ändern wir diese Funktion so, dass die letzten sechs --- anstelle von fünf --- zurückgeben werden, wobei wir den aktuellsten Eintrag auslassen. Danach zeigt die Anwendung nur die fünf *vorherigen* Suchvorgänge als Schaltflächen an.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -304,7 +305,7 @@ const getLastSearches = urls =>
     .map(extractSearchTerm);
 ~~~~~~~
 
-If the same search is executed twice or more times in a row,  duplicate buttons appear, which is likely not your desired behavior. It would be acceptable to group identical searches into one button if they followed each other. We will solve this problem in the utility function as well. Before separating the array into the five previous searches, group the identical searches:
+Wenn dieselbe Suche zweimal oder mehrmals hintereinander aufgerufen wird, werden doppelte Schaltflächen angezeigt. Das ist nicht das erwartete Verhalten. Es ist akzeptabel, gleiche Suchen zusammenzufassen. Gruppiere dieselben Suchvorgänge, bevor du das Array in die fünf vorherigen unterteilen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -331,9 +332,9 @@ const getLastSearches = urls =>
     .slice(0, -1);
 ~~~~~~~
 
-The reduce function starts with an empty array as its `result`. The first iteration concats the `searchTerm` we extracted from the first `url` into the `result`. Every extracted `searchTerm` is compared to the one before it. If the previous search term is different from the current, concat the `searchTerm` to the result. If the search terms are identical, return the result without adding anything.
+Die Reduktionsfunktion wird mit einem leeren Array `result` initialisiert. Die erste Iteration konzentriert sich auf das `searchTerm`, das wir aus der `url` berechnet haben. Jedes `searchTerm` wird mit dem vorhergehenden verglichen. Wenn sich der vorherige Suchbegriff vom aktuellen unterscheidet, verknüpfe `searchTerm` mit dem Ergebnis. Wenn die Begriffe identisch sind, gib das Ergebnis zurück ohne sonst etwas zu veranlassen.
 
-Lastly, the SearchForm's input field should be set with the new `searchTerm` if one of the last search buttons is clicked. We can solve this using the state updater function for the specific value used in the SearchForm component.
+Zuletzt wird das Eingabefeld des Suchformulars mit dem neuen `searchTerm` verknüpft, wenn auf eine der Suchschaltflächen geklickt wird. Wir verwenden hierzu die Statusaktualisierungsfunktion.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -352,7 +353,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Last, extract the feature's new rendered content from this section as a standalone component, to keep the App component lightweight:
+Überarbeite zuletzt den in diesem Kapitel neu erstellten Code als eigenständige Komponente, damit die App übersichtlich bleibt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -394,7 +395,7 @@ const LastSearches = ({ lastSearches, onLastSearch }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-This feature wasn't an easy one. Lots of fundamental React but also JavaScript knowledge was needed to accomplish it. If you had no problems implementing it yourself or to follow the instructions, you are very well set. If you had one or the other issue, don't worry too much about it. Maybe you even figured out another way to solve this task and it may have turned out simpler than the one I showed here.
+Die Umsetzung dieser Funktion war komplex. Es waren viele grundlegende React-, aber JavaScript-Kenntnisse erforderlich, um alles, was ich hier gezeigt habe, nachzuvollziehen. Wenn du keine Probleme hattest, den Anweisungen zu folgen, bist du fortgeschritten. Sorge dich nicht, wenn du nicht alles sofort verstanden hast. Gegebenenfalls hast du sogar einen anderen Weg gefunden, um die Aufgabe zu lösen, und dieser ist intuitiver als der, den ich hier gezeigt habe.
 
 ### Übungen:
 
