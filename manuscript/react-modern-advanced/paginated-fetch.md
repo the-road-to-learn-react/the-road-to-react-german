@@ -1,23 +1,23 @@
-## Paginated Fetch
+## Seitenbezogener Datenabruf
 
-Searching for popular stories via Hacker News API is only one step towards a fully-functional search engine, and there are many ways to fine-tune the search. Take a closer look at the data structure and observe how [the Hacker News API](https://hn.algolia.com/api) returns more than a list of `hits`.
+Die Suche nach beliebten Artikeln über die Hacker News API ist nur ein Schritt in die Richtung zu einer benutzerfreundlichen Suchfunktion. Schaue dir die Datenstruktur genauer an. Bemerkenswert finde ich, wie [die Hacker News API](https://hn.algolia.com/api) mehr als eine Liste von `hits` zurückgibt.
 
-Specifically, it returns a paginated list. The page property, which is `0` in the first response, can be used to fetch more paginated lists as results. You only need to pass the next page with the same search term to the API.
+Insbesondere wird eine paginierte Liste zurückgegeben. Verwende die Seiteneigenschaft, um eine paginierte Listen als Ergebnisse abzurufen. Diese Eigenschaft ist in der ersten Antwort `0`. Übergib die nächste Seite mit demselben Suchbegriff an die API.
 
-The following shows how to implement a paginated fetch with the Hacker News data structure. If you are used to **pagination** from other applications, you may have a row of buttons from 1-10 in your mind -- where the currently selected page is highlighted 1-[3]-10 and where clicking one of the buttons leads to fetching and displaying this subset of data.
+Im Folgenden zeige ich dir, wie du einen paginierten Abruf mithilfe der Hacker News-Datenstruktur implementierst. Meist sieht man eine Reihe von Schaltflächen, beispielsweise von 1-10, wobei die aktuell ausgewählte Seite hervorgehoben ist. Zum Beispiel so: 1-[3]-10. Wenn du auf eine der Schaltflächen klickst, dann wird die passende Teilmenge von Daten abgerufen und angezeigt.
 
-In contrast, we will implement the feature as **infinite pagination**. Instead of rendering a single paginated list on a button click, we will render *all paginated lists as one list* with *one* button to fetch the next page. Every additional *paginated list* is concatenated at the end of the *one list*.
+Im Gegensatz dazu werden wir die Funktion als **unendliche Paginierung** implementieren. Anstatt eine einzelne paginierte Liste mit einem Klick abzurufen, rendern wir *alle als eine Liste* mit *einer* Schaltfläche. Jede weitere wird am Ende verkettet.
 
-**Task:** Rather than fetching only the first page of a list, extend the functionality for fetching succeeding pages. Implement this as an infinite pagination on button click.
+**Aufgabe:** Erweitere die Funktionalität zum Abrufen nachfolgender Seiten, anstatt nur die erste einer Liste abzurufen. Implementiere dies als unendliche Paginierung beim Klicken auf die Schaltfläche.
 
-**Optional Hints:**
+**Optionale Hinweise:**
 
-* Extend the `API_ENDPOINT` with the parameters needed for the paginated fetch.
-* Store the `page` from the `result` as state after fetching the data.
-* Fetch the first page (`0`) of data with every search.
-* Fetch the succeeding page ( `page + 1`) for every additional request triggered with a new HTML button.
+* Erweitere `API_ENDPOINT` mit den Parametern, die für den paginierten Abruf benötigt werden.
+* Speichere `page` aus `result` als Status nach dem Abrufen der Daten.
+* Hole dir bei jeder Suche die erste Seite (`0`) der Daten.
+* Rufe die nachfolgende Seite ( `page + 1`) für jede zusätzliche Anforderung ab, die mit einer neuen HTML-Schaltfläche ausgelöst wird.
 
-First, extend the API constant so it can deal with paginated data later. We will turn this one constant:
+Erweitere zunächst die API-Konstante, um später mit paginierten Daten zu arbeiten. Wir werden diese eine Konstante ...
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -26,7 +26,7 @@ const API_ENDPOINT = 'https://hn.algolia.com/api/v1/search?query=';
 const getUrl = searchTerm => `${API_ENDPOINT}${searchTerm}`;
 ~~~~~~~
 
-Into a composable API constant with its parameters:
+... in eine zusammensetzbare API-Konstante mit ihren Parametern verwandeln:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -43,14 +43,14 @@ const getUrl = searchTerm =>
 # leanpub-end-insert
 ~~~~~~~
 
-Fortunately, we don't need to adjust the API endpoint, because we extracted a common `getUrl` function for it. However, there is one spot where we must address this logic for the future:
+Glücklicherweise ist es nicht erforderlich, den API-Endpunkt anzupassen, da wir die gemeinsame Funktion `getUrl` dafür haben. Bei einem Punkt kommen wir hingegen nicht um eine Anpassung umhin:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
 const extractSearchTerm = url => url.replace(API_ENDPOINT, '');
 ~~~~~~~
 
-In the next steps, it won't be sufficient to replace the base of our API endpoint, which is no longer in our code. With more parameters for the API endpoint, the URL becomes more complex. It will change from X to Y:
+In den nächsten Schritten reicht es nicht aus, die Basis des API-Endpunkts zu ersetzen, die nicht mehr in unserem Code enthalten ist. Mit mehr Parametern für den API-Endpunkt wird die URL komplexer. Die URL ändert sich von X nach Y:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -61,7 +61,7 @@ https://hn.algolia.com/api/v1/search?query=react
 https://hn.algolia.com/api/v1/search?query=react&page=0
 ~~~~~~~
 
-It's better to extract the search term by extracting everything between `?` and `&`. Also consider that the `query` parameter is directly after the `?` and all other parameters like `page` follow it.
+Es ist besser, den Suchbegriff zu untersuchen, indem du alles zwischen `?` und `&` herausfilterst. Beachte, dass der Parameter `query` direkt hinter `?` steht und alle anderen wie `page` beginnend mit `&` darauf folgen.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -72,7 +72,7 @@ const extractSearchTerm = url =>
 # leanpub-end-insert
 ~~~~~~~
 
-The key ( `query=`) also needs to be replaced, leaving only the value (`searchTerm`):
+Der Schlüssel (`query=`) muss ebenfalls ersetzt werden, wobei nur der Wert (`searchTerm`) übrig bleibt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -84,7 +84,7 @@ const extractSearchTerm = url =>
 # leanpub-end-insert
 ~~~~~~~
 
-Essentially, we'll trim the string until we leave only the search term:
+Im Wesentlichen kürzen wir die Zeichenfolge, bis nur der Suchbegriff übrig bleibt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -98,7 +98,7 @@ query=react
 react
 ~~~~~~~
 
-The returned result from the Hacker News API delivers us the `page` data:
+Das von der Hacker News API zurückgegebene Ergebnis liefert uns die Daten der Seiten `page`:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -130,7 +130,7 @@ const App = () => {
 };
 ~~~~~~~
 
-We need to store this data to make paginated fetches later:
+Wir speichern diese Daten, um später paginierte Abrufe auszuführen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -171,7 +171,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Extend the API endpoint with the new `page` parameter. This change was covered by our premature optimizations earlier, when we extracted the search term from the URL.
+Erweitere den API-Endpunkt mit dem neuen Parameter `page`. Diese Änderung wurde durch unsere vorzeitigen Optimierungen früher abgedeckt, als wir den Suchbegriff aus der URL extrahierten.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -189,7 +189,7 @@ const getUrl = (searchTerm, page) =>
 # leanpub-end-insert
 ~~~~~~~
 
-Next, we must adjust all `getUrl` invocations by passing the `page` argument. Since the initial search and last search always fetch the first page (`0`), we pass this page as an argument to the function for retrieving the appropriate URL:
+Als Nächstes passen wir alle `getUrl`-Aufrufe an, indem wir das Argument `page` einsetzen. Da bei der Ersten und letzten Suche immer die Seite (`0`) abgerufen wird, übergeben wir diese als Argument an die Funktion zum Abrufen der entsprechenden URL:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -229,7 +229,7 @@ const App = () => {
 };
 ~~~~~~~
 
-To fetch the next page when a button is clicked, we'll need to increment the `page` argument in this new handler:
+Um die nächste Seite abzurufen, erhöhst du das Argument `page` im neuen Handler, wenn auf eine Schaltfläche geklickt wird:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -266,9 +266,9 @@ const App = () => {
 };
 ~~~~~~~
 
-We've implemented data fetching with the dynamic `page` argument. The initial and last searches always use the first page, and every fetch with the new "More" button uses an incremented page. There is one crucial bug when trying the feature, though: the new  fetches don't extend the previous list, but completely replace it.
+Wir haben das Abrufen von Daten mit dem dynamischen Argument `page` implementiert. Bei der Ersten und letzten Suche wird immer die Seite (`0`) verwendet, und bei jedem Abruf mit der Schaltfläche „Mehr“ eine inkrementierte. Beim Ausprobieren der Funktion gibt es einen entscheidenden Fehler: Die neuen Abfragen erweitern die vorherige Liste nicht, sondern ersetzen sie vollständig.
 
-We solve this in the reducer by avoiding the replacement of current `data` with new `data`, concatenating the paginated lists:
+Wir lösen dies im Reduzierer, indem wir vermeiden, aktuelle `data` durch neue `data` zu ersetzen und die paginierten Listen verketten:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -299,9 +299,9 @@ const storiesReducer = (state, action) => {
 };
 ~~~~~~~
 
-The displayed list grows after fetching more data with the new button. However, there is still a flicker straining the UX. When fetching paginated data, the list disappears for a moment because the loading indicator appears and reappears after the request resolves.
+Die angezeigte Liste wird vergrößert, nachdem mit der neuen Schaltfläche weitere Einträge abgerufen wurden. Dabei flimmert die Anzeige kurz. Der Grund hierfür ist, dass beim Abrufen paginierter Daten die Liste für einen Moment verschwindet, da die Ladeanzeige eingeblendet wird.
 
-The desired behavior is to render the list--which is an empty list in the beginning--and replace the "More" button with the loading indicator only for pending requests. This is a common UI refactoring for conditional rendering when the task evolves from a single list to paginated lists.
+Gewünschtes Verhalten ist das Folgende: Die Liste ist am Anfang leere und die Schaltfläche "More" inklusive Ladeanzeige wird nur für ausstehende Anforderungen durch die Ladeanzeige ersetzt. Dies ist ein übliches Umarbeiten er Benutzeroberfläche für das bedingte Rendern, wenn sich die Ausgabe von einer einzelnen Liste hin zu paginierten verändert.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -330,12 +330,12 @@ const App = () => {
 };
 ~~~~~~~
 
-It's possible to fetch ongoing data for popular stories now. When working with third-party APIs, it's always a good idea to explore its boundaries. Every remote API returns different data structures, so its features may vary, and can be used in applications that consume the API.
+Es ist jetzt möglich, laufende Daten für beliebte Items abzurufen. Wenn du mit APIs von Drittanbietern arbeitest, ist es immer sinnvoll, die Grenzen zu erkunden. Jede Remote-API gibt unterschiedliche Datenstrukturen zurück, sodass ihre Funktionen variieren.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Paginated-Fetch).
   * Bestätige die [Änderungen gegenüber dem letzten Kapitel](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Remember-Last-Searches...hs/Paginated-Fetch?expand=1).
-* Revisit the [Hacker News API documentation](https://hn.algolia.com/api): Is there a way to fetch more items in a list for a page by just adding further parameters to the API endpoint?
-* Revisit the beginning of this section which speaks about pagination and infinite pagination. How would you implement a normal pagination component with buttons from 1-[3]-10, where each button fetches and displays only one page of the list.
-* Instead of having one "More" button, how would you implement an infinite pagination with an infinite scroll technique? Rather than clicking a button for fetching the next page explicitly, the infinite scroll could fetch the next page once the viewport of the browser hits the bottom of the displayed list.
+  * Besuche die [Hacker News API-Dokumentation](https://hn.algolia.com/api) erneut und kläre folgende Frage: Gibt es eine Möglichkeit, weitere Elemente in einer Liste für eine Seite abzurufen, indem du dem API-Endpunkt Parameter hinzufügst?
+* Gehe zurück zu dem Anfang dieses Abschnitts, in dem ich Paginierung erklärte. Wie implementierst du eine normale Paginierungs-Komponente mit Schaltflächen von 1- [3] -10, bei der ein Klick auf jede einzelne nur die Items einer Seite der Liste abruft und anzeigt?
+* Wie implementierst du anstelle von "More" eine unendliche Paginierung mit einer Bildlauftechnik? Anstatt auf eine Schaltfläche zum expliziten Abrufen zu klicken, ruft der unendliche Bildlauf die nächste Seite ab, sobald das Ansichtsfenster des Browsers den unteren Rand der angezeigten Liste erreicht.
