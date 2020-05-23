@@ -56,7 +56,7 @@ const App = () => {
 );
 ~~~~~~~
 
-Reacts `useEffect` Hook verwendet zwei Argumente: Das erste ist eine Funktion, bei der der Seiteneffekt auftritt. In unserem Fall passiert dies, wenn der Benutzer den „searchTerm“ eingibt und dieser daraufhin im lokalen Speicher des Browsers abgelegt wird. Das optionale zweite Argument ist ein Array. Wenn sich eine Variable im Array ändert, löst dies die Funktion für den Seiteneffekt ebenfalls aus. In unserem Fall wird diese jedes Mal aufgerufen, wenn sich das `searchTerm` ändert --- und beim initialen Aufruf, wenn die Komponente zum ersten Mal gerendert wird.
+Reacts `useEffect` Hook verwendet zwei Argumente: Das erste ist eine Funktion, bei der der Seiteneffekt auftritt. In unserem Fall passiert dies, wenn der Benutzer den "searchTerm" eingibt und dieser daraufhin im lokalen Speicher des Browsers abgelegt wird. Das optionale zweite Argument ist ein Array. Wenn sich eine Variable im Array ändert, löst dies die Funktion für den Seiteneffekt ebenfalls aus. In unserem Fall wird diese jedes Mal aufgerufen, wenn sich das `searchTerm` ändert --- und beim initialen Aufruf, wenn die Komponente zum ersten Mal gerendert wird.
 
 Wenn du das zweite Argument (Array) weglässt, wird die Funktion für den Seiteneffekt bei jedem Rendern der Komponente aufgerufen. Im Gegensatz dazu wird die Funktion für den Seiteneffekt nach dem ersten Rendern der Komponente nur einmal aufgerufen, wenn du ein leeres Array mitgibst. Mit dem Hook nehmen wir Einfluss auf den Komponentenlebenszyklus. Du hast es in der Hand, wann eine Aktualisierung ausgelöst wird --- nur dann, wenn die Komponente zum ersten Mal bereitgestellt wird oder immer, wenn eine abhängige Variable aktualisiert wird.
 

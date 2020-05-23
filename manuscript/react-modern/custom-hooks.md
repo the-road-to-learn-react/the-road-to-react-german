@@ -94,7 +94,7 @@ const useSemiPersistentState = () => {
 
 Wir nutzen den abstrahierten Wert "value" innerhalb des benutzerdefinierten Hooks. Wenn wir diesen in der App-Komponente verwenden, ist es möglich, den zurückgegebenen aktuellen Status und die Statusaktualisierungsfunktion für alle Elemente (zum Beispiel `searchTerm` and `setSearchTerm`) mit Array-Destrukturierung verwenden.
 
-Unser Hook ist weiterhin verbesserungsfähig. Die mehrmalige Verwendung des benutzerdefinierten Hooks in der React-Anwendung führt zu einem Überschreiben des mit „Wert“ zugewiesenen Elements im lokalen Speicher. Dies korrigieren wir mithilfe eines Schlüssels:  
+Unser Hook ist weiterhin verbesserungsfähig. Die mehrmalige Verwendung des benutzerdefinierten Hooks in der React-Anwendung führt zu einem Überschreiben des mit "Wert" zugewiesenen Elements im lokalen Speicher. Dies korrigieren wir mithilfe eines Schlüssels:  
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

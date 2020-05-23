@@ -25,7 +25,7 @@ function App() {
 export default App;
 ~~~~~~~
 
-Führe deine Anwendung erneut mit `npm start` aus und sieh dir die Anzeige im Browser an. Du siehst die gerendert Variable, die Ausgabe laute: „Hello React“.
+Führe deine Anwendung erneut mit `npm start` aus und sieh dir die Anzeige im Browser an. Du siehst die gerendert Variable, die Ausgabe laute: "Hello React".
 
 Richten wir die Aufmerksamkeit als Nächstes auf den HTML-Code, der in JSX fast gleich beschrieben wird. Ein Eingabefeld mit einer Bezeichnung wird wie folgt definiert:
 

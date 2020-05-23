@@ -92,7 +92,7 @@ Den Befehl `eject` lassen wir hier außen vor. Sobald du `eject` einmal aufgeruf
   * Sieh dir nacheinander alle Ordner und Dateien deines React-Projekts an.
 * Lese mehr zum Thema [the scripts in create-react-app](https://create-react-app.dev/docs/available-scripts).
   * Rufe die React-Anwendung mit `npm start` in der Befehlszeile auf und sieh dir die Ausgabe im Browser an.
-    * Beende den Befehl in der Befehlszeile, indem du „Strg + C“ klickst.
+    * Beende den Befehl in der Befehlszeile, indem du "Strg + C" klickst.
   * Führe das Skript `npm test` aus.
   * Rufe das Skript `npm run build` auf und stelle sicher, dass dem Projekt ein Ordner *build/* hinzugefügt wurde (entferne ihn anschließend wieder). Beachte, dass der Build-Ordner später verwendet wird, um [deine Anwendung zu veröffentlichen](https://www.robinwieruch.de/deploy-applications-digital-ocean/).
 * Überprüfe jedes Mal, wenn wir etwas in unserem Code ändern, die Ausgabe in deinem Browser.

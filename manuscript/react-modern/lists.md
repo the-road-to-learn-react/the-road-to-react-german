@@ -32,7 +32,7 @@ function App() { ... }
 export default App;
 ~~~~~~~
 
-Im Beispiel verwendete ich drei Punkte `...` als Platzhalter, um das Code-Schnipsel übersichtlich zu halten, und mich auf den wesentlichen Teil zu konzentrieren: die „list“-Variable außerhalb der App-Komponente. Ich werde die drei Punkte `...` im ganzen Buch als Platzhalter für Codeblöcke verwenden, die ich in früheren Übungen erstellt habe. Wenn dir an einer Stelle nicht klar ist, was anstelle der Punkte steht, überprüfe deinen Code bitte mithilfe des CodeSandbox-Links, den ich am Ende eines jeden Kapitels mit Code-Beispielen angegeben habe.
+Im Beispiel verwendete ich drei Punkte `...` als Platzhalter, um das Code-Schnipsel übersichtlich zu halten, und mich auf den wesentlichen Teil zu konzentrieren: die "list"-Variable außerhalb der App-Komponente. Ich werde die drei Punkte `...` im ganzen Buch als Platzhalter für Codeblöcke verwenden, die ich in früheren Übungen erstellt habe. Wenn dir an einer Stelle nicht klar ist, was anstelle der Punkte steht, überprüfe deinen Code bitte mithilfe des CodeSandbox-Links, den ich am Ende eines jeden Kapitels mit Code-Beispielen angegeben habe.
 
 Jedes Element in der Liste hat einen Titel, eine URL, einen Autor, eine Kennung (`objectID`), Punkte (die die Beliebtheit anzeigen) und eine Anzahl von Kommentaren. Als Nächstes rendern wir die Liste in JSX dynamisch:
 
@@ -95,7 +95,7 @@ function App() {
 }
 ~~~~~~~
 
-Einer meiner ersten React „Aha“-Momente war es, einer Liste von JavaScript-Objekten HTML-Elementen ohne zuzuordnen, zusätzliche HTML-Template-Syntax. Erforderlich war ausschließlich JavaScript in HTML.
+Einer meiner ersten React "Aha"-Momente war es, einer Liste von JavaScript-Objekten HTML-Elementen ohne zuzuordnen, zusätzliche HTML-Template-Syntax. Erforderlich war ausschließlich JavaScript in HTML.
 
 React zeigt jetzt jedes Element an. Verbessere die Ausgabe weiter, so dass React erweiterte dynamische Listen effizienter handhabt. Durch Zuweisen eines Schlüsselattributs zu jedem Listenelement identifiziert React einzelne geänderte Elemente, wenn sich die Liste ändert – zum Beispiel bei einer Änderung der Reihenfolge. Glücklicherweise verfügen unsere Listenelemente über eine ID:
 

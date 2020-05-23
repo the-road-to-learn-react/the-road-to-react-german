@@ -58,7 +58,7 @@ const Search = props => (
 );
 ~~~~~~~
 
-Jetzt zeigt das Eingabefeld beim Start den korrekten Anfangswert. Dabei verwendet des `searchTerm` aus dem React-Status. Wenn wir den „searchTerm“ ändern, erzwingen wir außerdem, dass das Eingabefeld den Wert aus dem React-Status verwendet (über props). Zuvor verwaltete das Eingabefeld seinen eigenen internen Status nativ nur mit HTML.
+Jetzt zeigt das Eingabefeld beim Start den korrekten Anfangswert. Dabei verwendet des `searchTerm` aus dem React-Status. Wenn wir den "searchTerm" ändern, erzwingen wir außerdem, dass das Eingabefeld den Wert aus dem React-Status verwendet (über props). Zuvor verwaltete das Eingabefeld seinen eigenen internen Status nativ nur mit HTML.
 
 In diesem Abschnitt haben wir kontrollierte Komponenten kennengelernt ein neues Konzept entdeckt, das **unidirektionaler Datenfluss** genannt wird:
 

@@ -96,7 +96,7 @@ const Search = ({ search, onSearch }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-`props` werden selten nur innerhalb der eigenen Komponente verwendet. Stattdessen werden alle Informationen verwendet, die im Objekt `props` enthalten sind. Indem wir das Objekt `props` sofort in der Funktionssignatur destrukurieren, ist es möglich, bequem auf alle Informationen zuzugreifen, ohne das „props“-Objekt vorher zu bearbeiten. Das Erkennen und Verinnerlichen dieser Vereinfachung ist das Lernziel dieses Abschnitts. Im Weiteren werden wir hierauf aufbauen und die Art und Weise, wie wir destrukturieren verbessern. 
+`props` werden selten nur innerhalb der eigenen Komponente verwendet. Stattdessen werden alle Informationen verwendet, die im Objekt `props` enthalten sind. Indem wir das Objekt `props` sofort in der Funktionssignatur destrukurieren, ist es möglich, bequem auf alle Informationen zuzugreifen, ohne das "props"-Objekt vorher zu bearbeiten. Das Erkennen und Verinnerlichen dieser Vereinfachung ist das Lernziel dieses Abschnitts. Im Weiteren werden wir hierauf aufbauen und die Art und Weise, wie wir destrukturieren verbessern. 
 
 Schauen wir uns ein anderes Szenario an, und tauchen dabei tiefer in die Welt der `props` in React ein: Hierzu erstellen wir als erstes eine neue Item-Komponente. Dann nutzen wir unser gelerntes Wissen und setzen diese destrukturiert in der List-Komponente ein:
 
@@ -153,7 +153,7 @@ console.log(firstName + ' has a pet called ' + name);
 // "Robin has a pet called Trixi"
 ~~~~~~~
 
-Die verschachtelte Destrukturierung hilft uns, auf Eigenschaften von Objekten zuzugreifen, die – wie der Name schon sagt – tiefer verschachtelt sind. Im Beispiel wäre dies der Name des Haustiers. Da das Objekt „item“ in unserer Item-Komponente niemals direkt verwendet wird, führen wir in der Funktionssignatur der Komponente eine *verschachtelte Destrukturierung* durch:
+Die verschachtelte Destrukturierung hilft uns, auf Eigenschaften von Objekten zuzugreifen, die – wie der Name schon sagt – tiefer verschachtelt sind. Im Beispiel wäre dies der Name des Haustiers. Da das Objekt "item" in unserer Item-Komponente niemals direkt verwendet wird, führen wir in der Funktionssignatur der Komponente eine *verschachtelte Destrukturierung* durch:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -185,7 +185,7 @@ const Item = ({
 );
 ~~~~~~~
 
-Die verschachtelte Destrukturierung hilft uns, alle erforderlichen Informationen des Objekts „item“ in der Funktionssignatur zu sammeln, um diese sofort in den Elementen der Komponente zu verwendet werden. Verschachtelte Destrukturierung führt unter Umständen zu Unordnung durch Einrückungen in der Funktionssignatur. Obwohl dies hier nicht die am besten lesbare Option ist, gibt es Szenarien, in denen sie nützlich ist.
+Die verschachtelte Destrukturierung hilft uns, alle erforderlichen Informationen des Objekts "item" in der Funktionssignatur zu sammeln, um diese sofort in den Elementen der Komponente zu verwendet werden. Verschachtelte Destrukturierung führt unter Umständen zu Unordnung durch Einrückungen in der Funktionssignatur. Obwohl dies hier nicht die am besten lesbare Option ist, gibt es Szenarien, in denen sie nützlich ist.
 
 Lassen Sie uns einen anderen Ansatz mit den [Spread-](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax) und [Rest](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameter)-Operatoren in JavaScript verfolgen. Um unser Beispiel darauf vorzubereiten, werden wir unsere Listen- und Item-Komponenten umgestalten. Anstatt das Element als Objekt von der Liste an die Itemkomponente zu übergeben, übergeben wir alle Eigenschaften des Objekts `item`:
 

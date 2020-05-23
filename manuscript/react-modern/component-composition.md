@@ -27,7 +27,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Im obigen Beispiel fügen wir den Text „Search:“ jetzt direkt zwischen die Tags der Komponente ein. In der InputWithLabel-Komponente hast du inzwischen über die Eigenschaft **children** Zugriff auf diese Information. Verwende anstelle von `label` die Eigenschaft `children`, um alles, was von oben weitergegeben wird, an der gewünschten Stelle anzuzeigen:
+Im obigen Beispiel fügen wir den Text "Search:" jetzt direkt zwischen die Tags der Komponente ein. In der InputWithLabel-Komponente hast du inzwischen über die Eigenschaft **children** Zugriff auf diese Information. Verwende anstelle von `label` die Eigenschaft `children`, um alles, was von oben weitergegeben wird, an der gewünschten Stelle anzuzeigen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
