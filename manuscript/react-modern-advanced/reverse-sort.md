@@ -1,14 +1,14 @@
-## Reverse Sort
+## Umgekehrte Sortierung
 
-**Task:** The sort feature works, but the ordering only includes one direction. Implement a reverse sort when the button is clicked twice, so it becomes a toggle between normal (ascending) and reverse (descending) sort.
+**Aufgabe:** Die Sortierung funktioniert in eine Richtung. Erweitere diese Funktion. Wechsele zwischen aufsteigender und absteigender Sortierung, wenn jemand auf die Schaltfläche klickt.
 
-**Optional Hints:**
+**Optionale Hinweise:**
 
-* Consider that reverse or normal sort could be just another state (e.g. `isReverse`) next to the `sortKey`.
-* Set the new state in the `handleSort` handler based on the previous sort.
-* Use the new `isReverse` state for sorting the list with the sort function from the dictionary with the optionally applied `reverse()` function from JavaScript arrays.
+* Überlege, ob die umgekehrte Sortierung mithilfe eines Status realisierbar ist, beispielsweise `isReverse` neben `sortKey`.
+* Setze den neuen Status im Handler `handleSort` basierend auf der vorherigen Sortierung.
+* Verwende den neuen Status `isReverse`, um die Liste in zwei Richtungen zu sortieren.
 
-The initial sort direction works for strings, as well as numeric sorts like the reverse sort for JavaScript numbers that arranges them from high to low. Now we need another state to track whether the sort is reversed or normal, to make it more complex:
+Die anfängliche Sortierrichtung funktioniert für Zeichenfolgen und numerische Werte. Als Erstes brauchen wir einen weiteren Zustand, um zu verfolgen, ob die Sortierung umgekehrt oder normal ist:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -24,7 +24,7 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-Next, give the sort handler logic to see if the incoming `sortKey` triggers are a normal or reverse sort. If the `sortKey` is the same as the one in the state, it could be a reverse sort, but only if the sort state wasn't already reversed:
+Erweitere als Nächstes die Sortierlogik. Prüfe, ob normal oder entgegengesetzt sortiert wird. Wenn der `sortKey` mit dem im Status identisch ist, handelt es sich um eine umgekehrte Sortierung, wenn der Sortierstatus nicht vorher schon andersherum war:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -53,7 +53,7 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-Lastly, depending on the new `isReverse` state, apply the sort function from the dictionary with or without the built-in JavaScript reverse method for arrays:
+Wende abhängig vom neuen Status `isReverse` die Sortierfunktion mit oder ohne der JavaScript-Umkehrmethode an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -85,7 +85,7 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-The reverse sort is now operational. For the object passed to the state updater function, we use what is called a **shorthand object initializer notation**:
+Die umgekehrte Sortierung ist jetzt bereit. Für das an die Statusaktualisierungsfunktion übergebene Objekt verwenden wir eine sogenannte **Shorthand Object Initialisierer-Notation**:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -99,7 +99,7 @@ console.log(user);
 // { firstName: "Robin" }
 ~~~~~~~
 
-When the property name in your object is the same as your variable name, you can omit the key/value pair and just write the name:
+Lasse das Schlüssel/Wert-Paar weg, wenn der Eigenschaftsname im Objekt mit dem Variablennamen übereinstimmt. Nutze in dem Fall ausschließlich den Namen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -113,11 +113,11 @@ console.log(user);
 // { firstName: "Robin" }
 ~~~~~~~
 
-If necessary, read more about [JavaScript Object Initializers](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Object_initializer).
+Lese mehr über [JavaScript Object Initializers](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer) falls du diese nicht kennst.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Reverse-Sort).
-  * Bestätige die [Änderungen gegenüber dem letzten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Sort...hs/Reverse-Sort?expand=1).
-* Consider the drawback of keeping the sort state in the List instead of the App component. If you don't know, sort the list by "Title" and search for other stories afterward. What would be different if the sort state would be in the App component.
-* Use your styling skills to give the user feedback about the current active sort and its reverse state. It could be an [arrow up or arrow down SVG](https://www.flaticon.com/packs/arrow-set-2) next to each active sort button.
+  * Bestätige die [Änderungen gegenüber dem letzten Kapitel](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Sort...hs/Reverse-Sort?expand=1).
+* Überlege, welche Nachteile es hat, den Sortierstatus in der Liste anstelle der App-Komponente zu behalten. Wenn du keine Idee hast, dann sortiere die Liste nach „Titel“ und bestätige danach die Suche. Was ist anders, wenn der Sortierstatus in der App-Komponente verwaltet wird?
+* Zeige dem Benutzer in welcher Form eine Sortierung aktiv ist. Verwende neben jeder aktiven Sortierschaltfläche einen [Pfeil](https://www.flaticon.com/packs/arrow-set-2), der die Richtung anzeigt.
