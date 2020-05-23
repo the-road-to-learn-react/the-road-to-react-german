@@ -1,39 +1,39 @@
-# Deploying a React Application
+# Veröffentlichen/Bereitstellen einer React-Anwendung
 
-Now it's time to get out into the world with your React application. There are many ways to deploy a React application to production, and many competing providers that offer this service. We'll keep it simple here by narrowing it down on one provider, after which you'll be equipped to check out other hosting providers on your own.
+Jetzt ist es Zeit, dass du deine Anwendung der Welt zeigst. Es gibt viele konkurrierende Anbieter, die diesen Service bieten. Ich werde es hier unkompliziert halten, indem ich die Beschreibung eingrenzen. Ich erläutere dir, wie du die Anwendung auf einem lokalen Server veröffentlichst. Wähle danach einen Provider und passe meine Erklärungen gegebenenfalls an.
 
-## Build Process
+## Erstellungsprozess (Build Prozess)
 
-So far, everything we've done has been the *development stage* of the application, when the development server handles everything: packaging all files to one application and serving it on localhost on your local machine. As a result, our code isn't available for anyone else.
+Alles, was wir bisher bearbeitet haben, wird in einem echten Projekt der *Entwicklungsphase* zugeordnet. Entwickelt wird in einer speziell für die Entwicklung eingerichteten Umgebung. In unserem Fall war es so, dass wir alle Dateien auf dem lokalen Computer über einen integrierten Server bereitstellten und über localhost die Anwendung aufriefen. Daher ist der Code bisher für niemanden anderen verfügbar.
 
-The next step is to take your application to the *production stage* by hosting it on a remote server, called deployment, making it accessible for users of your application. Before an application can go public, it needs to be packaged as one essential application. Redundant code, testing code, and duplications are removed. There is also a process called minification at work which reduces the code size once more.
+Der nächste Schritt ist, die Anwendung in die *Produktionsphase* zu überführen. Dazu wird diese auf einen Remote-Server verschoben und so für andere Benutzer zugänglich. Bevor eine Anwendung veröffentlicht wird, ist es erforderlich, dass sie speziell hierfür zusammengestellt oder gebündelt wird. Redundanter Code, Testcode und Duplikate werden entfernt. Außerdem gibt es einen Prozess, der die Codegröße weiter reduziert, die Minifizierung.
 
-Fortunately, optimizations and packaging, also called bundling, comes with the build tools in create-react-app. First, build your application on the command line:
+Glücklicherweise übernehmen die Build-Tools der *Create-React-App* die Optimierung und Verpackung --- das Bündeln. Erstelle zunächst die Anwendung für die Veröffentlichung über die Befehlszeile:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm run build
 ~~~~~~~
 
-This creates a new *build/* folder in your project with the bundled application. You could take this folder and deploy it on a hosting provider now, but we'll use a local server to mimic this process before engaging in the real thing. First, install an HTTP server on your machine:
+Dadurch wird ein neuer Ordner *build/* im Projekt erstellt. Kopiere diesen auf deinen Webspace bei einem Hosting-Anbieter um ihn öffentlich bereitzustellen. Wir simulieren das, indem wir einen lokalen Server verwenden. Installiere hierzu einen HTTP-Server auf deinem Computer:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm install -g http-server
 ~~~~~~~
 
-Next, serve your application with this local HTTP server:
+Stelle im nächsten Schritt deine Anwendung über diesen lokalen HTTP-Server bereit:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 http-server build/
 ~~~~~~~
 
-The process can also be done on demand with a single command:
+Oder: Fasse die beiden vorherigen Schritte zu einem einzigen Befehl zusammen:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npx http-server build/
 ~~~~~~~
 
-After entering one of the commands, a URL is presented that provides access to your optimized, packaged and hosted application. It's sent through a local IP address that can be made available over your local network, meaning we're hosting the application on our local machine.
+Jetzt wird dir über die Befehlszeile eine URL angezeigt, die den Zugriff auf die optimierte, gepackte und gehostete Anwendung ermöglicht. Es handelt sich hierbei um eine lokale IP-Adresse, die über das Netzwerk verfügbar ist. Dein Computer ist im Prinzip der Webserver.
