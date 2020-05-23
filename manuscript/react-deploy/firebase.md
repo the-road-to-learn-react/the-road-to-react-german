@@ -1,38 +1,38 @@
-## Deploy to Firebase
+## In Firebase veröffentlichen/bereitstellen
 
-After we've built a full-fledged application in React, the final step is deployment. It is the tipping point of getting your ideas into the world, from learning how to code to producing applications. We will use Firebase Hosting for deployment.
+Wir haben in React eine vollwertige Anwendung erstellt. Der letzte Schritt ist das Teilen dieser mit der Welt --- nachdem du das Programmieren erlernt hast und lauffähige Programme fertigstellst. Wir verwenden Firebase Hosting für die Bereitstellung.
 
-Firebase works for create-react-app, as well as most libraries and frameworks like Angular and Vue. First, install the Firebase CLI globally to the node modules:
-
-{title="Command Line",lang="javascript"}
-~~~~~~~
-npm install -g firebase-tools
-~~~~~~~
-
-Using a global installation of the Firebase CLI lets us deploy applications without concern over project dependency. For any globally-installed node package, remember to update it to a newer version with the same command as often as you can:
+Firebase unterstützt die Create-React-App und die meisten Bibliotheken und Frameworks wie Angular und Vue. Installiere zunächst die Firebase-CLI global:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
 npm install -g firebase-tools
 ~~~~~~~
 
-If you don't have a Firebase project yet, sign up for a [Firebase account](https://console.firebase.google.com/) and create a new project there. Then you can associate the Firebase CLI with the Firebase account (Google account):
+Die Verwendung der globalen Installation der Firebase-CLI hat den Vorteil, dass es möglich ist Anwendungen ohne Bedenken hinsichtlich der Projektabhängigkeit bereitzustellen. Denke bei jeder global Installation daran, diese aktuell zu halten. Aktualisiere so oft wie nötig mit demselben Befehl:
+
+{title="Command Line",lang="javascript"}
+~~~~~~~
+npm install -g firebase-tools
+~~~~~~~
+
+Wenn du bisher kein Firebase-Konto hast, melde dich für ein [Firebase-Konto](https://console.firebase.google.com/) an und erstelle dort ein neues Projekt. Ordne anschließend die Firebase-CLI dem Firebase-Konto (Google-Konto) hinzu:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
 firebase login
 ~~~~~~~
 
-A URL will display in the command line that you can open in a browser, or the Firebase CLI opens it. Choose a Google account to create a Firebase project, and give Google the necessary permissions. Return to the command line to verify a successful login.
+In der Befehlszeile wird eine URL angezeigt, die du in einem Browser öffnest, oder die Firebase-CLI öffnet sie für dich nachdem du Fragen hinsichtlich Datenschutz beantwortet hast. Wähle ein Google-Konto aus, um ein Firebase-Projekt zu erstellen, und erteile Google die erforderlichen Berechtigungen. Kehre zur Befehlszeile zurück, um eine erfolgreiche Anmeldung zu überprüfen.
 
-Next, move to the project's folder and execute the following command, which initializes a Firebase project for the Firebase hosting features:
+Wechsele als Nächstes in den Projektordner und führe den folgenden Befehl aus, mit dem ein Firebase-Projekt für die Firebase-Hosting-Funktionen initialisiert wird:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
 firebase init
 ~~~~~~~
 
-Next, choose the Hosting option. If you're interested in using another tool next to Firebase Hosting, add other options:
+Wähle als Nächstes die Option Hosting. Füge weitere Optionen hinzu, um neben Firebase Hosting ein anderes Tool zu verwenden:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -44,7 +44,7 @@ Next, choose the Hosting option. If you're interested in using another tool next
  ? Storage: Deploy Cloud Storage security rules
 ~~~~~~~
 
-Google becomes aware of all Firebase projects associated with an account after login, and we can select one from the Firebase platform:
+Google verknüpft nach der Anmeldung alle Firebase-Projekte, die mit deinem Konto verknüpft sind. Wähle eines, beispielsweise das eben erstellte, von der Firebase-Plattform aus:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -57,7 +57,7 @@ but for now we'll just set up a default project.
 i  Using project my-react-project-abc123 (my-react-project)
 ~~~~~~~
 
-There are a few other configuration steps to define. Instead of using the default *public/* folder, we want to use the *build/* folder from create-react-app. If you set up the bundling with a tool like Webpack yourself, you can choose the appropriate name for the build folder:
+Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordner *public/* zu verwenden, nutzen wir den Ordner *build/* aus der create-react-app. Wähle den passenden Namen für den Build-Ordner aus, wenn du deine Anwendung mit einem Tool wie Webpack selbst packst:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -66,9 +66,9 @@ There are a few other configuration steps to define. Instead of using the defaul
 ? File public/index.html already exists. Overwrite? No
 ~~~~~~~
 
-The create-react-app application creates a *build/* folder after we perform the `npm run build` for the first time. The folder contains all the merged content from the *public/* folder and the *src/* folder. Since it is a single page application, we want to redirect the user to the *index.html* file, so the React router can handle client-side routing.
+React erstellt einen *build/*-Ordner, nachdem wir `npm run build` aufgerufen haben. Dieser enthält den gesamten Inhalt der Ordner *public/* und *src/*. Da es sich um eine SPA (Einzelseitenanwendung) handelt, leiten wir den Benutzer in die Datei *index.html* um, damit der React-Router das clientseitige Routing verarbeitet.
 
-Now your Firebase initialization is complete. This step created a few configuration files for Firebase Hosting in your project's folder. You can read more about them in [Firebase's documentation](https://firebase.google.com/docs/hosting/full-config) for configuring redirects, a 404 page, or headers. Finally, deploy your React application with Firebase in the command line:
+Deine Firebase-Initialisierung ist abgeschlossen. In diesem Schritt wurden einige Konfigurationsdateien für Firebase Hosting im Ordner deines Projekts erstellt. Weitere Informationen hierzu findest du in der [Firebase-Dokumentation](https://firebase.google.com/docs/hosting/full-config) zum Konfigurieren von Weiterleitungen, einer 404-Seite oder von Headern. Stelle jetzt die React-Anwendung mit Firebase über die Befehlszeile bereit:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
