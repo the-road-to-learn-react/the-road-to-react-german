@@ -44,7 +44,7 @@ Wähle als Nächstes die Option Hosting. Füge weitere Optionen hinzu, um neben 
  ? Storage: Deploy Cloud Storage security rules
 ~~~~~~~
 
-Google verknüpft nach der Anmeldung alle Firebase-Projekte, die mit deinem Konto verknüpft sind. Wähle eines, beispielsweise das eben erstellte, von der Firebase-Plattform aus:
+Google sucht nach deiner Anmeldung alle Firebase-Projekte, die mit dem Konto verknüpft sind und zeigt dir diese an. Wähle eines aus, beispielsweise das eben erstellte:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -57,7 +57,7 @@ but for now we'll just set up a default project.
 i  Using project my-react-project-abc123 (my-react-project)
 ~~~~~~~
 
-Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordner *public/* zu verwenden, nutzen wir den Ordner *build/* aus der create-react-app. Wähle den passenden Namen für den Build-Ordner aus, wenn du deine Anwendung mit einem Tool wie Webpack selbst packst:
+Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordner *public/* zu verwenden, nutzen wir den Ordner *build/* in der create-react-app. Wähle selbst den passenden Namen für den Build-Ordner aus, wenn du deine Anwendung nicht mithilfe der create-react-app, sondern mit einem Tool wie Webpack in Eigenregie packst:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -66,7 +66,7 @@ Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordn
 ? File public/index.html already exists. Overwrite? No
 ~~~~~~~
 
-React erstellt einen *build/*-Ordner, nachdem wir `npm run build` aufgerufen haben. Dieser enthält den gesamten Inhalt der Ordner *public/* und *src/*. Da es sich um eine SPA (Einzelseitenanwendung) handelt, leiten wir den Benutzer in die Datei *index.html* um, damit der React-Router das clientseitige Routing verarbeitet.
+React erstellt einen *build/*-Ordner, nachdem wir `npm run build` aufgerufen haben. Dieser enthält den gesamten Inhalt der Ordner *public/* und *src/*. Da es sich um eine SPA (Einzelseitenanwendung) handelt, leiten wir den Benutzer in die Datei *index.html* um, damit der React-Router das clientseitige Routing verarbeitet. Wir überschreiben die Datei nicht.
 
 Deine Firebase-Initialisierung ist abgeschlossen. In diesem Schritt wurden einige Konfigurationsdateien für Firebase Hosting im Ordner deines Projekts erstellt. Weitere Informationen hierzu findest du in der [Firebase-Dokumentation](https://firebase.google.com/docs/hosting/full-config) zum Konfigurieren von Weiterleitungen, einer 404-Seite oder von Headern. Stelle jetzt die React-Anwendung mit Firebase über die Befehlszeile bereit:
 
@@ -75,7 +75,7 @@ Deine Firebase-Initialisierung ist abgeschlossen. In diesem Schritt wurden einig
 firebase deploy
 ~~~~~~~
 
-After a successful deployment, you should see a similar output with your project's identifier:
+Nach einer erfolgreichen Bereitstellung wird dir die Kennung deines Projekts angezeigt:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -83,12 +83,12 @@ Project Console: https://console.firebase.google.com/project/my-react-project-ab
 Hosting URL: https://my-react-project-abc123.firebaseapp.com
 ~~~~~~~
 
-Visit both pages to observe the results. The first link navigates to your Firebase project's dashboard, where you'll see a new panel for the Firebase Hosting. The second link navigates to your deployed React application.
+Besuche beide Seiten, um die Einrichtung zu prüfen. Der erste Link navigiert zum Dashboard deines Firebase-Projekts. Dieses ist nur zugänglich, wenn du angemeldet bist. Hier wird dir ein neues Fenster für das Firebase-Hosting angezeigt. Der zweite Link leitet dich zur bereitgestellten React-Anwendung. Diese ist öffentlich einsehbar.
 
-If you see a blank page for your deployed React application, make sure the `public` key/value pair in the *firebase.json* is set to `build`, or whichever name you chose for this folder. Second, verify you've run the build script for your React app with `npm run build`. Finally, check out the [official troubleshoot area for deploying create-react-app applications to Firebase](https://create-react-app.dev/docs/deployment). Try another deployment with `firebase deploy`.
+Wenn dir eine leere Seite angezeigt wird, stellen sicher, dass das Schlüssel-/Wertepaar `public` in der Datei *firebase.json* auf `build` oder den für diesen Ordner ausgewählten Namen festgelegt ist. Stellen außerdem sicher, dass du das Build-Skript für deine React-App mit `npm run build` ausgeführt hast. Lese abschließend den [offiziellen Fehlerbehebungsbereich für die Bereitstellung von Anwendungen zum Erstellen und Reagieren von Apps in Firebase](https): //create-react-app.dev/docs/deployment). Wiederholge die Bereitstellung mit `firebase deploy`.
 
 ### Exercises
 
-* Read more about [Firebase Hosting](https://firebase.google.com/docs/hosting/).
-* [Connect your domain to your Firebase deployed application](https://firebase.google.com/docs/hosting/custom-domain).
-* Optional: If you want to have a managed cloud server, check out [DigitalOcean](https://m.do.co/c/fb27c90322f3). It's more work, but it allows more control. [I host all my websites, web applications, and backend APIs there](https://www.robinwieruch.de/deploy-applications-digital-ocean/).
+* Lese mehr zum [Firebase Hosting](https://firebase.google.com/docs/hosting/).
+* [Verbinde deine Domain mit der Firebase-Anwendung](https://firebase.google.com/docs/hosting/custom-domain).
+* Optional: Sieh dir das Angebot von [DigitalOcean](https://m.do.co/c/fb27c90322f3) an, wenn du dich für einen Cloud-Server interessierst. Die Einrichtung ist Mehraufwand. Dafür ermöglicht diese Variante dir mehr Kontrolle. [Ich hoste dort alle meine Websites, Webanwendungen und Backend-APIs](https://www.robinwieruch.de/deploy-applications-digital-ocean/).
