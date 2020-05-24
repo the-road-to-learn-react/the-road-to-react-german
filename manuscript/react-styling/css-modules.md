@@ -188,6 +188,18 @@ import cs from 'classnames';
 className={cs(styles.button, styles.buttonLarge)}
 ~~~~~~~
 
+Die Bibliothek bietet bedingtes Styling. Die linke Seite der Objekteigenschaft wird dabei als [berechneter Eigenschaftsname]((https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer)) verwendet und nur angewendet, wenn die rechte Seite den Wert `true` hat:
+
+{title="src/App.js",lang="javascript"}
+~~~~~~~
+import cs from 'classnames';
+
+...
+
+// Irgendwo in einem className-Attribut
+className={cs(styles.button, { [styles.buttonLarge]: isLarge })}
+~~~~~~~
+
 Fahre abschließend mit der InputWithLabel-Komponente fort. Verwende die Bibliothek **classnames**, um dieser das `className`-Attribut zuzuordnen:
 
 {title="src/App.js",lang="javascript"}
