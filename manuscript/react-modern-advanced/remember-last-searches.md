@@ -285,7 +285,6 @@ const App = () => {
 
 Dies ist keine perfekte Lösung, da `index` kein stabiler Schlüssel ist. Insbesondere das Hinzufügen von Elementen ist nicht sicher. Wir verbessern die Anwendung aber nicht weiter, denn für unser Szenario reicht die bisherige Implementierung. Die Funktion macht was man von ihr erwartet. Mir ist es wichtiger, dir UX-Verbesserungen anhand der folgenden Aufgaben vorzuschlagen.
 
-
 **Weitere Aufgaben:**
 
 * (1) Zeige für die aktuelle Suche keine Schaltfläche an, erstelle diese nur für die fünf vorhergehenden Suchaktionen. Tipp: Passe die Funktion `getLastSearches` an.
