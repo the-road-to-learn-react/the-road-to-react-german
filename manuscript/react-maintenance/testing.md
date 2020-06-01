@@ -1,87 +1,192 @@
 ## React Anwendungen testen
 
-Das Testen des Quellcodes wird oft vernachlässigt. Dabei ist es wesentlich und als  zwingend erforderlich anzusehen. Es ist unentbehrlich, die Qualität und Funktionalität des Quellcodes automatisch zu überprüfen, bevor dieser im Echtsystem angewendet wird. Die [Testpyramide](https://martinfowler.com/articles/practical-test-pyramid.html) dient als Grundregel.
+Das Testen des Quellcodes wird oft vernachlässigt. Dabei ist es wesentlich und zwingend erforderlich. Es ist unentbehrlich, die Qualität und Funktionalität des Codes automatisch zu überprüfen, bevor dieser im Echtsystem angewendet wird. Automatisierte Tests sind schneller durchführbar, fehlerfreier und kostengünstiger. Maschinen sind hier dem Menschen überlegen. Die [Testpyramide](https://martinfowler.com/articles/practical-test-pyramid.html) dient als Grundregel.
 
-Die Testpyramide umfasst End-to-End-Tests, Integrationstests und Komponententests. Unit-Tests werden für kleine, isolierte Codeblöcke verwendet, z. B. eine einzelne Funktion oder Komponente. Integrationstests helfen uns, herauszufinden, ob diese Einheiten zusammenarbeiten. Ein End-to-End-Test simuliert ein reales Szenario, beispielsweise den Anmeldevorgang in einer Webanwendung. Unit-Tests sind unkompliziert zu schreiben und zu warten. Man betrachtet hierbei einen Teilaspekt herausgelöst. Auf End-to-End-Tests trifft das Gegenteil zu.
+Die Testpyramide umfasst End-to-End-Tests, Integrationstests und Komponententests. Unit-Tests werden für kleine, isolierte Codeblöcke verwendet, zum Beispiel eine einzelne Funktion oder Komponente. Integrationstests helfen uns, herauszufinden, ob diese Einheiten zusammenarbeiten. Ein End-to-End-Test simuliert ein reales Szenario, beispielsweise den Anmeldevorgang in einer Webanwendung. Unit-Tests sind unkompliziert zu schreiben und zu warten. Man betrachtet hierbei einen Teilaspekt herausgelöst. Auf End-to-End-Tests trifft das Gegenteil zu.
 
-Scheiben wir zuerst Unit-Tests, die unsere Funktionen und Komponenten abdecken. Danach verwenden wir Integrationstests, um sicherzustellen, dass die einzelnen mit den Unit-Tests unabhängig geprüften Einheiten, wie erwartet zusammenarbeiten. Am Ende benötigen wir einige End-to-End-Tests, um kritische Szenarien zu simulieren. In diesem Kapitel behandeln wir **Unit und Integrationstests** sowie eine komponentenspezifische Testtechnik namens **Schnappschusstests** oder **Snapshot Tests**. **E2E-Tests** werden Teil der Übungen sein.
+![](images/testing-pyramid.png)
 
-Da es viele [Test-Bibliotheken](https://www.robinwieruch.de/react-testing-tutorial) gibt, ist es als Anfänger schwierig, die passende auszuwählen. Wir werden [Jest](https://jestjs.io/) von Facebook als Test-Framework verwenden. Die meisten React Entwickler nutzten Jest als Grundlage. Wir befinden uns in guter Gesellschaft. So ist dies eine geeignete Einführung, denn du lernst Dinge, mit denen du in jedem Fall konfrontiert wirst, wenn du länger mit React arbeitest.
+Scheiben wir zuerst Unit-Tests, die unsere Funktionen und Komponenten abdecken. Danach verwenden wir Integrationstests, um sicherzustellen, dass die einzelnen mit Unit-Tests unabhängig geprüften Einheiten, wie erwartet zusammenarbeiten. Am Ende benötigen wir einige End-to-End-Tests, um kritische Szenarien zu simulieren. In diesem Kapitel behandeln wir **Unit und Integrationstests** sowie eine komponentenspezifische Testtechnik namens **Schnappschusstests oder Snapshot Tests**. **End-to-End-Tests** werden Teil der Übungen sein.
 
-### Unit Tests und Integrationstests
+Da es viele Test-Bibliotheken gibt, ist es als Anfänger schwierig, die passende auszuwählen. Wir werden [Jest](https://jestjs.io/) und die [React Testing Library](https://testing-library.com/) (RTL) verwenden. Während Jest ein umfassendes Testframework mit Testrunner, Testsuiten, Testfällen und Assertions (Behauptungen) ist, wird die React Testing Library zum Rendern von React-Komponenten, Auslösen von Ereignissen wie Mausklicks und Auswählen von HTML-Elementen aus dem DOM zum Ausführen von Assertions (Behauptungen) verwendet. In den nächsten Abschnitten werden wir beide Tools Schritt für Schritt von der Einrichtung über Unit-Tests bis hin zu Integrationstests untersuchen.
 
-Oft sind die Grenzen zwischen Unit- und Integrationstests unklar. Die List-Komponente mit ihrer Item-Komponente ist ein Beispiel dafür. Testet man diese, handelt es sich um einen Integrationstest oder einen Unit Test für zwei eng gekoppelte Komponenten. Diese Einordnung ist meiner Meinung nach nebensächlich. Wichtig ist, dass du im vorherigen Abschnitt verstanden hast, warum Unit Tests und Integrationstests unterschieden werden. In diesem Abschnitt behandeln wir erst Unit-Tests und später Integrationstests. 
+### Testsuiten, Testfälle und Assertions (Behauptungen)
 
-Wir wagen uns langsam an die Materie heran. Als Erstes schreiben wir einen Pseudotest, den wir in die Datei *src/App.test.js*-Datei einfügen:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-describe('something truthy', () => {
-  it('true to be true', () => {
-    expect(true).toBe(true);
-  });
-});
-~~~~~~~
-
-Glücklicherweise ist *Jest* in die **create-react-App** integriert. Rufe den Test über die Befehlszeile auf. Die Ausgabe für alle Testfälle wird dir unmittelbar danach angezeigt.
-
-{title="Command Line",lang="text"}
-~~~~~~~
-npm test
-~~~~~~~
-
-*Jest* sucht in alle Dateien mit dem Suffix *test.js* im Dateinamen nach Testmethoden. Erfolgreiche Tests werden grün angezeigt. Fehlgeschlagene in roter Farbe ausgegeben:
+Jest bietet dir alles, was du von einem Test-Framework erwartest. In JavaScript, und in vielen anderen Programmiersprachen, werden häufig Testsuiten und Testfälle verwendet. Während eine Testsuite viele inhaltlich zusammengehörende Testfälle vereint, besteht ein Testfall aus einem Szenario. Sehen wir uns das mit Jest anhand der Datei *src/App.test.js* praktisch an:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-describe('something truthy', () => {
-  it('true to be true', () => {
-    expect(true).toBe(false);
-  });
-});
-~~~~~~~
-
-Tests in *Jest* bestehen aus **Testsuiten** (`describe` - `beschreiben`), die aus **Testfällen** (`it`) zusammengesetzt sind, die wiederum **Behauptungen** (`expect` - `erwarten`) aufstellen, die sich als wahr (grün) oder falsch (rot) herausstellen:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-// test suite
-describe('truthy and falsy', () => {
-  // test case
-  it('true to be true', () => {
-    // test assertion
+describe('something truthy and falsy', () => {
+  test('true to be true', () => {
     expect(true).toBe(true);
   });
 
-  // test case
-  it('false to be false', () => {
-    // test assertion
+  test('false to be false', () => {
     expect(false).toBe(false);
   });
 });
 ~~~~~~~
 
-Der "it"-Block beschreibt einen Testfall. Er besteht aus einer Testbeschreibung. Der Test ist erfolgreich oder er schlägt fehl. Binde diesen Block in einen "describe"-Block ein, der die Testsuite zusammen mit anderen "it"-Blöcken für eine Komponente definiert. Beide Arten werden verwendet, um Testfälle zu organisieren. Beachte, dass die Funktion `it` in der JavaScript-Community als Einzeltestfallfunktion bekannt ist. In Jest wird `it` häufig als Alias `test`-Funktion verwendet:
+Während der „describe“-Block die *Testsuite* ist, sind die „test“-Blöcke die *Testfälle*. Beachte, dass es möglich ist, Testfälle ohne Testsuite zu verwenden. Für unser Beispiel ist das nicht relevant, mir ist es aber wichtig, es zu erwähnen:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-describe('something truthy', () => {
-# leanpub-start-insert
-  test('true to be true', () => {
-# leanpub-end-insert
-    expect(true).toBe(false);
+test('true to be true', () => {
+  expect(true).toBe(true);
+});
+
+test('false to be false', () => {
+  expect(false).toBe(false);
+});
+~~~~~~~
+
+Warum nutzen wir Testsuiten und Testfälle? Es kommt häufig vor, dass beispielsweise eine Funktion oder eine Komponente mehrere Fälle aufweist. Jeder Testfall steht für einen Teil eines Szenarios. Eine Testsuite ist in der Regel eine Sammlung dieser Testfällen, die zusammen eine Aktion simulieren. Zur Testausführung werden diese in einer Gruppe zusammengefasst aufgerufen. So wird die Aktion im Ganzen getestet. Daher ist es sinnvoll, Testsuiten und Testfälle in Kombination zu verwenden. Manchmal testet man eine aufeinander abgestimmte Abfolge, beispielsweise
+
+- Testfall 1: Anmeldung
+- Testfall 2: Anzeige einer Liste 
+- Testfall 3: Löschung eines Eintrags
+- Testfall 4: Abmeldung. 
+
+Wir testen die Teile der App Komponente zusammenhängend in einer Testsuite:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App component', () => {
+  test('removes an item when clicking the Dismiss button', () => {
+
+  });
+
+  test('requests some initial stories from an API', () => {
+
   });
 });
 ~~~~~~~
 
-Um React-Komponenten in *Jest* zu verwenden, benötigen wir eine Bibibliothek zum Rendern von Komponenten in einer Testumgebung. Deshalb installieren wir **react-test-renderer** über die Befehlszeile:
+Hast du schon einmal mit Tests gearbeitet und kennst "it"-Blocks? Ein "it"-Block ist das gleiche wie ein "test"-Block. In der Vergangenheit wurde "it" genutzt. "test" ist neuer und gibt dem Ganzen einen passenderen Namen. Nenne deinen Block so, wie es dir am liebsten ist. 
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('something truthy and falsy', () => {
+# leanpub-start-insert
+  it('true to be true', () => {
+# leanpub-end-insert
+    expect(true).toBe(true);
+  });
+
+# leanpub-start-insert
+  it('false to be false', () => {
+# leanpub-end-insert
+    expect(false).toBe(false);
+  });
+});
+~~~~~~~
+
+Glücklicherweise beinhaltet die Create-React-App Jest, sodass alles Wichtige installiert und konfiguriert ist. Führe die Tests mit dem Skript aus der Datei *package.json* direkt in der Befehlszeile aus. Verwendet dazu den Befehl `npm test` und du siehst die folgende Ausgabe:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
-npm install react-test-renderer --save-dev
+ PASS  src/App.test.js
+  something truthy and falsy
+    ✓ true to be true (3ms)
+    ✓ false to be false (1ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        2.78s, estimated 4s
+Ran all test suites related to changed files.
+
+Watch Usage
+ › Press a to run all tests.
+ › Press f to run only failed tests.
+ › Press q to quit watch mode.
+ › Press p to filter by a filename regex pattern.
+ › Press t to filter by a test name regex pattern.
+ › Press Enter to trigger a test run.
 ~~~~~~~
 
-Bevor du deine ersten Komponenten testest, ist es erforderlich, dass du diese aus deiner *src/App.js*-Datei exportierst:
+Jest vergleicht alle Dateien mit dem Suffix *test.js* im Dateinamen, wenn der Befehl aufgerufen wird. Erfolgreiche Tests werden grün, fehlgeschlagene rot markiert. Das interaktive Test-Skript überwacht den Code und führt die Tests jedes Mal aus, wenn sich etwas im Code ändert. Es bietet dir zusätzliche Befehle wie das Drücken von "f", um nur fehlgeschlagene, und "a", um alle Tests erneut auszuführen. Probiere das mit einem fehlerhaften Test praktisch aus:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('something truthy and falsy', () => {
+  test('true to be true', () => {
+    expect(true).toBe(true);
+  });
+
+  test('false to be false', () => {
+# leanpub-start-insert
+    expect(false).toBe(true);
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Wenn die Ausführung von npm test bei dir weiterhin aktiv ist, dann werden deine Tests nach der Änderung im Quellcode erneut aufgerufen und du siehts über die Befehlszeilenausgabe einen roten Hinweis bezüglich des fehlgeschlagenen Tests:
+
+{title="Command Line",lang="text"}
+~~~~~~~
+ FAIL  src/App.test.js
+  something truthy and falsy
+    ✓ true to be true (2ms)
+    ✕ false to be false (4ms)
+
+  ● something truthy and falsy › false to be false
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: true
+    Received: false
+
+       5 |
+       6 |   test('false to be false', () => {
+    >  7 |     expect(false).toBe(true);
+         |                   ^
+       8 |   });
+       9 | });
+      10 |
+
+      at Object.<anonymous> (src/App.test.js:7:19)
+
+Test Suites: 1 failed, 1 total
+Tests:       1 failed, 1 passed, 2 total
+Snapshots:   0 total
+Time:        3.385s
+Ran all test suites related to changed files.
+
+Watch Usage: Press w to show more.
+~~~~~~~
+
+Mach dich mit der Testausgabe vertraut und nutze sie. Diese enthält alle Informationen, um fehlgeschlagene Tests zu erkennen und so die Ursache zu beheben. Korrigiere den  problematischen Test und überprüfe in der Befehlszeile, ob die Ausgabe grün ist.
+
+Ich habe bisher nichts zu Testaussagen geschrieben, obwohl diese ebenfalls wichtig sind. Du hast im Beispiel zwei Test-Assertions mit der Funktion `expect` verwendet. `expect` ist von Hause aus in den Jest enthalten. Eine Behauptung (Assertion) funktioniert wie folgt: Es wird erwartet, dass die linke Seite (`expect`) mit der rechten (`toBe`) übereinstimmt. `toBe` ist dabei eine von vielen Funktionen, die mit Jest verfügbar sind:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('something truthy and falsy', () => {
+  test('true to be true', () => {
+    expect(true).toBeTruthy();
+  });
+
+  test('false to be false', () => {
+    expect(false).toBeFalsy();
+  });
+});
+~~~~~~~
+
+Nutze gleichzeitig zwei Befehlszeilen, wenn du mit Tests arbeitest: eine zum Überwachen deiner Tests (`npm start`) und eine zum Entwickeln der Anwendung (`npm start`). Wenn du eine Versionsverwaltung wie [Git](https://de.wikipedia.org/wiki/Git) nutzt, benötigst du unter Umständen eine weitere offene Befehlszeile, um deinen Code zu einem Repository hinzuzufügen.
+
+### Übungen:
+
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-setup).
+  * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing-setup?expand=1).
+* Lese mehr über [Jest](https://jestjs.io/).
+
+### Unit Testing: Functions
+
+Als Erstes schreiben wir einem Komponententest. Ein Unit-Test testet normalerweise eine Komponente oder eine Funktion isoliert. Dies bedeutet, dass wir im Falle einer Funktion nur die Ein- und Ausgabe testen. Bei einer Komponente testen wir die Eigenschaften (Props) und die Callback-Handler.
+
+Bevor wir etwas in der Datei *src/App.js* testen ist es erforderlich, dass wir Komponenten und Funktionen exportieren:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -90,511 +195,888 @@ Bevor du deine ersten Komponenten testest, ist es erforderlich, dass du diese au
 export default App;
 
 # leanpub-start-insert
-export { SearchForm, InputWithLabel, List, Item };
+export { storiesReducer, SearchForm, InputWithLabel, List, Item };
 # leanpub-end-insert
 ~~~~~~~
 
-Importiere die Komponente dann zusammen mit der zuvor installierten Bibliothek **react-test-renderer** in die Datei *src/App.test.js*:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-# leanpub-start-insert
-import React from 'react';
-import renderer from 'react-test-renderer';
-
-import App, { Item, List, SearchForm, InputWithLabel } from './App';
-# leanpub-end-insert
-~~~~~~~
-
-Jetzt endlich: Schreibe deinen ersten Komponententest. Wähle dazu die Item-Komponente. Der Testfall rendert diese mit einem `item` unter Verwendung der Bibliothek **react-test-renderer**:
+Ich liste dir hier im Abschnitt nicht die Tests für sämtliche Szenarien auf. Vielmehr zeige ich die Implementierung beispielhaft und überlasse es dir, diese zu vervollständigen. Importieren wir als Erstes alles Erforderliche in die Datei *src/App.test.js*. Wie du siehst, ist React ebenfalls notwendig!
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
 import React from 'react';
-import renderer from 'react-test-renderer';
 
-import App, { Item, List, SearchForm, InputWithLabel } from './App';
-
-# leanpub-start-insert
-describe('Item', () => {
-  const item = {
-    title: 'React',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  };
-
-  it('renders all properties', () => {
-    const component = renderer.create(<Item item={item} />);
-
-    expect(component.root.findByType('a').props.href).toEqual(
-      'https://reactjs.org/'
-    );
-  });
-});
-# leanpub-end-insert
+import App, {
+  storiesReducer,
+  Item,
+  List,
+  SearchForm,
+  InputWithLabel,
+} from './App';
 ~~~~~~~
 
-Informationen zu den Attributen einer Komponente oder eines Elements sind über die Eigenschaft `props` verfügbar. In der zu testenden Annahme befindet sich das Ankertag (`a`) und sein Attribut `href`. Wir führen eine Gleichheitsprüfung durch. Wenn der Test grün ausfällt, sind wir sicher, dass `href` auf die korrekte Eigenschaft `url` des Elements `item` gesetzt ist.
-
-Im selben Testfall ergänzen wir eine weitere Testannahme:
+Bevor wir den ersten Unit-Test schreiben, zeige ich dir, wie du eine einzelne JavaScript-Funktion testest. Der beste Kandidat für diesen Testanwendungsfall ist `storiesReducer` und eine ihrer Aktionen. Zunächst definieren wir einige Testdaten --- die wir später ebenfalls verwenden werden --- und die Testsuite:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-describe('Item', () => {
-  const item = {
-    title: 'React',
-    url: 'https://reactjs.org/',
-    author: 'Jordan Walke',
-    num_comments: 3,
-    points: 4,
-    objectID: 0,
-  };
+import React from 'react';
 
-  it('renders all properties', () => {
-    const component = renderer.create(<Item item={item} />);
-
-    expect(component.root.findByType('a').props.href).toEqual(
-      'https://reactjs.org/'
-    );
+...
 
 # leanpub-start-insert
-    expect(
-      component.root.findAllByType('span')[1].props.children
-    ).toEqual('Jordan Walke');
-# leanpub-end-insert
+const storyOne = {
+  title: 'React',
+  url: 'https://reactjs.org/',
+  author: 'Jordan Walke',
+  num_comments: 3,
+  points: 4,
+  objectID: 0,
+};
+
+const storyTwo = {
+  title: 'Redux',
+  url: 'https://redux.js.org/',
+  author: 'Dan Abramov, Andrew Clark',
+  num_comments: 2,
+  points: 5,
+  objectID: 1,
+};
+
+const stories = [storyOne, storyTwo];
+
+describe('storiesReducer', () => {
+  test('removes a story from all stories', () => {
+
   });
 });
-~~~~~~~
-
-Da es mehrere `span`-Elemente gibt, suchen wir nach allen, wählen das zweite aus (Index ist `1`, da wir bei `0` zu zählen beginnen) und vergleichen dessen `children`-Eigenschaft mit der `author`-Eigenschaft des Test-Item. Dieser Test ist nicht zukunftssicher. Sobald sich die Reihenfolge der `span`-Elemente in der Item-Komponente ändert, schlägt er fehl. 
-
-Vermeide Tests mit einem solchen Unsicherheitsfaktor. Das bringt auf lange Sicht nur Probleme. Ändere die Test-Behauptung beispielsweise wie folgt:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-describe('Item', () => {
-  const item = { ... };
-
-  it('renders all properties', () => {
-    ...
-
-# leanpub-start-insert
-    expect(
-      component.root.findAllByProps({ children: 'Jordan Walke' })
-        .length
-    ).toEqual(1);
 # leanpub-end-insert
-  });
-});
 ~~~~~~~
 
-Die Testbehauptung ist nach der Änderung allgemeiner. Es wird getestet, ob es ein Test-Item mit irgendeiner Eigenschaft gibt, die mit *Jordan Walke* belegt ist. Diese Vorgehensweise ist nicht 100% sicher, mit ihr werden aber viele mögliche Probleme aufgedeckt. Die Besonderheit, dass die `author`-Eigenschaft gar nicht vorkommt dafür eine `titel`-Eigenschaft mit dem Wert *Jordan Walke* vorhanden ist, würde uns mit diesem Test durchgehen. Aber, wie überall im Leben ist der gesunde Mittelweg die beste Herangehensweise. Wende die Technik für alle anderen Eigenschaften selbst an oder hebe dir dies als Übung für später auf, wenn du es bevorzugst erst einmal weiter zu lesen.
-
-Wir haben mit einem Test sichergestellt, dass die Item-Komponente als Text- oder HTML-Attribut (`href`) gerendert wird, aber wir haben den Callback-Handler bisher nicht getestet. Der folgende Testfall stellt für diesen eine Behauptung auf, indem er ein Klickereignis über das Attribut `onClick` des `button`-Elements simuliert:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-describe('Item', () => {
-  const item = { ... };
-
-  it('renders all properties', () => {
-    ...
-  });
-
-# leanpub-start-insert
-  it('calls onRemoveItem on button click', () => {
-    const handleRemoveItem = jest.fn();
-
-    const component = renderer.create(
-      <Item item={item} onRemoveItem={handleRemoveItem} />
-    );
-
-    component.root.findByType('button').props.onClick();
-
-    expect(handleRemoveItem).toHaveBeenCalledTimes(1);
-    expect(handleRemoveItem).toHaveBeenCalledWith(item);
-
-    expect(component.root.findAllByType(Item).length).toEqual(1);
-  });
-# leanpub-end-insert
-});
-~~~~~~~
-
-Mit *Jest* übergeben wir testspezifische Funktionen als Eigenschaft an die Item-Komponente. Diese heißen **spy**, **stub** oder **mock**; Jede wird für verschiedene Testszenarien verwendet. `jest.fn()` gibt uns ein *mock* für die eigentliche Funktion zurück, mit dem wir erfassen können, wann sie aufgerufen wird. So verwenden wir Testannahmen in *Jest* wie `toHaveBeenCalledTimes`, mit denen wir die Anzahl der Aufrufe der Funktion bestätigen und `toHaveBeenCalledWith`, um die an ihn übergebenen Argumente zu überprüfen.
-
-Der Komponententest der Item-Komponente ist abgeschlossen, da wir die Eingabe (`item`) und die Ausgabe (`onRemoveItem`) getestet haben. Verwechsele die beiden nicht mit Eingabe (Argumente) und Ausgabe (JSX) der Funktionskomponente, die ebenfalls getestet wurden. Eine letzte Verbesserung macht die Testsuite für die Item-Komponente präziser, indem sie eine gemeinsame Setup-Funktion integriert:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-describe('Item', () => {
-  const item = { ... };
-# leanpub-start-insert
-  const handleRemoveItem = jest.fn();
-# leanpub-end-insert
-
-# leanpub-start-insert
-  let component;
-# leanpub-end-insert
-
-# leanpub-start-insert
-  beforeEach(() => {
-    component = renderer.create(
-      <Item item={item} onRemoveItem={handleRemoveItem} />
-    );
-  });
-# leanpub-end-insert
-
-  it('renders all properties', () => {
-    expect(component.root.findByType('a').props.href).toEqual(
-      'https://reactjs.org/'
-    );
-
-    ...
-  });
-
-  it('calls onRemoveItem on button click', () => {
-    component.root.findByType('button').props.onClick();
-
-    ...
-  });
-});
-~~~~~~~
-
-A common setup (or teardown) function in tests removes duplicated code. Since the component must be rendered for both test cases, and the props are the same for both renderings, we can share this code in a common setup function. From there, we'll move on to testing the List component:
+Wenn du die Testfälle genauer untersuchst, erhältst du einen Testfall pro Reduzierungsaktion. Wir werden uns auf eine Aktion konzentrieren. Im Allgemeinen akzeptiert die Reduzierungsfunktion einen Zustand und eine Aktion und gibt einen neuen Zustand zurück. Jeder Test des Reduzierers folgt dem gleichen Muster:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
 ...
 
-describe('Item', () => {
-  ...
-});
-
+describe('storiesReducer', () => {
+  test('removes a story from all stories', () => {
 # leanpub-start-insert
-describe('List', () => {
-  const list = [
-    {
-      title: 'React',
-      url: 'https://reactjs.org/',
-      author: 'Jordan Walke',
-      num_comments: 3,
-      points: 4,
-      objectID: 0,
-    },
-    {
-      title: 'Redux',
-      url: 'https://redux.js.org/',
-      author: 'Dan Abramov, Andrew Clark',
-      num_comments: 2,
-      points: 5,
-      objectID: 1,
-    },
-  ];
+    const action = // TODO: some action
+    const state = // TODO: some current state
 
-  it('renders two items', () => {
-    const component = renderer.create(<List list={list} />);
+    const newState = storiesReducer(state, action);
 
-    expect(component.root.findAllByType(Item).length).toEqual(2);
+    const expectedState = // TODO: the expected state
+
+    expect(newState).toBe(expectedState);
+# leanpub-end-insert
   });
 });
-# leanpub-end-insert
 ~~~~~~~
 
-The test checks straightforward whether two Item components are rendered for the two items in the list. You could continue testing the List component by checking whether each callback handler (`onRemoveItem`) is called for each Item component, which would have a similar solution to the previous Item component's test. Is this test still a unit test or already an integration test?
-
-Keeping this question in the room, we will move on to the SearchForm with InputWithLabel component:
+Für unseren speziellen Fall definieren wir eine Aktion `action`, einen Zustand `state` und ein erwartetes Ergebnis `newState`. Letzteres ist im Beispiel wie folgt: Die Liste enthält einen Eintrag weniger, da das Item, das mit er Aktion an den Reduzierer übergeben wird, entfernt wurde:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
+describe('storiesReducer', () => {
+  test('removes a story from all stories', () => {
 # leanpub-start-insert
-describe('SearchForm', () => {
-  const searchFormProps = {
-    searchTerm: 'React',
-    onSearchInput: jest.fn(),
-    onSearchSubmit: jest.fn(),
-  };
+    const action = { type: 'REMOVE_STORY', payload: storyOne };
+    const state = { data: stories, isLoading: false, isError: false };
+# leanpub-end-insert
 
-  let component;
+    const newState = storiesReducer(state, action);
 
-  beforeEach(() => {
-    component = renderer.create(<SearchForm {...searchFormProps} />);
-  });
+# leanpub-start-insert
+    const expectedState = {
+      data: [storyTwo],
+      isLoading: false,
+      isError: false,
+    };
+# leanpub-end-insert
 
-  it('renders the input field with its value', () => {
-    const value = component.root.findByType(InputWithLabel).props
-      .value;
-
-    expect(value).toEqual('React');
+    expect(newState).toBe(expectedState);
   });
 });
-# leanpub-end-insert
 ~~~~~~~
 
-In this test, we assert whether the InputWithLabel component receives the correct prop from the SearchForm component. Essentially the test stops before the InputWithLabel component, because it only tests the interface (props) of it. Arguably it's still a unit test, because the underlying implementation details of the InputWithLabel component could change without changing the interface. You can change the test to make it work through to the InputWithLabel component's input field, because all child components and its elements are rendered too:
+Der Test schlägt fehl. Das liegt daran, dass wir hier `toBe` anstelle von `toStrictEqual` verwenden. Die Funktion `toBe` führt einen [strengen Vergleich](https://developer.mozilla.org/de/docs/Web/JavaScript/Vergleiche_auf_Gleichheit_und_deren_Verwendung) wie `newState === expectedState` durch. Die Objektreferenz ist hier nicht dieselbe, sondern nur der Inhalt des Objekts. Daher vergleichen wir besser mit `toStrictEqual` anstelle von `toBe` den Inhalt:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-describe('SearchForm', () => {
-  ...
+describe('storiesReducer', () => {
+  test('removes a story from all stories', () => {
+    const action = { type: 'REMOVE_STORY', payload: storyOne };
+    const state = { data: stories, isLoading: false, isError: false };
 
-  it('renders the input field with its value', () => {
+    const newState = storiesReducer(state, action);
+
+    const expectedState = {
+      data: [storyTwo],
+      isLoading: false,
+      isError: false,
+    };
+
 # leanpub-start-insert
-    const value = component.root.findByType('input').props.value;
+    expect(newState).toStrictEqual(expectedState);
 # leanpub-end-insert
-
-    expect(value).toEqual('React');
   });
 });
 ~~~~~~~
 
-This is our first integration test between the SearchForm and InputWithLabel components, which aren't as tightly coupled as the List and Item components. The InputWithLabel component can be used in other components (highly reusable), whereas the Item component is essentially a non-reusable part of the List component.
+Im Falle von JavaScript-Objekte ist es wichtig, zu unterscheiden, ob du einen strengen Vergleich oder nur einen Inhaltsvergleich testest. Meistens ist der Inhalt relevant, verwende daher `toStrictEqual`. Für Strings oder boolesche Werte nutzt du weiterhin `toBe`. Beachte, dass es eine `toEqual`-Funktion gibt, die [etwas anders funktioniert](https://twitter.com/rwieruch/status/1260866850080067584) als `toStrictEqual`. `toStrictEqual` überprüft zusätzlich, ob zwei Objekte denselben Typ haben.
 
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-describe('SearchForm', () => {
-  const searchFormProps = {
-    searchTerm: 'React',
-    onSearchInput: jest.fn(),
-    onSearchSubmit: jest.fn(),
-  };
+Kommen wir zurück auf unser Beispiel: Der Reduzierertest schließt erfolgreich ab. Es wird eine JavaScript-Funktion mit einer Eingabe getestet und eine vordefinierte Ausgabe erwartet. Wie erwähnt, folgt eine Reduzierungsfunktion immer demselben Testmuster: Wenn ein Zustand und eine Aktion gegeben sind, erwarten wir ein Ergebnis Jede Aktion des Reduzierers ist ein weiterer Testfall in der Testsuite unseres Reduzierers. Das Testen aller verbleibender Aktionen überlasse ich dir als Übung.
 
-  ...
+### Übungen:
 
-# leanpub-start-insert
-  it('changes the input field', () => {
-    const pseudoEvent = { target: 'Redux' };
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-function).
+  * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des letzten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-setup...hs/react-testing-unit-function?expand=1).
+* Lesen Sie mehr über Jests Funktionen wie `toBe` und `toStrictEqual`.
 
-    component.root.findByType('input').props.onChange(pseudoEvent);
+### Unit Testing: Komponenten
 
-    expect(searchFormProps.onSearchInput).toHaveBeenCalledTimes(1);
-    expect(searchFormProps.onSearchInput).toHaveBeenCalledWith(
-      pseudoEvent
-    );
-  });
+Nachdem wir eine Funktion in JavaScript mit Jest getestet haben, testen jetzt isoliert eine Komponente. Wir nutzen die React Testing Library (RTL). Diese ist in der Create-React-App integriert. Wenn du wie ich die Create-React-App nutzt, ist alles schon fertig installiert und konfiguriert. Falls du ein benutzerdefiniertes React-Setup verwendest, beispielsweise React mit Webpack, installierst du die Bibliothek bitte selbst.
 
-  it('submits the form', () => {
-    const pseudoEvent = {};
-
-    component.root.findByType('form').props.onSubmit(pseudoEvent);
-
-    expect(searchFormProps.onSearchSubmit).toHaveBeenCalledTimes(1);
-    expect(searchFormProps.onSearchSubmit).toHaveBeenCalledWith(
-      pseudoEvent
-    );
-  });
-# leanpub-end-insert
-});
-~~~~~~~
-
-Like the Item component, the last two tests asserted the component's callback handler(s). All input (non function props) and output (callback handler function) props are tested for the SearchForm component's interface and integration with the InputWithLabel component.
-
-You can test edge cases  like a disabled button as well. The `update()` method on the rendered test component helps us provide new props to the component at stake:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-describe('SearchForm', () => {
-  const searchFormProps = {
-    searchTerm: 'React',
-    onSearchInput: jest.fn(),
-    onSearchSubmit: jest.fn(),
-  };
-
-  let component;
-
-  beforeEach(() => {
-    component = renderer.create(<SearchForm {...searchFormProps} />);
-  });
-
-  ...
-
-# leanpub-start-insert
-  it('disables the button and prevents submit', () => {
-    component.update(
-      <SearchForm {...searchFormProps} searchTerm="" />
-    );
-
-    expect(
-      component.root.findByType('button').props.disabled
-    ).toBeTruthy();
-  });
-# leanpub-end-insert
-});
-~~~~~~~
-
-Now we'll move one level higher in our application's component hierarchy. The App component fetches the list data, which is provided to the List component. After importing the App component, a naive test would look like this:
-
-{title="src/App.test.js",lang="javascript"}
-~~~~~~~
-# leanpub-start-insert
-describe('App', () => {
-  it('succeeds fetching data with a list', () => {
-    const list = [
-      {
-        title: 'React',
-        url: 'https://reactjs.org/',
-        author: 'Jordan Walke',
-        num_comments: 3,
-        points: 4,
-        objectID: 0,
-      },
-      {
-        title: 'Redux',
-        url: 'https://redux.js.org/',
-        author: 'Dan Abramov, Andrew Clark',
-        num_comments: 2,
-        points: 5,
-        objectID: 1,
-      },
-    ];
-
-    const component = renderer.create(<App />);
-
-    expect(component.root.findByType(List).props.list).toEqual(list);
-  });
-});
-# leanpub-end-insert
-~~~~~~~
-
-In the actual App component, a third-party library (axios) is used to make a request to a remote API. This API returns data we can't foresee in the test, so we have to mock it instead. Jest provides mechanisms that mock entire libraries and their methods. In this case, we want  to mock the `get()` method of axios to return our desired data:
+Wir nutzen die folgenden Funktionen der React Testing Library für den Komponententest. Ich werde diese Schritt für Schritt erklären. Als Erstes importieren wir diese:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
 import React from 'react';
-import renderer from 'react-test-renderer';
+# leanpub-start-insert
+import {
+  render,
+  screen,
+  fireEvent,
+  act,
+} from '@testing-library/react';
+# leanpub-start-insert
+
+...
+~~~~~~~
+
+Testen wir die Item-Komponente. Wichtig ist hier, dass alle Eigenschaften (Props) entsprechend der Eingabe gerendert werden. Mit anderen Worten: Ist die Ausgabe der Eigenschaften im HTML in Bezug zur Eingabe korrekt. Wir verwenden im Test die `render`-Funktion von RTL, um eine React-Komponente im HTML anzuzeigen. In diesem Fall rendern wir Item als Element und übergeben ihm als Eigenschaft (prop) ein `item`-Objekt --- eines unserer zuvor definierten Testobjekte:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+# leanpub-start-insert
+describe('Item', () => {
+  test('renders all properties', () => {
+    render(<Item item={storyOne} />);
+  });
+});
+# leanpub-end-insert
+~~~~~~~
+
+Nach dem Rendern verwenden wir die `debug`-Funktion des `screen`-Objekt von RTL:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('Item', () => {
+  test('renders all properties', () => {
+    render(<Item item={storyOne} />);
+
+# leanpub-start-insert
+    screen.debug();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Sobald du den Tests mit `npm test` aufrufst, siehst du die Ausgabe der `debug`-Funktion. Alle HTML-Elemente der Komponente (und der untergeordneten) werden ausgegeben. Dies ist die Ausgabe:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+<body>
+  <div>
+    <div>
+      <span>
+        <a
+          href="https://reactjs.org/"
+        >
+          React
+        </a>
+      </span>
+      <span>
+        Jordan Walke
+      </span>
+      <span>
+        3
+      </span>
+      <span>
+        4
+      </span>
+      <span>
+        <button
+          type="button"
+        >
+          Dismiss
+        </button>
+      </span>
+    </div>
+  </div>
+</body>
+~~~~~~~
+
+Es ist hilfreich, die `debug`-Funktion von RTL zu verwenden, wenn du eine neue Komponente in einem Komponententest renderst. Dies gibt dir den perfekten Überblick über das, was gerendert wird. Hierauf aufbauend integrierst du die nächsten Tests. Erstelle weitere Behauptungen oder Assertions. Das `screen`-Objekt von RTL bietet dir eine Funktion namens `getByText`. Dies ist eine von vielen die dich bei der Testentwicklung unterstützen:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('Item', () => {
+  test('renders all properties', () => {
+    render(<Item item={storyOne} />);
+
+# leanpub-start-insert
+    expect(screen.getByText('Jordan Walke')).toBeInTheDocument();
+    expect(screen.getByText('React')).toHaveAttribute(
+      'href',
+      'https://reactjs.org/'
+    );
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Für die beiden Behauptungen oder Assertions verwenden wir zwei neue Funktionen: `toBeInTheDocument` und `toHaveAttribute`. Um zu überprüfen, ob ein Element mit dem Text "Jordan Walke" und ob eines mit dem Text „React“ im `href` Attributwert im Dokument vorhanden ist.
+
+Die Funktion `getByText` findet das eine Element mit den sichtbaren Texten "Jordan Walke" und "React". Verwende Äquivalent `getAllByText`, wenn du nach mehr als einem suchst. RTL ist hier intuitiv aufgebaut. Für viele Funktionen ist diese Namenswahl für die Anwendung auf ein oder alle Elemente entsprechend implementiert.
+
+Falls du RTL das erste Mal anwendest, ist diese Erklärung hilfreich: Der `getByText` gibt das Element mit einem Text zurück, den Benutzer selbst sehen. Entscheidend ist, wie Nutzer die Anwendung verwenden. `getByText` ist nicht die einzige Suchfunktion. Weitere häufig verwendete sind `getByRole` oder `getAllByRole`:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('Item', () => {
+  test('renders all properties', () => {
+    ...
+  });
+
+# leanpub-start-insert
+  test('renders a clickable dismiss button', () => {
+    render(<Item item={storyOne} />);
+
+    expect(screen.getByRole('button')).toBeInTheDocument();
+  });
+# leanpub-end-insert
+});
+~~~~~~~
+
+Die Funktion `getByRole` wird zum Abrufen von Elementen anhand von [Aria-Label-Attributen](https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_aria-label_attribute) verwendet. Es gibt [implizite Rollen für HTML-Elemente](https://developer.mozilla.org/de/docs/Web/Accessibility/ARIA/Roles) --- ähnliche Schaltflächen für ein Schaltflächenelement. So wählst du Elemente nicht nur nach sichtbarem Text aus, sondern nach ihrer Barrierefreiheit. Eine erwähnenswerte Funktion von `getRoleBy` ist, dass [Rollen vorgeschlagen werden](https://twitter.com/rwieruch/status/1260912349978013696). `getByText` und `getByRole` sind die am häufigsten verwendeten Suchfunktionen von RTL.
+
+Der nächste Schritt ist, nicht nur zu behaupten, dass ein Text *im Dokument* vorhanden ist, sondern, dass Ereignisse wie erwartet funktionieren. Klicke beispielsweise auf das Schaltflächenelement der Item-Komponente, und prüfe, ob der Callback-Handler aufgerufen wird. Hierfür verwenden wir Jest. Wir erstellen eine Funktion, die wir als Rückruf-Handler für die Item-Komponente bereitstellen. Nachdem du ein Klickereignis mit RTL auf der Schaltfläche ausgelöst hast, prüfen wir, ob die Callback-Handler-Funktion aufgerufen wurde:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('Item', () => {
+  test('renders all properties', () => {
+    ...
+  });
+
+  test('renders a clickable dismiss button', () => {
+    ...
+  });
+
+# leanpub-start-insert
+  test('clicking the dismiss button calls the callback handler', () => {
+    const handleRemoveItem = jest.fn();
+
+    render(<Item item={storyOne} onRemoveItem={handleRemoveItem} />);
+
+    fireEvent.click(screen.getByRole('button'));
+
+    expect(handleRemoveItem).toHaveBeenCalledTimes(1);
+  });
+# leanpub-end-insert
+});
+~~~~~~~
+
+Mit Jest übergeben wir testspezifische Funktionen als Eigenschaft (prop) an die Item-Komponente. Diese heißen **spy**, **stub**, oder **mock**; Jedes wird für verschiedene Testszenarien verwendet. Das `jest.fn()` gibt uns ein *mock* für die eigentliche Funktion zurück, aus dem wir auslesen, wann und wie sie aufgerufen wird. So verwenden wir Jest-Assertions wie `toHaveBeenCalledTimes`, um die Anzahl der Aufrufe der Funktion zu bestätigen, oder `toHaveBeenCalledWith`, um die übergebenen Argumente zu überprüfen.
+
+
+Immer wenn wir eine JavaScript-Funktion prüfen, verwenden wir Jest, um eine Funktion zu erstellen --- unabhängig davon, ob wir testen wie oft oder mit welchen Argumenten sie aufgerufen wurde. Nachdem diese implizit mit `fireEvent` von RTL ausgelöst wurde, behaupten wir, dass der bereitgestellte Callback-Handler --- welche die Mock-Funktion ist --- einmal aufgerufen hat.
+
+Ever time we want to spy a JavaScript function, whether it has been called or whether it received certain arguments, we can use Jest's helper function to create a mocked function. Then, after invoking this function implicitly with RTL's `fireEvent` object's function, we can assert that the provided callback handler -- which is the mocked function -- has been called one time.
+
+
+
+Bei den letzten Tests haben wir die Eingabe und Ausgabe der Item-Komponente über Rendering und Callback-Handler-Assertions getestet. Wir untersuchen keine realen Statusänderungen, da nach dem Klicken auf die Schaltfläche "Dismiss" kein tatsächliches Element aus dem DOM entfernt wird. Die Logik zum Entfernen aus der Liste ist in der App-Komponente, aber wir prüfen Item hier isoliert. Später beim Testen der App werden wir die eigentliche Implementierungslogik zum Entfernen eines Elements überprüfen.
+
+With the last tests, we have tested the Item component's input and output via rendering assertions and callback handler assertions. However, we are not testing real state changes yet, because there is no actual item removed from the DOM after clicking the "Dismiss" button. The logic to remove the item from the list is in the App component, but we are only testing the Item component in isolation here. We will get to testing the actual implementation logic of removing an Item later when testing the App component.
+
+Fahren wir mit der SearchForm-Komponente fort, unter der InputWithLabel angeordnet ist. Zunächst Rendern wir diese und alle ihre wichtigen Eigenschaften (props):
+
+
+We will continue with the SearchForm component which uses the InputWithLabel component as child component. As before, we will start with rendering the component with providing all the essential props:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+# leanpub-start-insert
+describe('SearchForm', () => {
+  const searchFormProps = {
+    searchTerm: 'React',
+    onSearchInput: jest.fn(),
+    onSearchSubmit: jest.fn(),
+  };
+
+  test('renders the input field with its value', () => {
+    render(<SearchForm {...searchFormProps} />);
+
+    screen.debug();
+  });
+});
+# leanpub-end-insert
+~~~~~~~
+
+Wir verschaffen uns wieder mithilfe des Debuggens einen Überblick. Danach stellen wir die erste Behauptung oder Assertion für das Suchformular auf. Im Falle von Eingabefeldern ist die Funktion „getByDisplayValue“ der perfekte Kandidat. Diese gibt das das Feld als Element zurückzugeben:
+
+Again, we start with the debugging. After evaluating what we have rendered here, we can make our first assertion for the SearchForm. In the case of input fields, the `getByDisplayValue` search function is the perfect candidate to return the input field as element:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('SearchForm', () => {
+  const searchFormProps = { ... };
+
+  test('renders the input field with its value', () => {
+    render(<SearchForm {...searchFormProps} />);
+
+# leanpub-start-insert
+    expect(screen.getByDisplayValue('React')).toBeInTheDocument();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Da das Eingabefeld mit einem Standardwert gerendert wird, verwenden wir diesen in unserer Testbehauptung. Wäre dies nicht der Fall, zeigte das Feld unter Umständen einen Platzhalter mit dem HTML-Attribut `placeholder` an. Dann könnten wir eine andere Funktion von RTL namens `getByPlaceholderText` verwenden, um ein Element mit einem Platzhaltertext zu suchen.
+
+Da die Debug-Informationen uns viele Optionen zum Abfragen unseres HTML-Codes bietet, fahren wir mit einem weiteren Test fort, um das gerenderte Label zu testen:
+
+Since the input element gets rendered with a default value, we can make use of this default value (here "React") -- which is the displayed value -- in our test assertion. If the input element wouldn't have a default value, the application could maybe show a placeholder with the `placeholder` HTML attribute on the input field. Then we could use another function from RTL, called `getByPlaceholderText`, for searching an element with a placeholder text.
+
+Because the debug information showed us lots of options to query our HTML, we could continue with one more test to assert the rendered label:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('SearchForm', () => {
+  const searchFormProps = { ... };
+
+  test('renders the input field with its value', () => {
+    ...
+  });
+
+# leanpub-start-insert
+  test('renders the correct label', () => {
+    render(<SearchForm {...searchFormProps} />);
+
+    expect(screen.getByLabelText(/Search/)).toBeInTheDocument();
+  });
+# leanpub-end-insert
+});
+~~~~~~~
+
+Mit der Funktion `getByLabelText` finden wir ein Element anhand einer Bezeichnung in einem Formular. Dies ist praktisch für Komponenten, die über mehrere Labels und HTML-Steuerelemente verfügen. Hast du bemerkt, wie wir hier einen [regulären Ausdruck](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Regular_Expressions) nutzen? Wenn wir stattdessen eine Zeichenfolge verwendet hätten, müssten wir den Doppelpunkt für „Suche:“ einfügen. Durch die Verwendung eines regulären Ausdrucks werden Strings abgeglichen, die die Zeichenfolge „Suchen“ enthalten. Das macht das Auffinden von Elementen wesentlich komfortabler. Falls du bisher keine regulären Ausdrücke verwendest, sieh dir diese einmal an. Sie erleichtern nach einer Einarbeitungszeit in der Regel das programmieren enorm.
+
+Auf jeden Fall testen wir die interaktiven Teile der SearchForm-Komponente. Da der Callback-Handler, der als Eigenschaften (props) an die SearchForm-Komponente übergeben wird, mit Jest durch eine Mock-Funktion ersetzt ist, prüfen wir, ob diese aufgerufen wurden:
+
+The `getByLabelText` search function allows us to find an element by label in a form. This comes in handy for components which rendered multiple labels and HTML controls. However, you may have also seen how we used a [regular expression](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions) here. If we would have used a string instead, we would need to include the colon for "Search:". However, by using a regular expression, we are matching strings that include the "Search" string, which makes it way more convenient to find elements. You may find yourself more often using regular expression rather than strings.
+
+Anyway, perhaps it would be more interesting to test the interactive parts of the SearchForm component. Since our callback handlers, which are passed as props to the SearchForm component, are already mocked with Jest, we can assert whether these functions et called appropriately:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('SearchForm', () => {
+  const searchFormProps = {
+    searchTerm: 'React',
+    onSearchInput: jest.fn(),
+    onSearchSubmit: jest.fn(),
+  };
+
+  ...
+
+# leanpub-start-insert
+  test('calls onSearchInput on input field change', () => {
+    render(<SearchForm {...searchFormProps} />);
+
+    fireEvent.change(screen.getByDisplayValue('React'), {
+      target: { value: 'Redux' },
+    });
+
+    expect(searchFormProps.onSearchInput).toHaveBeenCalledTimes(1);
+  });
+
+  test('calls onSearchSubmit on button submit click', () => {
+    render(<SearchForm {...searchFormProps} />);
+
+    fireEvent.submit(screen.getByRole('button'));
+
+    expect(searchFormProps.onSearchSubmit).toHaveBeenCalledTimes(1);
+  });
+# leanpub-end-insert
+});
+~~~~~~~
+
+Similar to the Item component, we tested input (props) and output (callback handler) for the SearchForm component. The difference is that the SearchForm component renders a child component called InputWithLabel. If you check the debug output again, you will see that React Testing Library doesn't care much about this child component. It's because a user of our application wouldn't care about the component as well, so React Testing Library just outputs the HTML for us.
+
+What we have also seen is that all the callback handler tests for Item and SearchForm component only test whether the functions have been called. There is no React re-rendering happening here, because all the components are tested in isolation without state management which solely happens in the App component for us. Therefore, the real testing with RTL starts further up the component tree where state changes and side-effects can be evaluated
+
+### Übungen:
+
+
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-setup).
+  * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing-setup?expand=1).
+* Lese mehr über [Jest](https://jestjs.io/).
+
+* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-component).
+  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-unit-function...hs/react-testing-unit-component?expand=1).
+* Read more about [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
+  * Read more about [search functions](https://testing-library.com/docs/guide-which-query).
+* Add tests for your List and InputWithLabel components.
+
+### Integration Testing: Component
+
+React Testing Library comes with one core philosophy: Rather than testing the implementation details of your React components, we are testing how a user would interact with our application and whether everything works as expected while interacting with it. This becomes especially powerful for integration tests.
+
+Before we can begin testing anything for the App component, we need to provide data first, because the App component makes a request to our remote API for data after its initial render. We start with mocking and testing this part of the component. Therefore, import axios -- which we are using in the App component for our data request -- and mock it with Jest at the top of your testing file:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+...
+
 # leanpub-start-insert
 import axios from 'axios';
 # leanpub-end-insert
+
+...
 
 # leanpub-start-insert
 jest.mock('axios');
 # leanpub-end-insert
 
 ...
-
-describe('App', () => {
-  it('succeeds fetching data with a list', () => {
-    const list = [ ... ];
-
-# leanpub-start-insert
-    const promise = Promise.resolve({
-      data: {
-        hits: list,
-      },
-    });
-# leanpub-end-insert
-
-# leanpub-start-insert
-    axios.get.mockImplementationOnce(() => promise);
-# leanpub-end-insert
-
-    const component = renderer.create(<App />);
-
-    expect(component.root.findByType(List).props.list).toEqual(list);
-  });
-});
 ~~~~~~~
 
-The test reads synchronously, but we still have to deal with the asynchronous data. The component should re-render when its state updates. We can perform this with our utility library and async/await:
+Second, implement the data you want to return from a mocked API request with a JavaScript Promise and use it for the axios mock. Afterward, we can render our component and assume that the correct data is mocked for our API request:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-describe('App', () => {
 # leanpub-start-insert
-  it('succeeds fetching data with a list', async () => {
-# leanpub-end-insert
-    const list = [ ... ];
-
+describe('App', () => {
+  test('succeeds fetching data', () => {
     const promise = Promise.resolve({
       data: {
-        hits: list,
+        hits: stories,
       },
     });
 
     axios.get.mockImplementationOnce(() => promise);
 
-# leanpub-start-insert
-    let component;
+    render(<App />);
 
-    await renderer.act(async () => {
-      component = renderer.create(<App />);
-    });
-# leanpub-end-insert
-
-    expect(component.root.findByType(List).props.list).toEqual(list);
+    screen.debug();
   });
 });
+# leanpub-end-insert
 ~~~~~~~
 
-Instead of rendering the App component, we mocked the response from the remote API by mocking the method that fetches the data. To stay on the *happy path*, we told the test to treat the component as an asynchronously updating component. You can apply a similar strategy to the *unhappy path*:
+Now we use React Testing Library's `act` helper function to wait for our promise to resolve after the component rendered for the first time. With async/await, we can implement this like synchronous code. The great thing about the `debug` function from RTL is that it will output the App component's elements before and after the request for us:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
 describe('App', () => {
-  it('succeeds fetching data with a list', async () => {
+# leanpub-start-insert
+  test('succeeds fetching data', async () => {
+# leanpub-end-insert
+    const promise = Promise.resolve({
+      data: {
+        hits: stories,
+      },
+    });
+
+    axios.get.mockImplementationOnce(() => promise);
+
+    render(<App />);
+
+    screen.debug();
+
+# leanpub-start-insert
+    await act(() => promise);
+
+    screen.debug();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Evaluating the output from debug, we can see that the loading indicator is rendered for the first debug function but absent for the second debug function. This is because the data fetching and component re-render is complete after we resolve the promise in our test with `act`. Let's assert the loading indicator for this case:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+  test('succeeds fetching data', async () => {
+    const promise = Promise.resolve({
+      data: {
+        hits: stories,
+      },
+    });
+
+    axios.get.mockImplementationOnce(() => promise);
+
+    render(<App />);
+
+# leanpub-start-insert
+    expect(screen.queryByText(/Loading/)).toBeInTheDocument();
+# leanpub-end-insert
+
+    await act(() => promise);
+
+# leanpub-start-insert
+    expect(screen.queryByText(/Loading/)).toBeNull();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+We will be using RTL's `queryByText` instead of `getByText` function this time, because we are testing for a returned element not being there anymore. If we would test this with `getByText`, we would get an error, because the element wouldn't be found. But with `queryByText` we just get `null` if no element is there.
+
+Again, we are using a regular expression `/Loading/` instead of a string `'Loading'`. If we would want to use a string, we would have to be explicit by using `'Loading ...'` instead of `'Loading'`. With a regular expression, we are not forced to provide the whole content of the string but just matching a part of it.
+
+Next, we can assert whether our fetched data gets rendered as expected:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+  test('succeeds fetching data', async () => {
+    const promise = Promise.resolve({
+      data: {
+        hits: stories,
+      },
+    });
+
+    axios.get.mockImplementationOnce(() => promise);
+
+    render(<App />);
+
+    expect(screen.queryByText(/Loading/)).toBeInTheDocument();
+
+    await act(() => promise);
+
+    expect(screen.queryByText(/Loading/)).toBeNull();
+
+# leanpub-start-insert
+    expect(screen.getByText('React')).toBeInTheDocument();
+    expect(screen.getByText('Redux')).toBeInTheDocument();
+    expect(screen.getAllByText('Dismiss').length).toBe(2);
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+The happy path for the data fetching is tested now. Similar to it, we can test the *unhappy path* in case of a failing API request. The only thing we need to change is that the promise needs to reject and that the error needs to be caught with a try/catch block:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+  test('succeeds fetching data', async () => {
     ...
   });
 
 # leanpub-start-insert
-  it('fails fetching data with a list', async () => {
+  test('fails fetching data', async () => {
     const promise = Promise.reject();
 
     axios.get.mockImplementationOnce(() => promise);
 
-    let component;
+    render(<App />);
 
-    await renderer.act(async () => {
-      component = renderer.create(<App />);
-    });
+    expect(screen.getByText(/Loading/)).toBeInTheDocument();
 
-    expect(component.root.findByType('p').props.children).toEqual(
-      'Something went wrong ...'
-    );
+    try {
+      await act(() => promise);
+    } catch (error) {
+      expect(screen.queryByText(/Loading/)).toBeNull();
+      expect(screen.queryByText(/went wrong/)).toBeInTheDocument();
+    }
   });
 # leanpub-end-insert
 });
 ~~~~~~~
 
-The data fetching and integration with a remote API is tested now. We moved from focused unit tests for single components to tests with multiple components and their integration with third-parties like axios and remote APIs.
+You may notice that it becomes a bit fuzzy here when to use the `getBy` and when to use the `queryBy` search variants. As rule of thumb, use `getBy` for single elements and `getAllBy` for multiple elements. If you are checking for elements which aren't there, use `queryBy` (or `queryAllBy`). For the sake of readability and alignment, I used `queryBy` for all elements in this case though.
 
-### Snapshot Testing
-
-Jest also lets you take a **snapshot** of your rendered component, run it against future captures, and be notified of changes. Changes can then be accepted or denied depending on the desired outcome. This mechanism complements unit and integration tests well, since it only tests the differences of the rendered output without heavy maintenance costs. To see it in action, extend the Item component test suite with your first snapshot test:
+We know that the initial data fetching works for our App component now. Next, let's test the user interactions, which we have tested previously only in the child components by firing events without any state and side-effect. We will start with removing an item from the list after the data has been fetched successfully. Since the item with "Jordan Walke" is our first rendered item in the list, it gets removed if we click the first "Dismiss" button:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
-describe('Item', () => {
+describe('App', () => {
+
   ...
 
-  beforeEach(() => {
-    component = renderer.create(
-      <Item item={item} onRemoveItem={handleRemoveItem} />
-    );
+# leanpub-start-insert
+  test('removes a story', async () => {
+    const promise = Promise.resolve({
+      data: {
+        hits: stories,
+      },
+    });
+
+    axios.get.mockImplementationOnce(() => promise);
+
+    render(<App />);
+
+    await act(() => promise);
+
+    expect(screen.getAllByText('Dismiss').length).toBe(2);
+    expect(screen.getByText('Jordan Walke')).toBeInTheDocument();
+
+    fireEvent.click(screen.getAllByText('Dismiss')[0]);
+
+    expect(screen.getAllByText('Dismiss').length).toBe(1);
+    expect(screen.queryByText('Jordan Walke')).toBeNull();
   });
+# leanpub-end-insert
+});
+~~~~~~~
+
+Next, we will test the search feature. First, we have to set up the mocking a bit differently than before, because we are dealing with the initial request (as before) but also with another request once a user searches for more stories by a specific search term:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+
+  ...
+
+# leanpub-start-insert
+  test('searches for specific stories', async () => {
+    const reactPromise = Promise.resolve({
+      data: {
+        hits: stories,
+      },
+    });
+
+    const anotherStory = {
+      title: 'JavaScript',
+      url: 'https://en.wikipedia.org/wiki/JavaScript',
+      author: 'Brendan Eich',
+      num_comments: 15,
+      points: 10,
+      objectID: 3,
+    };
+
+    const javascriptPromise = Promise.resolve({
+      data: {
+        hits: [anotherStory],
+      },
+    });
+
+    axios.get.mockImplementation(url => {
+      if (url.includes('React')) {
+        return reactPromise;
+      }
+
+      if (url.includes('JavaScript')) {
+        return javascriptPromise;
+      }
+
+      throw Error();
+    });
+  });
+# leanpub-end-insert
+});
+~~~~~~~
+
+Instead of mocking the request once with Jest (`mockImplementationOnce`), we are mocking multiple requests (`mockImplementation`) now. Depending on the incoming URL, the request either returns the initial list ("React"-related stories) or the new list ("JavaScript"-related stories). Just in case if we provide a wrong URL to the request, the test will throw an error for us to get some confirmation that we set up the test wrong. Now, like before, let's render the App component:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+
+  ...
+
+  test('searches for specific stories', async () => {
+    const reactPromise = Promise.resolve({ ... });
+
+    const anotherStory = { ... };
+
+    const javascriptPromise = Promise.resolve({ ... });
+
+    axios.get.mockImplementation((url) => {
+      ...
+    });
+
+# leanpub-start-insert
+    // Initial Render
+
+    render(<App />);
+
+    // First Data Fetching
+
+    await act(() => reactPromise);
+
+    expect(screen.queryByDisplayValue('React')).toBeInTheDocument();
+    expect(screen.queryByDisplayValue('JavaScript')).toBeNull();
+
+    expect(screen.queryByText('Jordan Walke')).toBeInTheDocument();
+    expect(
+      screen.queryByText('Dan Abramov, Andrew Clark')
+    ).toBeInTheDocument();
+    expect(screen.queryByText('Brendan Eich')).toBeNull();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+We are resolving the first promise for the initial render and expect the input field to render "React" and the two items in the list to render the creators of React and Redux. We also make sure that no JavaScript related stories are rendered yet. Next, we are going to change the input field's value by firing an event and assert whether the new value is rendered from the App component through all its child components in the actual input field:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+
+  ...
+
+  test('searches for specific stories', async () => {
+
+    ...
+
+    expect(screen.queryByText('Jordan Walke')).toBeInTheDocument();
+    expect(
+      screen.queryByText('Dan Abramov, Andrew Clark')
+    ).toBeInTheDocument();
+    expect(screen.queryByText('Brendan Eich')).toBeNull();
+
+# leanpub-start-insert
+    // User Interaction -> Search
+
+    fireEvent.change(screen.queryByDisplayValue('React'), {
+      target: {
+        value: 'JavaScript',
+      },
+    });
+
+    expect(screen.queryByDisplayValue('React')).toBeNull();
+    expect(
+      screen.queryByDisplayValue('JavaScript')
+    ).toBeInTheDocument();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Last, we can submit this search request by firing a submit event with the button. The new search term will be used from the App component's state and thus the new URL should search for JavaScript related stories which we have mocked before:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('App', () => {
+
+  ...
+
+  test('searches for specific stories', async () => {
+
+    ...
+
+    expect(screen.queryByDisplayValue('React')).toBeNull();
+    expect(
+      screen.queryByDisplayValue('JavaScript')
+    ).toBeInTheDocument();
+
+# leanpub-start-insert
+    fireEvent.submit(screen.queryByText('Submit'));
+
+    // Second Data Fetching
+
+    await act(() => javascriptPromise);
+
+    expect(screen.queryByText('Jordan Walke')).toBeNull();
+    expect(
+      screen.queryByText('Dan Abramov, Andrew Clark')
+    ).toBeNull();
+    expect(screen.queryByText('Brendan Eich')).toBeInTheDocument();
+# leanpub-end-insert
+  });
+});
+~~~~~~~
+
+Now Brendan Eich as the creator of JavaScript should be rendered, while the other creators of React and Redux shouldn't be there anymore. The last test has shown you how to depict an entire test scenario in one test case. We can move through each step, like initial fetching, changing the value of the input field, submitting the form, and retrieving new data from the API, with our tools at hand.
+
+After all, React Testing Library with Jest is the status quo library combination when it comes to testing React. Whereas RTL gives you all the React relevant testing tools, Jest comes with the general testing framework for test suites, test cases, assertions and mocking capabilities. A popular alternative to RTL is called [Enzyme](https://www.robinwieruch.de/react-testing-jest-enzyme) by Airbnb.
+
+### Exercises:
+
+* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-integration).
+  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-unit-component...hs/react-testing-integration?expand=1).
+* Read more about [End-to-End-Tests tests in React](https://www.robinwieruch.de/react-testing-cypress).
+* While you continue with the learning experience in the upcoming sections, keep your tests green and add new tests whenever you feel the need for it.
+
+### Snapshot Testing
+
+Facebook kam unabhängig von der Testpyramide auf die Idee, Schnappschuss-Tests für in React durchzuführen. Ziel war ein leichterer Weg zum Testen von Komponenten und ihrer Struktur. Grundsätzlich erstellt ein Snapshot-Test einen Snapshot der Ausgabe einer gerenderten Komponente. Dieser Snapshot wird verwendet, um ihn dem  Snapshot zu vergleichen, der erstellt wird, wenn du den Test erneut aufrufst. Wenn sich die Ausgabe der Komponente geändert hat, wird die Differenz beider Snapshots angezeigt und der Snapshot-Test schlägt fehl. Ergo: Der Snapshot-Test informiert, wenn sich die Ausgabe der Komponente ändert. Falls ein Snapshot-Test fehlschlägt, hast du zwei Möglichkeiten: Du akzeptierst das Ergebnis oder du lehnst es ab. Bei Letzterem korrigierst du die Implementierung der Komponente.
+
+Durch die Verwendung von Snapshot-Tests hältst du deine Tests leichtgewichtig. Du testest, ohne die Implementierungsdetails der Komponente zu kennen. Sehen wir uns praktisch an, wie dies in React funktioniert. Als Nächstes führen wir einen Snapshot-Test für die SearchForm-Komponente durch:
+
+{title="src/App.test.js",lang="javascript"}
+~~~~~~~
+describe('SearchForm', () => {
 
   ...
 
 # leanpub-start-insert
   test('renders snapshot', () => {
-    let tree = component.toJSON();
-    expect(tree).toMatchSnapshot();
+    const { container } = render(<SearchForm {...searchFormProps} />);
+    expect(container.firstChild).toMatchSnapshot();
   });
 # leanpub-end-insert
 });
 ~~~~~~~
 
-Run your tests again and observe how they succeed or fail. Once we change the output of the render block in Item component in the *src/App.js* file, by changing the structure of the returned HTML, the snapshot test fails. We can then decide whether to update the snapshot or to investigate the Item component.
+After running your tests with `npm test`, you should see a new *src/__snapshots__* folder in your project. Browse into this folder and check out the file that has been generated there for you. Similar to RTL's `debug` function, you should see a snapshot of your rendered SearchForm component as HTML element structure in there. Now, go to your *src/App.js* file and change something in the HTML. For example, in the SearchForm component remove the bold text:
+
+{title="src/App.js",lang="javascript"}
+~~~~~~~
+const SearchForm = ({
+  searchTerm,
+  onSearchInput,
+  onSearchSubmit,
+}) => (
+  <form onSubmit={onSearchSubmit}>
+    <InputWithLabel
+      id="search"
+      value={searchTerm}
+      isFocused
+      onInputChange={onSearchInput}
+    >
+# leanpub-start-insert
+      Search:
+# leanpub-end-insert
+    </InputWithLabel>
+
+    <button type="submit" disabled={!searchTerm}>
+      Submit
+    </button>
+  </form>
+);
+~~~~~~~
+
+After your tests run again, you should see something similar to the following on the command line:
+
+{title="Command Line",lang="text"}
+~~~~~~~
+- Snapshot
++ Received
+
+    <label
+      for="search"
+    >
+-     <strong>
+-       Search:
+-     </strong>
++     Search:
+    </label>
+~~~~~~~
+
+That's the typical case for a breaking snapshot test. Whenever you change a component's HTML structure and you didn't intend to change it, your snapshot test will tell you on the command line. Either you fix it and or you accept the change: If you want to fix it, you would go into your *src/App.js* file again and fix the SearchForm component. However, if you intended to perform this change, you can press "u" on the command line for your interactive tests and your new snapshot will be created. Try it yourself and see how the snapshot file in your *src/__snapshots__* folder applies the changes.
 
 Jest stores snapshots in a folder so it can validate the difference against future snapshot tests. Users can share these snapshots across teams for version control (e.g. git). Running a snapshot test for the first time creates the snapshot file in your project's folder. When the test is run again, the snapshot is expected to match the version from the latest test run. This is how we make sure the DOM stays the same.
 
+After all, snapshot tests are great for getting tests up and running quickly in React. However, it's not a great idea to snap snapshot tests on every component without any other tests. It's a good practice to use snapshot tests for components that don't update often, are not too complex, and make it easy to see what you are testing. Then snapshot tests are your most lightweight tool for testing.
+
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing).
-  * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing?expand=1).
-* Add one snapshot test for each of all the other components.
-* Lese mehr zum Thema [testing React components](https://www.robinwieruch.de/react-testing-tutorial).
-  * Lese mehr zum Thema [Jest](https://jestjs.io/) and [Jest for React](https://www.robinwieruch.de/react-testing-jest/) for unit, integration and snapshot tests.
-* Lese mehr zum Thema [E2E tests in React](https://www.robinwieruch.de/react-testing-cypress).
-* While you continue with the learning experience in the upcoming sections, keep your tests green and add new tests whenever you feel the need for it.
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-snapshot).
+  * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des vorherigen Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-integration...hs/react-snapshot?expand=1).
+* Ergänze für jede Komponente einen Snapshot-Test und überprüfe den Inhalt des Ordners *__snapshots__*.

@@ -13,6 +13,8 @@ Wir haben in den vorausgehenden Kapiteln die Grundlagen von React erarbeitet. Ne
 * Verwende den Sortierstatus, um eine entsprechende Sortierfunktion auf die Liste anzuwenden.
 * Verwende eine externe Bibliothek wie [Lodash](https://lodash.com/) um die Funktion  `sortBy` zu implementieren.
 
+![](images/sort.png)
+
 Wir behandeln die Liste wie eine Tabelle. Jede Zeile repräsentiert ein Element und jede Spalte die Eigenschaften. Die Überschriften der Spalten sind Orientierungshilfen:
 
 {title="src/App.js",lang="javascript"}

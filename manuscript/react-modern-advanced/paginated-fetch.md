@@ -4,9 +4,15 @@ Die Suche nach beliebten Artikeln über die Hacker News API ist nur ein Schritt 
 
 Insbesondere wird eine paginierte Liste zurückgegeben. Verwende die Seiteneigenschaft, um eine paginierte Listen als Ergebnisse abzurufen. Diese Eigenschaft ist in der ersten Antwort `0`. Übergib die nächste Seite mit demselben Suchbegriff an die API.
 
+![](images/paginated-list.png)
+
 Im Folgenden zeige ich dir, wie du einen paginierten Abruf mithilfe der Hacker News-Datenstruktur implementierst. Meist sieht man eine Reihe von Schaltflächen, beispielsweise von 1-10, wobei die aktuell ausgewählte Seite hervorgehoben ist. Zum Beispiel so: 1-[3]-10. Wenn du auf eine der Schaltflächen klickst, dann wird die passende Teilmenge von Daten abgerufen und angezeigt.
 
+![](images/pagination.png)
+
 Im Gegensatz dazu werden wir die Funktion als **unendliche Paginierung** implementieren. Anstatt eine einzelne paginierte Liste mit einem Klick abzurufen, rendern wir *alle als eine Liste* mit *einer* Schaltfläche. Jede weitere wird am Ende verkettet.
+
+![](images/infinite-pagination.png)
 
 **Aufgabe:** Erweitere die Funktionalität zum Abrufen nachfolgender Seiten, anstatt nur die erste einer Liste abzurufen. Implementiere dies als unendliche Paginierung beim Klicken auf die Schaltfläche.
 
@@ -266,7 +272,10 @@ const App = () => {
 };
 ~~~~~~~
 
+
 Wir haben das Abrufen von Daten mit dem dynamischen Argument `page` implementiert. Bei der Ersten und letzten Suche wird immer die Seite (`0`) verwendet, und bei jedem Abruf mit der Schaltfläche „Mehr“ eine inkrementierte. Beim Ausprobieren der Funktion gibt es einen entscheidenden Fehler: Die neuen Abfragen erweitern die vorherige Liste nicht, sondern ersetzen sie vollständig.
+
+![](images/concat.png)
 
 Wir lösen dies im Reduzierer, indem wir vermeiden, aktuelle `data` durch neue `data` zu ersetzen und die paginierten Listen verketten:
 
@@ -300,6 +309,8 @@ const storiesReducer = (state, action) => {
 ~~~~~~~
 
 Die angezeigte Liste wird vergrößert, nachdem mit der neuen Schaltfläche weitere Einträge abgerufen wurden. Dabei flimmert die Anzeige kurz. Der Grund hierfür ist, dass beim Abrufen paginierter Daten die Liste für einen Moment verschwindet, da die Ladeanzeige eingeblendet wird.
+
+![](images/flicker.png)
 
 Gewünschtes Verhalten ist das Folgende: Die Liste ist am Anfang leere und die Schaltfläche "More" inklusive Ladeanzeige wird nur für ausstehende Anforderungen durch die Ladeanzeige ersetzt. Dies ist ein übliches Umarbeiten er Benutzeroberfläche für das bedingte Rendern, wenn sich die Ausgabe von einer einzelnen Liste hin zu paginierten verändert.
 

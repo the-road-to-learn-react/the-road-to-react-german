@@ -214,6 +214,8 @@ const App = () => {
 
 Das passt jetzt! Der Callback-Handler hat keinerlei Abhängigkeiten und wird nur einmal deklariert, wenn die App zum ersten Mal gerendert wird. Keine der an die List-Komponente übergebenen Eigenschaften (props) ändert sich. Erweitere deine Anwendung um die Kombination von `memo` und `useCallback`, wie hier beschrieben. Die Ausgabe "B:List" ist nicht weiter in deiner Konsole zu sehen, wenn du im Suchfeld etwas änderst. Nur die App-Komponente wird neu gerendert, deshalb siehst du die Ausgabe "B:App" weiterhin bei Änderungen des Suchworts.
 
+![](images/memo.png)
+
 Während alle an eine Komponente übergebenen Eigenschaften (props) gleich bleiben, wird diese erneut gerendert, wenn eine ihr übergeordnete aktualisiert wird. Dies ist das Standardverhalten von React, welches die meiste Zeit gewollt ist. Der Mechanismus ist schnell und vermeidet Fehler. Wenn das erneute Rendern die Leistung einer React-Anwendung verringert, ist `memo` hilfreich.
 
 Manchmal hilft `memo` allein nicht. Callback-Handler werden jedes Mal in der übergeordneten Komponente neu definiert und als *geänderte* Eigenschaften (props) übergeben, was zu einem erneuten Rendern führt. In diesem Fall verwenden wir `useCallback`, um den Callback-Handler nur dann neu aufzurufen, wenn sich seine Abhängigkeiten ändern.
@@ -256,6 +258,8 @@ const App = () => {
 
 Wenn alle Argumente an eine Funktion übergeben werden, ist es akzeptabel, sie außerhalb der Komponente zu verlegen. Es verhindert, dass diese bei jedem Rendern erstellt wird, sodass der Hook `useCallback` nicht mehr erforderlich ist. Die Funktion berechnet weiterhin den Wert der summierten Kommentare für jedes Rendering, was bei aufwendigen Berechnungen zu einem Problem wird.
 
+![](images/usememo-1.png)
+
 Jedes Mal, wenn du Text in das Eingabefeld der SearchForm-Komponente eingibst, wird diese Berechnung erneut aufgerufen und du siehst "C" in der Konsole deines Browsers. Dies ist für eine kleine Aufgabe in Ordnung. Im Falle von aufwendigen Berechnungen ist es wichtig, dass du dich darum kümmerst. Denn, dies verzögert das erneute Rendern. Deshalb ist es sinnvoll, eine Funktion nur auszuführen, wenn sich eine ihrer Abhängigkeiten geändert hat. Wenn sich keine ändert, bleibt das Ergebnis der Funktion gleich. Der `useMemo`-Hook hilft dir:
 
 {title="src/App.js",lang="javascript"}
@@ -274,6 +278,8 @@ const App = () => {
 ~~~~~~~
 
 Es ist nicht erforderlich die Liste bei jedem Ändern des Suchwortes neu zu berechnen. Dies ist nur wichtig, wenn sich das Abhängigkeitsarray, hier `stories`, ändert. Solchen Szenarien führen im Falle von aufwenigen Berechnungen zu Problemen.
+
+![](images/usememo-2.png)
 
 Nachdem du `useMemo`, `useCallback`, und `memo` kennengelernt hast, optimiere deine Anwendung mit bedacht. Verwende die Funktionen nicht nach dem Gießkannenprinzip. Eine Leistungsoptimierung ist sinnvoll, wenn du auf Leistungsengpässe störst. In React wird dir das nicht oft passieren, da der Rendering-Mechanismus von Hause aus effizient ist. In manchen Fällen ist eine Optimierung aufwendiger, als das erneute Rendern selbst.
 

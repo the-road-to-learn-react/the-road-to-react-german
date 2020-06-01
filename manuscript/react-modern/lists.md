@@ -97,6 +97,8 @@ function App() {
 
 Einer meiner ersten "Aha"-Momente mit React war dieser: ich habe einer Liste von JavaScript-Objekten --- ohne zusätzliche HTML-Template-Syntax --- HTML-Elementen zugeordnet. Erforderlich war ausschließlich JavaScript in HTML.
 
+![](images/jsx-mapping.png)
+
 React zeigt jetzt jedes Element an. Verbessere die Ausgabe weiter, so dass React erweiterte dynamische Listen effizienter handhabt. Durch Zuweisen eines Schlüsselattributs zu jedem Listenelement identifiziert React einzelne geänderte Elemente, wenn sich die Liste ändert – zum Beispiel bei einer Änderung der Reihenfolge. Glücklicherweise verfügen unsere Listenelemente über eine ID:
 
 {title="src/App.js",lang="javascript"}

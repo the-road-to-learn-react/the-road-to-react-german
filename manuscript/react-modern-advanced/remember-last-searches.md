@@ -6,6 +6,8 @@
 
 * Verwende für dieses Feature keinen neuen Status. Nutze stattdessen den Status `url` und die Statusaktualisierungsfunktion `setUrl`, um Suchergebnise von der API abzurufen. Passe diese für die Verwendung mehrerer `urls` an und lege mit `setUrls` mehrere `urls` fest. Verwende die letzte URL von `urls` zum Abrufen der Daten, und die letzten fünf URLs von `urls` zum Anzeigen der Schaltflächen.
 
+![](images/last-searches.png)
+
 Zuerst werden wir an allen Stellen den Status `url` in `urls` und die Statusaktualisierungsfunktionen `setUrl` in `setUrls` umwandeln. Anstatt den Status mit einer `url` als Zeichenfolge zu initialisieren, konvertierst du ihn zu einem Array mit der anfänglichen `url` als einzigem Eintrag:
 
 {title="src/App.js",lang="javascript"}

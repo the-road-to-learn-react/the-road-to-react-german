@@ -1,10 +1,6 @@
 ## JSX (JavaScript XML)
 
-<<<<<<< HEAD
 Erinnerst du dich: Ich hatte erwähnt, dass die Ausgabe der App-Komponente der Syntax von HTML ähnelt. Diese Abwandlung heißt JSX und mischt hier JavaScript-Logik und HTML. Später wirst du erfahren, dass JSX CSS ebenfalls unterstützt. Wie das für die Anzeige der Variablen genau funktioniert, verdeutlicht dir das nachfolgende Beispiel:
-=======
-Recall that I mentioned the returned output of the App component resembles HTML. This output is called JSX (JavaScript XML), which mixes HTML and JavaScript. Let's see how this works for displaying the variable:
->>>>>>> 42d18e2a8bcf66b579ba9d0d4c1362e85da189bf
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

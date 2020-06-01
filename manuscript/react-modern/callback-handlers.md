@@ -46,6 +46,8 @@ const Search = () => {
 
 Wir haben eine für sich abgeschlossene Suchkomponente, die den Status verwaltet. Die Komponente zeigt das `searchTerm` als Text an, teilt diese Informationen aber nicht mit übergeordneten oder gleichrangigen. Da die Suchkomponente nur den Suchbegriff anzeigt, wird sie für die anderen Komponenten unbrauchbar. Es sei denn, es gäbe doch eine Möglichkeit Informationen bei ihr anzufragen.
 
+![](images/callback-handler.png)
+
 Auf den ersten Blick gibt es keine Möglichkeit, Informationen an übergeordnete oder gleichrangige Komponenten zu übergeben, da Eigenschaften (Props) ausschließlich nach unten weitergegeben werden. Deshalb schauen wir ein zweites Mal und führen den **Rückruf-Handler** als Funktion ein: Dies geschieht wie folgt: Eine Rückruffunktion wird eingeführt (A), diese wird an einer anderen Stelle verwendet (B) und gibt das Ergebnis an den Ort zurück, an dem sie eingeführt wurde (C).
 
 {title="src/App.js",lang="javascript"}

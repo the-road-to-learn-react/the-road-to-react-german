@@ -69,6 +69,8 @@ function App() {
 
 Voilà! Du hast deine erste React-Komponente erstellt! Das Beispiel gibt dir einen kleinen Einblick wie diese komplexe Aufgaben in größeren React-Anwendungen übernehmen.
 
+![](images/component-tree.png)
+
 Komplexe React-Anwendungen verfügen über **Komponentenhierarchien** oder **Komponentenbäume**. Es gibt normalerweise eine **Einstiegspunktkomponente** (zum Beispiel App), die einen Baum darunter überspannt. Die App ist die **übergeordnete Komponente** der Liste. Andersherum ist die Liste eine **untergeordnete Komponente** der App. In einem Komponentenbaum ist die App normalerweise die **Stammkomponente**. Die Komponenten, die keine anderen rendern, werden als **Blattkomponenten** (zum Beispiel Liste) bezeichnet. Es ist möglich, dass die App mehrere Komponenten unter sich hat. Wenn die App eine andere untergeordnete Komponente hat, bezeichnen wir diese als **Geschwisterkomponente** der Liste.
 
 ### Übungen:
