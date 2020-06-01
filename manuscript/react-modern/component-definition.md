@@ -13,7 +13,7 @@ function () { ... }
 const () => { ... }
 ~~~~~~~
 
-You can remove the parentheses in an arrow function expression if it has only one argument, but multiple arguments require parentheses:
+Entferne die Klammern in einem Pfeilfunktionsausdruck, wenn dieser nur ein Argument enthält --- für mehrere sind sie dagegen erforderlich:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -30,7 +30,7 @@ const item, index => { ... }
 const (item, index) => { ... }
 ~~~~~~~
 
-Defining React function components with arrow functions makes them more concise:
+Das Definieren der Funktionskomponenten mithilfe von Pfeilfunktionen macht diese übersichtlicher:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -61,7 +61,7 @@ const List = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-This holds also true for other functions, like the one we used in our JavaScript array's map method:
+Dies gilt ebenfalls für andere Funktionen, wie die, die wir in der Map-Methode unseres JavaScript-Arrays verwendet haben:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -83,7 +83,7 @@ const List = () => {
 };
 ~~~~~~~
 
-If an arrow function doesn't do *anything* in between, but only returns *something*, -- in other words, if an arrow function doesn't perform any task, but only returns information --, you can remove the **block body** (curly braces) of the function. In a **concise body**, an **implicit return statement** is attached, so you can remove the return statement:
+Wenn eine Pfeilfunktion *nichts* ausführt, sondern nur *etwas* zurückgibt --- mit anderen Worten, wenn sie keine Aufgabe erledigt und nur Informationen wiedergibt ---, ist der Blockkörper **(geschweifte Klammern)** nicht notwendig --- entferne diesen. In einem **knappen oder prägnanten Körper** ist die **Rückgabeanweisung implizit**, sodass du *return* ebenfalls nicht verwendest:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -99,7 +99,7 @@ count =>
   count + 1;
 ~~~~~~~
 
-This can be done for the App and List component as well, because they only return JSX and don't perform any task in between. Again it also applies for the arrow function that's used in the map function:
+Gleiches ist auf die App- und List-Komponente anwendbar, da beide nur JSX zurückgeben und keine Logikaufgabe bearbeiten. Dies gilt ebenso für die Pfeilfunktion, die in der Map-Funktion verwendet wird:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -130,7 +130,7 @@ const List = () =>
 # leanpub-end-insert
 ~~~~~~~
 
-Our JSX is more concise now, as it omits the function statement, the curly braces, and the return statement. However, remember this is an optional step, and that it's acceptable to use normal functions instead of arrow functions and block bodies with curly braces for arrow functions over implicit returns. Sometimes block bodies will be necessary to introduce more business logic between function signature and return statement:
+Unser JSX ist jetzt knapper und prägnanter, da die Funktionsanweisung, die geschweiften Klammern und die return-Anweisung weggelassen werden. Denke daran, dass dies ein optionaler Schritt ist. Es ist möglich, normale Funktionen anstelle von Pfeilfunktionen zu verwenden und Körper mit geschweiften Klammern um implizite Rückgaben zu blockieren. Manchmal sind Blockkörper erforderlich, weil mehr Logik zwischen Funktionssignatur und return-Anweisung notwendig ist:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -145,11 +145,11 @@ const App = () => {
 };
 ~~~~~~~
 
-Be sure to understand this refactoring concept, because we'll move quickly from arrow function components with and without block bodies as we go. Which one we use will depend on the requirements of the component.
+Stelle sicher, dass du dieses Refactoring-Konzept verstehst, da wir oft zwischen Pfeilfunktionskomponenten mit und ohne Blockkörper wechseln. Welche Variante wir verwenden, hängt von den Anforderungen der Komponente ab.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Definition).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-another-React-Component...hs/React-Component-Definition?expand=1).
 * Lese mehr zum Thema [JavaScript arrow functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
-* Familiarize yourself with arrow functions with block body and return, and concise body without return.
+* Vertiefe Pfeilfunktionen mit Blockkörper inklusive Return und knappem Körper ohne Returnanweisung.
