@@ -26,7 +26,7 @@ const App = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Definiere jetzt eine Funktion, die aufgerufen wird, wenn sich der Wert im Eingabefeld ändert – ergo: wenn das Änderungsereignis ausgelöst wird. Verwende eine normale oder eine Arrow-Funktion – je nachdem welche Variante du bevorzugst. In React wird eine solche Funktion als **(Ereignis-)Handler** bezeichnet. Übergib diese im nächsten Schritt an das Attribut `onChange` des Eingabefelds. Beachte: Bei `onChange` handelt es sich um ein JSX-Attribut. Dies erkennst du insbesondere an der Schreibweise in Camel-Case.
+Definiere jetzt eine Funktion, die aufgerufen wird, wenn sich der Wert im Eingabefeld ändert --- ergo: wenn das Änderungsereignis ausgelöst wird. Verwende eine normale oder eine Arrow-Funktion --- je nachdem welche Variante du bevorzugst. In React wird eine solche Funktion als **(Ereignis-)Handler** bezeichnet. Übergib diese im nächsten Schritt an das Attribut `onChange` des Eingabefelds. Beachte: Bei `onChange` handelt es sich um ein JSX-Attribut. Dies erkennst du insbesondere an der Schreibweise in Camel-Case.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -69,9 +69,9 @@ const App = () => {
 };
 ~~~~~~~
 
-Das [synthetische Ereignis](https://de.reactjs.org/docs/events.html) ist ein browserübergreifender Wrapper für das [native Eventobjekt des Browsers](https://developer.mozilla.org/de/docs/Web/Events). Es beinhaltet weitere Funktionen, die nützlich sind, um das Standardverhalten des nativen Browsers zu verhindern – zum Beispiel das Aktualisieren einer Seite, nachdem der Benutzer auf die Schaltfläche zum Senden eines Formulars geklickt hat. Du wirst dieses Ereignis nicht immer nutzen. Andere Male ist es sinnvoll.
+Das [synthetische Ereignis](https://de.reactjs.org/docs/events.html) ist ein browserübergreifender Wrapper für das [native Eventobjekt des Browsers](https://developer.mozilla.org/de/docs/Web/Events). Es beinhaltet weitere Funktionen, die nützlich sind, um das Standardverhalten des nativen Browsers zu verhindern --- zum Beispiel das Aktualisieren einer Seite, nachdem der Benutzer auf die Schaltfläche zum Senden eines Formulars geklickt hat. Du wirst dieses Ereignis nicht immer nutzen. Je nach Anwendungsfall ist es aber sinnvoll.
 
-Auf diese Weise erreichen wir es, dass HTML-Elemente über JSX-Handlerfunktionen auf Benutzerinteraktionen reagieren. Übergib immer die Funktion selbst an einen Handler und nicht den Rückgabewert – es sei denn, bei diesem handelt es sich um eine Funktion:
+Auf diese Weise erreichen wir es, dass HTML-Elemente über JSX-Handlerfunktionen auf Benutzerinteraktionen reagieren. Übergib immer die Funktion selbst an einen Handler und nicht den Rückgabewert --- es sei denn, bei diesem handelt es sich um eine Funktion:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~

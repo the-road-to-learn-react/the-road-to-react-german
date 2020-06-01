@@ -1,6 +1,6 @@
 # Legacy-React
 
-React hat sich seit 2013 weiterentwickelt. Die Art und Weise, wie Anwendungen geschrieben werden, hat sich geändert – und sogar die Komponenten selbst. In der Vergangenheit wurden viele Anwendungen anhand des damals gültigen Entwicklungsstandes erstellt. Diese entsprechen verständlicherweise nicht dem aktuellen Status Quo. Hier sehen wir uns jetzt historisch gewachsene React-Anwendungen an.
+React hat sich seit 2013 weiterentwickelt. Die Art und Weise, wie Anwendungen geschrieben werden, hat sich geändert --- und die Komponenten selbst. In der Vergangenheit wurden viele Anwendungen anhand des damals gültigen Entwicklungsstandes erstellt. Diese entsprechen verständlicherweise nicht dem aktuellen Status Quo. Hier sehen wir uns jetzt historisch gewachsene React-Anwendungen an.
 
 Ich werde nicht alles behandeln, was in React als Vermächtnis angesehen wird. Dies ist nicht sinnvoll, einige Funktionen wurden mehr als einmal überarbeitet. Mein Ziel ist, dir ein generelles Verständnis für die Entwicklung von React zu vermitteln.
 
@@ -8,7 +8,7 @@ In diesem Abschnitt werden wir eine [moderne React-Anwendung](https://codesandbo
 
 ## Reacts Klassenkomponenten
 
-Komponenten wurden in React häufig verändert – von **createClass-Komponenten** über **Klassenkomponenten** bis hin zu **Funktionskomponenten**. Wenn du heute eine in der Vergangenheit erstellt React-Anwendung ansiehst, wirst du zweifelsohne Klassenkomponenten neben modernen Funktionskomponenten vorfinden.
+Komponenten wurden in React häufig verändert --- von **createClass-Komponenten** über **Klassenkomponenten** bis hin zu **Funktionskomponenten**. Wenn du heute eine in der Vergangenheit erstellt React-Anwendung ansiehst, wirst du zweifelsohne Klassenkomponenten neben modernen Funktionskomponenten vorfinden.
 
 Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Funktionen (beispielsweise Status- und Lebenszyklusverwaltung, und Methoden für Seiteneffekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (props) wird über die Klasseninstanz (`this`) zugegriffen:
 

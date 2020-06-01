@@ -159,7 +159,7 @@ const App = () => {
 };
 ~~~~~~~
 
-So weit zur Überarbeitung der Filterfunktion. Es gibt viele unterschiedliche Herangehensweisen – und es ist nicht immer trivial zu entscheiden, wie das Gleichgewicht zwischen Übersichtlichkeit und Genauigkeit am besten ist. Ich tendiere dazu, den Code möglichst kurz zu belassen. Meiner Meinung nach bleibt er so ebenfalls lesbar.
+So weit zur Überarbeitung der Filterfunktion. Es gibt viele unterschiedliche Herangehensweisen --- und es ist nicht immer trivial zu entscheiden, wie das Gleichgewicht zwischen Übersichtlichkeit und Genauigkeit am besten ist. Ich tendiere dazu, den Code möglichst kurz zu belassen. Meiner Meinung nach bleibt er so ebenfalls lesbar.
 
 ![](images/component-communication.png)
 

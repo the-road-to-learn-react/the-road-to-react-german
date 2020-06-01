@@ -1,6 +1,6 @@
 ## Callback-Handler in JSX
 
-Als Nächstes konzentrieren wir uns auf das Eingabefeld und das Label, indem wir eine eigenständige Komponente für die Suche erstellen. Im Komponentenbaum wird die Suchkomponente zu einem Blatt auf der gleichen Ebene, quasi einem Geschwisterblatt der Listenkomponente – und umgekehrt. Außerdem verschieben wir den Handler und den Status in die Suchkomponente, um die Funktionalität aufrechtzuerhalten.
+Als Nächstes konzentrieren wir uns auf das Eingabefeld und das Label, indem wir eine eigenständige Komponente für die Suche erstellen. Im Komponentenbaum wird die Suchkomponente zu einem Blatt auf der gleichen Ebene, quasi einem Geschwisterblatt der Listenkomponente --- und umgekehrt. Außerdem verschieben wir den Handler und den Status in die Suchkomponente, um die Funktionalität aufrechtzuerhalten.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

@@ -153,7 +153,7 @@ console.log(firstName + ' has a pet called ' + name);
 // "Robin has a pet called Trixi"
 ~~~~~~~
 
-Die verschachtelte Destrukturierung hilft uns, auf Eigenschaften von Objekten zuzugreifen, die – wie der Name schon sagt – tiefer verschachtelt sind. Im Beispiel wäre dies der Name des Haustiers. Da das Objekt "item" in unserer Item-Komponente niemals direkt verwendet wird, führen wir in der Funktionssignatur der Komponente eine *verschachtelte Destrukturierung* durch:
+Die verschachtelte Destrukturierung hilft uns, auf Eigenschaften von Objekten zuzugreifen, die --- wie der Name schon sagt --- tiefer verschachtelt sind. Im Beispiel wäre dies der Name des Haustiers. Da das Objekt "item" in unserer Item-Komponente niemals direkt verwendet wird, führen wir in der Funktionssignatur der Komponente eine *verschachtelte Destrukturierung* durch:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -358,8 +358,8 @@ Diese Version ist nicht die prägnanteste, aber die einfachsten. Variante 1 mit 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Props-Handling).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Controlled-Components...hs/Props-Handling?expand=1).
 * Lese mehr zum Thema [JavaScript's destructuring assignment](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
-* Think about the difference between  JavaScript array destructuring -- which we used for React's `useState` hook -- and object destructuring.
+* Überlege, was genau der Unterschied zwischen der Destrukturierung von JavaScript-Arrays --- die wir für den `useState`-Hook von React verwendet haben --- und der Objekt-Destrukturierung ist.
 * Lese mehr zum Thema [JavaScript's spread operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
 * Lese mehr zum Thema [JavaScript's rest parameters](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameters).
-* Get a good sense about JavaScript (e.g. spread operator, rest parameters, destructuring) and what's related to React (e.g. props) from the last lessons.
-* Continue to use your favorite way to handle React's props. If you're still undecided, consider the variation used in the previous section.
+* Verteife dein Wissen in Bezug auf JavaScript (Spread-Operator, Rest-Operator, Destrukturierung) und die Wechselwirkungen mit React --- beispielsweise den Eigenschaften (props).
+* Verwende weiterhin die Methode deiner Wahl, beim Arbeiten mit den Eigenschaften (props). Wenn du unentschlossen bist, nutze die Variante des vorherigen Abschnitts.

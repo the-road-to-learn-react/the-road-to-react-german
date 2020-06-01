@@ -28,7 +28,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Unsere Funktion verwendet das Schlüsselwort `async`. Dies schafft die Grundlage für die Verwendung von async/await. Sobald du `await` einsetzt, verhält sich alles analog zu synchronem Code. Die Anweisungen, die hinter `await` steht, werden erst aufgerufen, wenn das (in axios gekapselte) Promise-Objekt aufgelöst wurde und somit sein Ergebnis vorliegt. Dies bedeutet, dass der Code wartet – wie das Wort `await` vermuten lässt.
+Unsere Funktion verwendet das Schlüsselwort `async`. Dies schafft die Grundlage für die Verwendung von async/await. Sobald du `await` einsetzt, verhält sich alles analog zu synchronem Code. Die Anweisungen, die hinter `await` steht, werden erst aufgerufen, wenn das (in axios gekapselte) Promise-Objekt aufgelöst wurde und somit sein Ergebnis vorliegt. Dies bedeutet, dass der Code wartet --- wie das Wort `await` vermuten lässt.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

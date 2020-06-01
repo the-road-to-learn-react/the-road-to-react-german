@@ -30,7 +30,7 @@ const useSemiPersistentState = (key, initialState) => {
 };
 ~~~~~~~
 
-Nutze die Anweisung console.log(‚A‘); um dir über die Konsole der Entwicklertools des Browsers anzusehen, wann der Status in den lokalen Speicher gespeichert wird. Erstmals geschieht dies, wenn die Komponente das erste Mal gerendert wird. Dies ist nicht sinnvoll, da zu diesem Zeitpunkt der Anfangswert aktiv ist. Erforderlich ist das Speichern nur bei einem erneuten Rendern der Komponente – nur dann ist es möglich, dass der Wert sich geändert hat.
+Nutze die Anweisung console.log(‚A‘); um dir über die Konsole der Entwicklertools des Browsers anzusehen, wann der Status in den lokalen Speicher gespeichert wird. Erstmals geschieht dies, wenn die Komponente das erste Mal gerendert wird. Dies ist nicht sinnvoll, da zu diesem Zeitpunkt der Anfangswert aktiv ist. Erforderlich ist das Speichern nur bei einem erneuten Rendern der Komponente --- nur dann ist es möglich, dass der Wert sich geändert hat.
 
 Wie erwähnt, gibt es keinen React-Hook, der bei jedem Rendern aufgerufen wird, den ersten Aufruf aber auslässt. Durch die Verwendung des `useRef`-Hooks, bei dem die Eigenschaft `ref.current` beim erneuten Rendern erhalten bleibt, erstellen wir uns diese Lösung selbst.
 
@@ -151,7 +151,7 @@ B:App
 B:List
 ~~~~~~~
 
-Das erneute Rendern der List-Komponente ist bei genauerem Überlegen nicht erforderlich. Die Suchfunktion wird nicht beim Ändern des Suchwortes aufgerufen, sondern über die Schaltfläche. Daher ist es unnötige, dass die an die Listenkomponente übergebene `list` neu gerendert wird – sie bleibt gleich. Hier erlebst du das Standardverhalten in React, über das viele Entwickler stolpern.
+Das erneute Rendern der List-Komponente ist bei genauerem Überlegen nicht erforderlich. Die Suchfunktion wird nicht beim Ändern des Suchwortes aufgerufen, sondern über die Schaltfläche. Daher ist es unnötige, dass die an die Listenkomponente übergebene `list` neu gerendert wird --- sie bleibt gleich. Hier erlebst du das Standardverhalten in React, über das viele Entwickler stolpern.
 
 Wenn eine übergeordnete Komponente erneut gerendert wird, werden die untergeordneten ebenfalls aktualisiert. React hat hierbei Gutes im Sinne: In der Regel ist es korrekt, dass nachfolgende Komponenten neu gerendert werden. Wird dies vergessen, führt dies zu Fehlern.
 

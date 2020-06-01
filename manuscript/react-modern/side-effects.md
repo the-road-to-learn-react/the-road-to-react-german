@@ -2,7 +2,7 @@
 
 Lasst uns jetzt unser Beispiel weiterentwickeln, und einen Seiteneffekt mit [React's useEffect Hook](https://de.reactjs.org/docs/hooks-effect.html) verwenden. Ziel ist es, dass die Suchkomponente die vorherige Suche speichert, sodass diese letzte Aktion als Status quo bei einem neuen Aufruf im Browser geöffnet wird.
 
-Verwende dafür zunächst das [lokale Storage-Objekt](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage) des Browsers, um den `searchTerm` zu speichern. Nutze daraufhin diesen Wert, um den Anfangszustand festzulegen. Falls bis dato kein Wert gespeichert wurde, bleibt alles so, wie es vorher war – bisher verwendeten wir "React" als initialen Wert hartkodiert.
+Verwende dafür zunächst das [lokale Storage-Objekt](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage) des Browsers, um den `searchTerm` zu speichern. Nutze daraufhin diesen Wert, um den Anfangszustand festzulegen. Falls bis dato kein Wert gespeichert wurde, bleibt alles so, wie vorher --- bisher verwendeten wir "React" als initialen Wert hartkodiert.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
