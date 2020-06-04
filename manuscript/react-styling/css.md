@@ -10,7 +10,7 @@ Wähle eine [beliebte React-Bibliothek für React](https://www.robinwieruch.de/r
 
 ![](images/ui-library.png)
 
-Die nachfolgenden Ansätze für das Styling sind in der `create-react-app` vorkonfiguriert. Wenn du die Build-Tools (beispielsweise Webpack) selbst verwaltest, sind unter Umständen weitere Konfigurationsschritte erforderlich. Da wir die `create-react-app` verwenden, nutzen wir alles als Assets.
+Die nachfolgenden Ansätze für das Styling sind in der `Create React App` vorkonfiguriert. Wenn du die Build-Tools (beispielsweise Webpack) selbst verwaltest, sind unter Umständen weitere Konfigurationsschritte erforderlich. Da wir die *Create React App* verwenden, nutzen wir alles als Assets.
 
 ## CSS in React
 
@@ -45,7 +45,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Das HTML-Element `<hr />` haben ich entfernt, da CSS sich zukünftig um den Randbereich kümmern wird. In der Vergangenheit wurden Inhalte aus semantischen (bedeutungsmäßigen) und gestalterischen Gründen mittels [`<hr />`](https://wiki.selfhtml.org/index.php?title=HTML/Textstrukturierung/hr&oldid=55963) getrennt. Heute dienen HTML-Element ausschließlich er [semantischen Strukturierung](https://wiki.selfhtml.org/index.php?title=HTML&oldid=61624). Verwende immer CSS, um zwei Bereiche aus gestalterischen Gründen zu trennen. Importieren die CSS-Datei mithilfe von `create-react-app`:
+Das HTML-Element `<hr />` haben ich entfernt, da CSS sich zukünftig um den Randbereich kümmern wird. In der Vergangenheit wurden Inhalte aus semantischen (bedeutungsmäßigen) und gestalterischen Gründen mittels [`<hr />`](https://wiki.selfhtml.org/index.php?title=HTML/Textstrukturierung/hr&oldid=55963) getrennt. Heute dienen HTML-Element ausschließlich er [semantischen Strukturierung](https://wiki.selfhtml.org/index.php?title=HTML&oldid=61624). Verwende immer CSS, um zwei Bereiche aus gestalterischen Gründen zu trennen. Importieren die CSS-Datei mithilfe der *Create React App*:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -250,6 +250,6 @@ Soweit zum grundlegenden CSS, das die meisten von uns kennen und das ich hier mi
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React).
   * Bestätige die [Änderungen](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/CSS-in-React?expand=1).
-* Lese mehr zum Thema [CSS-Stylesheets in der create-react-app](https://create-react-app.dev/docs/adding-a-stylesheet).
-* Lese mehr zu [Sass in der create-react-app](https://create-react-app.dev/docs/adding-a-sass-stylesheet) um erweiterte CSS-Funktionen wie das Verschachteln zu nutzen.
+* Lese mehr zum Thema [CSS-Stylesheets in der Create React App](https://create-react-app.dev/docs/adding-a-stylesheet).
+* Lese mehr zu [Sass in der Create React App](https://create-react-app.dev/docs/adding-a-sass-stylesheet) um erweiterte CSS-Funktionen wie das Verschachteln zu nutzen.
 * Versuche, die Eigenschaft `className` von der App an die SearchForm-Komponente zu übergeben, entweder mit dem Wert `button_small` oder `button_large`, und verwende diese als `className` für die Schaltfläche.

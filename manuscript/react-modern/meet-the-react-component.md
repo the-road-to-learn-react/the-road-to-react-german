@@ -1,6 +1,6 @@
 ## Erste Schritte mit der React-Komponente
 
-Unsere erste React-Komponente findest du in der Datei *src/App.js*. Der Code weicht unter Umständen geringfügig ab, da die [Create-React-App](https://github.com/facebook/create-react-app) von Zeit zu Zeit die Struktur der Standardkomponente aktualisiert.
+Unsere erste React-Komponente findest du in der Datei *src/App.js*. Der Code weicht unter Umständen geringfügig ab, da die Entwickler der [*Create React App*](https://github.com/facebook/create-react-app) von Zeit zu Zeit die Struktur der Standardkomponente aktualisieren.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -32,7 +32,7 @@ function App() {
 export default App;
 ~~~~~~~
 
-Sofern nicht anders angegeben, dreht sich hier alles um die Datei *src/App.js*. Als Erstes vereinfachen wir die Komponente. So baust du dein Projekt ohne unnötigen Boilerplate-Code aus der [Create-React-App](https://github.com/facebook/create-react-app) auf.
+Sofern nicht anders angegeben, dreht sich hier alles um die Datei *src/App.js*. Als Erstes vereinfachen wir die Komponente. So baust du dein Projekt ohne unnötigen Boilerplate-Code aus der [*Create React App*](https://github.com/facebook/create-react-app) auf.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

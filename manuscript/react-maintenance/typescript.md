@@ -2,7 +2,7 @@
 
 TypeScript für JavaScript und React bietet dir viele Vorteile. Du entwickelst mit diesem Werkzeug robustere Anwendungen. Anstatt erst zur Laufzeit Typfehler in der Befehlszeile oder im Browser zu erhalten, wirst du mit TypeScript schon vorher von einer Entwicklungsumgebung auf diese hingewiesen. Nebenbei wird der Code lesbarer, da jede Variable mit einem Typ definiert ist. Das Verschieben von Codeblöcken oder das Überarbeiten des Programmcodes ist effizienter möglich. Statisch typisierte Sprachen wie TypeScript sind aufgrund dieser Vorteile gegenüber dynamischen wie purem JavaScript beliebt. Es ist sinnvoll, [TypeScript](https://www.typescriptlang.org/index.html) genauer anzusehen.
 
-Um TypeScript in React zu verwenden, installiere das Framework und seine Abhängigkeiten über die Befehlszeile. Wenn du auf Probleme stößt, befolge die offiziellen TypeScript-Installationsanweisungen auf der Website der [create-react-app](https://create-react-app.dev/docs/adding-typescript/):
+Um TypeScript in React zu verwenden, installiere das Framework und seine Abhängigkeiten über die Befehlszeile. Wenn du auf Probleme stößt, befolge die offiziellen TypeScript-Installationsanweisungen auf der Website der [*Create React App*](https://create-react-app.dev/docs/adding-typescript/):
 
 {title="Command Line",lang="text"}
 ~~~~~~~

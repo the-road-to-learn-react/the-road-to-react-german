@@ -8,7 +8,7 @@ Alles, was wir bisher bearbeitet haben, wird in einem echten Projekt der *Entwic
 
 Der nächste Schritt ist, die Anwendung in die *Produktionsphase* zu überführen. Dazu wird diese auf einen Remote-Server verschoben und so für andere Benutzer zugänglich. Bevor eine Anwendung veröffentlicht wird, ist es erforderlich, dass sie speziell hierfür zusammengestellt oder gebündelt wird. Redundanter Code, Testcode und Duplikate werden entfernt. Außerdem gibt es einen Prozess, der die Codegröße weiter reduziert, die Minifizierung.
 
-Glücklicherweise übernehmen die Build-Tools der *Create-React-App* die Optimierung und Verpackung --- das Bündeln. Erstelle zunächst die Anwendung für die Veröffentlichung über die Befehlszeile:
+Glücklicherweise übernehmen die Build-Tools der *Create React App* die Optimierung und Verpackung --- das Bündeln. Erstelle zunächst die Anwendung für die Veröffentlichung über die Befehlszeile:
 
 {title="Command Line",lang="text"}
 ~~~~~~~

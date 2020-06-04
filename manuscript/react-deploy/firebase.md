@@ -2,7 +2,7 @@
 
 Wir haben in React eine vollwertige Anwendung erstellt. Der letzte Schritt ist das Teilen dieser mit der Welt --- nachdem du das Programmieren erlernt hast und lauffähige Programme fertigstellst. Wir verwenden Firebase Hosting für die Bereitstellung.
 
-Firebase unterstützt die Create-React-App und die meisten Bibliotheken und Frameworks wie Angular und Vue. Installiere zunächst die Firebase-CLI global:
+Firebase unterstützt die *Create React App* und die meisten Bibliotheken und Frameworks wie Angular und Vue. Installiere zunächst die Firebase-CLI global:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -57,7 +57,7 @@ but for now we'll just set up a default project.
 i  Using project my-react-project-abc123 (my-react-project)
 ~~~~~~~
 
-Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordner *public/* zu verwenden, nutzen wir den Ordner *build/* in der create-react-app. Wähle selbst den passenden Namen für den Build-Ordner aus, wenn du deine Anwendung nicht mithilfe der create-react-app, sondern mit einem Tool wie Webpack in Eigenregie packst:
+Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordner *public/* zu verwenden, nutzen wir den Ordner *build/* in der *Create React App*. Wähle selbst den passenden Namen für den Build-Ordner aus, wenn du deine Anwendung nicht mithilfe der *Create React App*, sondern mit einem Tool wie Webpack in Eigenregie packst:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~

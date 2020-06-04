@@ -23,7 +23,7 @@ Das Symbol, welches wir hier verwenden, stammt von [Flaticons Freepick](https://
 </svg>
 ~~~~~~~
 
-Da wir die **create-react-app** App verwenden, ist es möglich, SVGs (ähnlich wie CSS) als React-Komponenten zu importieren. Füge hierzu in die Datei *src/App.js* die folgende Anweisung ein:
+Da wir die **Create React App** App verwenden, ist es möglich, SVGs (ähnlich wie CSS) als React-Komponenten zu importieren. Füge hierzu in die Datei *src/App.js* die folgende Anweisung ein:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -73,13 +73,13 @@ Unabhängig davon, welchen Styling-Ansatz du verwendest, ist es möglich dem SVG
 }
 ~~~~~~~
 
-Die **create-react-app**-App unterstützt dich bei der Verwendung von SVGs. Alles Notwendige ist in der App vorkonfiguriert. Wenn du ein React-Projekt mit Build-Tools wie Webpack von Grund auf selbst erstellst, hast du Mehraufwand. In jedem Fall werten SVGs deine Anwendung auf, da sie klein, flexibel und ohne Qualitätsverlust skalierbar sind. Verwenden dieses Format, wann immer es möglich ist.
+Die **Create React App**-App unterstützt dich bei der Verwendung von SVGs. Alles Notwendige ist in der App vorkonfiguriert. Wenn du ein React-Projekt mit Build-Tools wie Webpack von Grund auf selbst erstellst, hast du Mehraufwand. In jedem Fall werten SVGs deine Anwendung auf, da sie klein, flexibel und ohne Qualitätsverlust skalierbar sind. Verwenden dieses Format, wann immer es möglich ist.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG).
   * Bestätige die [Änderungen gegenüber dem Abschnitt **Styling in React**](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1).
-* Lese mehr zum Thema [SVGs in create-react-app](https://create-react-app.dev/docs/adding-images-fonts-and-files).
+* Lese mehr zum Thema [SVGs in der Create React App](https://create-react-app.dev/docs/adding-images-fonts-and-files).
 * Lese mehr zum Thema [SVG background patterns in React](https://www.robinwieruch.de/react-svg-patterns).
 * Integriere ein weiteres SVG-Symbol in eine Anwendung.
 * Binde die Drittanbieter Bibliothek [react-fontawesome](https://github.com/FortAwesome/react-fontawesome) in deine Anwendung ein und verwende deren SVG-Symbole.

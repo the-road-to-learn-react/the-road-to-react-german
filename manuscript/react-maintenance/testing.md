@@ -81,7 +81,7 @@ describe('something truthy and falsy', () => {
 });
 ~~~~~~~
 
-Glücklicherweise beinhaltet die Create-React-App Jest, sodass alles Wichtige installiert und konfiguriert ist. Führe die Tests mit dem Skript aus der Datei *package.json* direkt in der Befehlszeile aus. Verwendet dazu den Befehl `npm test` und du siehst die folgende Ausgabe:
+Glücklicherweise beinhaltet die *Create React App* Jest, sodass alles Wichtige installiert und konfiguriert ist. Führe die Tests mit dem Skript aus der Datei *package.json* direkt in der Befehlszeile aus. Verwendet dazu den Befehl `npm test` und du siehst die folgende Ausgabe:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -335,7 +335,7 @@ Kommen wir zurück auf unser Beispiel: Der Reduzierertest schließt erfolgreich 
 
 ### Unit Testing: Komponenten
 
-Nachdem wir eine Funktion in JavaScript mit Jest getestet haben, testen jetzt isoliert eine Komponente. Wir nutzen die React Testing Library (RTL). Diese ist in der Create-React-App integriert. Wenn du wie ich die Create-React-App nutzt, ist alles schon fertig installiert und konfiguriert. Falls du ein benutzerdefiniertes React-Setup verwendest, beispielsweise React mit Webpack, installierst du die Bibliothek bitte selbst.
+Nachdem wir eine Funktion in JavaScript mit Jest getestet haben, testen jetzt isoliert eine Komponente. Wir nutzen die React Testing Library (RTL). Diese ist in der *Create React App* integriert. Wenn du wie ich die *Create React App* nutzt, ist alles schon fertig installiert und konfiguriert. Falls du ein benutzerdefiniertes React-Setup verwendest, beispielsweise React mit Webpack, installierst du die Bibliothek bitte selbst.
 
 Wir nutzen die folgenden Funktionen der React Testing Library für den Komponententest. Ich werde diese Schritt für Schritt erklären. Als Erstes importieren wir diese:
 

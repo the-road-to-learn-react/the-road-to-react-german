@@ -18,7 +18,7 @@ import styled from 'styled-components';
 # leanpub-end-insert
 ~~~~~~~
 
-Wie die Bezeichnung CSS-in-JS vermuten lässt, erstellst du **Styled Components** innerhalb von JavaScript. Definiere deine ersten gestalteten Komponenten in der Datei * src / App.js *:
+Wie die Bezeichnung CSS-in-JS vermuten lässt, erstellst du **Styled Components** innerhalb von JavaScript. Definiere deine ersten gestalteten Komponenten in der Datei *src/App.js*:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
