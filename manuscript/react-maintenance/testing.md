@@ -612,6 +612,10 @@ describe('SearchForm', () => {
 });
 ~~~~~~~
 
+Ähnlich wie bei der Item-Komponente haben wir die Eingabe (Eigenschaften/props) und die Ausgabe (Callback-Handler) für die SearchForm getestet. Der Unterschied besteht darin, dass SearchForm eine untergeordnete Komponente namens InputWithLabel rendert. Wenn du die Debug-Ausgabe erneut überprüfst, wirst du feststellen, dass die React Testing Library sich nicht für diese untergeordnete Komponente interessiert. Dies liegt daran, dass sich ein Benutzer unserer Anwendung an der Stelle ebenfalls nicht für sie interessiert. Daher gibt die React Testing Library nur den HTML-Code für uns aus.
+
+Wir haben gesehen, dass alle Callback-Handler-Tests für Item- und SearchForm-Komponenten nur prüfen, ob die Funktionen aufgerufen wurden. Hier findet kein React-Re-Rendering statt, da alle Komponenten isoliert ohne Statusverwaltung getestet werden, was für uns ausschließlich in der App geschieht. Daher setzt der eigentliche Test mit RTL weiter oben im Komponentenbaum an, wo Zustandsänderungen und Nebenwirkungen bewertet werden.
+
 Similar to the Item component, we tested input (props) and output (callback handler) for the SearchForm component. The difference is that the SearchForm component renders a child component called InputWithLabel. If you check the debug output again, you will see that React Testing Library doesn't care much about this child component. It's because a user of our application wouldn't care about the component as well, so React Testing Library just outputs the HTML for us.
 
 What we have also seen is that all the callback handler tests for Item and SearchForm component only test whether the functions have been called. There is no React re-rendering happening here, because all the components are tested in isolation without state management which solely happens in the App component for us. Therefore, the real testing with RTL starts further up the component tree where state changes and side-effects can be evaluated
@@ -623,17 +627,17 @@ What we have also seen is that all the callback handler tests for Item and Searc
   * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing-setup?expand=1).
 * Lese mehr über [Jest](https://jestjs.io/).
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-component).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-unit-function...hs/react-testing-unit-component?expand=1).
-* Read more about [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
-  * Read more about [search functions](https://testing-library.com/docs/guide-which-query).
-* Add tests for your List and InputWithLabel components.
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-component).
+  * Bestätige die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-unit-function...hs/react-testing-unit-component?expand=1).
+* Lese mehr über die [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
+  * Lese mehr über [Suchfunktionen](https://testing-library.com/docs/guide-which-query).
+* Füge Tests für Ihre List- und InputWithLabel-Komponenten hinzu.
 
 ### Integration Testing: Component
 
-React Testing Library comes with one core philosophy: Rather than testing the implementation details of your React components, we are testing how a user would interact with our application and whether everything works as expected while interacting with it. This becomes especially powerful for integration tests.
+Die React Testing Library basiert auf einer Kernphilosophie: Anstatt die Implementierungsdetails der React-Komponenten zu prüfen, testen wir, wie ein Benutzer mit unserer Anwendung interagieren würde und ob bei der Interaktion alles wie erwartet funktioniert. Dies ist effektiv für Integrationstests.
 
-Before we can begin testing anything for the App component, we need to provide data first, because the App component makes a request to our remote API for data after its initial render. We start with mocking and testing this part of the component. Therefore, import axios -- which we are using in the App component for our data request -- and mock it with Jest at the top of your testing file:
+Um die App-Komponente zu testen, sind Daten erforderlich, da die App nach dem ersten Rendern eine Daten-Anforderung an die Remote-API sendet. Importieren wir Axios und erstellen eine Mock-Funktion, die wir in der App-Komponente für unsere Datenanforderung verwenden:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -921,6 +925,8 @@ describe('App', () => {
   });
 });
 ~~~~~~~
+
+Wir lösen das erste Versprechen für das anfängliche Rendern und erwarten, dass das Eingabefeld "React" und die beiden Elemente in der Liste die Ersteller von React und Redux rendert. Wir stellen außerdem sicher, dass keine JavaScript-bezogene Storys gerendert werden. Als Nächstes ändern wir den Wert des Eingabefelds, indem wir ein Ereignis auslösen und festlegen, ob der neue Wert der App über alle untergeordneten Komponenten im tatsächlichen Eingabefeld gerendert wird:
 
 We are resolving the first promise for the initial render and expect the input field to render "React" and the two items in the list to render the creators of React and Redux. We also make sure that no JavaScript related stories are rendered yet. Next, we are going to change the input field's value by firing an event and assert whether the new value is rendered from the App component through all its child components in the actual input field:
 
