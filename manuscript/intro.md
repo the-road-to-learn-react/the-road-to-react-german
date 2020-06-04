@@ -8,37 +8,37 @@ Im Wesentlichen lernst du, eine eigene React-Anwendung von Grund auf neu zu erst
 
 ## Über den Autor
 
-Ich bin ein deutscher Software- und Webentwickler und widme mich dem Erlernen und Lehren von Programmierung in JavaScript. Nachdem ich meinen Master in Informatik erlangte, lernte ich alleine weiter. Ich sammelte Erfahrungen in der Startup-Welt, in der ich JavaScript sowohl während des Berufslebens und in meiner Freizeit intensiv nutzte. Die lies den Wunsch in mir wachsen, mein Wissen an andere weiterzugeben.
+Ich bin ein deutscher Software- und Webentwickler und lehren und lerne Programmierung --- speziell in JavaScript. Nachdem ich meinen Master in Informatik erlangte, bildete ich mich weiter fort. Ich sammelte Erfahrungen in der Startup-Welt, in der ich JavaScript sowohl während des Berufslebens und in meiner Freizeit intensiv anwendete. Die lies den Wunsch in mir wachsen, mein Wissen an andere weiterzugeben.
 
-Einige Jahre lang arbeitete ich eng mit einem außergewöhnlichen Team von Ingenieuren bei einem Unternehmen namens Small Improvements zusammen und entwickelte Anwendungen. Das Unternehmen bot ein SaaS-Produkt an, mit dem Kunden Unternehmen Feedback geben. Diese Anwendung wurde mit JavaScript im Frontend und Java als Backend entwickelt. Die erste Iteration des Frontends von Small Improvements wurde in Java mit dem Wicket Framework und jQuery geschrieben. Als die erste Generation von SPAs populär wurde, migrierte das Unternehmen für seine Frontend-Anwendung auf Angular 1.x.. Nachdem Angular über zwei Jahre lang verwendet wurde, wurde klar, dass dies nicht die beste Lösung für die Arbeit mit zustandsintensiven Anwendungen ist. Daher wechselte das Unternehmen zu React und Redux. Dies war eine gute Entscheidung und ermöglichte eine erfolgreiche Arbeit.
+Einige Jahre arbeitete ich als Software-Entwickler eng mit einem Team von Ingenieuren bei einem Unternehmen namens *Small Improvements* zusammen. Die Firma bietet ein [SaaS](https://de.wikipedia.org/wiki/Software_as_a_Service)-Produkt an. Mit dieser Software ist es möglich, Kunden um ein Feeback zu bitten. Die Anwendung wurde mit JavaScript im Frontend und Java im Backend entwickelt. Die erste Version des Frontends von Small Improvements wurde in Java mit dem [Wicket Framework](https://de.wikipedia.org/wiki/Apache_Wicket) und jQuery geschrieben. Als die erste Generation von [SPAs](https://de.wikipedia.org/wiki/Single-Page-Webanwendung) populär wurde, migrierte das Unternehmen für seine Frontend-Anwendung auf Angular 1.x. Nach zwei Jahren wurde klar, dass dies nicht die beste Lösung für die Arbeit mit zustandsintensiven Anwendungen ist. Daher wechselte das Unternehmen zu React und Redux. Diese Entscheidung stellte sich als richtiger heraus und ermöglichte weiterhin eine erfolgreiche Arbeit.
 
-Während meiner Zeit im Unternehmen schrieb ich regelmäßig Artikel über Webentwicklung auf meiner Website. Ich erhielt motivierendes Feedback von Leuten, die aus meinen Artikeln lernten. Ich verbesserte meinen Schreib- und Unterrichtsstil. Artikel für Artikel erweiterte ich mein Wissen und meine Fähigkeiten. Ich hatte das Gefühl, dass meine ersten Artikel zu viele Informationen enthielten, was für die Studenten zu komplex war. Ich verbesserte mich, indem ich mich jeweils auf ein Thema konzentrierte.
+Während der Zeit im Unternehmen schrieb ich regelmäßig Artikel über Webentwicklung auf einer Website. Ich erhielt motivierendes Feedback. Viele lernten mit den von mir geschriebenen Artikeln. Ich verbesserte meinen Schreib- und Unterrichtsstil. Artikel für Artikel erweiterte ich mein Wissen und meine Fähigkeiten. Ich hatte das Gefühl, dass die ersten Artikel zu viele Informationen enthielten und zu komplex waren. Ich verbesserte mich, indem ich mich jeweils auf ein Thema konzentrierte.
 
-Derzeit arbeite ich als selbstständiger Softwareentwickler und Trainer. Es erfüllt mich, zu sehen, wie Studenten und Kunden lernen, indem ich ihnen klare Ziele vorgebe. Weitere Informationen über mich und Möglichkeiten zur Unterstützung und Zusammenarbeit mit mir findest du auf meiner [Website](https://www.robinwieruch.de/about).
+Derzeit arbeite ich als selbstständiger Softwareentwickler und Trainer. Es erfüllt mich, zu sehen, wie Studenten und Kunden lernen, indem ich ihnen klare Ziele vorgebe. Weitere Informationen über mich, Möglichkeiten zur Unterstützung oder Infos zu einer Zusammenarbeit findest du auf meiner [Website](https://www.robinwieruch.de/about).
 
 ## FAQ
 
 **Wie bekomme ich Updates?**
 
-Ich informiere auf zwei Arten über Aktualisierungen zu meinen Inhalten. Erfahre Neues per E-Mail, indem du [den Newsletter abonnierst](https://www.getrevue.co/profile/rwieruch) oder folge [mir auf Twitter](https://twitter.com/rwieruch). Unabhängig vom Kanal ist es mein Ziel, qualitativ hochwertige Inhalte zu teilen. Sobald du eine Benachrichtigung über eine Änderung erhalten hast, ist es dir möglich, eine neue Version von meiner Website herunterzuladen.
+Ich informiere auf zwei Arten über Aktualisierungen meiner Inhalte. Erfahre Neuigkeiten per E-Mail, indem du [den Newsletter abonnierst](https://www.getrevue.co/profile/rwieruch) oder folge [mir auf Twitter](https://twitter.com/rwieruch). Unabhängig vom Kanal ist es mein Ziel, qualitativ hochwertige Inhalte zu teilen. Sobald du eine Benachrichtigung über eine Änderung erhalten hast, ist eine neue Version auf meiner Website verfügbar.
 
 **Ist das Lernmaterial aktuell?**
 
-Programmierbücher sind normalerweise kurz nach ihrer Veröffentlichung veraltet. Da ich dieses Buch als Selfpublisher veröffentliche, ist es mir möglich, es bei Bedarf kurzfristig zu aktualisiere. Wann immer etwas aktualisiert wird, welches im Buch behandelt wird, werde ich das Buch überarbeiten und eine neue Version veröffentlichen.
+Programmierbücher sind oft kurz nach ihrer Veröffentlichung schon veraltet. Da ich dieses Buch als Selfpublisher veröffentliche, ist es mir möglich, es bei Bedarf kurzfristig zu aktualisiere. Immer dann, wenn sich etwas ändert, werde ich das Buch überarbeiten und eine neue Version veröffentlichen.
 
 **Kann ich eine digitale Kopie des Buches erhalten, wenn ich es bei Amazon gekauft habe?**
 
-Erst nachdem du das Buch bei Amazon gekauft hast, stelltest du fest, dass das Buch auf meiner Website in einer digitalen Version verfügbar ist. Da ich Amazon als eine Möglichkeit verwende, meine oft kostenlosen Inhalte zu monetarisieren, danke ich dir ehrlich für deine Unterstützung und lade dich ein, dich auf [meiner Website](https://www.robinwieruch.de/) anzumelden. Nachdem du dort ein Konto erstellt hast, schreibe mir eine E-Mail und füge eine Quittung von Amazon bei. Ich werde dann ein digitales Buch für dich freischalten. Mit einem Konto auf meiner Plattform hast du nebenbei immer Zugriff auf die neueste Version des Buches.
+Erst nachdem du das Buch bei Amazon gekauft hast, stelltest du fest, dass das Buch auf meiner Website in einer digitalen Version verfügbar ist. Da ich Amazon als eine Möglichkeit verwende, für mich zu werben und Inhalte zu monetarisieren, danke ich dir für deine Unterstützung und lade dich ein, dich auf [meiner Website](https://www.robinwieruch.de/) anzumelden. Nachdem du dort ein Konto erstellt hast, schreibe mir eine E-Mail und füge eine Quittung von Amazon bei. Ich werde dann ein digitales Buch für dich freischalten. Mit einem Konto auf meiner Plattform hast du in Zukunft weiterhin Zugriff auf die neueste Version des Buches.
 
 Wenn du ein gedrucktes Buch gekauft hast, notiere bitte deine Lernschritte im Buch. Ich habe mit Absicht die Printausgabe so gestaltet, dass größere Codefragmente genügend Platz bieten, um dir ausreichend Spielraum zum individuellen Arbeiten zu bieten.
 
 **Wie kann ich beim Lesen des Buches Hilfe bekommen?**
 
-Das Buch verbindet eine Gemeinschaft von Lernenden, die sich gegenseitig helfen und  Menschen, die mitlesen. Tritt dieser Community gerne bei. So erhältst du Hilfe, und/oder du hilfst anderen. Das gegenseitige Unterstützen hilft dir und anderen dabei, Wissen zu verinnerlichen. Folge der Navigation zu meinen Kursen auf meiner [Website](https://www.robinwieruch.de/), melde dich dort an und navigiere zum Menüpunkt Community.
+Das Buch verbindet eine Gemeinschaft von Lernenden, die sich gegenseitig helfen und  Menschen, die mitlesen. Tritt dieser Community gerne bei. So erhältst du Hilfe. Oder du hilfst anderen. Das gegenseitige Unterstützen hilft dir und anderen dabei, Wissen zu verinnerlichen. Folge der Navigation zu den Kursen auf meiner [Website](https://www.robinwieruch.de/), melde dich dort an und navigiere zum Menüpunkt Community.
 
 **Kann ich helfen, den Inhalt zu verbessern?**
 
-Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorschläge berücksichtigen. Erwarte bitte keine Antwort von mir, denn das ist Aufgabe der Community.
+Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorschläge berücksichtigen. Erwarte bitte keine direkte Antwort von mir, denn das ist mir zeitlich nicht immer möglich. Wenn du dir ein Feedback wünschst, dann frage in der Community, siehe "Wie kann ich beim Lesen des Buches Hilfe bekommen?".
 
 **Wie und wo melde ich einen Fehler?**
 
@@ -46,17 +46,17 @@ Wenn du einen Fehler im Code findest, melde dies bitte über Github. Am Ende jed
 
 **Wie unterstütze ich das Projekt idealerweise?**
 
-Du findest meine Lektionen nützlich und möchtest einen Beitrag leisten? Dann suche bitte auf der [About-Seite meiner Website](https://www.robinwieruch.de/about/) nach Informationen darüber, welche Möglichkeiten es gibt, mich zu unterstützen. In jedem Fall ist hilfreich für potentielle Leser, wenn du darüber informierst, wie meine Bücher dir geholfen haben. Nur mit Unterstützung ist es mir möglich, weiterhin kostenloses Material anzubieten.
+Du findest meine Lektionen nützlich und möchtest einen Beitrag leisten? Dann suche bitte auf der [About-Seite meiner Website](https://www.robinwieruch.de/about/) nach Informationen darüber, welche Möglichkeiten es gibt, mich zu unterstützen. In jedem Fall ist hilfreich für potentielle Leser, wenn du darüber informierst, wie meine Bücher dir geholfen haben. Nur mit Unterstützung ist es mir möglich, weiterhin kostenloses Lernmaterial anzubieten.
 
 **Was ist deine Motivation hinter dem Buch?**
 
-Mir ist es wichtig, über aktuelle Themen zu berichten. Ich stoße oft auf online Materialien, die nicht aktualisiert werden oder nur einen kleinen Teil eines Themas abdecken. Manchmal haben Menschen Schwierigkeiten, Lernmaterial zu finden. Ich biete aktuelles Lernmaterial und hoffe, dass ich Menschen mit meinen Projekten unterstütze, indem ich ihnen Inhalte kostenlos zur Verfügung stelle oder [anderes](https://www.robinwieruch.de/giving-back-by-learning-react/).
+Mir ist es wichtig, über aktuelle Themen zu berichten. Ich stoße oft online auf Websites, die nicht aktualisiert werden oder nur einen kleinen Teil eines Themas abdecken. Viele Menschen haben Schwierigkeiten, geeignetes Lernmaterial zu finden. Ich biete aktuelle Inhalte und hoffe, dass ich andere mit meinen Projekten unterstütze, indem ich ihnen Lernmaterial kostenlos zur Verfügung stelle und [etwas zurückgebe](https://www.robinwieruch.de/giving-back-by-learning-react/).
 
 ## Für wen ist dieses Buch?
 
 **JavaScript-Anfänger**
 
-JavaScript-Anfänger mit Grundkenntnissen in JS, CSS und HTML: Wenn du die Webentwicklung während einer Ausbildung lernst und ein grundlegendes Verständnis für JS, CSS und HTML hast, biete dir dieses Buch alles, was du zum Erlernen von React benötigst. Wenn du dich wackelig fühlst und der Meinung bist, dass dein JavaScript-Wissen lückenhaft ist, zögere nicht, diese Lücke zu schließen, bevor du mit dem Buch fortfährst. Du wirst im Buch zusätzlich viele Hinweise und Links zu grundlegendem Wissen finden.
+JavaScript-Anfänger mit Grundkenntnissen in CSS und HTML: Wenn du die Webentwicklung während einer Ausbildung lernst und ein grundlegendes Verständnis für CSS und HTML hast, biete dir dieses Buch alles, was du zum Erlernen von React benötigst. Wenn du dich wackelig fühlst und der Meinung bist, dass dein JavaScript-Wissen lückenhaft ist, dann schließe diese Lücke, bevor du mit dem Buch fortfährst. Im Buch wirst du zusätzlich viele Hinweise und Links zu grundlegendem Wissen finden.
 
 **JavaScript-Veteranen**
 
@@ -64,11 +64,11 @@ jQuery-JavaScript-Veteranen: Wenn du JavaScript früher ausgiebig mit jQuery, Mo
 
 **JavaScript-Enthusiasten**
 
-JavaScript-Enthusiasten mit Kenntnissen in anderen modernen SPA-Frameworks: Wenn du Erfahrungen mit Angular oder Vue gesammelt hast, wirst du zu Beginn auf viele Dinge stoßen, die anders sind. Aber: Alle diese Frameworks bauen auf derselben Grundlage auf, JavaScript und HTML. Nach kurzem Umlernen wirst du dich schnell in React zurechtfinden.
+JavaScript-Enthusiasten mit Kenntnissen in anderen modernen [SPA](https://de.wikipedia.org/wiki/Single-Page-Webanwendung)-Frameworks: Wenn du Erfahrungen mit Angular oder Vue gesammelt hast, wirst du zu Beginn auf viele Dinge stoßen, die anders sind. Aber: Alle diese Frameworks bauen auf derselben Grundlage auf --- JavaScript und HTML. Nach kurzem Umlernen wirst du dich schnell in React zurechtfinden.
 
 **Nicht-JavaScript-Entwickler**
 
-Wenn du vorher eine andere Programmiersprache gelernt hast, bist du mit den verschiedenen Aspekten der Programmierung vertraut. Nachdem du in die Grundlagen zu JavaScript und HTML eingetaucht bist, wirst du React zusammen mit mir schnell lernen.
+Wenn du eine andere Programmiersprache gelernt hast, bist du mit den verschiedenen Aspekten der Programmierung vertraut. Nachdem du dir die Grundlagen zu JavaScript, CSS und HTML angeeignet hast, wirst du React zusammen mit mir schnell lernen.
 
 **Designer und UI/UX-Enthusiasten**
 
@@ -76,4 +76,4 @@ Arbeitest du im Bereich Design, Benutzerinteraktion oder Benutzererfahrung? Dann
 
 **Teamleiter oder Produktmanager**
 
-Wenn du Teamleiter oder Produktmanager einer Entwicklungsabteilung bist, gibt dir dieses Buch eine Übersicht über alle wesentlichen Teile einer React-Anwendung. In jedem Abschnitt wird ein Konzept, ein Muster oder eine Technik erläutert. So wird Schritt für Schritt die Gesamtarchitektur aufgebaut und verbessert. Ergebnis ist eine fertige Anwendung, die alle wesentlichen Aspekte von React berücksichtigt.
+Wenn du Teamleiter oder Produktmanager einer Entwicklungsabteilung bist, vermittelt dir dieses Buch eine Übersicht über alle wesentlichen Teile einer React-Anwendung. In jedem Abschnitt wird ein Konzept, ein Muster oder eine Technik erläutert. So wird Schritt für Schritt die Gesamtarchitektur aufgebaut und verbessert. Ergebnis ist eine fertige Anwendung, die alle wesentlichen Aspekte von React berücksichtigt.
