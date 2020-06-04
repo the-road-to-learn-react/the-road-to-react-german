@@ -94,7 +94,7 @@ Auf diese Weise erreichen wir es, dass HTML-Elemente über JSX-Handlerfunktionen
 />
 ~~~~~~~
 
-HTML und JavaScript arbeiten in JSX zielführend zusammen. Javascript zeigt Objekte mithilfe von HTML im Browser an, übergibt Grundelemente (zum Beispiel `<a>`) an HTML-Attribute (zum Beispiel `href`) und Funktionen an die Attribute eines Elements, um Ereignisse zu behandeln.
+HTML und JavaScript arbeiten in JSX zielführend zusammen. JavaScript zeigt Objekte mithilfe von HTML im Browser an, übergibt Grundelemente (zum Beispiel `<a>`) an HTML-Attribute (zum Beispiel `href`) und Funktionen an die Attribute eines Elements, um Ereignisse zu behandeln.
 
 Ich bevorzuge Pfeilfunktionen aufgrund ihrer Prägnanz als Ereignishandler. In einer größeren React-Komponente verwende ich teilweise normale Funktionsanweisungen, da diese im Gegensatz zu anderen Variablendeklarationen im Hauptteil einer Komponente sichtbarer sind.
 

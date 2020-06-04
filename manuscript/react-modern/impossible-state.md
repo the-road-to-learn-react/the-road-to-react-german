@@ -125,7 +125,7 @@ const storiesReducer = (state, action) => {
 };
 ~~~~~~~
 
-In er jetzigen Version unserer Anwendung geben wir für jeden Statusübergang ein *neues Status*-Objekt zurück. Dieses enthält alle Schlüssel/Wert-Paare des *aktuellen Status*-Objekts (über den [Spread-Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_operator) von Javascript) und die neuen Möglichkeiten Eigenschaften zu überschreiben. Zum Beispiel setzt `STORIES_FETCH_FAILURE` die Variable `isLoading` zurück. Im Gegensatz dazu behält die booleschen Variable `isError` alle Zustände bei (zum Beispiel `stories`). So umgehen wir den zuvor eingeführten Mangel, bei dem der Ladeindikator im Fehlerfall weiterhin angezeigt wurde.
+In er jetzigen Version unserer Anwendung geben wir für jeden Statusübergang ein *neues Status*-Objekt zurück. Dieses enthält alle Schlüssel/Wert-Paare des *aktuellen Status*-Objekts (über den [Spread-Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_operator) von JavaScript) und die neuen Möglichkeiten Eigenschaften zu überschreiben. Zum Beispiel setzt `STORIES_FETCH_FAILURE` die Variable `isLoading` zurück. Im Gegensatz dazu behält die booleschen Variable `isError` alle Zustände bei (zum Beispiel `stories`). So umgehen wir den zuvor eingeführten Mangel, bei dem der Ladeindikator im Fehlerfall weiterhin angezeigt wurde.
 
 Beachte, wie sich die Aktion `REMOVE_STORY` geändert hat. Sie nutzt `state.data`, anstelle von `state`. Der Status ist jetzt ein komplexes Objekt mit Daten-, Lade- und Fehlerzuständen. Vorher enthielt er nichts weiter als die Liste von Storys. Überarbeiten wir den restlichen Code im Hinblick auf diese Änderung:
 
