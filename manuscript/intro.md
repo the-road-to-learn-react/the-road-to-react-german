@@ -1,10 +1,10 @@
 # Vorwort
 
-In diesem Buch lernst du die Grundlagen von React. Du erstellst eine reale Anwendung ohne komplizierte Werkzeuge. Ich erkläre dir alles Notwendige --- von der Projekteinrichtung bis zur Bereitstellung der Anwendung auf einem Webserver. Das Buch enthält zusätzliches Lesematerial und Übungen zu jedem Kapitel. Nachdem du das Buch gelesen hast, verfügst du über die Grundlagen, um deine eigene Anwendung mit React zu erstellen. Das Lernmaterial wird von mir und der Community auf dem neuesten Stand gehalten.
+In diesem Buch lernst du die Grundlagen von React. Du erstellst eine reale Anwendung ohne komplizierte Werkzeuge. Ich erkläre dir alles Notwendige --- von der Projekteinrichtung bis zur Veröffentlichung der Anwendung auf einem Webserver. Das Buch enthält Hinweise zu weiterführendem Lesematerial und Übungen am Ende jedes Kapitels. Nachdem du das Buch gelesen hast, hast du die Grundlagen, um deine eigene Anwendung mit React zu erstellen. Und, was heutzutage nicht unwichtig ist: Das Lernmaterial wird von mir und der Community auf dem neuesten Stand gehalten.
 
-Mit diesem Buch biete ich dir eine Basis, bevor du in die vielen Möglichkeiten, die die React-Community bietet, eintauchst. Die Konzepte enthalten wenige Tools, dafür aber viele Informationen über React selbst. Ich erkläre allgemeine Konzepte, Muster und Best Practice anhand einer realen React-Anwendung.
+Mit diesem Buch biete ich dir eine Basis, bevor du in die vielen Möglichkeiten, die die Community und das Ökosystem bereitstellen, eintauchst. Meine Erklärungen beinhalten nur wenige spezielle Werkzeuge, dafür aber viele Informationen über React selbst. Ich erkläre allgemeine Konzepte, Muster und Best Practice anhand einer realen Anwendung.
 
-Im Wesentlichen lernst du, deine eigene React-Anwendung von Grund auf neu zu erstellen, mit Funktionen wie Paginierung, clientseitiger und serverseitiger Suche und erweiterten Interaktionen wie Sortieren. Ich hoffe, dass meine Begeisterung für React und JavaScript dich ansteckt und so deinen Einstieg erleichtert.
+Im Wesentlichen lernst du, eine eigene React-Anwendung von Grund auf neu zu erstellen, mit Funktionen wie Paginierung, clientseitiger und serverseitiger Suche und erweiterten Interaktionen wie Sortieren. Ich hoffe, dass meine Begeisterung für React und JavaScript dich ansteckt und dir so den Einstieg erleichtert.
 
 ## Über den Autor
 
