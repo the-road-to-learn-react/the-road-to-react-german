@@ -273,7 +273,7 @@ const App = () => {
 ~~~~~~~
 
 
-Wir haben das Abrufen von Daten mit dem dynamischen Argument `page` implementiert. Bei der Ersten und letzten Suche wird immer die Seite (`0`) verwendet, und bei jedem Abruf mit der Schaltfläche „Mehr“ eine inkrementierte. Beim Ausprobieren der Funktion gibt es einen entscheidenden Fehler: Die neuen Abfragen erweitern die vorherige Liste nicht, sondern ersetzen sie vollständig.
+Wir haben das Abrufen von Daten mit dem dynamischen Argument `page` implementiert. Bei der Ersten und letzten Suche wird immer die Seite (`0`) verwendet, und bei jedem Abruf mit der Schaltfläche "More" eine inkrementierte. Beim Ausprobieren der Funktion gibt es einen entscheidenden Fehler: Die neuen Abfragen erweitern die vorherige Liste nicht, sondern ersetzen sie vollständig.
 
 ![](images/concat.png)
 

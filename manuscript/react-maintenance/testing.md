@@ -2,11 +2,11 @@
 
 Das Testen des Quellcodes wird oft vernachlässigt. Dabei ist es wesentlich und zwingend erforderlich. Es ist unentbehrlich, die Qualität und Funktionalität des Codes automatisch zu überprüfen, bevor dieser im Echtsystem angewendet wird. Automatisierte Tests sind schneller durchführbar, fehlerfreier und kostengünstiger. Maschinen sind hier dem Menschen überlegen. Die [Testpyramide](https://martinfowler.com/articles/practical-test-pyramid.html) dient als Grundregel.
 
-Die Testpyramide umfasst End-to-End-Tests, Integrationstests und Komponententests. Unit-Tests werden für kleine, isolierte Codeblöcke verwendet, zum Beispiel eine einzelne Funktion oder Komponente. Integrationstests helfen uns, herauszufinden, ob diese Einheiten zusammenarbeiten. Ein End-to-End-Test simuliert ein reales Szenario, beispielsweise den Anmeldevorgang in einer Webanwendung. Unit-Tests sind unkompliziert zu schreiben und zu warten. Man betrachtet hierbei einen Teilaspekt herausgelöst. Auf End-to-End-Tests trifft das Gegenteil zu.
+Die Testpyramide umfasst End-to-End-Tests (E2E), Integrationstests und Komponententests (Unit-Tests). Letztere werden für kleine, isolierte Codeblöcke verwendet, zum Beispiel eine einzelne Funktion oder Komponente. Man betrachtet hierbei einen Teilaspekt herausgelöst. Integrationstests helfen uns, herauszufinden, ob diese Einheiten zusammenarbeiten. Ein End-to-End-Test simuliert ein reales Szenario, beispielsweise den Anmeldevorgang einer Webanwendung. Unit-Tests laufen schnell ab, sind isolierte Einheiten und somit unkompliziert zu schreiben und zu warten. Auf End-to-End-Tests trifft das Gegenteil zu.
 
 ![](images/testing-pyramid.png)
 
-Scheiben wir zuerst Unit-Tests, die unsere Funktionen und Komponenten abdecken. Danach verwenden wir Integrationstests, um sicherzustellen, dass die einzelnen mit Unit-Tests unabhängig geprüften Einheiten, wie erwartet zusammenarbeiten. Am Ende benötigen wir einige End-to-End-Tests, um kritische Szenarien zu simulieren. In diesem Kapitel behandeln wir **Unit und Integrationstests** sowie eine komponentenspezifische Testtechnik namens **Schnappschusstests oder Snapshot Tests**. **End-to-End-Tests** werden Teil der Übungen sein.
+Scheiben wir zuerst Unit-Tests, die unsere Funktionen und Komponenten abdecken. Danach verwenden wir Integrationstests, um sicherzustellen, dass die einzelnen mit Unit-Tests unabhängig geprüften Einheiten, wie erwartet zusammenarbeiten. Am Ende benötigen wir End-to-End-Tests, um kritische Szenarien zu simulieren. In diesem Kapitel behandeln wir **Unit und Integrationstests** sowie eine komponentenspezifische Testtechnik namens **Schnappschusstest oder Snapshot Test**. **End-to-End-Tests** werden Teil der Übungen sein.
 
 Da es viele Test-Bibliotheken gibt, ist es als Anfänger schwierig, die passende auszuwählen. Wir werden [Jest](https://jestjs.io/) und die [React Testing Library](https://testing-library.com/) (RTL) verwenden. Während Jest ein umfassendes Testframework mit Testrunner, Testsuiten, Testfällen und Assertions (Behauptungen) ist, wird die React Testing Library zum Rendern von React-Komponenten, Auslösen von Ereignissen wie Mausklicks und Auswählen von HTML-Elementen aus dem DOM zum Ausführen von Assertions (Behauptungen) verwendet. In den nächsten Abschnitten werden wir beide Tools Schritt für Schritt von der Einrichtung über Unit-Tests bis hin zu Integrationstests untersuchen.
 
@@ -27,7 +27,7 @@ describe('something truthy and falsy', () => {
 });
 ~~~~~~~
 
-Während der „describe“-Block die *Testsuite* ist, sind die „test“-Blöcke die *Testfälle*. Beachte, dass es möglich ist, Testfälle ohne Testsuite zu verwenden. Für unser Beispiel ist das nicht relevant, mir ist es aber wichtig, es zu erwähnen:
+Während der "describe"-Block die *Testsuite* ist, sind die "test"-Blöcke die *Testfälle*. Beachte, dass es möglich ist, Testfälle ohne Testsuite zu verwenden. Für unser Beispiel ist das nicht relevant, mir ist es aber wichtig, es zu erwähnen:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -40,14 +40,14 @@ test('false to be false', () => {
 });
 ~~~~~~~
 
-Warum nutzen wir Testsuiten und Testfälle? Es kommt häufig vor, dass beispielsweise eine Funktion oder eine Komponente mehrere Fälle aufweist. Jeder Testfall steht für einen Teil eines Szenarios. Eine Testsuite ist in der Regel eine Sammlung dieser Testfällen, die zusammen eine Aktion simulieren. Zur Testausführung werden diese in einer Gruppe zusammengefasst aufgerufen. So wird die Aktion im Ganzen getestet. Daher ist es sinnvoll, Testsuiten und Testfälle in Kombination zu verwenden. Manchmal testet man eine aufeinander abgestimmte Abfolge, beispielsweise
+Warum nutzen wir Testsuiten und Testfälle? Es kommt häufig vor, dass beispielsweise eine Funktion oder eine Komponente mehrere Fälle aufweist --- jeder ist Teil eines Szenarios. Eine Testsuite ist in der Regel eine Sammlung der Testfälle, die zusammen eine Aktion simulieren. Zur Testausführung werden diese in einer Gruppe zusammengefasst aufgerufen. So wird die Aktion im Ganzen getestet. Daher ist es sinnvoll, Testsuiten und Testfälle in Kombination zu verwenden. Manchmal testet man eine aufeinander abgestimmte Abfolge, beispielsweise
 
 - Testfall 1: Anmeldung
 - Testfall 2: Anzeige einer Liste 
 - Testfall 3: Löschung eines Eintrags
 - Testfall 4: Abmeldung. 
 
-Wir testen die Teile der App Komponente zusammenhängend in einer Testsuite:
+Wir testen Teile der App-Komponente zusammenhängend in einer Testsuite:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -81,7 +81,7 @@ describe('something truthy and falsy', () => {
 });
 ~~~~~~~
 
-Glücklicherweise beinhaltet die *Create React App* Jest, sodass alles Wichtige installiert und konfiguriert ist. Führe die Tests mit dem Skript aus der Datei *package.json* direkt in der Befehlszeile aus. Verwendet dazu den Befehl `npm test` und du siehst die folgende Ausgabe:
+Glücklicherweise beinhaltet die *Create React App* Jest, sodass alle wichtigen Werkzeuge installiert und konfiguriert sind. Führe die Tests mit dem Skript aus der Datei *package.json* direkt in der Befehlszeile aus. Verwendet dazu den Befehl `npm test` und du siehst die folgende Ausgabe:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -91,7 +91,7 @@ Glücklicherweise beinhaltet die *Create React App* Jest, sodass alles Wichtige 
     ✓ false to be false (1ms)
 
 Test Suites: 1 passed, 1 total
-Tests:       1 passed, 1 total
+Tests:       2 passed, 2 total
 Snapshots:   0 total
 Time:        2.78s, estimated 4s
 Ran all test suites related to changed files.
@@ -436,7 +436,7 @@ describe('Item', () => {
 });
 ~~~~~~~
 
-Für die beiden Behauptungen oder Assertions verwenden wir zwei neue Funktionen: `toBeInTheDocument` und `toHaveAttribute`. Um zu überprüfen, ob ein Element mit dem Text "Jordan Walke" und ob eines mit dem Text „React“ im `href` Attributwert im Dokument vorhanden ist.
+Für die beiden Behauptungen oder Assertions verwenden wir zwei neue Funktionen: `toBeInTheDocument` und `toHaveAttribute`. Um zu überprüfen, ob ein Element mit dem Text "Jordan Walke" und ob eines mit dem Text "React" im `href` Attributwert im Dokument vorhanden ist.
 
 Die Funktion `getByText` findet das eine Element mit den sichtbaren Texten "Jordan Walke" und "React". Verwende Äquivalent `getAllByText`, wenn du nach mehr als einem suchst. RTL ist hier intuitiv aufgebaut. Für viele Funktionen ist diese Namenswahl für die Anwendung auf ein oder alle Elemente entsprechend implementiert.
 
@@ -525,7 +525,7 @@ describe('SearchForm', () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Wir verschaffen uns wieder mithilfe des Debuggens einen Überblick. Danach stellen wir die erste Behauptung oder Assertion für das Suchformular auf. Im Falle von Eingabefeldern ist die Funktion „getByDisplayValue“ der perfekte Kandidat. Diese gibt das das Feld als Element zurückzugeben:
+Wir verschaffen uns wieder mithilfe des Debuggens einen Überblick. Danach stellen wir die erste Behauptung oder Assertion für das Suchformular auf. Im Falle von Eingabefeldern ist die Funktion "getByDisplayValue" der perfekte Kandidat. Diese gibt das das Feld als Element zurückzugeben:
 
 Again, we start with the debugging. After evaluating what we have rendered here, we can make our first assertion for the SearchForm. In the case of input fields, the `getByDisplayValue` search function is the perfect candidate to return the input field as element:
 
@@ -571,7 +571,7 @@ describe('SearchForm', () => {
 });
 ~~~~~~~
 
-Mit der Funktion `getByLabelText` finden wir ein Element anhand einer Bezeichnung in einem Formular. Dies ist praktisch für Komponenten, die über mehrere Labels und HTML-Steuerelemente verfügen. Hast du bemerkt, wie wir hier einen [regulären Ausdruck](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Regular_Expressions) nutzen? Wenn wir stattdessen eine Zeichenfolge verwendet hätten, müssten wir den Doppelpunkt für „Suche:“ einfügen. Durch die Verwendung eines regulären Ausdrucks werden Strings abgeglichen, die die Zeichenfolge „Suchen“ enthalten. Das macht das Auffinden von Elementen wesentlich komfortabler. Falls du bisher keine regulären Ausdrücke verwendest, sieh dir diese einmal an. Sie erleichtern nach einer Einarbeitungszeit in der Regel das programmieren enorm.
+Mit der Funktion `getByLabelText` finden wir ein Element anhand einer Bezeichnung in einem Formular. Dies ist praktisch für Komponenten, die über mehrere Labels und HTML-Steuerelemente verfügen. Hast du bemerkt, wie wir hier einen [regulären Ausdruck](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Regular_Expressions) nutzen? Wenn wir stattdessen eine Zeichenfolge verwendet hätten, müssten wir den Doppelpunkt für "Suche:" einfügen. Durch die Verwendung eines regulären Ausdrucks werden Strings abgeglichen, die die Zeichenfolge "Suchen" enthalten. Das macht das Auffinden von Elementen wesentlich komfortabler. Falls du bisher keine regulären Ausdrücke verwendest, sieh dir diese einmal an. Sie erleichtern nach einer Einarbeitungszeit in der Regel das programmieren enorm.
 
 Auf jeden Fall testen wir die interaktiven Teile der SearchForm-Komponente. Da der Callback-Handler, der als Eigenschaften (props) an die SearchForm-Komponente übergeben wird, mit Jest durch eine Mock-Funktion ersetzt ist, prüfen wir, ob diese aufgerufen wurden:
 

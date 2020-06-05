@@ -119,5 +119,5 @@ Lese mehr über [JavaScript Object Initializers](https://developer.mozilla.org/d
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Reverse-Sort).
   * Bestätige die [Änderungen gegenüber dem letzten Kapitel](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Sort...hs/Reverse-Sort?expand=1).
-* Überlege, welche Nachteile es hat, den Sortierstatus in der Liste anstelle der App-Komponente zu behalten. Wenn du keine Idee hast, dann sortiere die Liste nach „Titel“ und bestätige danach die Suche. Was ist anders, wenn der Sortierstatus in der App-Komponente verwaltet wird?
+* Überlege, welche Nachteile es hat, den Sortierstatus in der Liste anstelle der App-Komponente zu behalten. Wenn du keine Idee hast, dann sortiere die Liste nach "Titel" und bestätige danach die Suche. Was ist anders, wenn der Sortierstatus in der App-Komponente verwaltet wird?
 * Zeige dem Benutzer in welcher Form eine Sortierung aktiv ist. Verwende neben jeder aktiven Sortierschaltfläche einen [Pfeil](https://www.flaticon.com/packs/arrow-set-2), der die Richtung anzeigt.
