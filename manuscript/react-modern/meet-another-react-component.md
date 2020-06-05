@@ -1,6 +1,6 @@
-## Lerne eine andere React-Komponente kennen
+## Mach dich mit einer anderen React-Komponente bekannt
 
-Bisher haben wir ausschließlich die App-Komponente zum Erstellen unserer Anwendungen genutzt. Du hast die App im letzten Abschnitt verwendet, um alles durchzuführen, was zum Rendern einer Liste in JSX erforderlich ist. Vorgesehen war es, dass die App mit Ihren Anforderungen wächst. Damit die App bei komplexeren Aufgaben übersichtlich bleibt, teilen wir die Hauptkomponente in Unterkomponenten auf. Wir erstellen eine eigenständige Listenkomponente:
+Bisher haben wir ausschließlich die App-Komponente zum Erstellen unserer Anwendungen genutzt. Du hast die App im letzten Abschnitt verwendet, um alles abzuwickeln, was zum Rendern einer Liste in JSX erforderlich ist. Klar ist, dass die App mit Ihren Anforderungen wächst. Damit die App bei komplexeren Aufgaben übersichtlich bleibt, teilen wir die Hauptkomponente in Unterkomponenten auf. Wir erstellen eine eigenständige Komponente für die Liste:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -67,16 +67,16 @@ function App() {
 }
 ~~~~~~~
 
-Voilà! Du hast deine erste React-Komponente erstellt! Das Beispiel gibt dir einen kleinen Einblick wie diese komplexe Aufgaben in größeren React-Anwendungen übernehmen.
+Voilà! Du hast deine erste React-Komponente erstellt! Das Beispiel gibt dir einen kleinen Einblick wie komplexe Aufgaben in größeren React-Anwendungen umgesetzt werden.
 
 ![](images/component-tree.png)
 
-Komplexe React-Anwendungen verfügen über **Komponentenhierarchien** oder **Komponentenbäume**. Es gibt normalerweise eine **Einstiegspunktkomponente** (zum Beispiel App), die einen Baum darunter überspannt. Die App ist die **übergeordnete Komponente** der Liste. Andersherum ist die Liste eine **untergeordnete Komponente** der App. In einem Komponentenbaum ist die App normalerweise die **Stammkomponente**. Die Komponenten, die keine anderen rendern, werden als **Blattkomponenten** (zum Beispiel Liste) bezeichnet. Es ist möglich, dass die App mehrere Komponenten unter sich hat. Wenn die App eine andere untergeordnete Komponente hat, bezeichnen wir diese als **Geschwisterkomponente** der Liste.
+Komplexe React-Anwendungen verfügen über **Komponentenhierarchien** oder **Komponentenbäume**. Es gibt normalerweise eine **Einstiegspunktkomponente** (zum Beispiel App), die einen Baum darunter überspannt. Die App ist die **übergeordnete Komponente** von List. Andersherum ist List eine **untergeordnete Komponente** der App. In einem Komponentenbaum ist die App normalerweise die **Stammkomponente**. Komponenten, die keine anderen rendern, werden als **Blattkomponenten** (zum Beispiel Item) bezeichnet. Es ist möglich, dass eine mehrere unter sich hat. In der Beispielanwendung hat die App zwei untergeordnete Komponenten. Diese bezeichnen wir als **Geschwisterkomponenten**. In unserem Beispiel sind dies List und Search.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Meet-another-React-Component).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lists-in-React...hs/Meet-another-React-Component?expand=1).
-* Stelle die Komponenten der Beispielanwendung grafisch dar. Zeichnen die App und die Listenkomponente als Baum auf ein Blatt Papier. Erweitere diesen Komponentenbaum mit möglichen Komponenten (beispielsweise einer Suchkomponente für das Eingabefeld und das Label). Versuche herauszufinden, welche anderen Teile als eigenständige Komponenten integrierbar sind.
-* Wenn eine Suchkomponente in der App verwendet wird, wäre diese eine Geschwister-, Eltern- oder Kindkomponente für die Listenkomponente?
-* Frage dich, welche Probleme auftreten, wenn wir `list` weiterhin als globale Variable behandeln. Wie wir mit diesem umgehen ist Thema in den nächsten Kapiteln.
+* Erweitere den Komponentenbaum der am Ende dieses Kapitels abgedruckt ist mit möglichen Komponenten. Versuche herauszufinden, welche anderen Teile als eigenständige Komponenten integrierbar sind.
+* Wenn eine Suchkomponente in der App-Komponente verwendet wird, welche Vorteile hat es, dass diese eine Geschwisterkomponente der Listenkomponente ist und keine Eltern- oder Kindkomponente?
+* Frage dich, welche Probleme auftreten, wenn wir `list` weiterhin als globale Variable behandeln. Wie wir diese lösen ist Thema in den nächsten Kapiteln.

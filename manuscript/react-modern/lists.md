@@ -1,6 +1,6 @@
-## Lists in React
+## Listen in React
 
-Bisher haben wir primitive Variablen in JSX gerendert. Als Nächstes rendern wir eine Liste, die aus mehreren Elementen besteht. Wir werden zuerst mit Beispieldaten experimentieren und diese dann anwenden, um Daten von einer Remote-API abzurufen. Definieren wir zunächst die Liste als Array. Ich hatte es erwähnt: Es ist möglich, eine Variable außerhalb oder innerhalb einer Komponente zu definieren. Das folgende Beispiel zeigt dir die externe Definition:
+Bisher haben wir ausschließlich [primitive Variablen](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Grammatik_und_Typen#Datentypen) in JSX gerendert. Als Nächstes rendern wir eine Liste, die aus mehreren Elementen besteht. Wir werden zuerst mit Beispieldaten experimentieren. Später rufen wir Daten von einer Remote-API ab. Definieren wir zunächst die Liste als [JavaScript-Array](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array). Ich hatte es bereits erwähnt: Es ist möglich, eine Variable außerhalb oder innerhalb einer Komponente zu definieren. Das folgende Beispiel zeigt dir erneut die externe Definition:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -32,9 +32,9 @@ function App() { ... }
 export default App;
 ~~~~~~~
 
-Im Beispiel verwendete ich drei Punkte `...` als Platzhalter, um das Code-Schnipsel übersichtlich zu halten, und mich auf den wesentlichen Teil zu konzentrieren: die "list"-Variable außerhalb der App-Komponente. Ich werde die drei Punkte `...` im ganzen Buch als Platzhalter für Codeblöcke verwenden, die ich in früheren Übungen erstellt habe. Wenn dir an einer Stelle nicht klar ist, was anstelle der Punkte steht, überprüfe deinen Code bitte mithilfe des CodeSandbox-Links, den ich am Ende eines jeden Kapitels mit Code-Beispielen angegeben habe.
+Im Beispiel verwendete ich drei Punkte `...` als Platzhalter, um das Code-Schnipsel übersichtlich zu halten, und mich auf den wesentlichen Teil zu konzentrieren: die neu eingeführte "list"-Variable. Ich werde die drei Punkte `...` im ganzen Buch als Platzhalter für Codeblöcke verwenden, die ich in früheren Übungen erstellt habe. Wenn dir an einer Stelle nicht klar ist, was anstelle der Punkte steht, überprüfe deinen Code bitte mithilfe des CodeSandbox-Links, den ich am Ende eines jeden Kapitels angebe.
 
-Jedes Element in der Liste hat einen Titel, eine URL, einen Autor, eine Kennung (`objectID`), Punkte (die die Beliebtheit anzeigen) und eine Anzahl von Kommentaren. Als Nächstes rendern wir die Liste in JSX dynamisch:
+Jedes Element der "list"-Variable beinhaltet einen Titel, eine URL, einen Autor, eine Anzahl von Kommentaren, Punkte (welche die Beliebtheit anzeigen) und eine Kennung (`objectID`). Als Nächstes rendern wir die Liste mit JSX. Als Erstes legen wir das Drumherum der Liste an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -53,14 +53,14 @@ function App() {
 # leanpub-end-insert
 
 # leanpub-start-insert
-      {/* render the list here */}
+      {/* Rendere die Liste hier. */}
 # leanpub-end-insert
     </div>
   );
 }
 ~~~~~~~
 
-Verwende [die JavaScript-Zuordnungsmethode `map()` für Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/map), um über jedes Element der Liste zu iterieren und so eine neue Liste zurückzugeben:
+Verwende [die JavaScript-Zuordnungsmethode `map()`](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/map), um über jedes Element des Arrays zu iterieren und dabei die Liste für die Anzeige anzulegen. Nachfolgend zeige ich dir die Funktion `map()` zunächst unabhängig von unserer Beispielanwendung:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -74,7 +74,7 @@ console.log(newNumbers);
 // [2, 8, 18, 32]
 ~~~~~~~
 
-Im vorherigen Beispiel haben wir eine JavaScript-Variable auf eine andere abgebildet. Wir gehen nun einen Schritt weiter. Wir geben ein JSX-Fragment zurück, das jedes Element der Liste rendert:
+Im vorherigen Beispiel haben wir eine JavaScript-Variable auf eine andere abgebildet. In unserer Beispielanwendung bilden wir diese nicht nur ab, wir zeigen Sie im Frontend an. Dazu nutzen wir ein JSX-Fragment. So rendern wir jedes Element der Liste auf eine unkomplizierte Art und Weise:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -95,11 +95,11 @@ function App() {
 }
 ~~~~~~~
 
-Einer meiner ersten "Aha"-Momente mit React war dieser: ich habe einer Liste von JavaScript-Objekten --- ohne zusätzliche HTML-Template-Syntax --- HTML-Elementen zugeordnet. Erforderlich war ausschließlich JavaScript in HTML.
+Einer meiner ersten "Aha"-Momente mit React war dieser: Ich habe einer Liste von JavaScript-Objekten --- ohne zusätzliche HTML-Template-Syntax --- HTML-Elementen zugeordnet. Erforderlich war ausschließlich JavaScript in HTML.
 
 ![](images/jsx-mapping.png)
 
-React zeigt jetzt jedes Element an. Verbessere die Ausgabe weiter, so dass React erweiterte dynamische Listen effizienter handhabt. Durch Zuweisen eines Schlüsselattributs zu jedem Listenelement identifiziert React einzelne geänderte Elemente, wenn sich die Liste ändert --- zum Beispiel bei einer Änderung der Reihenfolge. Glücklicherweise verfügen unsere Listenelemente über eine ID:
+React zeigt jetzt jedes Element an. Verbessere die Ausgabe weiter, so dass React dynamische Listen effizienter handhabt. Durch Zuweisen eines Schlüsselattributs zu jedem Listenelement identifiziert React einzelne Elemente. Dies ist sinnvoll, wenn sich die Liste verändert --- zum Beispiel bei einer Änderung der Reihenfolge. Glücklicherweise verfügen unsere Listenelemente über eine ID:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -126,7 +126,7 @@ function App() {
 }
 ~~~~~~~
 
-Vermeide es, den Index des Elements im Array zu verwenden. So stellst du sicher, dass die ID eine stabile Kennung ist. React identifiziert die Elemente andernfalls nicht korrekt, wenn die Liste beispielsweise ihre Reihenfolge ändert:
+Vermeide es, den Index vom Element losgelöst zu verwenden. So stellst du sicher, dass die ID eine stabile Kennung ist. React identifiziert die Elemente andernfalls unter Umständen nicht korrekt:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -140,7 +140,7 @@ Vermeide es, den Index des Elements im Array zu verwenden. So stellst du sicher,
 })}
 ~~~~~~~
 
-Bisher wird für jeden Artikel nur der Titel angezeigt. Experimentiere mit der Anzeige weiterer Eigenschaften des Elements:
+Bisher wird für jeden Artikel der Titel angezeigt. Experimentiere mit der Anzeige weiterer Eigenschaften des Elements:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -170,13 +170,13 @@ function App() {
 }
 ~~~~~~~
 
-Die Funktion `map` ist Bestandteil von JSX. Innerhalb dieser Funktion haben wir Zugriff auf jedes Element und seine Eigenschaften. Die Eigenschaft `url` jedes Elements wird als dynamisches Attribut `href` für das Ankertag verwendet. JavaScript in JSX kann nicht nur zum Anzeigen von Elementen verwendet werden, sondern auch zum dynamischen Zuweisen von HTML-Attributen.
+`map` macht den Code innerhalb von JSX knapp und prägnant. Im Bereich dieser Funktion haben wir Zugriff auf jedes Element und seine Eigenschaften. Die `url` wird Attribut `href` für das Ankertag verwendet. JavaScript in JSX wird nicht nur zum Anzeigen von Elementen genutzt. Wir verwenden es ebenfalls zum dynamischen Zuweisen von HTML-Attributen.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Lists-in-React).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-JSX...hs/Lists-in-React?expand=1).
-* Informiere dich warum das Schlüsselattribut (ID) in React benötigt wird ([0](https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7), [1](https://www.robinwieruch.de/react-list-key), [2](https://reactjs.org/docs/lists-and-keys.html)). Es ist nicht tragisch, wenn du die Implementierung nicht vollständig verstehst. Konzentrieren dich in diesem Fall auf die Anwendung in dynamischen Listen.
+* Informiere dich darüber, warum das Schlüsselattribut (ID) in React benötigt wird ([0](https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7), [1](https://www.robinwieruch.de/react-list-key), [2](https://reactjs.org/docs/lists-and-keys.html)). Es ist nicht tragisch, wenn du die Implementierung nicht vollständig verstehst. Konzentrieren dich in diesem Fall auf die Anwendung in dynamischen Listen.
 * Wiederhole die [standardmäßig integrierten Array-Methoden](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/) - insbesondere *map*, *filter*, und *reduce* --- die in nativem JavaScript verfügbar sind.
 * Was passiert, wenn du `null` anstelle von JSX zurückgibst?
 * Erweitere die Liste um einige weitere Elemente, um das Beispiel realistischer zu gestalten.
