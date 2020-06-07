@@ -1,8 +1,8 @@
 ## Instanziierung einer Komponente in React
 
-Als Nächstes werde ich kurz die JavaScript-Klassen beleuchten, damit du die Komponenten in React besser verstehst. Technisch gesehen unterscheiden die beiden sich, was wichtig ist! Trotzdem bin ich der Meinung, dass die folgenden Erklärungen hilfreich sind, um das Konzept einer Komponente zu verstehen.
+Als Nächstes werde ich kurz auf JavaScript-Klassen eingehen. Dies ist hilfreich, um Komponenten in React besser einzuordnen. Technisch gesehen unterscheiden die beiden sich, was wichtig ist! Trotzdem bin ich der Meinung, dass die folgenden Erklärungen hilfreich sind, um eine React-Komponente vom Konzept her zu verstehen.
 
-Klassen werden in der Regel in objektorientierten Programmiersprachen verwendet. JavaScript, ermöglicht es, das funktionale und objektorientierte Programmierung nebeneinander existiert. Sieh dir die folgende Klasse an, um dir die objektorientierte Programmierung in JavaScript zu vergegenwärtigen:
+Klassen verwenden wir in der Regel in objektorientierten Programmiersprachen. JavaScript ermöglicht es funktional und objektorientiert zu Programmierung. Sieh dir die folgende Klasse an, um dir die letztere Technik in JavaScript zu vergegenwärtigen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -18,9 +18,9 @@ class Developer {
 }
 ~~~~~~~
 
-Jede Klasse verfügt über einen Konstruktor, der Argumente als Eingabe annimmt und diese der Klasseninstanz zuweist. Eine Klasse definiert Funktionen (z. B. `getName`), diese nennt man **Methoden** oder **Klassenmethoden**.
+Jede Klasse verfügt über einen Konstruktor, der Argumente als Eingabe entgegen nimmt und diese der Klasseninstanz zuweist. Eine Klasse definiert Funktionen (beispielsweise `getName`), diese nennt man im objektorientierten Kontext **Methoden** oder **Klassenmethoden**.
 
-Das einmalige Definieren der Klasse ist nur ein Teil, diese zu instanziieren ist ein anderer Teil. Die Klassendefinition ist vereinfacht ausgedrückt die Blaupause ihrer Eigenschaften und Methoden. Wenn eine Instanz mit der Anweisung `new` erstellt wird, ergo wenn die Klasse instanziiert wird, wird diese angewendet.
+Das einmalige Definieren der Klasse ist nur ein Teil, diese zu Instanziieren ist der anderer Teil, der im Ergebnis das Objekt erzeugt. Die Klassendefinition ist vereinfacht ausgedrückt die Blaupause ihrer Eigenschaften und Methoden. Wenn eine Instanz mit der Anweisung `new` erstellt wird, ergo wenn die Klasse instanziiert wird, wird diese angewendet. In der Definition weiß man, dass ein Developer die Eigenschaft `name` hat. Nachdem das Objekt instanziiert wurde, ist es möglich, *Dennis* und *Robin* zu unterscheiden:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -40,7 +40,7 @@ console.log(dennis.getName());
 // "Dennis Wieruch"
 ~~~~~~~
 
-Wenn eine Klassendefinition vorhanden ist, ist es möglich *mehrere* Instanzen davon zu erstellt. Dies ähnelt einer React-Komponente, die nur *eine* Komponentendefinition hat, aber in der Regel *mehrere* Komponenteninstanzen hat:
+Wenn eine Klassendefinition vorhanden ist, ist es möglich *mehrere* Instanzen davon zu erstellt. Dies ähnelt einer React-Komponente, die nur *eine* Komponentendefinition, aber in der Regel *mehrere* Komponenteninstanzen hat:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
