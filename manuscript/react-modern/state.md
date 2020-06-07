@@ -1,8 +1,8 @@
 ## Statusmanagement in React
 
-Reacts Eigenschaften (Props) werden verwendet, um Informationen im Komponentenbaum weiterzugeben. Der **React Status (State)** dient dazu, eine Interaktion zu ermöglichen. Zum Beispiel verändern wir die Anzeige im Browser, indem wir mit der Anwendung interagieren.
+Eigenschaften (Props) werden in React verwendet, um Informationen innerhalb des Komponentenbaums weiterzugeben. Der **React Status (State)** dient dazu, eine Interaktion zu ermöglichen. Beispielsweise verändern wir die Anzeige im Browser, indem wir mit der Anwendung interagieren.
 
-Zu Beginn ist es wichtig, dass du die Funktion `useState` kennst. Wir übernehmen diese aus `React` zum Verwalten des Status. Die Funktion `useState` wird als Hook bezeichnet. Es gibt mehr als einen **React Hook** und du wirst in den nächsten Abschnitten mehr darüber erfahren. Konzentrieren wir uns vorerst auf **React's `useState` Hook**:
+Zu Beginn ist es wichtig, dass du die Funktion `useState` kennst. Wir verwalten mit ihr in React den Status. `useState` wird als Hook bezeichnet. Es gibt mehr als einen **React Hook** und du wirst in den nächsten Abschnitten mehr über diese erfahren. Konzentrieren wir uns vorerst auf den **`useState`-Hook**:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -19,22 +19,22 @@ const App = () => {
 
 Der `useState`-Hook in React verwendet einen *Anfangszustand* als Argument und die Funktion gibt ein Array mit zwei Werten zurück. Wir verwenden als Anfangszustand eine leere Zeichenfolge. Der erste Wert (`searchTerm`) steht für den *aktuellen Zustand*; Der zweite Wert ist eine *Funktion zum Aktualisieren dieses Status* (`setSearchTerm`). Ich werde die Funktion *Statusaktualisierungsfunktion* nennen.
 
-Lies bitte den Text [Destrukturierung von JavaScript-Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destrukturierende_Zuweisung)  wenn du mit der Syntax der beiden Werte aus dem zurückgegebenen Array nicht vertraut bist. Destrukturierung  wird verwendet, um einem Array gezielter auszulesen. Das nächste Beispiel verdeutlicht die Vorteile der  Array-Destrukturierung:
+Lies bitte den Text [Destrukturierung von JavaScript-Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destrukturierende_Zuweisung)  wenn du mit der Syntax der beiden Werte aus dem zurückgegebenen Array nicht vertraut bist. Destrukturierung  wird verwendet, um ein Array gezielter auszulesen. Das nächste Beispiel verdeutlicht die Vorteile der  Array-Destrukturierung:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// basic array definition
+// Grundlegende Array-Definition
 const list = ['a', 'b'];
 
-// no array destructuring
+// Keine Array-Destrukturierung
 const itemOne = list[0];
 const itemTwo = list[1];
 
-// array destructuring
+// Array-Destrukturierung
 const [firstItem, secondItem] = list;
 ~~~~~~~
 
-Der React `useState`-Hook ist eine Funktion, die ein Array zurückgibt. Vergleiche ihn mit dem folgenden JavaScript-Beispiel:
+Der React `useState`-Hook ist eine Funktion, die ein Array zurückgibt. Vergleiche diese mit dem folgenden JavaScript-Beispiel:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -42,22 +42,22 @@ function getAlphabet() {
   return ['a', 'b'];
 }
 
-// no array destructuring
+// Keine Array-Destrukturierung
 const itemOne = getAlphabet()[0];
 const itemTwo = getAlphabet()[1];
 
-// array destructuring
+// Array-Destrukturierung
 const [firstItem, secondItem] = getAlphabet();
 ~~~~~~~
 
-Die Array-Destrukturierung ist nichts anderes als eine Kurzversion, mit der auf mehrere Elemente Nacheinander zugegriffen wird. Wenn Sie das Gleiche ohne die Array-Destrukturierung in React ausdrücken, wird es weniger lesbar:
+Die Array-Destrukturierung ist nichts anderes als eine Kurzversion, mit der auf mehrere Elemente nacheinander zugegriffen wird. Wenn du das Gleiche ohne Destrukturierung schreibst, ist das Ergebnis unübersichtlicher:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
 const App = () => {
   const stories = [ ... ];
 
-  // less readable version without array destructuring
+  // Unübersichtlicher Version ohne Array-Destrukturierung
   const searchTermState = React.useState('');
   const searchTerm = searchTermState[0];
   const setSearchTerm = searchTermState[1];
@@ -66,7 +66,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Das React-Team entschied sich für die Array-Destrukturierung aufgrund seiner präzisen Syntax und der Fähigkeit, destrukturierte Variablen zu benennen. Das folgende Codefragment ist ein weiteres Beispiel für die Array-Destrukturierung:
+Die React-Entwickler entschieden sich für die Array-Destrukturierung aufgrund der präzisen Syntax und der Fähigkeit, destrukturierte Variablen zu benennen. Das folgende Codefragment ist ein weiteres Beispiel:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -81,7 +81,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Nachdem wir den Status initialisiert haben und Zugriff auf den aktuellen Status und die Statusaktualisierungsfunktion haben, verwenden wir diese, um den aktuellen Status anzuzeigen und im Ereignis-Handler der App-Komponente zu aktualisieren:
+Wir haben den Status initialisiert und wir haben Zugriff auf den aktuellen Status und die Statusaktualisierungsfunktion. Jetzt verwenden wir diese Funktion, um den aktuellen Status anzuzeigen und ihn im Ereignis-Handler der App-Komponente zu aktualisieren:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -117,11 +117,11 @@ const App = () => {
 };
 ~~~~~~~
 
-Wenn der Benutzer eine Eingabe im Eingabefeld tätigt, wird dessen Änderungsereignis vom Handler mit dem aktuellen Wert erfasst. Der Handlers legt dann mithilfe der Statusaktualisierungsfunktion den neuen Status fest. Daraufhin wird die Komponente nochmals gerendert, was bedeutet, dass die Komponentenfunktion erneut ausgeführt wird. Der neue Status tritt anstelle des aktuellen und wird im JSX der Komponente angezeigt.
+Wenn ein Benutzer eine Eingabe im Eingabefeld tätigt, wird die Änderung vom Handler erfasst. Dieser aktualisiert daraufhin mithilfe der Statusaktualisierungsfunktion den Status. Als Folge dessen wird die Komponente neu gerendert. Der neue Status tritt anstelle des aktuellen und wird im Browser angezeigt.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-State).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Props...hs/React-State?expand=1).
 * Lese mehr zur [Destrukturierung von JavaScript-Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring).
-* Lese mehr zum Thema React's useState Hook ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://reactjs.org/docs/hooks-state.html)), da dieser deine React-Komponente interaktiv macht.
+* Lese mehr zu useState-Hooks ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://de.reactjs.org/docs/hooks-state.html)), da dieser deine React-Komponente interaktiv macht.
