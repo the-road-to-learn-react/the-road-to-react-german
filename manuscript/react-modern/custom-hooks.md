@@ -1,4 +1,4 @@
-## Benutzerdefinierte React Hooks (Fortgeschrittene Anleitung)
+## Benutzerdefinierte React Hooks (fortgeschrittene Anleitung)
 
 Wir haben die beiden beliebtesten Hooks in React behandelt: `useState` und `useEffect`. Mithilfe von `useState` wird die Anwendung interaktiv oder wechselseitig beeinflussend. Mit `useEffect` nimmst du Einfluss auf den Lebenszyklus deiner Komponente.
 

@@ -1,4 +1,4 @@
-## React Status (Fortgeschrittene Anleitung)
+## React Status (fortgeschrittene Anleitung)
 
 Das gesamte Statusmanagement in unserer Anwendung verwendet den `useState` Hook von React. Eine ausgefeilte Statusverwaltung nutzt zusätzlich unter Umständen **Reacts useReducer Hook**. Da sich beim Konzept der Reduzierungen in JavaScript die Geister scheiden, werden ich hier nicht ausführlich darauf eingehen. Unbeachtet lasse ich das Thema aber ebenfalls nicht. Die Übungen am Ende dieses Abschnitts geben dir genug Material, um dir deine eigene Meinung zu bilden.
 

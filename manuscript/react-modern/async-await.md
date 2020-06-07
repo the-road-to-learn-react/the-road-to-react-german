@@ -1,4 +1,4 @@
-## Async/Await in React (Fortgeschrittene Anleitung)
+## Async/Await in React (fortgeschrittene Anleitung)
 
 Du wirst in React häufig mit asynchronen Daten arbeiten. Daher ist es hilfreich, wenn du die alternative Syntax für die Behandlung von Promise-Objekten kennst: async/await. Aus diesem Grund habe ich die Funktion `handleFetchStories` in unserem Beispiel überarbeitet. Mein Refactoring zeigt dir, wie du idealerweise vorgehst. Eine Fehlerbehandlung lasse ich im ersten Schritt der Übersicht halber außen vor:
 

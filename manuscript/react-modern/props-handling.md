@@ -1,4 +1,4 @@
-## Umgang mit Eigenschaften/Props (Fortgeschrittene Anleitung)
+## Umgang mit Eigenschaften/Props (fortgeschrittene Anleitung)
 
 Eigenschaften (Props) werden im Komponentenbaum von oben nach unten übergeben. Da wir Props verwenden, um Informationen von Komponente zu Komponente und manchmal mithilfe anderer dazwischen liegender Komponenten zu transportieren, ist es hilfreich, einige Tricks zu kennen, die das Übergeben von Props bequemer gestalten.
 

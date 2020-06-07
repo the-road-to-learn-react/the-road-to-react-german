@@ -1,4 +1,4 @@
-## Memoized Handler in React (Fortgeschrittene Anleitung)
+## Memoized Handler in React (fortgeschrittene Anleitung)
 
 In den vorherigen Abschnitten hast du einiges über Handler allgemein, Callback-Handler und Inline-Handler erfahren. In diesem Abschnitt stelle ich dir **Memoized Handler** vor, die auf Handler und Callback-Handler angewendet werden. [Memoisation](https://de.wikipedia.org/wiki/Memoisation) ist eine Technik zur Beschleunigung von Software, indem Rückgabewerte von Funktionen zwischengespeichert anstatt neu berechnet werden. Zu Lernzwecken verschieben wir die gesamte Datenabruflogik in eine eigenständige Funktion außerhalb des Seiteneffekts (A). Umgeben diese mit einem `useCallback`-Hook (B) und rufe sie im `useEffect`-Hook (C) auf:
 

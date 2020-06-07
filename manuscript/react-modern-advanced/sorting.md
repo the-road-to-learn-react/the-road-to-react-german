@@ -1,4 +1,4 @@
-# React in der Praxis(Fortgeschrittene Anleitung)
+# React in der Praxis (fortgeschrittene Anleitung)
 
 Wir haben in den vorausgehenden Kapiteln die Grundlagen von React erarbeitet. Nebenbei haben wir in der Vergangenheit genutzte Funktionen und Techniken zur Wartung behandelt. Jetzt ist es Zeit, dass wir uns mit der Entwicklung realer Anwendungen befassen. Jeder der folgenden Abschnitte enthält eine Aufgabe. Versuche, diese ohne die *optionalen Hinweise* zu lösen. Vieles ist nicht trivial. Du wirst dich herausgefordert fühlen. So lernst du am meisten. Verwende die *optionalen Hinweise*, um deinen Lösungsweg mit meinem abzugleichen --- oder, wenn du Hilfe benötigst.
 

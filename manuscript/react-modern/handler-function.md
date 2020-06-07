@@ -26,7 +26,7 @@ const App = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Definiere jetzt eine Funktion, die aufgerufen wird, wenn sich der Wert im Eingabefeld ändert --- ergo: wenn das Änderungsereignis ausgelöst wird. Verwende eine normale oder eine Arrow-Funktion --- je nachdem welche Variante du bevorzugst. In React wird eine solche Funktion als **(Ereignis-)Handler** bezeichnet. Übergib diese im nächsten Schritt an das Attribut `onChange` des Eingabefelds. Beachte: Bei `onChange` handelt es sich um ein JSX-Attribut. Dies erkennst du insbesondere an der Schreibweise in Camel-Case.
+Definiere jetzt eine Funktion, die aufgerufen wird, wenn sich der Wert im Eingabefeld ändert --- ergo: wenn das Änderungsereignis ausgelöst wird. Verwende eine normale oder eine Pfeilfunktion --- je nachdem welche Variante du bevorzugst. In React wird eine solche Funktion als **(Ereignis-)Handler** bezeichnet. Übergib diese im nächsten Schritt an das Attribut `onChange` des Eingabefelds. Beachte: Bei `onChange` handelt es sich um ein JSX-Attribut. Dies erkennst du insbesondere an der Schreibweise in Camel-Case.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
