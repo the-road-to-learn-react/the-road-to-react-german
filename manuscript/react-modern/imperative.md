@@ -32,7 +32,7 @@ const InputWithLabel = ({ ... }) => (
 );
 ~~~~~~~
 
-Auf den zweiten Blick funktioniert dies nur, wenn eine Komponente einmal gerendert wird. Wenn die App-Komponente aber beispielsweise zwei InputWithLabel-Komponenten rendert, erhält die zuletzt gerenderte Komponente den Autofokus. Da es sich um eine wiederverwendbare React-Komponente handelt, übergeben wir eine Eigenschaft (props) und lassen den Entwickler entscheiden, ob sein Eingabefeld den Autofokus erhält oder nicht:
+Auf den zweiten Blick funktioniert dies nur, wenn eine Komponente einmal gerendert wird. Wenn die App-Komponente aber beispielsweise zwei InputWithLabel-Komponenten rendert, erhält die zuletzt gerenderte Komponente den Autofokus. Da es sich um eine wiederverwendbare React-Komponente handelt, übergeben wir eine Eigenschaft (Props) und lassen den Entwickler entscheiden, ob sein Eingabefeld den Autofokus erhält oder nicht:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -60,7 +60,7 @@ const App = () => {
 };
 ~~~~~~~
 
-`isFocused` als Attribut entspricht `isFocused={true}`. Verwende innerhalb der Komponente die neue Eigenschaft (props)  anstelle von `autoFocus` für das Eingabefeld:
+`isFocused` als Attribut entspricht `isFocused={true}`. Verwende innerhalb der Komponente die neue Eigenschaft (Props)  anstelle von `autoFocus` für das Eingabefeld:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

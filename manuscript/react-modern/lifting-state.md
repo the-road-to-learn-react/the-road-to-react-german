@@ -2,7 +2,7 @@
 
 Die Suchkomponente in der Beispiel-Anwendung verwaltet bisher ihren internen Status. Wir haben im letzten Abschnitt einen Callback-Handler eingerichtet, um Informationen an die App-Komponente weiterzuleiten, verwenden diesen bisher nicht für die Filterung der Liste. Hierfür ist es wichtig, herauszufinden, wie der Status der Suchkomponente für mehrere Komponenten freizugänglich ist.
 
-Der Suchbegriff wird in der App benötigt, um die Liste zu filtern, bevor diese als Eigenschaft (props) an die List-Komponente übergeben wird. Damit die App auf den Status --- und folglich auf die gefilterte Liste --- Zugriff hat, ist es erforderlich, diesen von der Suchkomponente zur App-Komponente zu verschieben, ergo: **diesen in der Hierarchie nach oben rücken**.
+Der Suchbegriff wird in der App benötigt, um die Liste zu filtern, bevor diese als Eigenschaft (Props) an die List-Komponente übergeben wird. Damit die App auf den Status --- und folglich auf die gefilterte Liste --- Zugriff hat, ist es erforderlich, diesen von der Suchkomponente zur App-Komponente zu verschieben, ergo: **diesen in der Hierarchie nach oben rücken**.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -44,7 +44,7 @@ const Search = props => (
 
 Wir haben uns im vorherigen Abschnitt die Rückruffunktion angesehen. Diese unterstützt uns dabei, eine Verbindung von der Such- zur App-Komponente zu erstellen. Jetzt verwaltet die Suchkomponente den Status nicht mehr. Diese Aufgabe hat die App-Komponente übernommen. Nachdem Text in das Eingabefeld eingegeben wurde, gibt die Suchkomponente diese Information an die App-Komponente weiter. Es ist weiterhin möglich den `searchTerm` in der App-Komponente oder der Suchkomponente anzuzeigen, indem du ihn als Eigenschaft (props) weitergibst.
 
-Verwalte den Status immer mithilfe einer Komponente, die entweder selbst am Inhalt interessiert ist oder der alle anderen, die den Status verwenden, in der Hierarchie folgen. Im ersten Fall liest die Komponente den Status direkt aus, im zweiten Fall holt sie alle Informationen aus den Eigenschaften (props) die übergeben werden. Damit es möglich ist, dass eine untergeordnete Komponente den Status aktualisiert, übergibst du einen Rückruf-Handler an sie (siehe Suchkomponente). Wenn diese den Status nicht ändert, sondern ausschließlich verwendet, zum Beispiel für die Anzeige am Bildschirm, reicht die Übergabe als Eigenschaft (Props) aus.
+Verwalte den Status immer mithilfe einer Komponente, die entweder selbst am Inhalt interessiert ist oder der alle anderen, die den Status verwenden, in der Hierarchie folgen. Im ersten Fall liest die Komponente den Status direkt aus, im zweiten Fall holt sie alle Informationen aus den Eigenschaften (Props) die übergeben werden. Damit es möglich ist, dass eine untergeordnete Komponente den Status aktualisiert, übergibst du einen Rückruf-Handler an sie (siehe Suchkomponente). Wenn diese den Status nicht ändert, sondern ausschließlich verwendet, zum Beispiel für die Anzeige am Bildschirm, reicht die Übergabe als Eigenschaft (Props) aus.
 
 Mithilfe des Suchfunktionsstatus in der App-Komponente filtern wir die Liste mit dem statusbehafteten `searchTerm`, bevor wir `list` an die Listenkomponente übergeben:
 

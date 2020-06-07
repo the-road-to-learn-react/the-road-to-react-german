@@ -501,7 +501,7 @@ Bei den letzten Tests haben wir die Eingabe und Ausgabe der Item-Komponente übe
 
 With the last tests, we have tested the Item component's input and output via rendering assertions and callback handler assertions. However, we are not testing real state changes yet, because there is no actual item removed from the DOM after clicking the "Dismiss" button. The logic to remove the item from the list is in the App component, but we are only testing the Item component in isolation here. We will get to testing the actual implementation logic of removing an Item later when testing the App component.
 
-Fahren wir mit der SearchForm-Komponente fort, unter der InputWithLabel angeordnet ist. Zunächst Rendern wir diese und alle ihre wichtigen Eigenschaften (props):
+Fahren wir mit der SearchForm-Komponente fort, unter der InputWithLabel angeordnet ist. Zunächst Rendern wir diese und alle ihre wichtigen Eigenschaften (Props):
 
 
 We will continue with the SearchForm component which uses the InputWithLabel component as child component. As before, we will start with rendering the component with providing all the essential props:

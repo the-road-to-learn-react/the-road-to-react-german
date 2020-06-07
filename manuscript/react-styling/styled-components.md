@@ -72,7 +72,7 @@ const App = () => {
 };
 ~~~~~~~
 
-**Styled Components** folgen denselben Regeln wie gewöhnliche. Alles, was zwischen den Element-Tags eingefügt ist, wird als `children`-Eigenschaft (props) übergeben. Für die Item-Komponente verwenden wir diesmal keine Inline-Styles, sondern definieren eine gestaltete Komponente. `StyledColumn` erhält seine Stile dynamisch mithilfe einer Eigenschaft (props):
+**Styled Components** folgen denselben Regeln wie gewöhnliche. Alles, was zwischen den Element-Tags eingefügt ist, wird als `children`-Eigenschaft (Props) übergeben. Für die Item-Komponente verwenden wir diesmal keine Inline-Styles, sondern definieren eine gestaltete Komponente. `StyledColumn` erhält seine Stile dynamisch mithilfe einer Eigenschaft (Props):
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -102,7 +102,7 @@ const Item = ({ item, onRemoveItem }) => (
 );
 ~~~~~~~
 
-Die flexible `width`-Eigenschaft (props) ist über den Template String der gestalteten Komponente als Argument einer Inline-Funktion zugreifbar. Der Rückgabewert der Funktion ist ein String. Wir benötigen keine explizite Rückgabe-Anweisung. Deshalb überarbeiten wir die Pfeilfunktion zu einer knappen und prägnanten Inline-Funktion:
+Die flexible `width`-Eigenschaft (Props) ist über den Template String der gestalteten Komponente als Argument einer Inline-Funktion zugreifbar. Der Rückgabewert der Funktion ist ein String. Wir benötigen keine explizite Rückgabe-Anweisung. Deshalb überarbeiten wir die Pfeilfunktion zu einer knappen und prägnanten Inline-Funktion:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

@@ -212,13 +212,13 @@ const App = () => {
 };
 ~~~~~~~
 
-Das passt jetzt! Der Callback-Handler hat keinerlei Abhängigkeiten und wird nur einmal deklariert, wenn die App zum ersten Mal gerendert wird. Keine der an die List-Komponente übergebenen Eigenschaften (props) ändert sich. Erweitere deine Anwendung um die Kombination von `memo` und `useCallback`, wie hier beschrieben. Die Ausgabe "B:List" ist nicht weiter in deiner Konsole zu sehen, wenn du im Suchfeld etwas änderst. Nur die App-Komponente wird neu gerendert, deshalb siehst du die Ausgabe "B:App" weiterhin bei Änderungen des Suchworts.
+Das passt jetzt! Der Callback-Handler hat keinerlei Abhängigkeiten und wird nur einmal deklariert, wenn die App zum ersten Mal gerendert wird. Keine der an die List-Komponente übergebenen Eigenschaften (Props) ändert sich. Erweitere deine Anwendung um die Kombination von `memo` und `useCallback`, wie hier beschrieben. Die Ausgabe "B:List" ist nicht weiter in deiner Konsole zu sehen, wenn du im Suchfeld etwas änderst. Nur die App-Komponente wird neu gerendert, deshalb siehst du die Ausgabe "B:App" weiterhin bei Änderungen des Suchworts.
 
 ![](images/memo.png)
 
-Während alle an eine Komponente übergebenen Eigenschaften (props) gleich bleiben, wird diese erneut gerendert, wenn eine ihr übergeordnete aktualisiert wird. Dies ist das Standardverhalten von React, welches die meiste Zeit gewollt ist. Der Mechanismus ist schnell und vermeidet Fehler. Wenn das erneute Rendern die Leistung einer React-Anwendung verringert, ist `memo` hilfreich.
+Während alle an eine Komponente übergebenen Eigenschaften (Props) gleich bleiben, wird diese erneut gerendert, wenn eine ihr übergeordnete aktualisiert wird. Dies ist das Standardverhalten von React, welches die meiste Zeit gewollt ist. Der Mechanismus ist schnell und vermeidet Fehler. Wenn das erneute Rendern die Leistung einer React-Anwendung verringert, ist `memo` hilfreich.
 
-Manchmal hilft `memo` allein nicht. Callback-Handler werden jedes Mal in der übergeordneten Komponente neu definiert und als *geänderte* Eigenschaften (props) übergeben, was zu einem erneuten Rendern führt. In diesem Fall verwenden wir `useCallback`, um den Callback-Handler nur dann neu aufzurufen, wenn sich seine Abhängigkeiten ändern.
+Manchmal hilft `memo` allein nicht. Callback-Handler werden jedes Mal in der übergeordneten Komponente neu definiert und als *geänderte* Eigenschaften (Props) übergeben, was zu einem erneuten Rendern führt. In diesem Fall verwenden wir `useCallback`, um den Callback-Handler nur dann neu aufzurufen, wenn sich seine Abhängigkeiten ändern.
 
 ### Verhindere den erneuten Aufruf von aufwendigen Berechnungen
 

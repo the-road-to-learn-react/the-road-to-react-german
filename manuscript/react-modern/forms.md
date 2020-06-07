@@ -93,7 +93,7 @@ const SearchForm = ({
 # leanpub-end-insert
 ~~~~~~~
 
-Die neue Komponente wird von der App-Komponente verwendet. App verwaltet weiterhin den Status für das Formular. Dieser wird hier genutzt, um Daten abzurufen, die als Eigenschaften (props; `story.data`) an die List-Komponente übergeben werden:
+Die neue Komponente wird von der App-Komponente verwendet. App verwaltet weiterhin den Status für das Formular. Dieser wird hier genutzt, um Daten abzurufen, die als Eigenschaften (Props; `story.data`) an die List-Komponente übergeben werden:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

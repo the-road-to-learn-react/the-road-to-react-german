@@ -186,7 +186,7 @@ const SearchForm = ({ ... }) => (
 );
 ~~~~~~~
 
-Es ist möglich das Attribut `className` als Eigenschaft (props) an eine React-Komponenten zu übergeben, wie du im nächsten Beispiel siehst. Auf diese Art übergibst du der SearchForm-Komponente beispielsweise einen flexiblen Stil mithilfe einer `className`-Eigenschaft. Wähle dabei aus einer Anzahl von Klassen, die in einer CSS-Datei vordefiniert sind. Abschließend formatieren wir die InputWithLabel-Komponente:
+Es ist möglich das Attribut `className` als Eigenschaft (Props) an eine React-Komponenten zu übergeben, wie du im nächsten Beispiel siehst. Auf diese Art übergibst du der SearchForm-Komponente beispielsweise einen flexiblen Stil mithilfe einer `className`-Eigenschaft. Wähle dabei aus einer Anzahl von Klassen, die in einer CSS-Datei vordefiniert sind. Abschließend formatieren wir die InputWithLabel-Komponente:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

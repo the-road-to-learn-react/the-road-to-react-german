@@ -71,9 +71,7 @@ const [value, setValue] = React.useState('React');
 // setValue only takes a string as argument
 ~~~~~~~
 
-Beim Umarbeiten einer React-Anwendung hin zu Typensicherheit, hast du Wahl zwischen unterschiedlichen Vorgehensweisen. Ich arbeite als Erstes an den Eigenschaften (props) und dem Status der Blatt-Komponenten im Komponentenbaum. Beispielsweise erhält die Item-Komponente ein Element (hier `item`) und eine Callback-Handler-Funktion (hier `onRemoveItem`). Füge die Inline-Typen für beide Funktionsargumente wie zuvor hinzufügen:
-
-If adding type safety becomes an aftermath for a React application and its components, there are multiple ways on how to approach it. We will start with the props and state for the leaf components of our application. For example, the Item component receives a story (here `item`) and a callback handler function (here `onRemoveItem`). Starting out very verbose, we could add the inlined types for both function arguments as we did before:
+Beim Umarbeiten einer React-Anwendung hin zu Typensicherheit, hast du Wahl zwischen unterschiedlichen Vorgehensweisen. Ich arbeite als Erstes an den Eigenschaften (Props) und dem Status der Blattkomponenten im Komponentenbaum. Beispielsweise erhält die Item-Komponente ein Element (hier `item`) und eine Callback-Handler-Funktion (hier `onRemoveItem`). Füge die Inline-Typen für beide Funktionsargumente wie zuvor hinzufügen:
 
 {title="src/App.tsx",lang="javascript"}
 ~~~~~~~
@@ -158,7 +156,7 @@ const Item = ({ item, onRemoveItem }: ItemProps) => (
 );
 ~~~~~~~
 
-Dies ist die beliebteste Methode, um Eigenschaften (props) für TypeScript umzuarbeiten. Wechseln wir in die List-Komponente und wenden dieselben Typdefinitionen auf deren Eigenschaften (props) an:
+Dies ist die beliebteste Methode, um Eigenschaften (Props) für TypeScript umzuarbeiten. Wechseln wir in die List-Komponente und wenden dies bei ihr an:
 
 {title="src/App.tsx",lang="javascript"}
 ~~~~~~~
@@ -366,7 +364,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Übrig bleibt die InputWithLabel-Komponente. Bevor wir uns mit deren Eigenschaften (props) befassen, werfen wir einen Blick auf `ref`. Leider wird der Rückgabewert nicht festgelegt. Korrigieren wir dies:
+Übrig bleibt die InputWithLabel-Komponente. Bevor wir uns mit deren Eigenschaften (Props) befassen, werfen wir einen Blick auf `ref`. Leider wird der Rückgabewert nicht festgelegt. Korrigieren wir dies:
 
 {title="src/App.tsx",lang="javascript"}
 ~~~~~~~
@@ -384,7 +382,7 @@ const InputWithLabel = ({ ... }) => {
 
 Wir haben den Typ für `ref` festgelegt. Außerdem haben wir den Typ vor dem Überschreiben geschützt. Wir greifen nur lesend auf  ihn zu, in der Methode `focus`. Dort übernimmt React für uns die Arbeit und setzt das DOM-Element auf die Eigenschaft `current`.
 
-Zuletzt werden wir Typensicherheitsprüfungen für die Eigenschaften (props) der InputWithLabel-Komponente anwenden. Beachte die `children`-Eigenschaft mit ihrem spezifischen Typ und den **optionalen Typen**, die mit einem Fragezeichen gekennzeichnet sind:
+Zuletzt werden wir Typensicherheitsprüfungen für die Eigenschaften (Props) der InputWithLabel-Komponente anwenden. Beachte die `children`-Eigenschaft mit ihrem spezifischen Typ und den **optionalen Typen**, die mit einem Fragezeichen gekennzeichnet sind:
 
 {title="src/App.tsx",lang="javascript"}
 ~~~~~~~

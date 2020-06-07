@@ -120,7 +120,7 @@ const Item = ({ item, onRemoveItem }) => {
 
 Eine Alternative wäre es, nur die `objectID` des Elements zu übergeben. Das ist alles, was wir im Callback-Handler der App-Komponente momentan benötigen. Dies wäre aber nicht zukunftssicher. Unter Umständen benötigt der Handler später einmal mehr Informationen, um das zu löschende Item zu löschen. Deshalb übergeben wir schon jetzt das ganze Element und nicht nur die Kennung `objectID`, wenn wir den Handler `onRemoveItem` aufrufen.
 
-Bisher haben wir folgenden umgesetzt: Wir haben die Liste `stories` mithilfe von **Reacts useState Hook** mit einem Status versehen, das Suchwort als Eigenschaft (props) an die List-Komponente weitergegeben, einen Callback-Handler (`handleRemoveStory`) und die Funktion (`handleRemoveItem`) implementierte. Da ein Handler eine Funktion ist und in diesem Fall nichts zurückgibt, entfernen wir der Vollständigkeit halber den Blockkörper und nutzen die knappe Schreibweise.
+Bisher haben wir folgenden umgesetzt: Wir haben die Liste `stories` mithilfe von **Reacts useState Hook** mit einem Status versehen, das Suchwort als Eigenschaft (Props) an die List-Komponente weitergegeben, einen Callback-Handler (`handleRemoveStory`) und die Funktion (`handleRemoveItem`) implementierte. Da ein Handler eine Funktion ist und in diesem Fall nichts zurückgibt, entfernen wir der Vollständigkeit halber den Blockkörper und nutzen die knappe Schreibweise.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -149,7 +149,7 @@ const Item = ({ item, onRemoveItem }) => {
 };
 ~~~~~~~
 
-In diesem Abschnitt haben wir Eigenschaften (props), Handler, Callback-handler und Status angewendet. Soweit ist nichts Neues hinzugekommen. Jetzt werden wir uns mit **Inline-Handlern** befassen. Mit diesen rufen wir eine Funktion direkt in JSX auf. Es gibt zwei Möglichkeiten, um `onRemoveItem` als Inline-Handler zu verwenden. Sehen wir uns zunächst die JavaScript-Methode `bind()` an:
+In diesem Abschnitt haben wir Eigenschaften (Props), Handler, Callback-handler und Status angewendet. Soweit ist nichts Neues hinzugekommen. Jetzt werden wir uns mit **Inline-Handlern** befassen. Mit diesen rufen wir eine Funktion direkt in JSX auf. Es gibt zwei Möglichkeiten, um `onRemoveItem` als Inline-Handler zu verwenden. Sehen wir uns zunächst die JavaScript-Methode `bind()` an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

@@ -10,7 +10,7 @@ In diesem Abschnitt werden wir eine [moderne React-Anwendung](https://codesandbo
 
 Komponenten wurden in React häufig verändert --- von **createClass-Komponenten** über **Klassenkomponenten** bis hin zu **Funktionskomponenten**. Wenn du heute eine in der Vergangenheit erstellt React-Anwendung ansiehst, wirst du zweifelsohne Klassenkomponenten neben modernen Funktionskomponenten vorfinden.
 
-Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Funktionen (beispielsweise Status- und Lebenszyklusverwaltung, und Methoden für Seiteneffekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (props) wird über die Klasseninstanz (`this`) zugegriffen:
+Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Funktionen (beispielsweise Status- und Lebenszyklusverwaltung, und Methoden für Seiteneffekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (Props) wird über die Klasseninstanz (`this`) zugegriffen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -64,7 +64,7 @@ const InputWithLabel = ({
 );
 ~~~~~~~
 
-Vor 2018 --- vor der Einführung von React Hooks --- war es nicht möglich, mit einer Funktionskomponente Seiten-Effekte (`useEffect`-Hooks) oder einen Status (`useState`/`useReducer`-Hooks) zu verarbeiten. Deshalb bezeichnete man diese als **funktionale zustandslose Komponenten**. Sie wurden ausschließlich dazu verwendet, um Eigenschaften (props) ein- und JSX auszugeben. Wenn man in einer Komponente einen Status oder Seiten-Effekte verwendete, war eine Klassenkomponente zwingend.
+Vor 2018 --- vor der Einführung von React Hooks --- war es nicht möglich, mit einer Funktionskomponente Seiten-Effekte (`useEffect`-Hooks) oder einen Status (`useState`/`useReducer`-Hooks) zu verarbeiten. Deshalb bezeichnete man diese als **funktionale zustandslose Komponenten**. Sie wurden ausschließlich dazu verwendet, um Eigenschaften (Props) ein- und JSX auszugeben. Wenn man in einer Komponente einen Status oder Seiten-Effekte verwendete, war eine Klassenkomponente zwingend.
 
 Seit der Einführung von React Hooks funktionieren Funktionskomponenten genauso wie Klassenkomponenten --- einschließlich Status und Seiten-Effekten. Und da es keinen zweckdienlichen Unterschied mehr zwischen ihnen gibt, entschied sich die Community für Funktionskomponenten.
 

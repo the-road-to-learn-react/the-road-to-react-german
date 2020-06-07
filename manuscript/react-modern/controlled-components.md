@@ -58,7 +58,7 @@ const Search = props => (
 );
 ~~~~~~~
 
-Jetzt zeigt das Eingabefeld beim Start den korrekten Anfangswert. Dabei verwendet des `searchTerm` aus dem React-Status. Wenn wir den "searchTerm" ändern, erzwingen wir außerdem, dass das Eingabefeld den Wert aus dem React-Status verwendet (über props). Zuvor verwaltete das Eingabefeld seinen eigenen internen Status nativ nur mit HTML.
+Jetzt zeigt das Eingabefeld beim Start den korrekten Anfangswert. Dabei verwendet des `searchTerm` aus dem React-Status. Wenn wir den "searchTerm" ändern, erzwingen wir außerdem, dass das Eingabefeld den Wert aus dem React-Status verwendet (über Props). Zuvor verwaltete das Eingabefeld seinen eigenen internen Status nativ nur mit HTML.
 
 ![](images/controlled-component.png)
 
@@ -69,9 +69,9 @@ In diesem Abschnitt haben wir kontrollierte Komponenten kennengelernt ein neues 
 UI -> Side-Effect -> State -> UI -> ...
 ~~~~~~~
 
-Eine React-Anwendung und ihre Komponenten haben beim ersten Aufruf einen Anfangszustand, der gegebenenfalls als Eigenschaft (props) an andere Komponenten weitergegeben wird. Beim ersten Aufruf wird eine Benutzeroberfläche gerendert. Sobald ein Ereignis wie zum Beispiel eine Benutzereingabe oder das Laden von Daten von einer Remote-API eintritt, wird die Änderung im Status von React erfasst. Wenn dann der Status geändert wurde, werden alle vom veränderten Status oder den implizit geänderten Eigenschaften (props) betroffenen Komponenten erneut gerendert. Dies bedeutet, dass die Komponentenfunktionen nochmals aufgerufen werden. 
+Eine React-Anwendung und ihre Komponenten haben beim ersten Aufruf einen Anfangszustand, der gegebenenfalls als Eigenschaft (Props) an andere Komponenten weitergegeben wird. Beim ersten Aufruf wird eine Benutzeroberfläche gerendert. Sobald ein Ereignis wie zum Beispiel eine Benutzereingabe oder das Laden von Daten von einer Remote-API eintritt, wird die Änderung im Status von React erfasst. Wenn dann der Status geändert wurde, werden alle vom veränderten Status oder den implizit geänderten Eigenschaften (Props) betroffenen Komponenten erneut gerendert. Dies bedeutet, dass die Komponentenfunktionen nochmals aufgerufen werden. 
 
-In den vorherigen Abschnitten haben wir unter anderem den **Komponentenlebenszyklus** von React kennengelernt. Zunächst werden alle Komponenten von oben nach unten in der Komponentenhierarchie erstellt. Dies schließt alle Hooks (zum Beispiel `useState`) ein, die mit ihren Anfangswerten instanziiert werden. Ab dann wartet die Benutzeroberfläche auf Ereignisse wie Benutzerinteraktionen. Sobald der Status geändert wurde --- der aktuelle Status wurde beispielsweise über die Statusaktualisierungsfunktion von `useState` verändert --- werden alle von dem geänderten Status oder den geänderten Eigenschaften (props) betroffenen Komponenten erneut gerendert.
+In den vorherigen Abschnitten haben wir unter anderem den **Komponentenlebenszyklus** von React kennengelernt. Zunächst werden alle Komponenten von oben nach unten in der Komponentenhierarchie erstellt. Dies schließt alle Hooks (zum Beispiel `useState`) ein, die mit ihren Anfangswerten instanziiert werden. Ab dann wartet die Benutzeroberfläche auf Ereignisse wie Benutzerinteraktionen. Sobald der Status geändert wurde --- der aktuelle Status wurde beispielsweise über die Statusaktualisierungsfunktion von `useState` verändert --- werden alle von dem geänderten Status oder den geänderten Eigenschaften (Props) betroffenen Komponenten erneut gerendert.
 
 Bei jedem Durchlauf der Funktion einer Komponente wird der *aktuelle Wert* (zum Beispiel der aktuelle Status) aus den Hooks entnommen und *nicht* erneut initialisiert. Erscheint dir das seltsam? Du meinst, es wäre intuitiv die Hook-Funktion `useState` mit ihrem Anfangswert erneut zu initialisiert. Aber: Hooks werden nur einmal initialisiert, wenn die Komponente zum ersten Mal gerendert wird. Danach verfolgt React sie intern und hält so die Werte aktuell.
 

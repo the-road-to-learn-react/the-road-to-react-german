@@ -4,7 +4,7 @@ Eigenschaften (Props) werden im Komponentenbaum von oben nach unten übergeben. 
 
 *Hinweis: Die nachfolgenden Tipps zur Überarbeitung zeige ich dir, damit du verschiedene JavaScript/React-Muster kennenlernst. Zum Erstellen einer React-Anwendungen sind diese keine Voraussetzung. Betrachte sie als fortgeschrittene React-Techniken, die deinen Quellcode verbessern.*
 
-Eigenschaften (Props) in React sind ein JavaScript-Objekt, andernfalls wäre es nicht möglich, in einer React-Komponente auf `props.list` oder `props.onSearch` zuzugreifen. Da `props` ein Objekt ist, das nur Informationen von einer Komponente an eine andere weitergibt, ist es möglich JavaScript-Tricks darauf anwenden. Beispiel: Zugriff auf die Eigenschaften eines Objekts mithilfe von moderner [JavaScript-Objekt Destrukturierung](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
+Eigenschaften (Props) in React sind ein JavaScript-Objekt, andernfalls wäre es nicht möglich, in einer React-Komponente auf `props.list` oder `props.onSearch` zuzugreifen. Da eine Eigenschaft (Prop) ein Objekt ist, das nur Informationen von einer Komponente an eine andere weitergibt, ist es möglich JavaScript-Tricks darauf anwenden. Beispiel: Zugriff auf die Eigenschaften eines Objekts mithilfe von moderner [JavaScript-Objekt Destrukturierung](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -75,7 +75,7 @@ const Search = props => {
 };
 ~~~~~~~
 
-Dies ist eine grundlegende Destrukturierung des `props`-Objekts in einer React-Komponente. Auf diese Weise ist es möglich, die Eigenschaften des Objekts bequem in der Komponente zu verwenden. Unumgänglich ist es, die Pfeilfunktion der Suchkomponente vom knappen prägnanten Körper in den gewöhnlichen Blockkörper umgestalten, um auf die Eigenschaften von `props` mithilfe der Destrukturierung zuzugreifen. Eine große Vereinfachung ist dies somit nicht, da wir unsere Komponenten ständig umgestalten. Gehen wir deshalb einen Schritt weiter, indem wir das `props`- Objekt sofort in der Funktionssignatur unserer Komponente destrukturieren und den Blockkörper erneut weglassen:
+Dies ist eine grundlegende Destrukturierung des `props`-Objekts in einer React-Komponente. Auf diese Weise ist es möglich, die Eigenschaften des Objekts bequem in der Komponente zu verwenden. Unumgänglich ist es, die Pfeilfunktion der Suchkomponente vom knappen prägnanten Körper in den gewöhnlichen Blockkörper umgestalten, um auf die Eigenschaften von `props` mithilfe der Destrukturierung zuzugreifen. Eine große Vereinfachung ist dies somit nicht, da wir unsere Komponenten ständig umgestalten. Gehen wir deshalb einen Schritt weiter, indem wir das `props`-Objekt sofort in der Funktionssignatur unserer Komponente destrukturieren und den Blockkörper erneut weglassen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -361,5 +361,5 @@ Diese Version ist nicht die prägnanteste, aber die einfachsten. Variante 1 mit 
 * Überlege, was genau der Unterschied zwischen der Destrukturierung von JavaScript-Arrays --- die wir für den `useState`-Hook von React verwendet haben --- und der Objekt-Destrukturierung ist.
 * Lese mehr zum Thema [JavaScript's spread operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
 * Lese mehr zum Thema [JavaScript's rest parameters](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameters).
-* Verteife dein Wissen in Bezug auf JavaScript (Spread-Operator, Rest-Operator, Destrukturierung) und die Wechselwirkungen mit React --- beispielsweise den Eigenschaften (props).
-* Verwende weiterhin die Methode deiner Wahl, beim Arbeiten mit den Eigenschaften (props). Wenn du unentschlossen bist, nutze die Variante des vorherigen Abschnitts.
+* Verteife dein Wissen in Bezug auf JavaScript (Spread-Operator, Rest-Operator, Destrukturierung) und die Wechselwirkungen mit React --- beispielsweise den Eigenschaften (Props).
+* Verwende weiterhin die Methode deiner Wahl, beim Arbeiten mit den Eigenschaften (Props). Wenn du unentschlossen bist, nutze die Variante des vorherigen Abschnitts.
