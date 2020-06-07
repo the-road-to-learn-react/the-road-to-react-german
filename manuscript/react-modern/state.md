@@ -124,4 +124,4 @@ Wenn ein Benutzer eine Eingabe im Eingabefeld tätigt, wird die Änderung vom Ha
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-State).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Props...hs/React-State?expand=1).
 * Lese mehr zur [Destrukturierung von JavaScript-Arrays](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment#Array_destructuring).
-* Lese mehr zu useState-Hooks ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://de.reactjs.org/docs/hooks-state.html)), da dieser deine React-Komponente interaktiv macht.
+* Lese mehr zu useState-Hooks ([0](https://www.robinwieruch.de/react-usestate-hook), [1](https://de.reactjs.org/docs/hooks-state.html)), da diese deine React-Komponente interaktiv machen.
