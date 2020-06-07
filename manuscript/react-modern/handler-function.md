@@ -1,12 +1,12 @@
 ## Handler in JSX
 
-Unsere App-Komponente verfügt nach wie vor über das Eingabefeld inklusive Label, das wir bisher nur angezeigt und nicht weiter verwendet haben. In HTML verfügen Eingabefelder über einen [onchange-Handler](https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers/onchange). Ein solcher Handler wäre in JSX ebenfalls hilfreich. Deshalb erarbeiten wir als Nächstes, wie ein onchange-Handler mit JSX in einer React-Komponente anwendbar ist. Überarbeite zunächst die App. Nutze anstelle des [knappen Körpers einen gewöhnlichen Blockkörper](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Pfeilfunktionen#Funktionsk%C3%B6rper), um dann im nächsten Schritt weitere Implementierungsdetails hinzufügen.
+Unsere App-Komponente verfügt nach wie vor über das Eingabefeld inklusive Label, das wir bisher nur anzeigen und nicht verwenden --- wenn ein Text in das Feld eingegeben wird, wird dieser nicht von der App weiter verarbeitet. In HTML verfügen Eingabefelder üblicherweise über einen [`onChange`-Handler](https://developer.mozilla.org/de/docs/Web/API/GlobalEventHandlers/onchange). Ein solcher Handler wäre in JSX ebenfalls hilfreich. Deshalb sehen wir uns als Nächstes an, wie ein `onChange`-Handler mit JSX in einer React-Komponente angewendet wird. Überarbeite zunächst die App. Nutze anstelle des [knappen Körpers einen gewöhnlichen Blockkörper](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Pfeilfunktionen#Funktionsk%C3%B6rper), um dann im nächsten Schritt weitere Implementierungsdetails hinzufügen.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
 # leanpub-start-insert
 const App = () => {
-  // do something in between
+  // Führe eine beliebige Aufgabe aus
 
   return (
 # leanpub-end-insert
@@ -26,7 +26,7 @@ const App = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Definiere jetzt eine Funktion, die aufgerufen wird, wenn sich der Wert im Eingabefeld ändert --- ergo: wenn das Änderungsereignis ausgelöst wird. Verwende eine normale oder eine Pfeilfunktion --- je nachdem welche Variante du bevorzugst. In React wird eine solche Funktion als **(Ereignis-)Handler** bezeichnet. Übergib diese im nächsten Schritt an das Attribut `onChange` des Eingabefelds. Beachte: Bei `onChange` handelt es sich um ein JSX-Attribut. Dies erkennst du insbesondere an der Schreibweise in Camel-Case.
+Definiere jetzt eine Funktion, die aufgerufen wird, wenn sich der Wert im Eingabefeld ändert, sprich: wenn das Änderungsereignis des Felds ausgelöst wird. Verwende eine normale oder eine Pfeilfunktion --- je nachdem welche Variante du bevorzugst. In React wird eine solche Funktion als **(Ereignis-)Handler** bezeichnet. Übergib diese im nächsten Schritt an das Attribut `onChange` des Eingabefelds. Beachte: Bei `onChange` handelt es sich um JSX. Dies erkennst du an der Schreibweise in CamelCase.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -54,7 +54,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Öffne jetzt zunächst deine Anwendung in einem Webbrowser und danach wechsele in die Entwicklertools deines Browsers. Gib daraufhin ein paar Zeichen in das Eingabefeld ein und prüfe, ob deine Eingaben mitprotokolliert werden. Dies wird als **synthetisches Ereignis** bezeichnet, welches vom JavaScript-Objekt definiert wird. Über dieses Objekt greifen wir auf den Wert des Eingabefelds zu:
+Öffne nach der vorhergehenden Änderung zunächst deine Anwendung in einem Webbrowser und wechsele danach in die Entwicklertools des Browsers. Gib daraufhin ein paar Zeichen in das Eingabefeld ein und prüfe, ob deine Eingaben mitprotokolliert werden. Dies wird als **synthetisches Ereignis** bezeichnet, welches vom JavaScript-Objekt definiert wird. Über dieses Objekt greifen wir auf den Wert des Eingabefelds zu:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -102,4 +102,4 @@ Ich bevorzuge Pfeilfunktionen aufgrund ihrer Prägnanz als Ereignishandler. In e
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Handler-Function-in-JSX).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Component-Definition...hs/Handler-Function-in-JSX?expand=1).
-* Lese mehr zum Thema [React's events](https://reactjs.org/docs/events.html).
+* Lese mehr zu [SyntheticEvents in React](https://de.reactjs.org/docs/events.html).
