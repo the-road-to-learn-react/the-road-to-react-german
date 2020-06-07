@@ -1,6 +1,6 @@
 ## React DOM
 
-Nachdem wir die Komponentendefinitionen und das Instanziieren kennengelernt haben, wenden wir das Wissen auf die App-Komponente an. Dies war von Anfang an ein Bestandteil unserer Anwendung. Den Code findest du in der Datei *src/index.js*:
+Nachdem wir die Komponentendefinitionen und das Instanziieren kennengelernt haben, wenden wir das Wissen auf die App-Komponente an. Es ist nicht notwendig, dass du selbst Hand anlegst. Die App war von Anfang an Bestandteil unserer Anwendung. Den Code findest du in der Datei *src/index.js*:
 
 {title="src/index.js",lang="javascript"}
 ~~~~~~~
@@ -15,7 +15,7 @@ ReactDOM.render(
 );
 ~~~~~~~
 
-Neben React gibt es eine weitere importierte Bibliothek namens `react-dom`. In dieser nutzt die Funktion `ReactDOM.render()` einen HTML-Knoten und ersetzt ihn mit JSX. Der Prozess integriert React in HTML. `ReactDOM.render ()` erwartet zwei Argumente: Das erste ist die Grundlage für das Rendern von JSX. Meist wird eine Instanz der App-Komponente verwendet. Das ist nicht zwingend. Das Übergeben von JSX ohne Komponenteninstanziierung ist völlig ausreichend.
+Neben React wird eine weitere Bibliothek namens `react-dom` importiert. In dieser nutzt die Funktion `ReactDOM.render()` ein HTML-Element --- das mit der ID `root` --- und ersetzt es mit JSX. Der Prozess integriert React in HTML. `ReactDOM.render()` erwartet zwei Argumente: Das erste ist das zu rendernde JSX-Element. Meist wird eine Instanz der App verwendet. Das ist nicht zwingend. Das Übergeben von JSX ohne das "Instanziieren" einer Komponente ist völlig ausreichend. Zum Beispiel so:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -25,10 +25,10 @@ ReactDOM.render(
 );
 ~~~~~~~
 
-Das zweite Argument legt fest, wo die React-Anwendung den fertigen HTML-Code einfügt. Erwartet wird ein Element, mit `id='root'`, welches in der Datei *public/index.html* vorhanden ist. Hierbei handelt es sich um eine normale HTML-Datei.
+Das zweite Argument legt fest, wo die React-Anwendung den fertigen Code einfügt. Erwartet wird ein Element, mit `id='root'`, welches in der Datei *public/index.html* vorhanden ist. *public/index.html* ist eine normale HTML-Datei.
 
 ### Übungen:
 
-* Öffnen die Datei *public/index.html* und finde heraus, wo die React-Anwendung deinen HTML-Code einfügt.
+* Öffnen die Datei *public/index.html* und finder heraus wo und wie die React-Anwendung in den HTML-Code eingebunden ist.
 * Überlege, wie du eine React-Anwendung in eine externe HTML-Webanwendung integrierst.
 * Lese mehr zum Thema [Rendern von Elementen in React](https://de.reactjs.org/docs/rendering-elements.html).
