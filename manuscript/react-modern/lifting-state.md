@@ -123,7 +123,7 @@ const App = () => {
 
 Jetzt ist es möglich, nach „eact“, „React“ oder „react“ zu suchen, um eines der zwei Elemente herauszufiltern. Glückwunsch! Du hast die Anwendung um die erste interaktive Funktion erweitert.
 
-Der verbleibende Abschnitt enthält nichts Neues. Wir überarbeiten den aktuellen Codes. Wir werden im Weiteren die überarbeitete Version verwenden, daher ist es sinnvoll, diese Schritte nachzuvollziehen. Zunächst präzisieren wir die Funktion mithilfe einer Pfeilfunktion:
+Der verbleibende Abschnitt enthält nichts Neues. Wir überarbeiten den aktuellen Codes. Bitte vollziehe diese Schritte nach, da wir im Weiteren die überarbeitete Version verwenden. Zunächst präzisieren wir die Funktion mithilfe einer Pfeilfunktion:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -159,11 +159,11 @@ const App = () => {
 };
 ~~~~~~~
 
-So weit zur Überarbeitung der Filterfunktion. Es gibt viele unterschiedliche Herangehensweisen --- und es ist nicht immer trivial zu entscheiden, wie das Gleichgewicht zwischen Übersichtlichkeit und Genauigkeit am besten ist. Ich tendiere dazu, den Code möglichst kurz zu belassen. Meiner Meinung nach bleibt er so ebenfalls lesbar.
+So weit zur Überarbeitung der Filterfunktion. Es gibt viele unterschiedliche Herangehensweisen --- und es ist nicht immer trivial zu entscheiden, wie das Gleichgewicht zwischen Übersichtlichkeit und Genauigkeit am besten ist. Ich tendiere dazu, den Code möglichst kurz zu belassen. Meiner Meinung nach bleibt er so überschaubar und deshalb optimal lesbar.
 
 ![](images/component-communication.png)
 
-Jetzt verwalten wir den Status über den Callback-Handler der Suchkomponente in der App-Komponente. Der aktuelle Status wird als Filter für die Liste verwendet. Mit dem Callback-Handler verwenden wir Informationen aus der Suchkomponente in der App-Komponente, um den gemeinsam genutzten Status zu verändern. Indirekt nutzen wir die Informationen in der Listenkomponente, um die gefilterte Liste auf dem neuesten Stand zu halten.
+Nach dieser Überarbeitung verwalten wir den Status über den Callback-Handler der Search-Komponente innerhalb der App. Der aktuelle Status wird als Filter für die Liste verwendet. Mit dem Callback-Handler verwenden wir Informationen aus der Search-Komponente in der App, um den gemeinsam genutzten Status zu verwalten. Indirekt nutzen wir die Informationen in der List-Komponente, um die gefilterte Liste auf dem neuesten Stand zu halten.
 
 ### Übungen:
 

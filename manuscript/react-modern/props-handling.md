@@ -1,10 +1,10 @@
-## Umgang mit Eigenschaften/Props (fortgeschrittene Anleitung)
+## Eigenschaften (Props) in React (fortgeschrittene Anleitung)
 
-Eigenschaften (Props) werden im Komponentenbaum von oben nach unten übergeben. Da wir Props verwenden, um Informationen von Komponente zu Komponente und manchmal mithilfe anderer dazwischen liegender Komponenten zu transportieren, ist es hilfreich, einige Tricks zu kennen, die das Übergeben von Props bequemer gestalten.
+Eigenschaften (Props) werden im Komponentenbaum von oben nach unten übergeben. Da wir Props verwenden, um Informationen von Komponente zu Komponente --- manchmal mithilfe anderer dazwischen liegender Komponenten --- zu transportieren, ist es hilfreich, einige Tricks zu kennen, die das Übergeben bequemer gestalten.
 
-*Hinweis: Die nachfolgenden Tipps zur Überarbeitung zeige ich dir, damit du verschiedene JavaScript/React-Muster kennenlernst. Zum Erstellen einer React-Anwendungen sind diese keine Voraussetzung. Betrachte sie als fortgeschrittene React-Techniken, die deinen Quellcode verbessern.*
+*Hinweis: Die nachfolgenden Tipps zur Überarbeitung zeige ich dir, damit du verschiedene JavaScript/React-Muster kennenlernst. Zum Erstellen einer React-Anwendungen sind diese keine Voraussetzung. Betrachte sie als fortgeschrittene Techniken, die deinen Quellcode verbessern.*
 
-Eigenschaften (Props) in React sind ein JavaScript-Objekt, andernfalls wäre es nicht möglich, in einer React-Komponente auf `props.list` oder `props.onSearch` zuzugreifen. Da eine Eigenschaft (Prop) ein Objekt ist, das nur Informationen von einer Komponente an eine andere weitergibt, ist es möglich JavaScript-Tricks darauf anwenden. Beispiel: Zugriff auf die Eigenschaften eines Objekts mithilfe von moderner [JavaScript-Objekt Destrukturierung](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
+Props sind JavaScript-Objekte, andernfalls wäre es nicht möglich, in einer Komponente auf `props.list` oder `props.onSearch` zuzugreifen. Da eine Eigenschaft ein Objekt ist, das nur Informationen von einer Komponente an eine andere weitergibt, ist es möglich, JavaScript-Tricks darauf anwenden. Beispiel: Zugriff auf die Eigenschaften eines Objekts mithilfe von [JavaScript-Objekt Destrukturierung](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment):
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -27,7 +27,7 @@ console.log(firstName + ' ' + lastName);
 // "Robin Wieruch"
 ~~~~~~~
 
-Wenn wir auf mehrere Eigenschaften eines Objekts zugreifen, ist die Verwendung einer Codezeile anstelle von mehreren Zeilen eleganter. Aus diesem Grund wird die Objekt- Destrukturierung in JavaScript gerne und häufig verwendet. Übertragen wir dieses Wissen auf die React-Eigenschaften (props) in unserer Suchkomponente. Dazu verwandeln wir zuerst die Pfeilfunktion der Suchkomponente vom prägnanten knappen Körper in den gewöhnlichen Blockkörper:
+Wenn wir auf zwei oder mehr Eigenschaften eines Objekts zugreifen, ist die Verwendung einer Codezeile anstelle von mehreren Zeilen eleganter. Aus diesem Grund wird die Objekt-Destrukturierung in JavaScript gerne und häufig verwendet. Übertragen wir dieses Wissen auf die Eigenschaften in der Search-Komponente. Dazu verwandeln wir zuerst die Pfeilfunktion in Search vom prägnanten knappen Körper in den gewöhnlichen Blockkörper:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -50,7 +50,7 @@ const Search = props => {
 # leanpub-end-insert
 ~~~~~~~
 
-Danach ist es möglich die Destrukturierung des `props`-Objekts im Funktionskörper der Komponente anzuwenden:
+Danach ist es möglich die Destrukturierung auf das `props`-Objekts im Funktionskörper der Komponente anzuwenden:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -75,7 +75,7 @@ const Search = props => {
 };
 ~~~~~~~
 
-Dies ist eine grundlegende Destrukturierung des `props`-Objekts in einer React-Komponente. Auf diese Weise ist es möglich, die Eigenschaften des Objekts bequem in der Komponente zu verwenden. Unumgänglich ist es, die Pfeilfunktion der Suchkomponente vom knappen prägnanten Körper in den gewöhnlichen Blockkörper umgestalten, um auf die Eigenschaften von `props` mithilfe der Destrukturierung zuzugreifen. Eine große Vereinfachung ist dies somit nicht, da wir unsere Komponenten ständig umgestalten. Gehen wir deshalb einen Schritt weiter, indem wir das `props`-Objekt sofort in der Funktionssignatur unserer Komponente destrukturieren und den Blockkörper erneut weglassen:
+Auf diese Weise ist es möglich, die Eigenschaften des Objekts bequem in der Komponente zu verwenden. Unumgänglich ist es, die Pfeilfunktion innerhalb von Search vom knappen prägnanten Körper in den gewöhnlichen Blockkörper umzugestalten, um auf die Eigenschaften von `props` mithilfe der Destrukturierung zuzugreifen. Eine große Vereinfachung ist dies somit nicht, da wir unsere Komponenten ständig umgestalten. Gehen wir deshalb einen Schritt weiter, indem wir das `props`-Objekt sofort in der Funktionssignatur unserer Komponente destrukturieren und den Blockkörper erneut weglassen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
