@@ -1,6 +1,6 @@
 ## Callback-Handler in JSX
 
-Als Nächstes konzentrieren wir uns auf das Eingabefeld und das Label, indem wir eine eigenständige Komponente für die Suche erstellen. Im Komponentenbaum wird die Suchkomponente zu einem Blatt auf der gleichen Ebene, quasi einem Geschwisterblatt der Listenkomponente --- und umgekehrt. Außerdem verschieben wir den Handler und den Status in die Suchkomponente, um die Funktionalität aufrechtzuerhalten.
+Als Nächstes konzentrieren wir uns auf das Eingabefeld und das Label. Wir erstellen eine eigenständige Komponente für die Suche. Im Komponentenbaum wird die Suchkomponente zu einem Blatt auf der gleichen Ebene, quasi ein Geschwisterkind von `List`. Außerdem verschieben wir den Handler und den Status in die neue `Search`-Komponente, um die Funktionalität aufrechtzuerhalten.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -44,11 +44,11 @@ const Search = () => {
 # leanpub-end-insert
 ~~~~~~~
 
-Wir haben eine für sich abgeschlossene Suchkomponente, die den Status verwaltet. Die Komponente zeigt das `searchTerm` als Text an, teilt diese Informationen aber nicht mit übergeordneten oder gleichrangigen. Da die Suchkomponente nur den Suchbegriff anzeigt, wird sie für die anderen Komponenten unbrauchbar. Es sei denn, es gäbe doch eine Möglichkeit Informationen bei ihr anzufragen.
+Jetzt verfügen wir über eine für sich abgeschlossene Suchkomponente, die ihren Status selbst verwaltet. Sie zeigt das `searchTerm` als Text an, teilt diese Informationen aber nicht mit übergeordneten oder gleichrangigen Komponenten. Da die Suchkomponente einzig und allein den Suchbegriff anzeigt, ist sie für die anderen unnütz. Es sei denn, es gäbe doch eine Möglichkeit Informationen bei ihr abzufragen.
 
 ![](images/callback-handler.png)
 
-Auf den ersten Blick gibt es keine Möglichkeit, Informationen an übergeordnete oder gleichrangige Komponenten zu übergeben, da Eigenschaften (Props) ausschließlich nach unten weitergegeben werden. Deshalb schauen wir ein zweites Mal und führen den **Rückruf-Handler** als Funktion ein: Dies geschieht wie folgt: Eine Rückruffunktion wird eingeführt (A), diese wird an einer anderen Stelle verwendet (B) und gibt das Ergebnis an den Ort zurück, an dem sie eingeführt wurde (C).
+Auf den ersten Blick gibt es keine Möglichkeit, Informationen an übergeordnete oder gleichrangige Komponenten zu übergeben. Eigenschaften (Props) werden ausschließlich nach unten weitergegeben. Deshalb schauen wir ein zweites Mal und führen den **Callback-Handler** als Funktion ein: Dies geschieht wie folgt: Eine Rückruffunktion wird eingeführt (A), diese wird an einer anderen Stelle verwendet (B) und gibt das Ergebnis an den Ort zurück, an dem sie eingeführt wurde (C). Das ist undramatischer, als der Name vermuten lässt, oder? Sieh es dir an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -96,10 +96,10 @@ const Search = props => {
 };
 ~~~~~~~
 
-Schauen wir uns das Konzept des Callback-Handlers Schritt für Schritt an: Wir übergeben eine Funktion von einer Komponente (App) an eine andere Komponente (Search). Wir nennen diese in der zweiten Komponente `onSearch`. Die eigentliche Implementierung des Funktionsaufrufs ist in der ersten Komponente (App) in der Funktion `handleSearch`. Auf diese Weise kommunizieren wir im Komponentenbaum. Eine in einer Komponente verwendete Handler-Funktion wird zu einem Callback-Handler, der über React-Props an andere Komponenten weitergegeben wird. Callback-Handler werden als Funktionen in den Eigenschaften (Props) übergeben und zur Kommunikation in der Komponentenhierarchie verwendet.
+Schauen wir uns das Konzept des Callback-Handlers Schritt für Schritt an: Wir übergeben eine Funktion von einer Komponente an eine andere --- hier konkret von App an Search. Wir nennen diese in Search `onSearch`. Die eigentliche Implementierung ist in `handleSearch` der App-Komponente. So tauschen wir Informationen im Komponentenbaum aus. Eine Funktion wird zu einem Callback-Handler, der über Eigenschaften (Props) an andere weitergegeben wird. Auf diese Weise kommunizieren die Komponenten innerhalb der Komponentenhierarchie untereinander.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Callback-Handler-in-JSX).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-State...hs/Callback-Handler-in-JSX?expand=1).
-* Wiederhole und durchdenke die Konzepte von Handler und Callback-Handler so oft wie nötig.
+* Wiederhole und durchdenke Eventhandler und Callback-Handlern.
