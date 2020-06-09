@@ -21,7 +21,7 @@ const Search = ({ search, onSearch }) => (
 );
 ~~~~~~~
 
-Normalerweise benötigt der von einer React-Komponente zurückgegebene JSX-Code ein umhüllendes Element. Mit Hilfe eines Arrays ist es möglich, mehrere Elemente nebeneinander zu rendern. Wenn wir mit einer Liste von Elementen arbeiten, ist es unumgänglich, dass wir jedem Geschwisterelement einen Schlüssel `key` zuweisen:
+Normalerweise benötigt der von einer React-Komponente zurückgegebene JSX-Code ein umhüllendes Element. Mit Hilfe eines Arrays ist es möglich, mehrere Elemente nebeneinander zu rendern. Wenn wir mit einer Liste arbeiten, ist es unumgänglich, dass wir jedem Geschwisterelement einen Schlüssel `key` zuweisen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -39,7 +39,7 @@ const Search = ({ search, onSearch }) => [
 ];
 ~~~~~~~
 
-Das vorausgehende Beispiel ist eine Möglichkeit, mehrere Elemente in JSX zu verwenden. Aufgrund des zusätzlichen Schlüsselattributs leidet die Übersichtlichkeit. **React Fragmente** lösen dieses Problem:
+Das vorausgehende Beispiel ist eine Möglichkeit, mehrere Elemente in JSX zu verwenden. Aufgrund des zusätzlichen Schlüsselattributs leidet die Übersichtlichkeit. **Fragmente** lösen dieses Problem:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -60,10 +60,10 @@ const Search = ({ search, onSearch }) => (
 );
 ~~~~~~~
 
-Ein Fragment gruppiert Kindelementen, ohne dem DOM einen zusätzlichen Knoten hinzuzufügen. Beide Suchelemente sind jetzt in deinem Browser mit Eingabefeld und Label sichtbar. Wenn du es bevorzugst, die umschließenden Elemente `<div>` oder `<span>` im resultierenden HTML nicht auszugeben, ersetze sie durch ein leeres Tag. Dies ist in JSX zulässig.
+Ein Fragment gruppiert Kind-Elementen, ohne dem DOM einen zusätzlichen Knoten hinzuzufügen. Label und Eingabefeld sind jetzt in deinem Browser sichtbar. Wenn du es bevorzugst, die umschließenden Elemente `<div>` oder `<span>` im resultierenden HTML nicht auszugeben, ersetze sie im Code mit einem leeres Tag `<> ... </>`. Dies ist in JSX zulässig.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Fragments).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Custom-Hooks...hs/React-Fragments?expand=1).
-* Lese mehr zum Thema [React Fragments](https://de.reactjs.org/docs/fragments.html).
+* Lese mehr zum Thema [Fragmente in React](https://de.reactjs.org/docs/fragments.html).
