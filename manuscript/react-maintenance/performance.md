@@ -10,7 +10,7 @@ In diesem Abschnitt zeige ich dir, wie du dir einen Überblick über die Perform
 
 ### Das erste Rendern
 
-Wir haben uns bereits mit Reacts useEffect Hook befasst, der für Seiteneffekte verwendet wird. Dieser wird beim ersten Rendern (Mounten) einer Komponente und dann bei jedem Aktualisieren aufgerufen. Indem wir ihm als zweites Argument ein leeres Abhängigkeitsarray übergeben, wird der Hook nur beim ersten Rendern ausgelöst. Standardmäßig gibt es keine Möglichkeit, den Hook so einzustellen, dass er bei jedem Aktualisieren aber nicht beim ersten Rendern (Mounten) aufgerufen wird. Sieh dir dies beispielsweise für die Statusverwaltung an. Wir verwalten den Status mit dem `useState`-Hook. Das dieser semi-persistenten ist erreichen wir, indem wir mithilfe des `useEffect`-Hook den aktuellen Wert im lokalen Speicher des Browsers ablegen:
+Wir haben uns bereits mit Reacts useEffect Hook befasst, der für Seiten-Effekte verwendet wird. Dieser wird beim ersten Rendern (Mounten) einer Komponente und dann bei jedem Aktualisieren aufgerufen. Indem wir ihm als zweites Argument ein leeres Abhängigkeitsarray übergeben, wird der Hook nur beim ersten Rendern ausgelöst. Standardmäßig gibt es keine Möglichkeit, den Hook so einzustellen, dass er bei jedem Aktualisieren aber nicht beim ersten Rendern (Mounten) aufgerufen wird. Sieh dir dies beispielsweise für die Statusverwaltung an. Wir verwalten den Status mit dem `useState`-Hook. Das dieser semi-persistenten ist erreichen wir, indem wir mithilfe des `useEffect`-Hook den aktuellen Wert im lokalen Speicher des Browsers ablegen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -62,9 +62,9 @@ const useSemiPersistentState = (key, initialState) => {
 };
 ~~~~~~~
 
-Wir nutzen `ref` und seine veränderbare `current`-Eigenschaft für die imperative Zustandsverwaltung, die kein erneutes Rendern auslöst. Sobald der Hook zum ersten Mal von seiner Komponente aufgerufen wird, wird `current` mit einem Booleschen Wert namens `isMounted` initialisiert, der mit `false` belegt ist. So wird der Seiteneffekt in `useEffect` nicht ausgelöst. Nur das boolesche Flag für `isMounted` wird auf `true` umgeschaltet. Bei jedem erneuten Aufruf wird das Flag im Seiteneffekt ausgewertet. Da es `true` ist, wird der Status im lokalen Speicher gespeichert. Während der Lebensdauer der Komponente bleibt `isMounted` mit `true` belegt. So wird vermieden, dass die Nebenwirkung ausgelöst wird, wenn unser benutzerdefinierter Hook verwendet wird.
+Wir nutzen `ref` und seine veränderbare `current`-Eigenschaft für die imperative Zustandsverwaltung, die kein erneutes Rendern auslöst. Sobald der Hook zum ersten Mal von seiner Komponente aufgerufen wird, wird `current` mit einem Booleschen Wert namens `isMounted` initialisiert, der mit `false` belegt ist. So wird der Seiten-Effekt in `useEffect` nicht ausgelöst. Nur das boolesche Flag für `isMounted` wird auf `true` umgeschaltet. Bei jedem erneuten Aufruf wird das Flag im Seiten-Effekt ausgewertet. Da es `true` ist, wird der Status im lokalen Speicher gespeichert. Während der Lebensdauer der Komponente bleibt `isMounted` mit `true` belegt. So wird vermieden, dass die Nebenwirkung ausgelöst wird, wenn unser benutzerdefinierter Hook verwendet wird.
 
-Dieses Beispiel ist nicht verhältnismäßig. Der Aufwand lohnt sich nicht, für die kleine Optimierung. Bedenke aber: Es gibt React-Anwendungen, mit komplizierten Berechnungen, in ihren Seiteneffekten. Dann ist es praktischer, diese Technik einzusetzen, um unnötige Funktionsaufrufe zu vermeiden.
+Dieses Beispiel ist nicht verhältnismäßig. Der Aufwand lohnt sich nicht, für die kleine Optimierung. Bedenke aber: Es gibt React-Anwendungen, mit komplizierten Berechnungen, in ihren Seiten-Effekten. Dann ist es praktischer, diese Technik einzusetzen, um unnötige Funktionsaufrufe zu vermeiden.
 
 *Hinweis: Diese Technik wird nicht nur zur Leistungsoptimierung verwendet, sondern, um einen Nebeneffekt nur dann auszuführen, wenn eine Komponente erneut gerendert wird. Ich habe es mehrmals benutzt und ich vermute, dass du irgendwann auf den einen oder anderen Anwendungsfall stoßen wirst.*
 
@@ -125,7 +125,7 @@ B:App
 B:List
 ~~~~~~~
 
-Da ein Seiteneffekt das Abrufen von Daten nach dem ersten Rendern auslöst, wird nur die App-Komponente gerendert, da die List-Komponente in einem bedingten Rendering durch einen Ladeindikator ersetzt wird. Sobald die Daten eintreffen, werden beide erneut gerendert.
+Da ein Seiten-Effekt das Abrufen von Daten nach dem ersten Rendern auslöst, wird nur die App-Komponente gerendert, da die List-Komponente in einem bedingten Rendering durch einen Ladeindikator ersetzt wird. Sobald die Daten eintreffen, werden beide erneut gerendert.
 
 Since a side-effect triggers data fetching after the first render, only the App component renders, because the List component is replaced by a loading indicator in a conditional rendering. Once the data arrives, both components render again.
 

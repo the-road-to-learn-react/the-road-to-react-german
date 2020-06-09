@@ -14,7 +14,7 @@ const getAsyncStories = () =>
 # leanpub-end-insert
 ~~~~~~~
 
-Verwende in der App-Komponente anstelle von `initialStories` ein leeres Array. So initialisieren wir unsere Anwendung mit einer inhaltslosen Liste, um im nächsten Schritt den asynchronen Abrufen zu simulieren. Rufe in einem neuen `useEffect`-Hook die Funktion `getAsyncStories` auf und fordere so das Promise-Objekt auf die Daten asynchron abzufragen. Da das zweite Argument in `useEffect` (Array mit abhängigen Variablen) leer ist, wird der Seiteneffekt `useEffect` erstmals ausgelöst, wenn die App-Komponente gerendert wird:
+Verwende in der App-Komponente anstelle von `initialStories` ein leeres Array. So initialisieren wir unsere Anwendung mit einer inhaltslosen Liste, um im nächsten Schritt den asynchronen Abrufen zu simulieren. Rufe in einem neuen `useEffect`-Hook die Funktion `getAsyncStories` auf und fordere so das Promise-Objekt auf die Daten asynchron abzufragen. Da das zweite Argument in `useEffect` (Array mit abhängigen Variablen) leer ist, wird der Seiten-Effekt `useEffect` erstmals ausgelöst, wenn die App-Komponente gerendert wird:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -64,7 +64,7 @@ const getAsyncStories = () =>
   );
 ~~~~~~~
 
-Wenn du die Anwendung erneut startest, wird die Liste verzögert gerendert. Beim Start wird keine Liste angezeigt, denn der Anfangszustand der Liste ist ein leeres Array. Beim Rendern der App-Komponente wird der Seiteneffekt-Hook `useEffect` aufgerufen, um die Listendaten über das Promise-Objekt asynchron abzurufen. Nach Ankunft der Daten und dem Setzen des Status wird die Komponente erneut gerendert und die Liste ist sichtbar.
+Wenn du die Anwendung erneut startest, wird die Liste verzögert gerendert. Beim Start wird keine Liste angezeigt, denn der Anfangszustand der Liste ist ein leeres Array. Beim Rendern der App-Komponente wird der Seiten-Effekt-Hook `useEffect` aufgerufen, um die Listendaten über das Promise-Objekt asynchron abzurufen. Nach Ankunft der Daten und dem Setzen des Status wird die Komponente erneut gerendert und die Liste ist sichtbar.
 
 ### Übungen:
 

@@ -129,7 +129,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Da der Schlüssel von außen stammt, nimmt der benutzerdefinierte Hook an, dass er sich ändert. Er wird daher in das Abhängigkeitsarray des Hooks `useEffect` aufgenommen. Ohne dies ist der Seiteneffekt mit einem veralteten Schlüssel (*stale*) machbar, wenn dieser zwischen den Renderings geändert wird.
+Da der Schlüssel von außen stammt, nimmt der benutzerdefinierte Hook an, dass er sich ändert. Er wird daher in das Abhängigkeitsarray des Hooks `useEffect` aufgenommen. Ohne dies ist der Seiten-Effekt mit einem veralteten Schlüssel (*stale*) machbar, wenn dieser zwischen den Renderings geändert wird.
 
 Eine weitere Verbesserung besteht darin, dem benutzerdefinierten Hook den Ausgangszustand mitzugeben:
 

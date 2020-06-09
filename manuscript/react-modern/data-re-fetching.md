@@ -60,7 +60,7 @@ const App = () => {
 
 The initial search respects the search term now, so we'll implement data refetching. If the `searchTerm` changes, run the side-effect for the data fetching again. If `searchTerm` is not present (e.g. null, empty string, undefined), do nothing (as a more generalized condition):
 
-Die anfängliche Suche berücksichtigt jetzt den Suchbegriff für den Status der Liste. Daher implementieren wir das erneute Abrufen von Daten, indem wir `searchTerm` in den  bisher leeren Array im zweiten Argument der Funktion `useEffect` einfügen. Wenn sich `searchTerm` ändert, wird somit der Seiteneffekt aufgerufen. Außerdem verallgemeinern wir den Umgang mit einem problematischen Suchwort: Wenn `searchTerm` nicht vorhanden ist (null, leere Zeichenfolge, undefiniert), passiert nichts:
+Die anfängliche Suche berücksichtigt jetzt den Suchbegriff für den Status der Liste. Daher implementieren wir das erneute Abrufen von Daten, indem wir `searchTerm` in den  bisher leeren Array im zweiten Argument der Funktion `useEffect` einfügen. Wenn sich `searchTerm` ändert, wird somit der Seiten-Effekt aufgerufen. Außerdem verallgemeinern wir den Umgang mit einem problematischen Suchwort: Wenn `searchTerm` nicht vorhanden ist (null, leere Zeichenfolge, undefiniert), passiert nichts:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

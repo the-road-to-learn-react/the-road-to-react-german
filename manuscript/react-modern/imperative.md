@@ -1,6 +1,6 @@
 ## Imperative in React
 
-React ist von Natur aus deklarativ. Das gilt für JSX genauso wie für die Hooks. In JSX teilen wir React mit, *was* gerendert wird und nicht *wie* es gerendert wird. Mit einem React-Seiteneffekts (useEffect) drücken wir aus, *was* statt *wie* etwas erreicht wird. Es gibt Szenarien, in denen wir gerne auf imperative Art und Weise auf ein Element zugreifen. Zum Beispiel:
+React ist von Natur aus deklarativ. Das gilt für JSX genauso wie für die Hooks. In JSX teilen wir React mit, *was* gerendert wird und nicht *wie* es gerendert wird. Mit einem React-Seiten-Effekt (useEffect) drücken wir aus, *was* statt *wie* etwas erreicht wird. Es gibt Szenarien, in denen wir gerne auf imperative Art und Weise auf ein Element zugreifen. Zum Beispiel:
 
 * Lese- / Schreibzugriff auf Elemente über die DOM-API:
   * Messen (Lesen) der Breite oder Höhe eines Elements
@@ -143,7 +143,7 @@ Alle wesentlichen Punkte habe ich mit Kommentaren im obigen Codebeispiel gekennz
 * (A) Erstelle zuerst ein `ref`-Objekt mit Hilfe von **Reacts useRef Hook**. Dieses `ref`-Objekt ist ein persistenter Wert, der über die Lebensdauer einer React-Komponente hinaus erhalten bleibt. Es kommt mit einer Eigenschaft namens `current`, die im Gegensatz zum `ref`-Objekt änderbar ist.
 * (B) Dann wird das `ref`-Objekt an das JSX-reservierte `ref`-Attribut des Eingabefelds übergeben und die Elementinstanz wird der veränderbaren `current`-Eigenschaft zugewiesen.
 * (C) Du hast jetzt die Option**Reacts useRef Hook** für den Lebenszyklus zu nutzen. Setzte den Fokus auf das Eingabefeld, wenn die Komponente gerendert wird (oder wenn sich ihre Abhängigkeiten ändern).
-* (D) Da das `ref`-Objekt an das `ref`-Attribut des Eingabefelds übergeben wird, ermöglicht die `current`-Eigenschaft den Zugriff auf das Element. Setzte den Fokus programmgesteuert als Seiteneffekt, wenn `isFocused` festgelegt ist und die Eigenschaft `current` vorhanden ist.
+* (D) Da das `ref`-Objekt an das `ref`-Attribut des Eingabefelds übergeben wird, ermöglicht die `current`-Eigenschaft den Zugriff auf das Element. Setzte den Fokus programmgesteuert als Seiten-Effekt, wenn `isFocused` festgelegt ist und die Eigenschaft `current` vorhanden ist.
 
 Dies war ein Beispiel für den Wechsel von der deklarativen zur imperativen Programmierung in React. Es ist nicht immer möglich, den deklarativen Weg zu nutzen. Wenn der Fall eintritt, ist der imperative Ansatz unter Umständen eine gangbare Alternative. Dieser Abschnitt dient dazu, die DOM-API in React kennenzulernen.
 

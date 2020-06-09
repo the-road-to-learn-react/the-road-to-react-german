@@ -10,7 +10,7 @@ In diesem Abschnitt werden wir eine [moderne React-Anwendung](https://codesandbo
 
 Komponenten wurden in React häufig verändert --- von **createClass-Komponenten** über **Klassenkomponenten** bis hin zu **Funktionskomponenten**. Wenn du heute eine in der Vergangenheit erstellt React-Anwendung ansiehst, wirst du zweifelsohne Klassenkomponenten neben modernen Funktionskomponenten vorfinden.
 
-Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Funktionen (beispielsweise Status- und Lebenszyklusverwaltung, und Methoden für Seiteneffekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (Props) wird über die Klasseninstanz (`this`) zugegriffen:
+Eine typische Klassenkomponente ist eine JavaScript-Klasse mit einer obligatorischen **Render-Methode**, die JSX zurückgibt. Die Klasse erweitert `React.Component` um Funktionen (beispielsweise Status- und Lebenszyklusverwaltung, und Methoden für Seiten-Effekte) zu erben ([Klassenvererbung](https://de.wikipedia.org/wiki/Vererbung_(Programmierung)). Auf Eigenschaften (Props) wird über die Klasseninstanz (`this`) zugegriffen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~

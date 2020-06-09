@@ -109,7 +109,7 @@ const App = () => {
 };
 ~~~~~~~
 
-`searchTerm` hatte bisher zwei Aufgaben: Zum einen war die Variable für die Aktualisierung des Status des Eingabefelds zuständig. Zum andere war sie für den Abruf der Daten verantwortlich --- ihre Aufgabe war es, den Seiteneffekt auszulösen. Hier waren die [Zuständigkeiten nicht getrennt](https://wiki.selfhtml.org/index.php?title=Separation_of_concerns&oldid=66463). Jetzt wird `searchTerm` nur für die Aktualisierung des Eingabefelds verwendet. Eine zweite statusbehaftete Variable namens `url` wurde eingeführt, um den Seiteneffekt beim Abrufen von Daten auszulösen. Dieser tritt nur dann auf, wenn ein Benutzer auf die Bestätigungsschaltfläche klickt.
+`searchTerm` hatte bisher zwei Aufgaben: Zum einen war die Variable für die Aktualisierung des Status des Eingabefelds zuständig. Zum andere war sie für den Abruf der Daten verantwortlich --- ihre Aufgabe war es, den Seiten-Effekt auszulösen. Hier waren die [Zuständigkeiten nicht getrennt](https://wiki.selfhtml.org/index.php?title=Separation_of_concerns&oldid=66463). Jetzt wird `searchTerm` nur für die Aktualisierung des Eingabefelds verwendet. Eine zweite statusbehaftete Variable namens `url` wurde eingeführt, um den Seiten-Effekt beim Abrufen von Daten auszulösen. Dieser tritt nur dann auf, wenn ein Benutzer auf die Bestätigungsschaltfläche klickt.
 
 ### Übungen:
 

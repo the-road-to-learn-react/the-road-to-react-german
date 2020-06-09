@@ -1,6 +1,6 @@
 ## Memoized Handler in React (fortgeschrittene Anleitung)
 
-In den vorherigen Abschnitten hast du einiges über Handler allgemein, Callback-Handler und Inline-Handler erfahren. In diesem Abschnitt stelle ich dir **Memoized Handler** vor, die auf Handler und Callback-Handler angewendet werden. [Memoisation](https://de.wikipedia.org/wiki/Memoisation) ist eine Technik zur Beschleunigung von Software, indem Rückgabewerte von Funktionen zwischengespeichert anstatt neu berechnet werden. Zu Lernzwecken verschieben wir die gesamte Datenabruflogik in eine eigenständige Funktion außerhalb des Seiteneffekts (A). Umgeben diese mit einem `useCallback`-Hook (B) und rufe sie im `useEffect`-Hook (C) auf:
+In den vorherigen Abschnitten hast du einiges über Handler allgemein, Callback-Handler und Inline-Handler erfahren. In diesem Abschnitt stelle ich dir **Memoized Handler** vor, die auf Handler und Callback-Handler angewendet werden. [Memoisation](https://de.wikipedia.org/wiki/Memoisation) ist eine Technik zur Beschleunigung von Software, indem Rückgabewerte von Funktionen zwischengespeichert anstatt neu berechnet werden. Zu Lernzwecken verschieben wir die gesamte Datenabruflogik in eine eigenständige Funktion außerhalb des Seiten-Effekt (A). Umgeben diese mit einem `useCallback`-Hook (B) und rufe sie im `useEffect`-Hook (C) auf:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -40,7 +40,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Das Verhalten der Anwendung ändert sich nicht. Ausschließlich die Implementierungslogik wurde überarbeitet. Vorher war die Datenabruflogik anonym als Seiteneffekt implementiert. Jetzt ist sie als Funktion für die Anwendung verfügbar.
+Das Verhalten der Anwendung ändert sich nicht. Ausschließlich die Implementierungslogik wurde überarbeitet. Vorher war die Datenabruflogik anonym als Seiten-Effekt implementiert. Jetzt ist sie als Funktion für die Anwendung verfügbar.
 
 Untersuchen wir als Nächstes, ob der `useCallback`-Hook weiterhin benötigt wird. Dieser Hook erstellt jedes Mal eine `memoized`-Funktion, wenn sich das Abhängigkeitsarray (E) ändert. Als Folge dessen wird der `useEffect`-Hook erneut aufgerufen (C), da er von der neuen Funktion (D) abhängt:
 
@@ -51,7 +51,7 @@ Untersuchen wir als Nächstes, ob der `useCallback`-Hook weiterhin benötigt wir
 3. run: side-effect
 ~~~~~~~
 
-Wenn wir mit dem `useCallback`-Hook keine `memoized`-Funktion erstellten, würde mit jeder App-Komponente eine neue `handleFetchStories`-Funktion erstellt und im `useEffect`-Hook aufgerufen, um Daten abzurufen. Die abgerufenen Daten werden dann als Status in der Komponente gespeichert. Da sich der Status der Komponente geändert hat, wird diese neu gerendert und eine neue Funktion `handleFetchStories` erstellt. Der Seiteneffekt würde ausgelöst, um Daten abzurufen, und wir finden uns in einer Endlosschleife wieder:
+Wenn wir mit dem `useCallback`-Hook keine `memoized`-Funktion erstellten, würde mit jeder App-Komponente eine neue `handleFetchStories`-Funktion erstellt und im `useEffect`-Hook aufgerufen, um Daten abzurufen. Die abgerufenen Daten werden dann als Status in der Komponente gespeichert. Da sich der Status der Komponente geändert hat, wird diese neu gerendert und eine neue Funktion `handleFetchStories` erstellt. Der Seiten-Effekt würde ausgelöst, um Daten abzurufen, und wir finden uns in einer Endlosschleife wieder:
 
 {title="Visualization",lang="javascript"}
 ~~~~~~~
