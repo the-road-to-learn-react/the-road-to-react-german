@@ -71,7 +71,7 @@ const [value, setValue] = React.useState('React');
 // setValue only takes a string as argument
 ~~~~~~~
 
-Beim Umarbeiten einer React-Anwendung hin zu Typensicherheit, hast du Wahl zwischen unterschiedlichen Vorgehensweisen. Ich arbeite als Erstes an den Eigenschaften (Props) und dem Status der Blattkomponenten im Komponentenbaum. Beispielsweise erhält die Item-Komponente ein Element (hier `item`) und eine Callback-Handler-Funktion (hier `onRemoveItem`). Füge die Inline-Typen für beide Funktionsargumente wie zuvor hinzufügen:
+Beim Umarbeiten/Refactoring einer React-Anwendung hin zu Typensicherheit, hast du Wahl zwischen unterschiedlichen Vorgehensweisen. Ich arbeite als Erstes an den Eigenschaften (Props) und dem Status der Blattkomponenten im Komponentenbaum. Beispielsweise erhält die Item-Komponente ein Element (hier `item`) und eine Callback-Handler-Funktion (hier `onRemoveItem`). Füge die Inline-Typen für beide Funktionsargumente wie zuvor hinzufügen:
 
 {title="src/App.tsx",lang="javascript"}
 ~~~~~~~

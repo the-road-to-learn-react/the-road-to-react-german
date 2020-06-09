@@ -96,9 +96,9 @@ const Search = ({ search, onSearch }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-`props` werden selten nur innerhalb der eigenen Komponente verwendet. Stattdessen werden alle Informationen verwendet, die im Objekt `props` enthalten sind. Indem wir das Objekt `props` sofort in der Funktionssignatur destrukurieren, ist es möglich, bequem auf alle Informationen zuzugreifen, ohne das "props"-Objekt vorher zu bearbeiten. Das Erkennen und Verinnerlichen dieser Vereinfachung ist das Lernziel dieses Abschnitts. Im Weiteren werden wir hierauf aufbauen und die Art und Weise, wie wir destrukturieren verbessern. 
+`props` werden selten nur innerhalb der eigenen Komponente verwendet, sondern mit anderen geteilt. Indem wir das Objekt `props` sofort in der Funktionssignatur destrukurieren, ist es möglich, bequem auf alle Informationen zuzugreifen, ohne `props` vorher zu bearbeiten. Das Erkennen und Verinnerlichen dieser Vereinfachung ist das Lernziel des Kapitels. Im Weiteren werden wir hierauf aufbauen und die Art und Weise, wie wir destrukturieren verbessern. 
 
-Schauen wir uns ein anderes Szenario an, und tauchen dabei tiefer in die Welt der `props` in React ein: Hierzu erstellen wir als erstes eine neue Item-Komponente. Dann nutzen wir unser gelerntes Wissen und setzen diese destrukturiert in der List-Komponente ein:
+Schauen wir uns ein anderes Szenario an, und tauchen dabei tiefer in die Welt der `props` ein: Hierzu erstellen wir als erstes eine neue Item-Komponente. Dann nutzen wir unser gelerntes Wissen und setzen diese destrukturiert in List ein:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -121,9 +121,9 @@ const List = ({ list }) =>
 # leanpub-end-insert
 ~~~~~~~
 
-`item` in der Itemkomponente hat etwas mit den zuvor besprochenen `props` gemeinsam: Beide sind JavaScript-Objekte. Das Objekt `item` wurde aus den `props` in der Funktionssignatur der Item-Komponente destrukturiert. Es wird trotzdem  nicht direkt in der Item-Komponente verwendet. Das Objekt `item` gibt seine Informationen (Objekteigenschaften) einzig und allein an andere Elemente weiter.
+`item` in der Item-Komponente hat etwas mit den zuvor besprochenen `props` gemeinsam: Beide sind JavaScript-Objekte. `item` wurde aus den `props` in der Funktionssignatur der Item-Komponente destrukturiert. Es wird nicht direkt in Item verwendet. `item` gibt seine Informationen (Eigenschaften) einzig und allein an andere Elemente weiter.
 
-Wie du im Folgen feststellen wirst, ist diese Lösung bestens. Dessen ungeachtet zeige ich dir zwei weitere Variationen, da du so nebenbei Vieles über JavaScript-Objekte lernst und es meiner Meinung nach nie schadet über den Tellerrand zu schauen. Sehen wir uns zunächst die *verschachtelte Destrukturierung* an:
+Wie du im Folgen feststellen wirst, ist diese Lösung zweckmäßig. Dessen ungeachtet zeige ich dir zwei weitere Variationen, da du so nebenbei Vieles über JavaScript-Objekte lernst und es meiner Meinung nach nie schadet über den Tellerrand zu schauen. Sehen wir uns zunächst die *verschachtelte Destrukturierung* an:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -134,14 +134,14 @@ const user = {
   },
 };
 
-// without object destructuring
+// Ohne Objekt Destrukturierung
 const firstName = user.firstName;
 const name = user.pet.name;
 
-console.log(firstName + ' has a pet called ' + name);
-// "Robin has a pet called Trixi"
+console.log(firstName + ' hat ein Haustier ' + name);
+// "Robin hat ein Haustier namens Trixi"
 
-// with nested object destructuring
+// Mit verschachtelter Objekt Destrukturierung
 const {
   firstName,
   pet: {
@@ -149,15 +149,15 @@ const {
   },
 } = user;
 
-console.log(firstName + ' has a pet called ' + name);
-// "Robin has a pet called Trixi"
+console.log(firstName + ' hat ein Haustier ' + name);
+// "Robin hat ein Haustier namens Trixi"
 ~~~~~~~
 
-Die verschachtelte Destrukturierung hilft uns, auf Eigenschaften von Objekten zuzugreifen, die --- wie der Name schon sagt --- tiefer verschachtelt sind. Im Beispiel wäre dies der Name des Haustiers. Da das Objekt "item" in unserer Item-Komponente niemals direkt verwendet wird, führen wir in der Funktionssignatur der Komponente eine *verschachtelte Destrukturierung* durch:
+Die verschachtelte Destrukturierung unterstützt uns beim Zugriff auf Eigenschaften, die vielschichtig sind. Im Beispiel wäre dies der Name des Haustiers. Da das Objekt "item" in der Item-Komponente niemals direkt verwendet wird, setzen wir in der Funktionssignatur die *verschachtelte Destrukturierung* ein:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// Variation 1: Nested Destructuring
+// Variante 1: Verschachtelte Destrukturierung
 
 const Item = ({
 # leanpub-start-insert
@@ -185,13 +185,13 @@ const Item = ({
 );
 ~~~~~~~
 
-Die verschachtelte Destrukturierung hilft uns, alle erforderlichen Informationen des Objekts "item" in der Funktionssignatur zu sammeln, um diese sofort in den Elementen der Komponente zu verwendet werden. Verschachtelte Destrukturierung führt unter Umständen zu Unordnung durch Einrückungen in der Funktionssignatur. Obwohl dies hier nicht die am besten lesbare Option ist, gibt es Szenarien, in denen sie nützlich ist.
+Wir sammeln mithilfe der verschachtelte Destrukturierung alle erforderlichen Informationen des Objekts "item" in der Funktionssignatur. So ist es möglich, diese unmittelbar der Komponente zu verwenden. Verschachtelte Destrukturierung führt unter Umständen zu Unordnung durch Einrückungen in der Funktionssignatur. Obwohl dies nicht die lesbarste Option ist, gibt es Szenarien, in denen sie nützlich ist.
 
-Lassen Sie uns einen anderen Ansatz mit den [Spread-](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax) und [Rest](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameter)-Operatoren in JavaScript verfolgen. Um unser Beispiel darauf vorzubereiten, werden wir unsere Listen- und Item-Komponenten umgestalten. Anstatt das Element als Objekt von der Liste an die Itemkomponente zu übergeben, übergeben wir alle Eigenschaften des Objekts `item`:
+Lass uns einen anderen Ansatz mit dem [Spread-Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax) und dem [Rest-Parameter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameter) in JavaScript ansehen. Um unser Beispiel darauf vorzubereiten, werden wir die List- und die Item-Komponente umgestalten. Anstatt das Element `item` als Objekt von List an Item zu übergeben, reichen wir die Eigenschaften einzeln weiter:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// Variation 2: Spread and Rest Operators
+// Variante 2: Spread- und Rest-Parameter
 // 1. Iteration
 
 const List = ({ list }) =>
@@ -221,7 +221,7 @@ const Item = ({ title, url, author, num_comments, points }) => (
   </div>
 );
 ~~~~~~~
-Obwohl die Funktionssignatur der Item-Komponente jetzt präziser ist, ist List-Komponente unübersichtlicher, da jede Eigenschaft einzeln an die Item-Komponente übergeben wird. Verbessern wir dies mithilfe des [JavaScript-Spread-Operators](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax):
+Die Funktionssignatur der Item-Komponente ist jetzt präziser. Dafür ist List unübersichtlicher, da jede Eigenschaft einzeln aufgeführt ist. Verbessern wir dies mithilfe des [JavaScript-Spread-Operators](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax). Als Erstes sehen wir uns die Syntax unabhängig von unserer Beispielanwendung kurz an. Du siehst im nachfolgenden Beispiel drei Punkte. Welchen Zweck erfüllen die? Kurz und knapp: Die Spread-Syntax ermöglicht die Erweiterung eines Ausdrucks an Stellen, an denen mehrere Argumente erwartet werden.
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -253,11 +253,11 @@ console.log(user);
 // }
 ~~~~~~~
 
-Mit dem Spread-Operator von JavaScript verteilen wir alle Schlüssel/Wert-Paare eines Objekts auf ein anderes Objekt. Dies ist ebenfalls mithilfe von Reacts JSX möglich. Anstatt, wie zuvor, jede Eigenschaft einzeln über props von der Liste an die Elementkomponente zu übergeben, verwenden wir den Spread-Operator von JavaScript, um alle Schlüssel/Wert-Paare des Objekts als Attribut/Wert-Paare an ein JSX-Element zu übergeben:
+Mit dem Spread-Operator verteilen wir alle Schlüssel/Wert-Paare der Objekte `profil` und `address` auf `user`. Dies ist mithilfe von Reacts JSX möglich. Anstatt, wie zuvor, jede Eigenschaft einzeln über `props` von List an Item zu übergeben, verwenden wir den Spread-Operator, um alle Schlüssel/Wert-Paare eines Objekts auf einen Schlag als Attribut/Wert-Paare an ein JSX-Element zu übergeben:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// Variation 2: Spread and Rest Operators
+// Variante 2: Spread- und Rest-Parameter
 // 2. Iteration
 
 const List = ({ list }) =>
@@ -277,7 +277,7 @@ const Item = ({ title, url, author, num_comments, points }) => (
 );
 ~~~~~~~
 
-Durch dieses Refactoring wurde die Übergabe der Informationen von der Liste an die Elementkomponente präziser. Wir verwenden [JavaScript-Restparameter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameters) als Sahnehäubchen. Der JavaScript-Restoperator tritt immer als letzter Teil einer Objekt Destrukturierung auf:
+Durch dieses Refactoring ist die Übergabe der Informationen von List an Item präziser. Im nächsten Schritt setzten wir [JavaScript-Restparameter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameters) als Sahnehäubchen oben drauf. Der Rest-Parameter ist zwingend das letzte Argument in einer Signatur. Sieh dir zunächst die Syntax unabhängig von unserem Anwendungsbeispiel an:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -304,13 +304,13 @@ console.log(city);
 // "Berlin"
 ~~~~~~~
 
-Obwohl beide dieselbe Syntax haben (drei Punkte), unterscheidet der Restoperator sich vom Spread-Operator. Während der Restoperator auf der rechten Seite einer Zuweisung steht, wird der Spread-Operator auf der linken Seite eingefügt. Der Restoperator wird immer verwendet, um ein Objekt von einigen seiner Eigenschaften zu trennen.
+Obwohl beide eine ähnliche Syntax haben (drei Punkte) gibt es Unterschiede: Während der Rest-Parameter auf der rechten Seite einer Zuweisung steht, wird der Spread-Operator auf der linken eingefügt. Der Rest-Parameter wird verwendet, um ein Objekt von einigen seiner Eigenschaften zu trennen.
 
-Jetzt kann es in unserer Listenkomponente verwendet werden, um die `objectID` vom Element zu trennen, da die `objectID` nur als `key` und nicht in der Element-Komponente verwendet wird. Nur das verbleibende (Rest-) Element wird als Attribut/Wert-Paar in die Elementkomponente (wie zuvor) verteilt:
+Verwenden wir den Rest-Parameter in unserer List-Komponente, um die `objectID` vom `item`-Element zu trennen, da diese nur als `key` verwendet wird. Das verbleibende (Rest-)Element wird wie zuvor als Attribut/Wert-Paar an die Item-Komponente übergeben:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
-// Variation 2: Spread and Rest Operators (final)
+// Variante 2: Spread-Operator und Rest-Parameter (fertig)
 
 const List = ({ list }) =>
 # leanpub-start-insert
@@ -329,10 +329,9 @@ const Item = ({ title, url, author, num_comments, points }) => (
 );
 ~~~~~~~
 
-In dieser letzten Variante wird der Restoperator verwendet, um die `objectID` vom Rest des `item` -Objekts zu destruktuieren. Anschließend wird das `item` mit seinen Schlüssel/Wert-Paaren in die Item-Komponente verteilt. Diese letzte Variante ist die prägnanteste, enthält dabei aber erweiterte JavaScript-Funktionen, die relativ unbekannt sind.
+Diese letzte Variante ist die prägnanteste, enthält dabei aber erweiterte JavaScript-Funktionen, die relativ unbekannt und komplex sind.
 
-
-In diesem Abschnitt haben wir etwas über die Destrukturieung von JavaScript-Objekten gelernt, die häufig für das Objekt `props`, aber auch für andere Objekte wie das `item`-Objekt verwendet werden kann. Wir haben gesehen, wie verschachtelte Destrukturierung verwendet wird (Variante 1), dabei hat sie in unserem Fall keine Vorteile gebracht. Sie hat die Komponente nur vergrößert. In Zukunft werden Sie wahrscheinlich Anwendungsfälle für verschachtelte Destrukturierungen finden, die von Vorteil sind. Last but not least hast du die Spread- und Rest-Operatoren von JavaScript kennengelernt, die nicht miteinander zu verwechselt sind. Sie werden verwendet um Operationen an JavaScript-Objekten auszuführen und das Objekt `props` auf präzise Weise von einer Komponente an eine andere Komponente zu übergeben. Am Ende komme ich auf die ursprüngliche Version des Codes zu unserer Anwendung zurück, auf die wir in den nächsten Kapiteln aufbauen werden:
+Im aktuellen Kapitel haben wir etwas über die Destrukturieung von JavaScript-Objekten gelernt. Diese wird häufig für auf `props` angewendet. Wir haben verschachtelte Destrukturierung verwendet (Variante 1). Das hat in unserem Fall keine Vorteile gebracht. Last but not least hast du den Spread-Operator und den Rest-Parameter kennengelernt. Beide werden verwendet, um ein Objekt, in der Regel `props`, auf knappe und präzise Weise von einer Komponente an eine andere zu übergeben. Am Ende dieses Kapitels komme ich auf die ursprüngliche Version des Codes unserer Anwendung zurück, die wir im Weiteren nutzen werden:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -351,7 +350,7 @@ const Item = ({ item }) => (
 );
 ~~~~~~~
 
-Diese Version ist nicht die prägnanteste, aber die einfachsten. Variante 1 mit ihrer verschachtelten Destrukturierung hat keinen Nutzen gebracht, und Variante 2 fügt zu viele erweiterte JavaScript-Funktionen (Spread-Operator, Rest-Operator) hinzu, die nicht jedem bekannt sind. Alle haben ihre Vor- und Nachteile. Achte beim Refactoring einer Komponente immer auf Lesbarkeit, insbesondere wenn du in einem Team arbeiten, und stelle sicher, dass diese einen gemeinsamen React-Code-Stil verwenden.
+Diese Version ist nicht die prägnanteste, aber die einfachsten. Variante 1 mit ihrer verschachtelten Destrukturierung hat keinen Nutzen gebracht, und Variante 2 fügt zu viele erweiterte JavaScript-Funktionen (Spread-Operator, Rest-Parameter) hinzu, die nicht jedem bekannt sind. Alle haben ihre Vor- und Nachteile. Achte beim Refactoring einer Komponente immer auf Lesbarkeit, insbesondere wenn du in einem Team arbeitest, und stelle sicher, dass ein gemeinsamen React-Code-Stil verwendet wird.
 
 ### Übungen:
 
@@ -359,7 +358,7 @@ Diese Version ist nicht die prägnanteste, aber die einfachsten. Variante 1 mit 
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Controlled-Components...hs/Props-Handling?expand=1).
 * Lese mehr zum Thema [JavaScript's destructuring assignment](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 * Überlege, was genau der Unterschied zwischen der Destrukturierung von JavaScript-Arrays --- die wir für den `useState`-Hook von React verwendet haben --- und der Objekt-Destrukturierung ist.
-* Lese mehr zum Thema [JavaScript's spread operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
-* Lese mehr zum Thema [JavaScript's rest parameters](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameters).
-* Verteife dein Wissen in Bezug auf JavaScript (Spread-Operator, Rest-Operator, Destrukturierung) und die Wechselwirkungen mit React --- beispielsweise den Eigenschaften (Props).
-* Verwende weiterhin die Methode deiner Wahl, beim Arbeiten mit den Eigenschaften (Props). Wenn du unentschlossen bist, nutze die Variante des vorherigen Abschnitts.
+* Lese mehr über den [JavaScript-Spread-Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
+* Lese mehr über den [JavaScript-Rest-Parameter](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/rest_parameters).
+* Verteife dein Wissen in Bezug auf JavaScript (Spread-Operator, Rest-Parameter, Destrukturierung) und die Wechselwirkungen mit React --- beispielsweise den Eigenschaften (Props).
+* Verwende weiterhin die Methode deiner Wahl, beim Arbeiten mit Eigenschaften (Props). Wenn du unentschlossen bist, nutze die Variante des vorherigen Abschnitts.

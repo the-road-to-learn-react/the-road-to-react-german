@@ -312,7 +312,7 @@ Die angezeigte Liste wird vergrößert, nachdem mit der neuen Schaltfläche weit
 
 ![](images/flicker.png)
 
-Gewünschtes Verhalten ist das Folgende: Die Liste ist am Anfang leere und die Schaltfläche "More" inklusive Ladeanzeige wird nur für ausstehende Anforderungen durch die Ladeanzeige ersetzt. Dies ist ein übliches Umarbeiten er Benutzeroberfläche für das bedingte Rendern, wenn sich die Ausgabe von einer einzelnen Liste hin zu paginierten verändert.
+Gewünschtes Verhalten ist das Folgende: Die Liste ist am Anfang leere und die Schaltfläche "More" inklusive Ladeanzeige wird nur für ausstehende Anforderungen durch die Ladeanzeige ersetzt. Dies ist ein übliches Refactoring/Umarbeiten er Benutzeroberfläche für das bedingte Rendern, wenn sich die Ausgabe von einer einzelnen Liste hin zu paginierten verändert.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
