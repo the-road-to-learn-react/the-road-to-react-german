@@ -21,7 +21,7 @@ const Search = ({ search, onSearch }) => (
 );
 ~~~~~~~
 
-Normalerweise benötigt der von einer React-Komponente zurückgegebene JSX-Code ein umhüllendes Element. Mit Hilfe eines Arrays ist es möglich, mehrere Elemente nebeneinander zu rendern. Wenn wir mit einer Liste arbeiten, ist es unumgänglich, dass wir jedem Geschwisterelement einen Schlüssel `key` zuweisen:
+Normalerweise benötigt der von einer React-Komponente zurückgegebene JSX-Code ein umhüllendes Element. Mit Hilfe eines Arrays ist es möglich, mehrere Elemente nebeneinander zu rendern. Wenn wir mit einer Liste arbeiten, ist es unumgänglich, dass wir jedem Geschwisterelement einen Schlüssel `key` zuweisen. Ich zeige dir den Code exemplarisch. Wenn du ihn ausprobierst, wirst du auf den ersten Blick keinen Unterschied feststellen. Genauso wie bei einer [Liste](https://www.robinwieruch.de/react-list-component) ist es möglich, `key` wegzulassen. Sobald du ein Element entfernst oder hinzufügst, oder die Reihenfolge dynamisch änderst, wird du dann aber auf Problemen stoßen. Deshalb verwende `key` wie im nachfolgenden Code:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -39,7 +39,7 @@ const Search = ({ search, onSearch }) => [
 ];
 ~~~~~~~
 
-Das vorausgehende Beispiel ist eine Möglichkeit, mehrere Elemente in JSX zu verwenden. Aufgrund des zusätzlichen Schlüsselattributs leidet die Übersichtlichkeit. **Fragmente** lösen dieses Problem:
+Das vorausgehende Beispiel ist eine Möglichkeit, mehrere Elemente in JSX zu verwenden. Aufgrund des zusätzlichen Schlüsselattributs `key` leidet die Übersichtlichkeit. **Fragmente** lösen dieses Problem:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

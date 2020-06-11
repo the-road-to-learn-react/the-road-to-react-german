@@ -121,7 +121,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Jetzt ist es möglich, nach „eact“, „React“ oder „react“ zu suchen, um eines der zwei Elemente herauszufiltern. Glückwunsch! Du hast die Anwendung um die erste interaktive Funktion erweitert.
+Jetzt ist es möglich, nach "eact", "React" oder "react" zu suchen, um eines der zwei Elemente herauszufiltern. Glückwunsch! Du hast die Anwendung um die erste interaktive Funktion erweitert.
 
 Der verbleibende Abschnitt enthält nichts Neues. Wir überarbeiten den aktuellen Codes. Bitte vollziehe diese Schritte nach, da wir im Weiteren die überarbeitete Version verwenden. Zunächst präzisieren wir die Funktion mithilfe einer Pfeilfunktion:
 

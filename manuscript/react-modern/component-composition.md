@@ -1,6 +1,6 @@
 ## Komponenten Komposition in React
 
-In diesem Abschnitt lernst du, wie du ein React-Element auf dieselbe Weise wie ein HTML-Element mit einem öffnenden und schließenden Tag verwendest:
+In diesem Abschnitt lernst du, wie du ein Element in React auf dieselbe Weise wie in HTML verwendest --- mit einem öffnenden und schließenden Tag:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -27,7 +27,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Im obigen Beispiel fügen wir den Text "Search:" jetzt direkt zwischen die Tags der Komponente ein. In der InputWithLabel-Komponente hast du inzwischen über die Eigenschaft **children** Zugriff auf diese Information. Verwende anstelle von `label` die Eigenschaft `children`, um alles, was von oben weitergegeben wird, an der gewünschten Stelle anzuzeigen:
+Im obigen Beispiel fügen wir den Text "Search" direkt zwischen die Tags der Komponente ein. In InputWithLabel hast du über die **React-Eigenschaft children** Zugriff auf diese Information. Verwende anstelle von `label` `children`, um alles, was von oben weitergegeben wird, an der gewünschten Stelle anzuzeigen. Wenn die Komponente mehrere Kinder hat, werden diese in einem Array übergeben. InputWithLabel hat nur ein Kind, das ist direkt verwendbar --- wir verwenden `children` anstelle von `children[0]`:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -89,4 +89,4 @@ Mit diesem Feature ist es möglich React-Komponenten je nach Wunsch zusammenzust
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Composition).
   * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Reusable-React-Component...hs/React-Component-Composition?expand=1).
 * Lese mehr über die Komposition von Komponenten in React ([0](https://www.robinwieruch.de/react-component-composition), [1](https://de.reactjs.org/docs/composition-vs-inheritance.html)).
-* Erstelle eine Textkomponente, die einen String rendert und übergib diese mittels `children` an die InputWithLabel-Komponente.
+* Erstelle eine Komponente, die einen String rendert und übergib diese mittels `children` an  InputWithLabel.
