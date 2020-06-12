@@ -1,8 +1,8 @@
 ## Asynchrone Daten in React
 
-Es gibt bisher zwei Interaktionen in unserer Anwendung: das Durchsuchen der Liste und das Entfernen von Elementen. Im ersten Fall ist der Zustand der Liste schwankend und wird über die externe Funktion (`searchTerm`) beeinflusst. Der zweite Fall beschreibt das nicht änderbare Löschen eines Listen-Elements.
+Es gibt bisher zwei Interaktionen in unserer Anwendung: das Durchsuchen der Liste und das Entfernen von Elementen. Im ersten Fall ist der Zustand der List-Komponente schwankend und wird über die externe Funktion (`searchTerm`) beeinflusst. Der zweite Fall beschreibt das nicht änderbare Löschen eines Listen-Elements.
 
-In der Realität ist es manchmal erforderlich, eine Komponente zu rendern, bevor Daten von einer Drittanbieter-API zur Verfügung stehen. Im Folgenden simulieren wir diese Art von asynchronen Daten in unserer Anwendung. In einem Echtsystem werden die von einer realen Remote-API abgerufen. Zunächst erstellen wir eine Funktion, die ein Promise-Objekt zurückgibt. Ein Promise-Objekt steht für das Ergebnis einer asynchronen Operation. Das zurückgegebene Objekt enthält bei erfolgreicher Ausführung den vorherigen Inhalt von `stories`:
+In der Realität ist es manchmal erforderlich, eine Komponente zu rendern, bevor Daten von einer Drittanbieter-API zur Verfügung stehen. Im Folgenden simulieren wir diese Art von asynchronen Daten in unserer Anwendung. In einem Echtsystem werden die von einer realen Remote-API abgerufen. Zunächst erstellen wir eine Funktion, die ein Promise-Objekt zurückgibt. Dieses steht für das Ergebnis einer asynchronen Operation. Es enthält bei erfolgreicher Ausführung den vorherigen Inhalt von `stories`:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -14,7 +14,7 @@ const getAsyncStories = () =>
 # leanpub-end-insert
 ~~~~~~~
 
-Verwende in der App-Komponente anstelle von `initialStories` ein leeres Array. So initialisieren wir unsere Anwendung mit einer inhaltslosen Liste, um im nächsten Schritt den asynchronen Abrufen zu simulieren. Rufe in einem neuen `useEffect`-Hook die Funktion `getAsyncStories` auf und fordere so das Promise-Objekt auf die Daten asynchron abzufragen. Da das zweite Argument in `useEffect` (Array mit abhängigen Variablen) leer ist, wird der Seiten-Effekt `useEffect` erstmals ausgelöst, wenn die App-Komponente gerendert wird:
+Wir verwenden in der App-Komponente anstelle von `initialStories` ein leeres Array. So initialisieren wir unsere Anwendung mit einer inhaltslosen Liste, um im nächsten Schritt den asynchronen Abrufen zu simulieren. Rufe in einem neuen `useEffect`-Hook die Funktion `getAsyncStories` auf und fordere so das Promise-Objekt auf die Daten asynchron abzufragen. Da das zweite Argument in `useEffect` (Array mit abhängigen Variablen) leer ist, wird der Seiten-Effekt `useEffect` erstmals ausgelöst, wenn die App-Komponente gerendert wird:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -37,7 +37,7 @@ const App = () => {
 };
 ~~~~~~~
 
-In der Theorie treffen die Daten beim ersten Aufruf der Anwendung asynchron ein. In der Praxis ist dies nicht sichtbar. Die Liste wird sofort gerendert. Lass uns dies ändern, indem wir eine Verzögerung einbauen. So simulieren wir die Übertragung der Daten über ein Netzwerk. Erweitere zu diesem Zweck erst das Promise-Objekt:
+In der Theorie treffen die Daten beim ersten Aufruf der Anwendung asynchron ein. In der Praxis ist dies nicht sichtbar. Die Liste wird sofort gerendert. Lass uns dies ändern, indem wir eine Verzögerung einbauen. So simulieren wir die Übertragung der Daten über ein Netzwerk. Erweitere zu diesem Zweck erst das Promise-Objekt --- fügen Sie eine Zeitüberschreitung hinzu:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -64,7 +64,7 @@ const getAsyncStories = () =>
   );
 ~~~~~~~
 
-Wenn du die Anwendung erneut startest, wird die Liste verzögert gerendert. Beim Start wird keine Liste angezeigt, denn der Anfangszustand der Liste ist ein leeres Array. Beim Rendern der App-Komponente wird der Seiten-Effekt-Hook `useEffect` aufgerufen, um die Listendaten über das Promise-Objekt asynchron abzurufen. Nach Ankunft der Daten und dem Setzen des Status wird die Komponente erneut gerendert und die Liste ist sichtbar.
+Wenn du die Anwendung mit den Ergänzungen dieses Kapitels aufrufst, wird die Liste verzögert gerendert. Unmittelbar beim Start wird nichts angezeigt, denn der Anfangszustand der List-Komponente ist ein leeres Array. Beim Rendern von App wird der Seiten-Effekt-Hook `useEffect` aufgerufen, um die Listendaten über das Promise-Objekt asynchron abzurufen. Nach Ankunft der Daten und dem Setzen des Status wird die Komponente erneut gerendert und die Liste ist sichtbar.
 
 ### Übungen:
 

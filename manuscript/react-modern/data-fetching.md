@@ -38,7 +38,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Zunächst rufen wir mit `API_ENDPOINT` (A) beliebten Tech-Storys ab. Weil es nahe liegt, wählen wir als Thema `React` (B). Dafür verwenden wir die [Fetch-API des nativen Browsers](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) (B). Die Daten werden über die API im Datenformat [JSON](https://developer.mozilla.org/de/docs/Learn/JavaScript/Objects/JSON) gesendet und von uns übersetzt (C). Letztendlich senden wir das Ergebnis der Abfrage in der passenden Datenstruktur als `payload` an den Status unserer Komponente (D).
+Zunächst rufen wir mit `API_ENDPOINT` (A) beliebten Tech-Storys ab. Weil es nahe liegt, wählen wir als Thema `React` (B). Dafür verwenden wir die [Fetch-API des nativen Browsers](https://developer.mozilla.org/de/docs/Web/API/Fetch_API) (B). Die Daten werden über die API im Datenformat [JSON](https://developer.mozilla.org/de/docs/Learn/JavaScript/Objects/JSON) gesendet und von uns übersetzt (C). Letztendlich senden wir das Ergebnis der Abfrage in der passenden Datenstruktur als `payload` an den Status unserer Komponente (D).
 
 Im Codebeispiel verwenden wir mit `${API_ENDPOINT}react` einen [Template-String](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals). Wäre diese Funktion in JavaScript nicht verfügbar, nutzten wir die klassische Konkatenation mit dem `+`-Operator: 
 
