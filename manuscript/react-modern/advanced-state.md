@@ -1,8 +1,8 @@
 ## React Status (fortgeschrittene Anleitung)
 
-Das gesamte Statusmanagement in unserer Anwendung verwendet den `useState` Hook von React. Eine ausgefeilte Statusverwaltung nutzt zusätzlich unter Umständen **Reacts useReducer Hook**. Da sich beim Konzept der Reduzierungen in JavaScript die Geister scheiden, werden ich hier nicht ausführlich darauf eingehen. Unbeachtet lasse ich das Thema aber ebenfalls nicht. Die Übungen am Ende dieses Abschnitts geben dir genug Material, um dir deine eigene Meinung zu bilden.
+Das gesamte Statusmanagement in unserer Anwendung verwendet den `useState`-Hook. Eine ausgefeilte Statusverwaltung nutzt zusätzlich unter Umständen den **useReducer-Hook**. Da sich beim Konzept der Reduzierungen in JavaScript die Geister scheiden, werden ich hier nicht ausführlich darauf eingehen. Unbeachtet lasse ich das Thema aber ebenfalls nicht. Die Übungen am Ende dieses Abschnitts geben dir genug Material, um dir deine eigene Meinung zu bilden.
 
-Wir werden die Statusverwaltung der `stories` vom `useState`-Hook in einen neuen `useReducer`-Hook verschieben. Führe zunächst eine Reduzier-Funktion außerhalb der App-Komponenten ein. Eine solche Funktion empfängt immer einen `state` und eine `action`. Basierend auf diesen beiden Argumenten gibt ein Reduzierer einen neuen Status zurück:
+Wir werden die Statusverwaltung der `stories` vom `useState`-Hook in einen neuen Hook --- den `useReducer`-Hook verschieben. Führe zunächst eine Reduzierer-Funktion außerhalb der App-Komponenten ein. Eine solche Funktion empfängt immer einen `state` und eine `action`. Basierend auf diesen beiden Argumenten gibt ein Reduzierer einen neuen Status zurück:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -17,7 +17,7 @@ const storiesReducer = (state, action) => {
 # leanpub-end-insert
 ~~~~~~~
 
-Eine Reduzierer-Aktion wird oft mit einem Typ `type` assoziiert. Wenn dieser Typ einer Bedingung im Reduzierer entspricht, dann führe eine Aktion aus. Wenn dies nicht so ist, dann gib einen Fehler aus. So erinnerst du dich selbst daran, dass hier die Implementierung lückenhaft ist. Die Funktion `storiesReducer` deckt einen Typ `type` ab und gibt dann die Nutzdaten `payload` der eingehenden Aktion zurück, ohne den aktuellen Status zur Berechnung des neuen Status zu verwenden. Der neue Zustand ist `payload`.
+`action` wird oft mit einem Typ `type` assoziiert. Wenn dieser Typ einer Bedingung im Reduzierer entspricht, dann führe eine Aktion aus. Wenn dies nicht so ist, dann gib einen Fehler aus. So erinnerst du dich selbst daran, dass hier die Implementierung lückenhaft ist. Die Funktion `storiesReducer` deckt einen Typ `type` ab und gibt dann die Nutzdaten `payload` der eingehenden Aktion zurück, ohne den aktuellen Status zur Berechnung des neuen Status zu verwenden. Der neue Zustand ist `payload`.
 
 Tausche in der App-Komponente `useState` gegen `useReducer` aus, um den Status von `stories` zu verwalten. Der neue Hook erhält eine Reduzierer-Funktion und einen Anfangszustand als Argumente und gibt ein Array mit zwei Elementen zurück. Das erste ist der *aktuelle Status*, beim zweiten handelt es sich um die *Statusaktualisierungsfunktion* (*Dispatcher*):
 
@@ -147,6 +147,6 @@ Sieh dir die in den Übungen verlinkten Websites an, um das Reduzierer-Konzept i
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt]( ).
+  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Conditional-Rendering...hs/React-Advanced-State?expand=1).
 * Lese mehr zum Thema [reducers in JavaScript](https://www.robinwieruch.de/javascript-reducer).
 * Lese mehr zum Thema reducers and useReducer in React ([0](https://www.robinwieruch.de/react-usereducer-hook), [1](https://de.reactjs.org/docs/hooks-reference.html#usereducer)).
