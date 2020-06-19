@@ -140,7 +140,7 @@ const storiesReducer = (state, action) => {
 };
 ~~~~~~~
 
-In diesem Abschnitt haben wir in das JavaScript Reduzierer-Konzept hineingeschnuppert. Wir implementierten zwei Zustandsübergängen und probierten aus, wie der aktuelle Zustand mithilfe einer Aktion in einen neuen umgewandelt wird. Als Beispiel diente die `stories`-Liste. Am Ende dieses Abschnitts legen wir eine `stories`-Liste für die asynchron ankommenden Daten fest und entfernen ein Element aus dieser, wobei die Logik für die Aktualisierung des Status an einer Stelle implementiert ist: dem `useReducer`-Hook.
+In diesem Abschnitt haben wir in das JavaScript Reduzierer-Konzept hineingeschnuppert. Wir implementierten zwei Zustandsübergängen und probierten aus, wie der aktuelle Zustand mithilfe einer Aktion in einen neuen umgewandelt wird. Als Beispiel diente die `stories`-Liste. Am Ende dieses Abschnitts legen wir eine `stories`-Liste für die asynchron ankommenden Daten fest und entfernen ein Element aus dieser, wobei die Logik für die Aktualisierung des Status mithilfe der Aktion an einer Stelle implementiert ist: dem `useReducer`-Hook.
 
 Sieh dir die in den Übungen verlinkten Websites an, um das Reduzierer-Konzept in JavaScript und die Verwendung von **Reacts useReducer Hook** vollends zu verstehen.
 

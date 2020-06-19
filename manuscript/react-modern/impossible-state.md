@@ -1,8 +1,8 @@
 ## Nicht mögliche Status
 
-Hast du eine Trennung zwischen den einzelnen Zuständen in der App-Komponente bemerkt? Diese scheinen aufgrund der `useState`-Hooks eine Einheit zu bilden. Technisch gesehen gehören alle Zustände, die sich auf die asynchronen Daten beziehen, zusammen. Wobei ich nicht nur die `stories` als Echtdaten, sondern ebenfalls ihre Lade- und Fehlerzustände meine.
+Hast du eine Diskrepanz zwischen den einzelnen Zuständen in der App-Komponente bemerkt? Diese scheinen aufgrund der `useState`-Hooks eine Einheit zu bilden. Technisch gesehen gehören alle Zustände, die sich auf die asynchronen Daten beziehen, zusammen. Womit ich nicht nur die `stories` als Echtdaten, sondern ebenfalls ihre Lade- und Fehlerzustände meine.
 
-Mehrere `useState`-Hooks in einer React-Komponente stellen grundsätzlich kein Problem dar. Sei aber vorsichtig, wenn du mehrere Statusaktualisierungsfunktionen hintereinander siehst. Diese bedingten Zustände führen unter Umständen zu **nicht möglichen Status** und unerwünschtem Verhalten in der Benutzeroberfläche. Ändere die Funktion zum Abrufen von Pseudodaten wie folgt, um die Fehlerbehandlung zu simulieren:
+Mehrere `useState`-Hooks in einer React-Komponente stellen grundsätzlich kein Problem dar. Sei aber vorsichtig, bei kurz aufeinander folgenden Statusaktualisierungsfunktionen. Die bedingten Zustände führen unter Umständen zu **nicht möglichen Status** und unerwünschtem Verhalten in der Benutzeroberfläche. Ändere die Funktion zum Abrufen der Beispieldaten wie folgt, um eine Fehlerbehandlung zu simulieren:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -10,9 +10,9 @@ const getAsyncStories = () =>
   new Promise((resolve, reject) => setTimeout(reject, 2000));
 ~~~~~~~
 
-Ein nicht mögliche Zustand tritt im Falle eines Fehlers beim Abruf der asynchronen Daten auf. Der Status für die Fehlermeldung wird festgelegt, aber der Status für die Ladeanzeige wird nicht widerrufen. In der Benutzeroberfläche führt dies zu einer unendliche langen Anzeige der Ladeinfo bei gleichzeitigem Einblenden des Fehlerhinweises. Korrekt wäre es, die Ladeanzeige auszublenden, wenn die Fehlermeldung eingeblendet wird. Nicht mögliche Zustände sind schwer zu erkennen. Deshalb verursachen sie nicht selten Fehler im Bereich der Benutzeroberfläche.
+Ein nicht möglicher Zustand tritt im Falle eines Fehlers beim Abruf der asynchronen Daten auf. Der Status für die Fehlermeldung wird festgelegt, aber der Status für die Ladeanzeige wird nicht widerrufen. In der Benutzeroberfläche führt dies zu einer unendlich langen Anzeige der Ladeinfo bei gleichzeitigem Einblenden des Fehlerhinweises. Korrekt wäre es, die Ladeanzeige auszublenden, wenn die Fehlermeldung eingeblendet wird. Nicht mögliche Zustände sind schwer zu erkennen. Deshalb verursachen sie nicht selten Fehler im Bereich der Benutzeroberfläche.
 
-Glücklicherweise vermeiden wir viele Fehler, indem wir Zustände, die aus mehreren `useState`- und `useReducer`-Hooks bestehen, in einem einzigen `useReducer`-Hook vereinen. Sieh dir diesbezüglich den nachfolgenden `useState`-Hook:
+Glücklicherweise vermeiden wir viele Fehler, indem wir Zustände, die in mehreren `useState`- und `useReducer`-Hooks berechnet werden, in einem einzigen `useReducer`-Hook vereinen. Sieh dir diesbezüglich den nachfolgenden `useState`-Hook:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -85,7 +85,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Da wir neue Typen für Zustandsübergänge eingeführt haben, müssen wir diese in der Reduzier-Funktion `storiesReducer` behandeln:
+Da wir neue Typen für Zustandsübergänge eingeführt haben, behandeln wir diese in der Reduzier-Funktion `storiesReducer`:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -125,7 +125,7 @@ const storiesReducer = (state, action) => {
 };
 ~~~~~~~
 
-In er jetzigen Version unserer Anwendung geben wir für jeden Statusübergang ein *neues Status*-Objekt zurück. Dieses enthält alle Schlüssel/Wert-Paare des *aktuellen Status*-Objekts (über den [Spread-Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_operator) von JavaScript) und die neuen Möglichkeiten Eigenschaften zu überschreiben. Zum Beispiel setzt `STORIES_FETCH_FAILURE` die Variable `isLoading` zurück. Im Gegensatz dazu behält die booleschen Variable `isError` alle Zustände bei (zum Beispiel `stories`). So umgehen wir den zuvor eingeführten Mangel, bei dem der Ladeindikator im Fehlerfall weiterhin angezeigt wurde.
+In er jetzigen Version unserer Anwendung geben wir bei jedem Statusübergang ein *neues Status*-Objekt zurück. Dieses enthält alle Schlüssel/Wert-Paare des *aktuellen Status*-Objekts (über den [JavaScript-Spread-Operator](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Spread_operator)) und die Möglichkeit, Eigenschaften zu überschreiben. Zum Beispiel setzt `STORIES_FETCH_FAILURE` die Variable `isLoading` zurück. Im Gegensatz dazu behält die booleschen Variable `isError` alle Zustände bei (zum Beispiel `stories`). So beheben wir den zuvor festgestellten Mangel, bei dem der Ladeindikator im Fehlerfall weiterhin angezeigt wurde.
 
 Beachte, wie sich die Aktion `REMOVE_STORY` geändert hat. Sie nutzt `state.data`, anstelle von `state`. Der Status ist jetzt ein komplexes Objekt mit Daten-, Lade- und Fehlerzuständen. Vorher enthielt er nichts weiter als die Liste von Storys. Überarbeiten wir den restlichen Code im Hinblick auf diese Änderung:
 
@@ -178,7 +178,7 @@ const getAsyncStories = () =>
   new Promise((resolve, reject) => setTimeout(reject, 2000));
 ~~~~~~~
 
-Wir haben unsere Anwendung insofern verbessert, dass wir unzuverlässige Zustandsübergänge mit mehreren `useState`-Hooks in vorhersehbaren mit Reacts useReducer Hook abgeändert haben. Das vom Reduzierer verwaltete Statusobjekt kapselt alles, was mit den Storys zusammenhängt, einschließlich Lade- und Fehlerstatus und Implementierungsdetails wie das Entfernen eines Elements aus der Liste. Wir haben nicht alle Zustände behandelt. Die Liste dieser ist unendlich. Aber wir sind unserem Ziel einen Schritt näher gekommen und haben ein vorhersehbares Ereignis im Zustandsmanagement aufgenommen.
+Perfekt! Wir haben unsere Anwendung insofern verbessert, dass wir unzuverlässige Zustandsübergänge mit mehreren `useState`-Hooks in vorhersehbare abgeändert haben. Hierzu haben wir Reacts useReducer-Hook eingesetzt. Das vom Reduzierer verwaltete Statusobjekt kapselt alles, was mit `stories` zusammenhängt, einschließlich Lade- und Fehlerstatus und Implementierungsdetails wie das Entfernen eines Elements aus der Liste. Wir haben nicht alle möglichen Zustände behandelt. Aber wir sind unserem Ziel einen Schritt näher gekommen und haben ein vorhersehbares Ereignis im Zustandsmanagement aufgenommen.
 
 ### Übungen:
 
