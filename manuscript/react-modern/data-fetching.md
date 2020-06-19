@@ -1,6 +1,6 @@
 ## Datenabruf mit React
 
-Wir rufen derzeit Daten ab, dabei handelt es sich um Pseudodaten, die aus einem selbsterstellten Promise-Objekt stammen. Die bisherigen Lektionen zu asynchronem Datenmanagement und erweiterter Statusverwaltung stellend eine Grundlage für diesen Abschnitt dar. Als Nächstes rufen wir Daten von einer echten Drittanbieter-API ab. Dazu verwenden wir die zuverlässige und informative [Hacker News API](https://hn.algolia.com/api).
+In der Beispielanwendung verwenden wir Pseudodaten, die aus einem selbsterstellten Promise-Objekt stammen. Die bisherigen Lektionen zu asynchronem Datenmanagement und erweiterter Statusverwaltung stellend eine Grundlage für diesen Abschnitt dar. Als Nächstes rufen wir Daten von einer echten Drittanbieter-API ab. Dazu verwenden wir die zuverlässige und informative [Hacker News API](https://hn.algolia.com/api).
 
 Anstatt das Array `initialStories` und die Funktion `getAsyncStories` zu verwenden, rufen wir die Daten direkt von der API ab.
 
