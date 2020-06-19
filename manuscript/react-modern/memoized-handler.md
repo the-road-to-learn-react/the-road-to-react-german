@@ -1,6 +1,6 @@
 ## Memoized Handler in React (fortgeschrittene Anleitung)
 
-In den vorherigen Abschnitten hast du einiges über Handler allgemein, Callback-Handler und Inline-Handler erfahren. In diesem Abschnitt stelle ich dir **Memoized Handler** vor, die auf Handler und Callback-Handler angewendet werden. [Memoisation](https://de.wikipedia.org/wiki/Memoisation) ist eine Technik zur Beschleunigung von Software, indem Rückgabewerte von Funktionen zwischengespeichert anstatt neu berechnet werden. Zu Lernzwecken verschieben wir die gesamte Datenabruflogik in eine eigenständige Funktion außerhalb des Seiten-Effekt (A). Umgeben diese mit einem `useCallback`-Hook (B) und rufe sie im `useEffect`-Hook (C) auf:
+In den vorherigen Abschnitten hast du einiges über Handler allgemein, Callback-Handler und Inline-Handler erfahren. In diesem Kapitel stelle ich dir **Memoized Handler** vor, die auf Handler und Callback-Handler angewendet werden. [Memoisation](https://de.wikipedia.org/wiki/Memoisation) ist eine Technik zur Beschleunigung von Software, indem Rückgabewerte von Funktionen zwischengespeichert anstatt neu berechnet werden. Zu Lernzwecken verschieben wir die gesamte Datenabruflogik in eine eigenständige Funktion außerhalb des Seiten-Effekts (A). Umgeben diese mit einem `useCallback`-Hook (B) und rufe sie im `useEffect`-Hook (C) auf:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -51,7 +51,7 @@ Untersuchen wir als Nächstes, ob der `useCallback`-Hook weiterhin benötigt wir
 3. run: side-effect
 ~~~~~~~
 
-Wenn wir mit dem `useCallback`-Hook keine `memoized`-Funktion erstellten, würde mit jeder App-Komponente eine neue `handleFetchStories`-Funktion erstellt und im `useEffect`-Hook aufgerufen, um Daten abzurufen. Die abgerufenen Daten werden dann als Status in der Komponente gespeichert. Da sich der Status der Komponente geändert hat, wird diese neu gerendert und eine neue Funktion `handleFetchStories` erstellt. Der Seiten-Effekt würde ausgelöst, um Daten abzurufen, und wir finden uns in einer Endlosschleife wieder:
+Wenn wir mit dem `useCallback`-Hook keine `memoized`-Funktion erstellten, würde bei jedem neuen Rendern der App-Komponente eine neue `handleFetchStories`-Funktion erstellt und im `useEffect`-Hook aufgerufen, um Daten abzurufen. Die abgerufenen Daten würden als Status in der Komponente gespeichert. Da sich der Status der Komponente geändert hat, würde diese neu gerendert und eine neue Funktion `handleFetchStories` erstellt. Der Seiten-Effekt würde ausgelöst, um Daten abzurufen, und wir finden uns in einer Endlosschleife wieder:
 
 {title="Visualization",lang="javascript"}
 ~~~~~~~
@@ -66,7 +66,7 @@ Wenn wir mit dem `useCallback`-Hook keine `memoized`-Funktion erstellten, würde
 
 Der `useCallback`-Hook erstellt nur dann eine neue `memoized`-Funktion, wenn sich der Suchbegriff ändert. In diesem Fall ist es uns wichtig, dass die Daten erneut abgerufen werden, damit die gerenderte Liste jederzeit zum Suchwort passt.
 
-Durch Verschieben der Datenabruffunktion `handleFetchStories` an eine Stelle außerhalb des `useEffect`-Hook ist diese für andere Teile der Anwendung wiederverwendet. Wir verwenden sie bisher nicht, aber es wäre möglich. Der `useEffect`-Hook wird implizit aufgerufen, wenn sich `searchTerm` ändert, da `handleFetchStories` immer dann neu definiert wird. Da der `useEffect`-Hook von `handleFetchStories` abhängt, wird der Nebeneffekt bei jedem Datenabruf aufgerufen.
+Durch Verschieben der Datenabruffunktion `handleFetchStories` an eine Stelle außerhalb des `useEffect`-Hook ist diese für andere Teile der Anwendung wiederverwendet. Wir verwenden sie bisher nicht wieder, aber es wäre möglich. Der `useEffect`-Hook wird implizit aufgerufen, wenn sich `searchTerm` ändert, da `handleFetchStories` immer dann neu definiert wird. Da der `useEffect`-Hook von `handleFetchStories` abhängt, wird der Nebeneffekt bei jedem Datenabruf aufgerufen.
 
 ### Übungen:
 
