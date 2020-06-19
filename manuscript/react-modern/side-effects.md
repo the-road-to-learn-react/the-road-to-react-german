@@ -75,6 +75,6 @@ Durch die Verwendung von `useEffect` ist die Anwendung robuster. Immer *wenn* `s
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Side-Effects).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Props-Handling...hs/React-Side-Effects?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Props-Handling...hs/React-Side-Effects?expand=1).
 * Lese mehr zum `useEffect`-Hook([0](https://de.reactjs.org/docs/hooks-effect.html), [1](https://de.reactjs.org/docs/hooks-reference.html#useeffect)).
 * Erweitere die Funktion im ersten Argument des `useEffect-Hooks` so, dass mithilfe von `console.log()` Ausgaben in der Konsole deines Browsers mitprotokolliert werden. Experimentiere mit dem Array. Was passiert, wenn du ein leeres oder gar keins verwendest?

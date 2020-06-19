@@ -113,7 +113,7 @@ JSX wurde ursprünglich für React entwickelt. Nach und nach haben andere die Vo
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-JSX).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-the-React-Component...hs/React-JSX?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-the-React-Component...hs/React-JSX?expand=1).
 * Lese mehr zum Thema [JSX](https://de.reactjs.org/docs/introducing-jsx.html).
 * Definiere eigene Variablen und zeige diese mithilfe von JSX im Frontend deiner Anwendung an.
 * Versuche, die Daten eines Arrays mithilfe von JSX im Frontend anzuzeigen. Sorge dich nicht, falls es nicht sofort klappt. Im nächsten Kapitel werden wir diese Fragestellung gemeinsam angehen.

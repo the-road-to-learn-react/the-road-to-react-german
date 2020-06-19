@@ -286,7 +286,7 @@ Nachdem du `useMemo`, `useCallback`, und `memo` kennengelernt hast, optimiere de
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Performance-in-React).
-  * Bestätige die [Änderungen](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Performance-in-React?expand=1).
+  * Reflektiere die [Änderungen](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Performance-in-React?expand=1).
 * Lese mehr zu [Reacts Memo API](https://de.reactjs.org/docs/react-api.html#reactmemo).
 * Lese mehr zum Thema [Reacts useCallback-Hook](https://de.reactjs.org/docs/hooks-reference.html#usecallback).
 * Lade die *React Developer Tools* als Erweiterung für deinen Browser herunter. Öffne das Werkzeug über die Entwicklertools und probiere die verschiedenen Funktionen aus. Visualisiere beispielsweise den Komponentenbaum deiner Anwendung.

@@ -78,6 +78,6 @@ Bei jedem erneuten Aufruf einer Komponente wird der *aktuelle Wert* (zum Beispie
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1).
 * Lese mehr zum Thema [kontrollierte Komponenten in React](https://www.robinwieruch.de/react-controlled-components/).
 * Experimentiere mit der Anweisung `console.log()` und beobachten dabei wie deine Eingaben gerendert werden --- anfangs und nach Änderungen im Eingabefeld.

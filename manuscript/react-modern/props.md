@@ -84,5 +84,5 @@ So haben wir verhindert, dass die Variable `list`/`stories` den globalen Bereich
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Props).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Handler-Function-in-JSX...hs/React-Props?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Handler-Function-in-JSX...hs/React-Props?expand=1).
 * Lese mehr zum Thema: [Eigenschaften (Props) in React an Komponenten übergeben](https://www.robinwieruch.de/react-pass-props-to-component).

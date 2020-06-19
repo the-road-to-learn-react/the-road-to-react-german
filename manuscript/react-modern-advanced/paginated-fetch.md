@@ -346,7 +346,7 @@ Es ist jetzt möglich, laufende Daten für beliebte Items abzurufen. Wenn du mit
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Paginated-Fetch).
-  * Bestätige die [Änderungen gegenüber dem letzten Kapitel](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Remember-Last-Searches...hs/Paginated-Fetch?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Kapitel](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Remember-Last-Searches...hs/Paginated-Fetch?expand=1).
   * Besuche die [Hacker News API-Dokumentation](https://hn.algolia.com/api) erneut und kläre folgende Frage: Gibt es eine Möglichkeit, weitere Elemente in einer Liste für eine Seite abzurufen, indem du dem API-Endpunkt Parameter hinzufügst?
 * Gehe zurück zu dem Anfang dieses Abschnitts, in dem ich Paginierung erklärte. Wie implementierst du eine normale Paginierungs-Komponente mit Schaltflächen von 1- [3] -10, bei der ein Klick auf jede einzelne nur die Items einer Seite der Liste abruft und anzeigt?
 * Wie implementierst du anstelle von "More" eine unendliche Paginierung mit einer Bildlauftechnik? Anstatt auf eine Schaltfläche zum expliziten Abrufen zu klicken, ruft der unendliche Bildlauf die nächste Seite ab, sobald das Ansichtsfenster des Browsers den unteren Rand der angezeigten Liste erreicht.

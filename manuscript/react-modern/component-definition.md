@@ -150,6 +150,6 @@ Obwohl die Pfeilfunktionen in React nicht zwingend sind: Stelle sicher, dass du 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Component-Definition).
-  * Bestätige die [Änderungen gegenüber dem Kapitel "Mach dich mit einer anderen React-Komponente bekannt"](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-another-React-Component...hs/React-Component-Definition?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem Kapitel "Mach dich mit einer anderen React-Komponente bekannt"](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-another-React-Component...hs/React-Component-Definition?expand=1).
 * Lese mehr zu [Pfeilfunktionen in JavaScript](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
 * Vertiefe Pfeilfunktionen mit Blockkörpern inklusive Return-Anweisung und mit knappem präzisem Körper ohne Return-Anweisung.

@@ -192,7 +192,7 @@ Die Anforderungen eines Projekts ändern sich im Laufe der Zeit, ebenso wie sein
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Folder-Structure).
-  * Bestätige die [Änderungen Änderungen gegenüber dem Stand am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/React-Folder-Structure?expand=1).
+  * Reflektiere die [Änderungen Änderungen gegenüber dem Stand am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/React-Folder-Structure?expand=1).
 * Lese mehr zu JavaScript-Import- und Exportanweisungen([1](https://www.robinwieruch.de/javascript-import-export), [2](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/import), [3](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/export)).
 * Lese mehr zur Ordnerstrukturen in React([1](https://www.robinwieruch.de/react-folder-structure), [2](https://de.reactjs.org/docs/faq-structure.html#grouping-by-features-or-routes)).
 * Im Weiteren werden wir die Beispielanwendung allein in der Datei *src/App.js* weiterentwickeln. Dir steht es frei, mit dem umstrukturierten Projekt fortfahren.

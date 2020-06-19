@@ -76,7 +76,7 @@ Komplexe React-Anwendungen verfügen über **Komponentenhierarchien** oder **Kom
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Meet-another-React-Component).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lists-in-React...hs/Meet-another-React-Component?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lists-in-React...hs/Meet-another-React-Component?expand=1).
 * Erweitere den Komponentenbaum der am Ende dieses Kapitels abgedruckt ist mit möglichen Komponenten. Versuche herauszufinden, welche anderen Teile als eigenständige Komponenten integrierbar sind.
 * Wenn eine Suchkomponente in der App-Komponente verwendet wird, welche Vorteile hat es, dass diese eine Geschwisterkomponente der Listenkomponente ist und keine Eltern- oder Kindkomponente?
 * Frage dich, welche Probleme auftreten, wenn wir `list` weiterhin als globale Variable behandeln. Wie wir diese lösen ist Thema in den nächsten Kapiteln.

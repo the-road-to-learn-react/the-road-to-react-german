@@ -63,7 +63,7 @@ console.log(anotherWelcome);
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Data-Fetching-with-React).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Impossible-States...hs/Data-Fetching-with-React?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Impossible-States...hs/Data-Fetching-with-React?expand=1).
 * Informiere dich über [Hacker News](https://news.ycombinator.com/) und deren [API](https://hn.algolia.com/api).
 * Lese mehr über die [Fetch API in JavaScript](https://developer.mozilla.org/de/docs/Web/API/Fetch_API) zum Herstellen einer Verbindung zu Remote-APIs.
 * Lese mehr zum Thema [JavaScript Template-Strings](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Template_literals).

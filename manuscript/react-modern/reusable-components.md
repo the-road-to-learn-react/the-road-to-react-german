@@ -114,6 +114,6 @@ Mit nur wenigen Änderungen haben wir eine spezialisierte Suchkomponente in eine
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Reusable-React-Component).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Fragments...hs/Reusable-React-Component?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Fragments...hs/Reusable-React-Component?expand=1).
 * Lese mehr zum Thema [Wiederverwendebare Komponenten in React](https://www.robinwieruch.de/react-reusable-components).
 * Ist es dir aufgefallen: Bisher haben wir den Text "Search:" mit einem ":" verwendet. Welche Möglichkeiten haben wir jetzt mit der wiederverwendbareren Version der Komponente? Würdest du `label="Search:"` als Eigenschaft (Props) an InputWithLabel übergeben oder den Doppelpunkt in InputWithLabel mit `<label htmlFor={id}>{label}:</label>` fest codieren? Wir werden diese Frage später im Buch erneut aufgreifen.

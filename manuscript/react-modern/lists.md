@@ -175,7 +175,7 @@ function App() {
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Lists-in-React).
-  * Bestätige die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-JSX...hs/Lists-in-React?expand=1).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-JSX...hs/Lists-in-React?expand=1).
 * Informiere dich darüber, warum das Schlüsselattribut (ID) in React benötigt wird ([0](https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7), [1](https://www.robinwieruch.de/react-list-key), [2](https://reactjs.org/docs/lists-and-keys.html)). Es ist nicht tragisch, wenn du die Implementierung nicht vollständig verstehst. Konzentrieren dich in diesem Fall auf die Anwendung in dynamischen Listen.
 * Wiederhole die [standardmäßig integrierten Array-Methoden](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/) - insbesondere *map*, *filter*, und *reduce* --- die in nativem JavaScript verfügbar sind.
 * Was passiert, wenn du `null` anstelle von JSX zurückgibst?
