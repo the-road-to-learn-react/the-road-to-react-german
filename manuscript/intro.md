@@ -42,7 +42,9 @@ Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorsch
 
 **Wie und wo melde ich einen Fehler?**
 
-Wenn du einen Fehler im Code findest, melde dies bitte über Github. Am Ende jedes Abschnitts findest du eine URL zum aktuellen GitHub-Projekt. Bitte eröffne hier ein Issue. Ich bin dankbar für deine Hilfe!
+Wenn du einen Fehler im Code findest, melde dies bitte über Github. Am Ende jedes Abschnitts findest du eine URL zum aktuellen GitHub-Projekt. Bitte eröffne hier ein Issue. Ich bin dankbar für deine Hilfe! 
+
+Du hast einen Fehler im Text der deutschen Übersetzung gefunden? Bitte öffne ein Issue im [Repository der deutschen Übersetzung](https://github.com/the-road-to-learn-react/the-road-to-react-german) oder schreibe eine E-Mail an die Übersetzerin. Kontaktinformationen findest du auf der [Website](https://www.astrid-guenther.de).
 
 **Wie unterstütze ich das Projekt idealerweise?**
 

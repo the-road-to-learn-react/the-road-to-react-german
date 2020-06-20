@@ -20,6 +20,6 @@ Um im IT-Bereich einen Berufsabschluss zu erlangen, habe ich von 1997 bis 2000 a
 
  Dafür gibt es mehrere Gründe. Einer meiner Antriebe ist, dass das Erstellen von Texten mich bereichert. Ja, ich dokumentiere für mich. Ich finde, dass das Aufschreiben von Gedanken mir hilft, den Wirbelwind der Informationen im Kopf zu ordnen. Außerdem bringe ich Sachverhalte zu Papier, weil ich weiß, dass andere Menschen davon profitieren --- so wie ich beim Lesen von Texten fremder Autoren Nutzen ziehe. Egal ob Belletristik oder Fachliteratur.
 
-Weitere Informationen über mich, Möglichkeiten zur Unterstützung oder Infos zu einer Zusammenarbeit findest du auf meiner [Website](https://www.astrid-guenther.de)^[https://www.astrid-guenther.de].
+Weitere Informationen über mich, Möglichkeiten zur Unterstützung oder Infos zu einer Zusammenarbeit findest du auf meiner [Website](https://www.astrid-guenther.de).
 
 {pagebreak}

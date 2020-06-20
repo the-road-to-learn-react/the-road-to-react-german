@@ -1,8 +1,11 @@
 # Wartung in React
 
-Ist die Anwendung fertig eingerichtet und kommen mehr und mehr Nutzer hinzu, spielt die Wartung eine immer größere Rolle. Um den laufend Aufwand so klein wie möglich zu halten, werden wir uns mit Leistungsoptimierung, Typensicherheit, Tests und Projektstruktur befassen. Lese in diesem Kapitel, wie du die Grundlagen für eine pflegeleichte Anwendung legst, ohne dabei Qualitätseinbußen in Kauf zu nehmen.
+Ist die Anwendung fertig eingerichtet und kommen mehr und mehr Nutzer hinzu, spielt die Wartung eine immer größere Rolle. Um den laufenden Aufwand so klein wie möglich zu halten, werden wir uns mit Leistungsoptimierung, Typensicherheit, Tests und Projektstruktur befassen. Lese in diesem Kapitel, wie du die Grundlagen für eine pflegeleichte Anwendung legst, ohne dabei Qualitätseinbußen in Kauf zu nehmen.
 
-Die Leistungsoptimierung verhindert, dass Anwendungen langsamer werden, indem eine effiziente Nutzung der verfügbaren Ressourcen sichergestellt wird. Typisierte Programmiersprachen wie TypeScript erkennen Fehler früherzeitig. Automatische Tests geben uns bei Änderungen Sicherheit, dass der ursprüngliche Code weiterhin funktioniert. Und, last but not least unterstützt die Projektstruktur eine organisierte Verwaltung, was in Szenarien nützlich ist, in denen unterschiedliche Teams aus verschiedenen Bereichen zusammen arbeiten.
+* Die *Leistungsoptimierung* verhindert, dass Anwendungen langsamer werden, indem eine effiziente Nutzung der verfügbaren Ressourcen sichergestellt wird. 
+* *Typisierte Programmiersprachen* wie TypeScript erkennen Fehler früherzeitig. 
+* Automatische *Tests* geben uns bei Änderungen Sicherheit, dass der ursprüngliche Code weiterhin funktioniert. 
+* Und, last but not least unterstützt die *Projektstruktur* eine organisierte Verwaltung, was in Szenarien nützlich ist, in denen unterschiedliche Teams aus verschiedenen Bereichen zusammen arbeiten.
 
 ## Performanz in React (fortgeschrittene Anleitung)
 
@@ -10,7 +13,7 @@ In diesem Abschnitt zeige ich dir, wie du dir einen Überblick über die Perform
 
 ### Das erste Rendern
 
-Wir haben uns bereits mit Reacts useEffect Hook befasst, der für Seiten-Effekte verwendet wird. Dieser wird beim ersten Rendern (Mounten) einer Komponente und dann bei jedem Aktualisieren aufgerufen. Indem wir ihm als zweites Argument ein leeres Abhängigkeitsarray übergeben, wird der Hook nur beim ersten Rendern ausgelöst. Standardmäßig gibt es keine Möglichkeit, den Hook so einzustellen, dass er bei jedem Aktualisieren aber nicht beim ersten Rendern (Mounten) aufgerufen wird. Sieh dir dies beispielsweise für die Statusverwaltung an. Wir verwalten den Status mit dem `useState`-Hook. Das dieser semi-persistenten ist erreichen wir, indem wir mithilfe des `useEffect`-Hook den aktuellen Wert im lokalen Speicher des Browsers ablegen:
+Wir haben uns mit Reacts useEffect Hook befasst, der für Seiten-Effekte verwendet wird. Dieser wird beim ersten Rendern einer Komponente und dann bei jedem Aktualisieren aufgerufen. Indem wir ihm als zweites Argument ein leeres Abhängigkeitsarray übergeben, wird der Hook nur beim ersten Rendern ausgelöst. Standardmäßig gibt es keine Möglichkeit, den Hook so einzustellen, dass er bei jedem Aktualisieren aber nicht beim ersten Rendern aufgerufen wird. Sieh dir dies beispielsweise für die Statusverwaltung an. Wir verwalten den Status mit dem `useState`-Hook. Indem wir mithilfe des `useEffect`-Hook den aktuellen Wert im lokalen Speicher des Browsers ablegen, erreichen wir dessen Semi-Persistenz:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -30,7 +33,7 @@ const useSemiPersistentState = (key, initialState) => {
 };
 ~~~~~~~
 
-Nutze die Anweisung console.log(‚A‘); um dir über die Konsole der Entwicklertools des Browsers anzusehen, wann der Status in den lokalen Speicher gespeichert wird. Erstmals geschieht dies, wenn die Komponente das erste Mal gerendert wird. Dies ist nicht sinnvoll, da zu diesem Zeitpunkt der Anfangswert aktiv ist. Erforderlich ist das Speichern nur bei einem erneuten Rendern der Komponente --- nur dann ist es möglich, dass der Wert sich geändert hat.
+Nutze die Anweisung `console.log(‚A‘);` um dir über die Konsole der Entwicklertools des Browsers anzusehen, wann der Status in den lokalen Speicher geschrieben wird. Erstmals geschieht dies, wenn die Komponente das erste Mal gerendert wird. Das hört sich logisch an, ist aber nicht sinnvoll, da zu diesem Zeitpunkt der hartcodierte Anfangswert aktiv ist. Erforderlich ist das Speichern nur bei einem erneuten Rendern der Komponente --- nur dann ist es möglich, dass der Wert sich geändert hat.
 
 Wie erwähnt, gibt es keinen React-Hook, der bei jedem Rendern aufgerufen wird, den ersten Aufruf aber auslässt. Durch die Verwendung des `useRef`-Hooks, bei dem die Eigenschaft `ref.current` beim erneuten Rendern erhalten bleibt, erstellen wir uns diese Lösung selbst.
 
@@ -62,15 +65,15 @@ const useSemiPersistentState = (key, initialState) => {
 };
 ~~~~~~~
 
-Wir nutzen `ref` und seine veränderbare `current`-Eigenschaft für die imperative Zustandsverwaltung, die kein erneutes Rendern auslöst. Sobald der Hook zum ersten Mal von seiner Komponente aufgerufen wird, wird `current` mit einem Booleschen Wert namens `isMounted` initialisiert, der mit `false` belegt ist. So wird der Seiten-Effekt in `useEffect` nicht ausgelöst. Nur das boolesche Flag für `isMounted` wird auf `true` umgeschaltet. Bei jedem erneuten Aufruf wird das Flag im Seiten-Effekt ausgewertet. Da es `true` ist, wird der Status im lokalen Speicher gespeichert. Während der Lebensdauer der Komponente bleibt `isMounted` mit `true` belegt. So wird vermieden, dass die Nebenwirkung ausgelöst wird, wenn unser benutzerdefinierter Hook verwendet wird.
+Wir nutzen `ref` und seine veränderbare `current`-Eigenschaft für die imperative Zustandsverwaltung, die kein erneutes Rendern auslöst. Sobald der Hook zum ersten Mal von seiner Komponente aufgerufen wird, wird `current` mit einem booleschen Wert namens `isMounted` initialisiert, der mit `false` belegt ist. So wird der Seiten-Effekt in `useEffect` nicht ausgelöst. Nur das boolesche Flag für `isMounted` wird auf `true` umgeschaltet. Bei jedem erneuten Aufruf wird das Flag im Seiten-Effekt ausgewertet. Da es `true` ist, wird der Status im lokalen Speicher gespeichert. Während der Lebensdauer der Komponente bleibt `isMounted` mit `true` belegt. So wird vermieden, dass der Seiten-Effekt ausgelöst wird, wenn unser benutzerdefinierter Hook verwendet wird.
 
 Dieses Beispiel ist nicht verhältnismäßig. Der Aufwand lohnt sich nicht, für die kleine Optimierung. Bedenke aber: Es gibt React-Anwendungen, mit komplizierten Berechnungen, in ihren Seiten-Effekten. Dann ist es praktischer, diese Technik einzusetzen, um unnötige Funktionsaufrufe zu vermeiden.
 
-*Hinweis: Diese Technik wird nicht nur zur Leistungsoptimierung verwendet, sondern, um einen Seiten-Effekt nur dann auszuführen, wenn eine Komponente erneut gerendert wird. Ich habe es mehrmals benutzt und ich vermute, dass du irgendwann auf den einen oder anderen Anwendungsfall stoßen wirst.*
+*Hinweis: Diese Technik wird nicht nur zur Leistungsoptimierung verwendet, sondern, um einen Seiten-Effekt nur dann auszuführen, wenn eine Komponente erneut gerendert wird. Ich habe die Taktik mehrmals benutzt und ich bin sicher, dass du irgendwann auf einen Anwendungsfall stoßen wirst, in dem sie ebenfalls verwendest.*
 
-### Don't re-render if not needed
+### Nicht erneut rendern, wenn nicht nötig
 
-Zuvor haben wir den Re-Rendering-Mechanismus von React untersucht. Wiederhole dies für die App- und List-Komponente. Füge für beide eine Protokollierungsanweisung hinzu, um in der Konsole deines Browsers die Ausführung zu mitzuverfolgen:
+Zuvor haben wir den Re-Rendering-Mechanismus mithilfe der Anweisung `console.log();` untersucht. Erweitere dies für die Komponenten App und List. Füge für beide eine Protokollierungsanweisung hinzu, um in der Browser-Konsole die Ausführung mitzuverfolgen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -97,7 +100,7 @@ const List = ({ list, onRemoveItem }) =>
   ));
 ~~~~~~~
 
-Da die List-Komponente keinen Funktionskörper hat, verwendet die List-Komponente stattdessen den Operator `||`. Dies ist ein Trick, um einer Funktionskomponente ohne Funktionskörper eine Protokollierungsanweisung hinzuzufügen. Da die Datei `console.log()` auf der linken Seite des Operators als falsch ausgewertet wird, wird die rechte immer aufgerufen:
+Da die List-Komponente keinen Funktionskörper hat, verwendet sie stattdessen den Operator `||`. Dies ist ein Trick, um einer Funktionskomponente ohne Funktionskörper eine Protokollierungsanweisung hinzuzufügen. Da `console.log()` auf der linken Seite des Operators als falsch ausgewertet wird, wird die rechte immer aufgerufen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -114,7 +117,7 @@ console.log(getTheTruth());
 // false
 ~~~~~~~
 
-Konzentrieren wir uns auf die Protokollierung unserer Anwendung in den Entwicklertools des Browsers. Zuerst wird die App-Komponente gerendert, gefolgt von ihren untergeordneten Komponenten (beispielsweise der List-Komponente).
+Konzentrieren wir uns auf die Protokollierung in den Entwicklertools des Browsers. Zuerst wird App gerendert, gefolgt von ihren untergeordneten Komponenten (beispielsweise List).
 
 {title="Visualization",lang="text"}
 ~~~~~~~
@@ -125,9 +128,7 @@ B:App
 B:List
 ~~~~~~~
 
-Da ein Seiten-Effekt das Abrufen von Daten nach dem ersten Rendern auslöst, wird nur die App-Komponente gerendert, da die List-Komponente in einem bedingten Rendering durch einen Ladeindikator ersetzt wird. Sobald die Daten eintreffen, werden beide erneut gerendert.
-
-Since a side-effect triggers data fetching after the first render, only the App component renders, because the List component is replaced by a loading indicator in a conditional rendering. Once the data arrives, both components render again.
+Da ein Seiten-Effekt das Abrufen von Daten nach dem ersten Rendern auslöst, wird nur App gerendert, da List in einem bedingten Rendering durch einen Ladeindikator ersetzt wird. Sobald die Daten eintreffen, werden beide erneut gerendert.
 
 {title="Visualization",lang="text"}
 ~~~~~~~
@@ -151,11 +152,11 @@ B:App
 B:List
 ~~~~~~~
 
-Das erneute Rendern der List-Komponente ist bei genauerem Überlegen nicht erforderlich. Die Suchfunktion wird nicht beim Ändern des Suchwortes aufgerufen, sondern über die Schaltfläche. Daher ist es unnötige, dass die an die Listenkomponente übergebene `list` neu gerendert wird --- sie bleibt gleich. Hier erlebst du das Standardverhalten in React, über das viele Entwickler stolpern.
+Das erneute Rendern der List-Komponente ist bei genauerem Überlegen nicht erforderlich. Die Suchfunktion wird nicht beim Ändern des Suchwortes aufgerufen, sondern über die Schaltfläche. Daher ist es unnötige, dass die an die List-Komponente übergebene `list` neu gerendert wird --- sie bleibt gleich. Hier erlebst du das Standardverhalten in React, über das viele Entwickler stolpern.
 
-Wenn eine übergeordnete Komponente erneut gerendert wird, werden die untergeordneten ebenfalls aktualisiert. React hat hierbei Gutes im Sinne: In der Regel ist es korrekt, dass nachfolgende Komponenten neu gerendert werden. Wird dies vergessen, führt dies zu Fehlern.
+Wenn eine übergeordnete Komponente erneut gerendert wird, werden die untergeordneten ebenfalls aktualisiert. React hat hierbei Gutes im Sinne: Es ist die Regel, dass nachfolgende Komponenten neu gerendert werden, weil sich Dinge ändern. Wird dies vergessen, führt dies zu Fehlern. Demzufolge unterstützt Reacts Standardverhalten Entwickler bei Ihrer Arbeit.
 
-Manchmal ist es besser, dass ein erneutes Rendern von untergeordneten Komponenten verhindert wird. Beispielsweise wenn große Datenmengen in einer Tabelle angezeigt werden und die Daten sich nicht ändern. In dem Fall ist es effizienter, vorher zu prüfen, ob sich etwas geändert hat. Für diesen Zweck biete React die Memo-API:
+Diese Unterstützung ist nicht immer zweckmäßig. Manchmal ist es besser, dass ein erneutes Rendern von untergeordneten Komponenten verhindert wird. Beispielsweise wenn große Datenmengen in einer Tabelle angezeigt werden und die Daten sich nicht ändern. In dem Fall ist es effizienter, vorher zu prüfen, ob sich etwas geändert hat. Für diesen Zweck biete React die Memo-API, welche wir im nächsten Codebeispiel integrieren:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -184,9 +185,7 @@ B:App
 B:List
 ~~~~~~~
 
-Sehen wir und dies genauer an: Die an die List-Komponente übergebene `list` ist dieselbe, der `onRemoveItem`-Callback-Handler aber nicht. Wenn die App erneut gerendert wird, wird immer eine neue Version des Handlers erstellt. Zuvor haben wir den `useCallback`-Hook verwendet, um dieses Verhalten zu verhindern, indem wir eine Funktion nur bei einem erneuten Rendern erstellten (wenn sich eine ihrer Abhängigkeiten geändert hat). Ergänzen wir dies jetzt bei `handleRemoveStory`:
-
-The `list` passed to the List component is the same, but the `onRemoveItem` callback handler isn't. If the App component re-renders, it always creates a new version of this callback handler. Earlier, we used React's useCallacbk Hook to prevent this behavior, by creating a function only on a re-render (if one of its dependencies has changed).
+Sehen wir uns dies genauer an: Die an die List-Komponente übergebene `list` ist dieselbe, der `onRemoveItem`-Callback-Handler aber nicht. Wenn die App erneut gerendert wird, wird immer eine neue Version des Handlers erstellt. Zuvor haben wir den [`useCallback`-Hook](https://de.reactjs.org/docs/hooks-reference.html#usecallback) und `memoized`-Funktionen verwendet, um dieses Verhalten zu verhindern, indem wir eine Funktion nur bei einem erneuten Rendern erstellten (wenn sich eine ihrer Abhängigkeiten geändert hat). Ergänzen wir dies jetzt bei `handleRemoveStory`:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -222,7 +221,7 @@ Manchmal hilft `memo` allein nicht. Callback-Handler werden jedes Mal in der üb
 
 ### Verhindere den erneuten Aufruf von aufwendigen Berechnungen
 
-Manchmal kommen leistungsintensive Berechnungen in einer React-Komponenten vor --- zwischen der Funktionssignatur einer Komponente und dem Rückgabeblock. Diese werden bei jedem Rendering aufgerufen. Erstellen wir ein Szenario, um diesen Anwendungsfall praktisch nachzuvollziehen.
+Manchmal kommen leistungsintensive Berechnungen in einer React-Komponenten vor --- zwischen der Funktionssignatur einer Komponente und dem Rückgabeblock. Diese werden bei jedem Rendering aufgerufen. Erstellen wir ein Szenario, um den Fall praktisch nachzuvollziehen.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -256,7 +255,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Wenn alle Argumente an eine Funktion übergeben werden, ist es akzeptabel, sie außerhalb der Komponente zu verlegen. Es verhindert, dass diese bei jedem Rendern erstellt wird, sodass der Hook `useCallback` nicht mehr erforderlich ist. Die Funktion berechnet weiterhin den Wert der summierten Kommentare für jedes Rendering, was bei aufwendigen Berechnungen zu einem Problem wird.
+Wenn alle Argumente an eine Funktion übergeben werden, ist es akzeptabel, sie außerhalb der Komponente zu platzieren. Es verhindert, dass diese bei jedem Rendern erstellt werden, sodass der Hook `useCallback` nicht mehr erforderlich ist. Die Funktion berechnet weiterhin den Wert der summierten Kommentare für jedes Rendering, was bei aufwendigen Berechnungen zu einem Problem wird.
 
 ![](images/usememo-1.png)
 
@@ -281,7 +280,7 @@ Es ist nicht erforderlich die Liste bei jedem Ändern des Suchwortes neu zu bere
 
 ![](images/usememo-2.png)
 
-Nachdem du `useMemo`, `useCallback`, und `memo` kennengelernt hast, optimiere deine Anwendung mit bedacht. Verwende die Funktionen nicht nach dem Gießkannenprinzip. Eine Leistungsoptimierung ist sinnvoll, wenn du auf Leistungsengpässe störst. In React wird dir das nicht oft passieren, da der Rendering-Mechanismus von Hause aus effizient ist. In manchen Fällen ist eine Optimierung aufwendiger, als das erneute Rendern selbst.
+Nachdem du `useMemo`, `useCallback`, und `memo` kennengelernt hast, optimiere deine Anwendung mit bedacht. Verwende die Funktionen nicht nach dem Gießkannenprinzip. Eine Leistungsoptimierung ist sinnvoll, wenn du auf Leistungsengpässe störst. In React wird dir das nicht oft passieren, da der Rendering-Mechanismus von Hause aus effizient ist. In manchen Fällen ist eine Optimierung aufwendiger als das erneute Rendern selbst.
 
 ### Übungen:
 
