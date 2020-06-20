@@ -1,6 +1,6 @@
 ## Styled Components in React
 
-Zusammen mit **CSS-in-CSS** ist **Styled Components** einer von mehreren Ansätzen für **CSS-in-JS**. Die Bibliothek erfreut sich großer Beliebtheit unter React Entwicklern, deshalb habe ich sie ausgewählt. Es handelt sich um ein externes Werkzeug und wird über die Befehlszeile installiert:
+**Styled Components** ist einer von mehreren Ansätzen für **CSS-in-JS**. Die Bibliothek erfreut sich großer Beliebtheit unter React-Entwicklern, deshalb habe ich sie ausgewählt. Es handelt sich um ein externes Werkzeug und wird über die Befehlszeile installiert:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -39,7 +39,7 @@ const StyledHeadlinePrimary = styled.h1`
 `;
 ~~~~~~~
 
-Wenn du gestaltete Komponenten einsetzt, verwendest du [Template-Strings](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/template_strings) genauso wie [Funktionen](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Function). Alles zwischen den Backticks ist ein Argument, und das `styled`-Objekt gibt dir Zugriff auf alle erforderlichen HTML-Elemente (beispielsweise div, h1). Sobald eine Funktion mit dem Stil aufgerufen wird, gibt sie eine React-Komponente zurück, die in der App-Komponente verwendbar ist:
+Wenn du gestaltete Komponenten einsetzt, verwendest du [Template-Strings](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/template_strings) genauso wie [Funktionen](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Function). Alles zwischen den Backticks ist ein Argument, und das `styled`-Objekt gibt dir Zugriff auf alle erforderlichen HTML-Elemente (beispielsweise div, h1). Sobald eine Funktion mit dem Stil aufgerufen wird, gibt sie eine Komponente zurück, die in der App verwendbar ist:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -72,7 +72,7 @@ const App = () => {
 };
 ~~~~~~~
 
-**Styled Components** folgen denselben Regeln wie gewöhnliche. Alles, was zwischen den Element-Tags eingefügt ist, wird als `children`-Eigenschaft (Props) übergeben. Für die Item-Komponente verwenden wir diesmal keine Inline-Styles, sondern definieren eine gestaltete Komponente. `StyledColumn` erhält seine Stile dynamisch mithilfe einer Eigenschaft (Props):
+**Styled Components** folgen denselben Regeln wie gewöhnliche. Alles, was zwischen den Element-Tags eingefügt ist, wird als `children`-Eigenschaft (Props) übergeben. Für Item verwenden wir diesmal keine Inline-Styles, sondern definieren eine gestaltete Komponente. `StyledColumn` erhält seine Stile dynamisch mithilfe einer Eigenschaft (Props):
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -102,7 +102,7 @@ const Item = ({ item, onRemoveItem }) => (
 );
 ~~~~~~~
 
-Die flexible `width`-Eigenschaft (Props) ist über den Template String der gestalteten Komponente als Argument einer Inline-Funktion zugreifbar. Der Rückgabewert der Funktion ist ein String. Wir benötigen keine explizite Rückgabe-Anweisung. Deshalb überarbeiten wir die Pfeilfunktion zu einer knappen und prägnanten Inline-Funktion:
+Die flexible `width`-Eigenschaft (Props) ist über den Template-String der gestalteten Komponente als Argument einer Inline-Funktion zugreifbar. Der Rückgabewert der Funktion ist ein String. Wir benötigen keine explizite Return-Anweisung. Deshalb überarbeiten wir die Pfeilfunktion zu einer knappen und prägnanten Inline-Funktion:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -241,12 +241,12 @@ const StyledInput = styled.input`
 `;
 ~~~~~~~
 
-Wenn du CSS-in-JS mit **Styled Components** nutzt, definierst du Stile hauptsächlich in React-Komponenten. Gestaltete Komponenten sind im Grunde genommen Styles --- in Form von React-Komponenten ohne CSS-Zwischendatei. Wenn eine solche in JavaScript definiert ist aber nicht verwendet wird, erkennt eine [integrierte Entwicklungsumgebung](https://de.wikipedia.org/w/index.php?title=Integrierte_Entwicklungsumgebung&oldid=197630316) (IDE) dies und gibt dir einen Hinweis. Beide Methoden, CSS-in-JS und CSS-in-CSS, und ihre Ansätze (zum Beispiel gestaltete Komponenten und CSS-Module) sind bei React-Entwicklern beliebt. Deshalb war es mir wichtig, sie dir hier vorzustellen. Du bist aber völlig frei: Verwende an Werkzeugen ausschließlich das, was am besten zu dir und deinem Team passt.
+**Styled Components** sind im Grunde genommen Styles in Form von React-Komponenten ohne CSS-Zwischendatei. Wenn eine solche in JavaScript definiert ist, aber nicht verwendet wird, erkennt eine [integrierte Entwicklungsumgebung](https://de.wikipedia.org/w/index.php?title=Integrierte_Entwicklungsumgebung&oldid=197630316) (IDE) dies und gibt dir einen Hinweis. Beide Methoden, CSS-in-JS und CSS-in-CSS, und ihre Ansätze (zum Beispiel gestaltete Komponenten und CSS-Module) sind bei React-Entwicklern beliebt. Deshalb war es mir wichtig, sie dir hier vorzustellen. Du bist aber völlig frei: Verwende an Werkzeugen ausschließlich das, was am besten zu dir und deinem Team passt.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Styled-Components-in-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Styled-Components-in-React?expand=1).
-* Lese mehr zum Thema [Styled Components in React](https://www.robinwieruch.de/react-styled-components).
+* Lese mehr zum Thema [Styled Components](https://www.robinwieruch.de/react-styled-components).
   * Normalerweise gibt es keine *src/index.css*-Datei für globale Stile, wenn **Styled Components** verwendet werden. Finde heraus, ob und wie es möglich ist, globale Stile in Kombination mit gestalteten Komponenten zu verwenden.
  
