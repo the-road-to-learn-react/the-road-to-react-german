@@ -1,6 +1,6 @@
 ## Async/Await in React (fortgeschrittene Anleitung)
 
-Du wirst in React häufig mit asynchronen Daten arbeiten. Daher ist es hilfreich, wenn du die alternative Syntax für die Behandlung von Promise-Objekten kennst: async/await. Aus diesem Grund habe ich die Funktion `handleFetchStories` in unserem Beispiel überarbeitet. Mein Refactoring zeigt dir, wie du idealerweise vorgehst. Eine Fehlerbehandlung lasse ich im ersten Schritt der Übersicht halber außen vor:
+Wirst du häufig mit asynchronen Daten arbeiten? Dann ist es hilfreich, wenn du die alternative Syntax für die Behandlung von Promise-Objekten kennst: async/await. Aus diesem Grund habe ich die Funktion `handleFetchStories` in unserem Beispiel überarbeitet. Mein [Refactoring](https://de.wikipedia.org/wiki/Refactoring) zeigt dir, wie du idealerweise vorgehst. Eine Fehlerbehandlung lasse ich im ersten Schritt der Übersicht halber außen vor:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -58,11 +58,11 @@ const App = () => {
 };
 ~~~~~~~
 
-Mithilfe von `try` und `catch` haben wir am Ende die Fehlerbehandlung integriert. Wenn im `try`-Block etwas nicht korrekt abläuft, springt der Code in den` catch`-Block, um den Fehler zu behandeln. Neben [async/await mit `try`/`catch`-Blöcken](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Kontrollfluss_und_Fehlerbehandlung#try-catch) ist [die then()-Methode](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) für die Behandlung von Fehlern in asynchronen Daten möglich.
+Mithilfe von `try` und `catch` haben wir im zweiten Schritt die Fehlerbehandlung integriert. Wenn im `try`-Block etwas nicht korrekt abläuft, springt der Code in den` catch`-Block. Der Code hier ist einzig und allein dazu da, den Fehler abzufangen --- ihn zu korrigieren. Neben [async/await mit try/catch-Blöcken](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Kontrollfluss_und_Fehlerbehandlung#try-catch) ist [die then()-Methode](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Promise/then) für die Behandlung von Fehlern in asynchronen Daten möglich.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Async-Await-in-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Third-Party-Libraries-in-React...hs/Async-Await-in-React?expand=1).
-* Lese mehr zum Thema [Data-Fetching in React](https://www.robinwieruch.de/react-hooks-fetch-data).
-* Lese mehr zum Thema [Async/Await in JavaScript](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/async_function).
+* Informiere dich über [Data-Fetching in React](https://www.robinwieruch.de/react-hooks-fetch-data).
+* Lese mehr zu [async/await in JavaScript](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Statements/async_function).

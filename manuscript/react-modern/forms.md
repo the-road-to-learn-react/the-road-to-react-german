@@ -2,7 +2,7 @@
 
 In unserem Beispiel gibt es eine Schaltfläche, mit der Daten per Klick abgerufen werden. Nachfolgend verbessern wir diese mithilfe eines HTML-Formulars, welches die Schaltfläche vom Eingabefeld für den Suchbegriff abkapselt.
 
-Formulare unterscheiden sich in Reacts JSX nicht wesentlich von denen in purem HTML. Wir implementieren in diesem Abschnitt alles Notwendige in zwei Schritten. Integrieren wir als erstes das Eingabefeld und die Schaltfläche in ein HTML-Formular:
+Formulare unterscheiden sich in JSX nicht wesentlich von denen in purem HTML. Wir implementieren in diesem Abschnitt alles Notwendige in zwei Schritten. Integrieren wir als erstes das Eingabefeld und die Schaltfläche in ein HTML-Formular:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -42,7 +42,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Was ist anders? Wir übergeben die Funktion `handleSearchSubmit` an das neue Formularelement und nicht mehr direkt an die Schaltfläche. Die erhält dafür das, mit dem Wert `submit` belegte `type`-Attribut. Das verdeutlich zusätzlich, dass das Formular das Klickereignis verarbeitet und nicht die Schaltfläche.
+Was ist anders? Wir übergeben die Funktion `handleSearchSubmit` an das neue Formularelement und nicht mehr direkt an die Schaltfläche. Die erhält dafür das, mit dem Wert `submit` belegte `type`-Attribut. Das verdeutlicht zusätzlich, dass das Formular das Klickereignis verarbeitet und nicht die Schaltfläche.
 
 Da `handleSearchSubmit` für das Formularereignis verwendet wird, ergänzen wir `preventDefault`. Hiermit unterbinden wir das natürliche Verhalten des HTML-Formulars. Ohne `preventDefault` würde die Seite bei jedem Klick neu geladen.
 
@@ -65,7 +65,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Das war es schon: Führe jetzt die Suchfunktion mit der Eingabetaste der Tastatur aus. Die nächsten beiden Schritte dienen der Überarbeitung. Wir erstellen eine eigenständige Komponente für das Suchformular:
+Das war es schon: Führe jetzt die Suchfunktion aus, indem du die Enter-Taste deiner Tastatur klickst, nachdem du das Suchwort im Textfeld eingefügt hast. Die nächsten beiden Schritte sind Strukturverbesserungen des Codes. Wir erstellen eine eigenständige Komponente für das Suchformular:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -93,7 +93,7 @@ const SearchForm = ({
 # leanpub-end-insert
 ~~~~~~~
 
-Die neue Komponente wird von der App-Komponente verwendet. App verwaltet weiterhin den Status für das Formular. Dieser wird hier genutzt, um Daten abzurufen, die als Eigenschaften (Props; `story.data`) an die List-Komponente übergeben werden:
+Die neue Komponente wird von der App verwendet. App verwaltet weiterhin den Status für das Formular. Dieser wird hier genutzt, um Daten `story.data` abzurufen, die als Eigenschaften (Props) an die List-Komponente übergeben werden:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~

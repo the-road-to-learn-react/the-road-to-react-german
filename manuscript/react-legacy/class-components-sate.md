@@ -40,7 +40,7 @@ class App extends React.Component {
 
 Wenn der Status mehr als eine Eigenschaft in seinem Statusobjekt verwaltet, führt `setState` eine vereinfachte Aktualisierung durch. Nur die an `setState` übergebenen Eigenschaften werden aktualisiert. Alles andere bleibt, wie es ist. Für Frontend-Anwendungen ist die Statusverwaltung wichtig. Deshalb führte in der Vergangenheit ohne Hooks kein Weg an Klassenkomponenten vorbei.
 
-In einer React-Klassenkomponente gibt es zur Statusverwaltung zwei dedizierte APIs (`this.state` und `this.setState`). In einer Funktionskomponente übernehmen heute die Hooks `useState` und `useReducer` diese Aufgabe. Verwandte Elemente werden in einen Status-Hook gepackt, während eine Klassenkomponente eine allgemeine Status-API verwendet. Dies war einer der Hauptgründe, React Hooks einzuführen und sich von Klassenkomponenten zu verabschieden.
+In einer Klassenkomponente gibt es zur Statusverwaltung zwei dedizierte APIs: `this.state` und `this.setState`. In einer Funktionskomponente übernehmen heute die Hooks `useState` und `useReducer` diese Aufgabe. Verwandte Elemente werden in einen Hook gepackt, während eine Klassenkomponente nichts anderes als eine allgemeine Status-API verwendet. Dies war einer der Hauptgründe, Hooks einzuführen und sich von Klassenkomponenten zu verabschieden.
 
 ### Übungen:
 

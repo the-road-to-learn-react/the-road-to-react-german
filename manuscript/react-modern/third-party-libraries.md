@@ -1,8 +1,8 @@
 ## Bibliotheken von Drittanbietern in React
 
-Wir haben zuvor die native Fetch-API eingeführt, um die Hacker News-API abzufragen. Diese wird leider nicht von allen Browsern zuverlässig unterstützt. Insbesonere bei alten Versionen ist die [Browserkompatibilität](https://developer.mozilla.org/de/docs/Web/API/Fetch_API#Browserkompatibilit%C3%A4t) lückenhaft. Spätestens sobald du deine Anwendung in einer [Headless-Browser-Umgebung](https://en.wikipedia.org/wiki/Headless_browser) testest, werden Probleme mit der Fetch-API auftreten. Es gibt verschiedene Möglichkeiten, das Abrufen in älteren Browsern mithilfe von ([Polyfills](https://de.wikipedia.org/wiki/Polyfill)) und die Ausführung in Tests (somorphic fetch) zum Laufen zu bringen. Die genauere Erklärung der Konzepte würde den Rahmen dieses Buchs sprengen.
+Wir nutzen die [Fetch-API](https://developer.mozilla.org/de/docs/Web/API/Fetch_API), um die Hacker News-API abzufragen. Diese wird leider nicht von allen Browsern zuverlässig unterstützt. Insbesondere bei alten Versionen ist die [Browserkompatibilität](https://developer.mozilla.org/de/docs/Web/API/Fetch_API#Browserkompatibilit%C3%A4t) lückenhaft. Spätestens sobald du deine Anwendung in einer [Headless-Browser-Umgebung](https://en.wikipedia.org/wiki/Headless_browser) testest, werden Probleme mit der Fetch-API auftreten. Es gibt verschiedene Möglichkeiten, das Abrufen in älteren Browsern mithilfe von ([Polyfills](https://de.wikipedia.org/wiki/Polyfill)) und die Ausführung in Tests (somorphic fetch) zum Laufen zu bringen. Die genauere Erklärung der Konzepte würde den Rahmen dieses Buchs sprengen.
 
-Eine Alternative besteht darin, die native Fetch-API durch eine stabile Drittanbieter Bibliothek zu ersetzten. Da das Integrieren von externen Modulen Thema dieses Abschnittes ist, schlagen wir im folgenden zwei Fliegen mit einer Klappe. Wir ersetzen die native Fetch-API mit dem Promise-basierten HTTP-Client [axios](https://github.com/axios/axios), welcher asynchrone Anforderungen an Remote-APIs ausführt. In diesem Abschnitt lernst du, wie du eine Bibliothek - in unserem Fall eine native API des Browsers - durch ein Node.js-Module ersetzt. Installiere zunächst axios mithilfe der Befehlszeile:
+Eine andere Alternative besteht darin, die Fetch-API durch eine stabile Drittanbieter Bibliothek zu ersetzten. Da das Integrieren von externen Modulen Thema dieses Abschnittes ist, schlagen wir im folgenden zwei Fliegen mit einer Klappe. Wir ersetzen die Fetch-API mit dem HTTP-Client [axios](https://github.com/axios/axios), welcher asynchrone Anforderungen unterstützt. In diesem Abschnitt lernst du, wie du eine Bibliothek --- in unserem Fall die Fetch-API, eine native API des Browsers --- durch ein Node.js-Module ersetzt. Installiere zunächst axios mithilfe der Befehlszeile:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -21,7 +21,7 @@ import axios from 'axios';
 ...
 ~~~~~~~
 
-Jetzt ist es dir möglich, `axios` anstelle der `Fetch-API` zu verwenden. Die Anwendung ist ähnlich wie zuvor. Axios nimmt die URL als Argument entgegen und gibt ein Promise-Objekt zurück. Es ist nicht mehr erforderlich, die zurückgegebene Antwort in JSON umzuwandeln, da `axios` das Ergebnis in ein JavaScript-Objekt einschließt. Passen wir den Beispielcode im nächsten Schritt an die Verwendung von `axios` und die zurückgegebene Datenstruktur an:
+Jetzt ist es dir möglich, *axios* anstelle der *Fetch-API* zu verwenden. Die Anwendung ist ähnlich wie zuvor. Axios nimmt die URL als Argument entgegen und gibt ein Promise-Objekt zurück. Es ist nicht mehr erforderlich, die zurückgegebene Antwort in JSON umzuwandeln, da axios das Ergebnis in ein JavaScript-Objekt einschließt. Passen wir den Beispielcode im nächsten Schritt an die Verwendung von axios an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -52,9 +52,9 @@ const App = () => {
 };
 ~~~~~~~
 
-In diesem Code rufen wir `axios.get()` für eine explizite [HTTP-GET-Anforderung](https://developer.mozilla.org/de/docs/Web/HTTP/Methods/GET) auf. Es handelt sich um dieselbe HTTP-Methode, die wir standardmäßig mit der nativen `Fetch-API` des Browsers verwendet haben. `axios` ist intuitiv aufgebaut: Für eine [HTTP-POST-Anforderung](https://developer.mozilla.org/de/docs/Web/HTTP/Methods/POST) verwendest du `axios.post()`.
+In diesem Code führen wir mit `axios.get()` eine [HTTP-GET-Anfrage](https://developer.mozilla.org/de/docs/Web/HTTP/Methods/GET) aus. Es handelt sich um dieselbe HTTP-Methode, die wir mit der `Fetch-API` verwendeten. `axios` ist intuitiv aufgebaut: Für eine [HTTP-POST-Anfrage](https://developer.mozilla.org/de/docs/Web/HTTP/Methods/POST) verwendest du `axios.post()`.
 
-Sieh dir die von `axios` zurückgegeben Daten in der Konsole deines Browsers an, indem du die temporär nachfolgende Zeile im Code ergänzt:
+Sieh dir die von `axios` zurückgegeben Daten in der Konsole deines Browsers an, indem du die nachfolgende Zeile temporär im Code ergänzt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -74,7 +74,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Wie du sieht: `axios` ist eine leistungsstarke Bibliothek zum Zugriff auf Remote-APIs. Ich empfehle dir diese anstelle der native Abruf-API, wenn deine Anforderungen komplex sind, es dir wichtig ist, älteren Browser zu unterstützen und/oder du ein Framework zum Testen verwendest.
+Wie du sieht: `axios` ist eine leistungsstarke Bibliothek zum Zugriff auf Remote-APIs. Ich empfehle dir diese anstelle der nativen Abruf-API, wenn deine Anforderungen komplex sind, es dir wichtig ist, älteren Browser zu unterstützen und/oder du ein Framework zum Testen verwendest.
 
 ### Übungen:
 
