@@ -1,8 +1,8 @@
 ## Explizite Datenabrufe in React
 
-Das erneute Abrufen aller Daten bei jeder Eingabe in das Eingabefeld ist nicht optimal. Da wir hierzu eine Drittanbieter-API verwenden, sind deren Interna nicht in Einflussbereich. Wenn wir Pech haben, wird uns aufgrund einer [Durchsatzratenbegrenzung] (https://de.wikipedia.org/wiki/Durchsatzratenbegrenzung), anstelle der Daten eine Fehlermeldung zurückgeben.
+Das erneute Abrufen aller Daten bei jeder Eingabe in das Eingabefeld ist nicht optimal. Wir verwenden hierzu eine Drittanbieter-API, deren Interna nicht in unserem Einflussbereich ist. Wenn wir Pech haben, wird uns aufgrund einer [Durchsatzratenbegrenzung] (https://de.wikipedia.org/wiki/Durchsatzratenbegrenzung), anstelle der Daten eine Fehlermeldung zurückgeben.
 
-Um dieses Problem zu lösen, verändern wir die Art des Datenabrufs von implizit zu explizit. Mit anderen Worten, die Anwendung ruft Daten nur dann erneut ab, wenn jemand auf eine Bestätigungsschaltfläche klickt. Fügen wir zunächst ein Schaltflächenelement für die Bestätigung mittels JSX zu unserer Benutzeroberfläche hinzu:
+Um dieses Problem zu lösen, verändern wir die Art des Datenabrufs von implizit zu explizit. Mit anderen Worten, die Anwendung ruft Daten nur dann ab, wenn jemand auf eine Bestätigungsschaltfläche klickt. Fügen wir zunächst ein Schaltflächenelement für die Bestätigung mittels JSX zu unserer Benutzeroberfläche hinzu:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -40,7 +40,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Im Anschluss daran implementieren wir bei den Handlern für das Eingabefeld und die Schaltfläche alles Notwendige, um den Status der Komponente zu aktualisieren. Der Eingabefeld-Handler aktualisiert weiterhin den `searchTerm`. Der Schaltflächen-Handler setzt die `url`, die sich aus dem *aktuellen* `searchTerm` und der hartcodierten statischen API-URL ableitet, als neuen Status:
+Im Anschluss daran implementieren wir bei den Ereignis-Handlern alles Notwendige, um den Status der Komponente zu aktualisieren. Der Eingabefeld-Handler aktualisiert weiterhin den `searchTerm`. Der Schaltflächen-Handler setzt die `url`, die sich aus dem *aktuellen* `searchTerm` und der hartcodierten statischen API-URL ableitet, als neuen Status:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -74,7 +74,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Am Ende wird der Nebeneffekt des Datenabrufs nicht mehr bei jeder Änderung von `searchTerm` aufgerufen. Anstelle davon verwenden wir die `url` um die Liste zu aktualisieren. Diese wird vom Benutzer explizit festgelegt, wenn er die Suche über die neue Schaltfläche bestätigt:
+Am Ende wird der Seiten-Effekt des Datenabrufs nicht mehr bei jeder Änderung von `searchTerm` aufgerufen. Anstelle davon verwenden wir die `url` um die Liste zu aktualisieren. Diese wird vom Benutzer festgelegt, wenn er die Suche über die neue Schaltfläche bestätigt:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -109,11 +109,11 @@ const App = () => {
 };
 ~~~~~~~
 
-`searchTerm` hatte bisher zwei Aufgaben: Zum einen war die Variable für die Aktualisierung des Status des Eingabefelds zuständig. Zum andere war sie für den Abruf der Daten verantwortlich --- ihre Aufgabe war es, den Seiten-Effekt auszulösen. Hier waren die [Zuständigkeiten nicht getrennt](https://wiki.selfhtml.org/index.php?title=Separation_of_concerns&oldid=66463). Jetzt wird `searchTerm` nur für die Aktualisierung des Eingabefelds verwendet. Eine zweite statusbehaftete Variable namens `url` wurde eingeführt, um den Seiten-Effekt beim Abrufen von Daten auszulösen. Dieser tritt nur dann auf, wenn ein Benutzer auf die Bestätigungsschaltfläche klickt.
+`searchTerm` hatte bisher zwei Aufgaben: Zum einen war die Variable für die Aktualisierung des Status des Eingabefelds zuständig. Zum andere war sie für den Abruf der Daten verantwortlich --- sie löste den Seiten-Effekt aus. Dies war kein idealer Programmierstil, weil die [Zuständigkeiten nicht getrennt](https://wiki.selfhtml.org/index.php?title=Separation_of_concerns&oldid=66463) waren. Jetzt wird `searchTerm` nur für die Aktualisierung des Eingabefelds verwendet. Eine zweite Variable namens `url` wurde eingeführt, um den Seiten-Effekt beim Abrufen von Daten auszulösen. Dieser tritt nur dann auf, wenn ein Benutzer auf die Bestätigungsschaltfläche klickt.
 
 ### Übungen:
 
 * Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Explicit-Data-Fetching-with-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Memoized-Handler-in-React...hs/Explicit-Data-Fetching-with-React?expand=1).
 * Warum wird `useState` anstelle von `useSemiPersistentState` für die `url`-Statusverwaltung verwendet?
-* Warum wird in der Funktion `handleFetchStories` nicht mehr nach einem leeren `searchTerm` gesucht?
+* Die Suche nach einem leeren `searchTerm` wird nicht mehr explizit verhindert. Warum haben wir `if (!searchTerm) return;` in der Funktion `handleFetchStories` entfernt?

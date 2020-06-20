@@ -93,7 +93,7 @@ const App = () => {
 
 Wir haben die Suche von einer clientseitigen in eine serverseitige geändert. Anstatt eine vordefinierte Liste auf dem Client zu filtern, wird mit `searchTerm` eine serverseitig gefilterte abgerufen. Das anfängliche Abrufen von Daten geschieht serverseitig, genauso wie das Aktualisieren, wenn sich das `searchTerm` ändert. Die Funktion ist jetzt vollständig serverseitig implementiert.
 
-Das erneute Abrufen von Daten bei jeder Eingabe in das Eingabefeld ist nicht optimal. Wir werden dies daher bald korrigieren. Da diese Implementierung die API belastet, treten Fehler auf, wenn die Anfragen verdichtet eingehen.
+Das erneute Abrufen von Daten bei jeder Eingabe in das Eingabefeld ist nicht optimal. Die Implementierung belastet die API unnötig. Fehler treten vermehrt auf, wenn die Anfragen verdichtet eingehen. Wir werden dieses Problem bald korrigieren.
 
 ### Übungen:
 
