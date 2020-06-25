@@ -2,17 +2,17 @@
 
 Das Testen des Quellcodes wird oft vernachlässigt. Dabei ist es wesentlich und zwingend erforderlich. Es ist unentbehrlich, die Qualität und Funktionalität des Codes automatisch zu überprüfen, bevor dieser im Echtsystem angewendet wird. Automatisierte Tests sind schneller durchführbar, fehlerfreier und kostengünstiger. Maschinen sind hier dem Menschen überlegen. Die [Testpyramide](https://martinfowler.com/articles/practical-test-pyramid.html) dient als Grundregel.
 
-Die Testpyramide umfasst End-to-End-Tests (E2E), Integrationstests und Komponententests (Unit-Tests). Letztere werden für kleine, isolierte Codeblöcke verwendet, zum Beispiel eine einzelne Funktion oder Komponente. Man betrachtet hierbei einen Teilaspekt herausgelöst. Integrationstests helfen uns, herauszufinden, ob diese Einheiten zusammenarbeiten. Ein End-to-End-Test simuliert ein reales Szenario, beispielsweise den Anmeldevorgang einer Webanwendung. Unit-Tests laufen schnell ab, sind isolierte Einheiten und somit unkompliziert zu schreiben und zu warten. Auf End-to-End-Tests trifft das Gegenteil zu.
+Die Testpyramide umfasst End-to-End-Tests (E2E), Integrationstests und Komponententests (Unit-Tests). Letztere werden für kleine, isolierte Codeblöcke verwendet, zum Beispiel eine einzelne Funktion oder Komponente. Man betrachtet hierbei einen Teilaspekt herausgelöst. Integrationstests helfen uns, herauszufinden, ob diese Einheiten zusammenarbeiten. Ein End-to-End-Test simuliert ein reales Szenario, beispielsweise den Anmeldevorgang einer Webanwendung. Unit-Tests laufen schnell ab, sind isolierte Einheiten und somit unkompliziert zu schreiben und zu warten. Auf End-to-End-Tests trifft das Gegenteil zu. Deshalb sind die Unit-Tests die Basis der Pyramide --- der breitere Teil, der suggeriert, dass diese mengenmäßig überwiegen. Nur der Vollständigkeit halber: Manche stellen die Pyramide auf den Kopf und je nach Anwendung ist das in Ordnung so. In der Regel ist die Pyramide erwiesenermaßen die passende Wahl.
 
 ![](images/testing-pyramid.png)
 
 Scheiben wir zuerst Unit-Tests, die unsere Funktionen und Komponenten abdecken. Danach verwenden wir Integrationstests, um sicherzustellen, dass die einzelnen mit Unit-Tests unabhängig geprüften Einheiten, wie erwartet zusammenarbeiten. Am Ende benötigen wir End-to-End-Tests, um kritische Szenarien zu simulieren. In diesem Kapitel behandeln wir **Unit und Integrationstests** sowie eine komponentenspezifische Testtechnik namens **Schnappschusstest oder Snapshot Test**. **End-to-End-Tests** werden Teil der Übungen sein.
 
-Da es viele Test-Bibliotheken gibt, ist es als Anfänger schwierig, die passende auszuwählen. Wir werden [Jest](https://jestjs.io/) und die [React Testing Library](https://testing-library.com/) (RTL) verwenden. Während Jest ein umfassendes Testframework mit Testrunner, Testsuiten, Testfällen und Assertions (Behauptungen) ist, wird die React Testing Library zum Rendern von React-Komponenten, Auslösen von Ereignissen wie Mausklicks und Auswählen von HTML-Elementen aus dem DOM zum Ausführen von Assertions (Behauptungen) verwendet. In den nächsten Abschnitten werden wir beide Tools Schritt für Schritt von der Einrichtung über Unit-Tests bis hin zu Integrationstests untersuchen.
+Da es viele Test-Bibliotheken gibt, ist es als Anfänger schwierig, die passende auszuwählen. Wir werden [Jest](https://jestjs.io/) und die [React Testing Library](https://testing-library.com/) (RTL) verwenden. Während Jest ein umfassendes Testframework mit Testrunner, Testsuiten, Testfällen und Assertions (Behauptungen) ist, wird die React Testing Library zum Rendern von React-Komponenten, Auslösen von Ereignissen wie Mausklicks und Auswählen von HTML-Elementen aus dem DOM verwendet. In den nächsten Abschnitten werden wir beide Tools Schritt für Schritt für Unit-Tests und Integrationstests untersuchen.
 
 ### Testsuiten, Testfälle und Assertions (Behauptungen)
 
-Jest bietet dir alles, was du von einem Test-Framework erwartest. In JavaScript, und in vielen anderen Programmiersprachen, werden häufig Testsuiten und Testfälle verwendet. Während eine Testsuite viele inhaltlich zusammengehörende Testfälle vereint, besteht ein Testfall aus einem Szenario. Sehen wir uns das mit Jest anhand der Datei *src/App.test.js* praktisch an:
+Jest bietet dir alles, was du von einem Test-Framework erwartest. In JavaScript, und in vielen anderen Programmiersprachen, werden häufig Testsuiten und Testfälle verwendet. Während eine Testsuite mehrere inhaltlich zusammengehörende Testfälle vereint, besteht ein Testfall aus einem einzelnen Szenario. Sehen wir uns das mit Jest anhand der Datei *src/App.test.js* praktisch an:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -62,7 +62,7 @@ describe('App component', () => {
 });
 ~~~~~~~
 
-Hast du schon einmal mit Tests gearbeitet und kennst "it"-Blocks? Ein "it"-Block ist das gleiche wie ein "test"-Block. In der Vergangenheit wurde "it" genutzt. "test" ist neuer und gibt dem Ganzen einen passenderen Namen. Nenne deinen Block so, wie es dir am liebsten ist. 
+Hast du schon einmal mit Tests gearbeitet und kennst "it"-Blocks? Ein "it"-Block ist das gleiche wie ein "test"-Block. Warum gibt es beide Varianten? In der Vergangenheit wurde "it" genutzt. "test" ist neuer und gibt dem Ganzen einen passenderen Namen. Nenne deinen Block so, wie es dir am liebsten ist. 
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -105,7 +105,7 @@ Watch Usage
  › Press Enter to trigger a test run.
 ~~~~~~~
 
-Jest vergleicht alle Dateien mit dem Suffix *test.js* im Dateinamen, wenn der Befehl aufgerufen wird. Erfolgreiche Tests werden grün, fehlgeschlagene rot markiert. Das interaktive Test-Skript überwacht den Code und führt die Tests jedes Mal aus, wenn sich etwas im Code ändert. Es bietet dir zusätzliche Befehle wie das Drücken von "f", um nur fehlgeschlagene, und "a", um alle Tests erneut auszuführen. Probiere das mit einem fehlerhaften Test praktisch aus:
+Jest vergleicht alle Dateien mit dem Suffix *test.js* im Dateinamen, wenn der Befehl aufgerufen wird. Erfolgreiche Tests werden grün, fehlgeschlagene rot markiert. Das interaktive Test-Skript überwacht den Code und führt die Tests jedes Mal aus, wenn sich etwas im Code ändert. Es bietet dir zusätzliche Befehle wie das Drücken von "f", um nur fehlgeschlagene, und "a", um alle Tests erneut auszuführen. Probiere das mit einem absichtlich fehlerhaften Test praktisch aus:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -122,7 +122,7 @@ describe('something truthy and falsy', () => {
 });
 ~~~~~~~
 
-Wenn die Ausführung von npm test bei dir weiterhin aktiv ist, dann werden deine Tests nach der Änderung im Quellcode erneut aufgerufen und du siehts über die Befehlszeilenausgabe einen roten Hinweis bezüglich des fehlgeschlagenen Tests:
+Wenn du die Ausführung von npm test nicht beendet hast, sie somit bei dir weiterhin aktiv ist, dann werden deine Tests nach der Änderung im Quellcode erneut aufgerufen und du siehts über die Befehlszeilenausgabe einen roten Hinweis bezüglich des fehlgeschlagenen Tests:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
@@ -157,9 +157,9 @@ Ran all test suites related to changed files.
 Watch Usage: Press w to show more.
 ~~~~~~~
 
-Mach dich mit der Testausgabe vertraut und nutze sie. Diese enthält alle Informationen, um fehlgeschlagene Tests zu erkennen und so die Ursache zu beheben. Korrigiere den  problematischen Test und überprüfe in der Befehlszeile, ob die Ausgabe grün ist.
+Mach dich mit der Testausgabe vertraut. Diese enthält alle Informationen, um fehlgeschlagene Tests zu erkennen und so die Ursache zu beheben. Korrigiere den  problematischen Test und überprüfe in der Befehlszeile, ob die Ausgabe grün ist.
 
-Ich habe bisher nichts zu Testaussagen geschrieben, obwohl diese ebenfalls wichtig sind. Du hast im Beispiel zwei Test-Assertions mit der Funktion `expect` verwendet. `expect` ist von Hause aus in den Jest enthalten. Eine Behauptung (Assertion) funktioniert wie folgt: Es wird erwartet, dass die linke Seite (`expect`) mit der rechten (`toBe`) übereinstimmt. `toBe` ist dabei eine von vielen Funktionen, die mit Jest verfügbar sind:
+Ich habe bisher nichts zu Behauptung (Assertion) geschrieben, obwohl diese ebenfalls wichtig sind. Du hast im Beispiel zwei Test-Assertions mit der Funktion `expect` verwendet. `expect` ist von Hause aus in Jest enthalten. Eine Behauptung funktioniert wie folgt: Es wird erwartet, dass die linke Seite (`expect`) mit der rechten (`toBe`) übereinstimmt. `toBe` ist dabei eine von vielen Funktionen, die mit Jest verfügbar sind:
 
 {title="src/App.test.js",lang="javascript"}
 ~~~~~~~
@@ -174,7 +174,7 @@ describe('something truthy and falsy', () => {
 });
 ~~~~~~~
 
-Nutze gleichzeitig zwei Befehlszeilen, wenn du mit Tests arbeitest: eine zum Überwachen deiner Tests (`npm start`) und eine zum Entwickeln der Anwendung (`npm start`). Wenn du eine Versionsverwaltung wie [Git](https://de.wikipedia.org/wiki/Git) nutzt, benötigst du unter Umständen eine weitere offene Befehlszeile, um deinen Code zu einem Repository hinzuzufügen.
+Tipp: Nutze gleichzeitig zwei Befehlszeilen, wenn du mit Tests arbeitest: eine zum Überwachen deiner Tests (`npm test`) und eine zum Entwickeln der Anwendung (`npm start`). Wenn du eine Versionsverwaltung wie [Git](https://de.wikipedia.org/wiki/Git) nutzt, benötigst du unter Umständen eine weitere offene Befehlszeile, um deinen Code zu einem Repository hinzuzufügen.
 
 ### Übungen:
 
@@ -184,7 +184,7 @@ Nutze gleichzeitig zwei Befehlszeilen, wenn du mit Tests arbeitest: eine zum Üb
 
 ### Unit Testing: Functions
 
-Als Erstes schreiben wir einem Komponententest. Ein Unit-Test testet normalerweise eine Komponente oder eine Funktion isoliert. Dies bedeutet, dass wir im Falle einer Funktion nur die Ein- und Ausgabe testen. Bei einer Komponente testen wir die Eigenschaften (Props) und die Callback-Handler.
+Als Erstes schreiben wir einen Unit-Testententest. Dieser testet normalerweise eine Komponente oder eine Funktion isoliert. Dies bedeutet, dass wir im Falle einer Funktion nur die Ein- und eine Ausgabe testen. Bei einer Komponente testen wir die Eigenschaften (Props) und die Callback-Handler.
 
 Bevor wir etwas in der Datei *src/App.js* testen ist es erforderlich, dass wir Komponenten und Funktionen exportieren:
 
