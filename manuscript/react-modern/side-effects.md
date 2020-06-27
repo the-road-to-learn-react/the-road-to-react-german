@@ -1,8 +1,8 @@
-## React Side-Effects
+## Seiten-Effekte in React
 
-Next we'll add a feature to our Search component in the form of another React hook. We'll make the Search component remember the most recent search interaction, so the application opens it in the browser whenever it restarts.
+Lasst uns jetzt unser Beispiel weiterentwickeln, und einen sogenannte Seiten-Effekte mithilfe des [useEffect()-Hooks](https://de.reactjs.org/docs/hooks-effect.html) implementieren. Ziel ist es, dass die Search-Komponente die vorherige Suche speichert, sodass diese letzte Aktion als Ist-Zustand bei einem neuen Aufruf im Browser geöffnet wird.
 
-First, use the local storage of the browser to store the `searchTerm` accompanied by an identifier. Next, use the stored value, if there a value exists, to set the initial state of the `searchTerm`. Otherwise, the initial state defaults to our initial state (here "React") as before:
+Verwende dafür zunächst das [lokale Storage-Objekt](https://developer.mozilla.org/de/docs/Web/API/Window/localStorage) des Browsers, um den `searchTerm` zu speichern. Nutze daraufhin diesen Wert, um den Anfangszustand festzulegen. Falls bis dato kein Wert gespeichert wurde, bleibt alles so, wie vorher --- bisher verwenden wir "React" als initialen Wert hartkodiert:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -27,9 +27,9 @@ const App = () => {
 );
 ~~~~~~~
 
-When using the input field and refreshing the browser tab, the browser should remember the latest search term. Using the local storage in React can be seen as a **side-effect** because we interact outside of React's domain by using the browser's API.
+Wenn du nach dieser Ergänzung im Eingabefeld einen Text eingibst und daraufhin die Ansicht in deinem Webbrowser aktualisieren wirst du feststellen, dass dein Browser sich den neuesten Suchbegriff gemerkt hat. Probiere es aus! Die Verwendung des lokalen Speichers stellt einen **Seiten-Effekt** dar, da wir mithilfe der API des Browsers außerhalb von React interagieren.
 
-There is one flaw, though. The handler function should mostly be concerned about updating the state, but now it has a side-effect. If we use the `setSearchTerm` function elsewhere in our application, we will break the feature we implemented because we can't be sure the local storage will also get updated. Let's fix this by handling the side-effect at a dedicated place. We'll use **React's useEffect Hook** to trigger the side-effect each time the `searchTerm` changes:
+Es gibt leider ein Problem in unserer Anwendung. Die Handlerfunktion `useState` ist für die Aktualisierung des Status zuständig, hat aber jetzt einen Seiten-Effekt: Wenn wir die Funktion `setSearchTerm` an einer anderen Stelle in unserer Anwendung verwenden, wird der lokale Speicher unter Umständen nicht aktualisiert. Wir beheben diesen Mangel, indem wir den **useEffect()-Hook** verwenden. So erreichen wir, dass der Seiten-Effekt jedes Mal ausgelöst wird, wenn sich die Variable `searchTerm` ändert:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -56,15 +56,25 @@ const App = () => {
 );
 ~~~~~~~
 
-React's useEffect Hook takes two arguments: The first argument is a function where the side-effect occurs. In our case, the side-effect is when the user types the `searchTerm` into the browser's local storage. The optional second argument is a dependency array of variables. If one of theses variables changes, the function for the side-effect is called. In our case, the function is called every time the `searchTerm` changes; and it's also called initially when the component renders for the first time.
+Die grundlegende Syntax des `useEffect`-Hooks ist dabei folgende:
 
-Leaving out the second argument, to be specific the dependency array, would make the function for the side-effect run on every render (initial render and update renders) of the component. If the dependency array of React's useEffect is an empty array, the function for the side-effect is only called once, after the component renders for the first time. The hook lets us opt into React's component lifecycle. It can be triggered when the component is first mounted, but also one of its dependencies are updated.
+{title="Visualization",lang="javascript"}
+~~~~~~~
+useEffect(function, dependencyArray)
+~~~~~~~
 
-Using React `useEffect` instead of managing the side-effect in the handler has made the application more robust. *Whenever* and *wherever* `searchTerm` is updated via `setSearchTerm`, local storage will always be in sync with it.
+Der Hook verwendet zwei Argumente: Das erste ist eine Funktion, der Seiten-Effekt, der aufgerufen wird. In unserem Fall passiert dies, wenn der Benutzer "searchTerm" eingibt und dieser daraufhin im lokalen Speicher des Browsers abgelegt wird. Das optionale zweite Argument ist ein Array. Wenn sich eine Variable im Array ändert, löst dies die Funktion für den Seiten-Effekt ebenfalls aus. In unserem Fall wird diese jedes Mal aufgerufen, wenn sich `searchTerm` ändert --- und beim initialen Aufruf, wenn die Komponente zum ersten Mal gerendert wird.
 
-### Exercises:
+Wenn du das zweite Argument (Array) weglässt, wird die Funktion für den Seiten-Effekt bei jedem Rendern der Komponente aufgerufen. Im Gegensatz dazu wird sie beim Komponentenstart nur einmal ausgelöst, wenn du ein leeres Array mitgibst. Mit dem Hook nehmen wir Einfluss auf den Komponentenlebenszyklus. Du hast es in der Hand, wann eine Aktualisierung ausgelöst wird, indem du das zweite Argument festlegst:
+- (kein Wert) = immer
+- [] = einmal beim Start der Komponente
+- [x, y] = immer, wenn sich eine der Variablen ändert.
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Side-Effects).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Props-Handling...hs/React-Side-Effects?expand=1).
-* Read more about React's useEffect Hook ([0](https://reactjs.org/docs/hooks-effect.html), [1](https://reactjs.org/docs/hooks-reference.html#useeffect)).
-* Give the first argument's function a `console.log()` and experiment with React's useEffect Hook's dependency array. Check the logs for an empty dependency array too.
+Durch die Verwendung von `useEffect` ist die Anwendung robuster. Immer *wenn* `searchTerm` über` setSearchTerm` aktualisiert wird, werden `searchTerm` und lokale Storage-Objekte synchronisiert --- egal *wo* die Aktualisierung ausgelöst wird.
+
+### Übungen:
+
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Side-Effects).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Props-Handling...hs/React-Side-Effects?expand=1).
+* Lese mehr zum `useEffect`-Hook([0](https://de.reactjs.org/docs/hooks-effect.html), [1](https://de.reactjs.org/docs/hooks-reference.html#useeffect)).
+* Erweitere die Funktion im ersten Argument des `useEffect-Hooks` so, dass mithilfe von `console.log()` Ausgaben in der Konsole deines Browsers mitprotokolliert werden. Experimentiere mit dem Array. Was passiert, wenn du ein leeres oder gar keins verwendest?

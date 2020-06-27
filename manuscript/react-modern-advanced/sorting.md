@@ -1,21 +1,21 @@
-# Real World React (Advanced)
+# React in der Praxis (fortgeschrittene Anleitung)
 
-We've covered most of React's fundamentals, its legacy features, and techniques for maintaining applications. Now it's time to dive into developing real-world React applications. Each of the following sections will come with a task. Try to tackle these tasks without the *optional hints* first, but be aware that these are going to be challenging on your first attempt. If you need help, use the *optional hints* or follow the instructions from the section.
+Wir haben in den vorausgehenden Kapiteln die Grundlagen von React erarbeitet. Nebenbei haben wir in der Vergangenheit genutzte Funktionen und Techniken zur Wartung behandelt. Jetzt ist es Zeit, dass wir uns mit der Entwicklung realer Anwendungen befassen. Jeder der folgenden Abschnitte enthält eine Aufgabe. Versuche, diese ohne die *optionalen Hinweise* zu lösen. Vieles ist nicht trivial. Du wirst dich herausgefordert fühlen. So lernst du am meisten. Verwende die *optionalen Hinweise*, um deinen Lösungsweg mit meinem abzugleichen --- oder, wenn du Hilfe benötigst.
 
-## Sorting
+## Sortierung
 
-**Task:** Working with a list of items often includes interactions that make data more approachable by users. So far, every item was listed with each of its properties. To make it explorable, the list should enable sorting of each property by title, author, comments, and points in ascending or descending order. Sorting in only one direction is fine, because sorting in the other direction will be part of the next section.
+**Aufgabe:** Das Arbeiten mit einer Liste von Elementen beinhalte in der Regel Funktionen, die einem Benutzer den Zugriff auf die Daten erleichtern. Bisher wird jeder Artikel aufgelistet. Erweitern wir die Benutzerfreundlichkeit, indem wir eine Sortierung ermöglichen. Je nachdem welche Eigenschaft dem Benutzer wichtig ist, wird die Liste nach Titel, Autor, Kommentaren oder Punkten sortiert. Fürs Erste reicht es, wenn du die Sortierung in eine Richtung implementierst. Im nächsten Kapitel ermöglichen wir es, diese umzukehren.
 
-**Optional Hints:**
+**Optionale Hinweise:**
 
-* Introduce a new sort state in the App or List component.
-* For each property (e.g. `title`, `author`, `points`, `num_comments`) implement an HTML button which sets the sort state for this property.
-* Use the sort state to apply an appropriate sort function on the `list`.
-* Using a utility library like [Lodash](https://lodash.com/) for its `sortBy` function is encouraged.
+* Führe einen Sortierstatus in die App- oder Listenkomponente ein.
+* Implementiere für jede Eigenschaft (`title`, `author`, `points`, `num_comments`) eine HTML-Schaltfläche, die den Sortierstatus festlegt.
+* Verwende den Sortierstatus, um eine entsprechende Sortierfunktion auf die Liste anzuwenden.
+* Verwende eine externe Bibliothek wie [Lodash](https://lodash.com/) um die Funktion  `sortBy` zu implementieren.
 
 ![](images/sort.png)
 
-We will treat the list of data like a table. Each row represents an item of the list and each column represents one property of the item. Headers provide the user more guidance about each column:
+Wir behandeln die Liste wie eine Tabelle. Jede Zeile repräsentiert ein Element und jede Spalte die Eigenschaften. Die Überschriften der Spalten sind Orientierungshilfen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -44,7 +44,7 @@ const List = ({ list, onRemoveItem }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-We are using inline style for the most basic layout. To match the layout of the header with the rows, give the rows in the Item component a layout as well:
+Wir verwenden der Einfachheit halber Inline-CSS. Gib den Zeilen in der Item-Komponente ein Layout, um dieses mit den Kopfzeilen abzugleichen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -69,9 +69,9 @@ const Item = ({ item, onRemoveItem }) => (
 );
 ~~~~~~~
 
-In the ongoing implementation, we will remove the style attributes, because it takes up lots of space and clutters the actual implementation logic (hence extracting it into proper CSS). But I encourage you to keep it for yourself.
+In der laufenden Implementierung werden ich der Übersicht halber die Inline-CSS-Stilattribute entfernen. Behalte du diese aber gerne in deiner Anwendung bei.
 
-The List component will handle the new sort state. This can also be done in the App component, but only the List component is in play, so we can lift the state management directly to it. The sort state initializes with a `'NONE'` state, so the list items are displayed in the order they are fetched from the API. Further, we added a new handler to set the sort state with a sort-specific key.
+Die List-Komponente verwaltet den Sortierstatus. Dieser wird mit dem Status `'NONE'` initialisiert, so werden die Listenelemente in der Reihenfolge angezeigt, in der sie die API ausgibt. Außerdem habe ich einen neuen Handler hinzugefügt, um den Sortierstatus mit einem spezifischen Schlüssel festzulegen.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -92,7 +92,7 @@ const List = ({ list, onRemoveItem }) => {
 # leanpub-end-insert
 ~~~~~~~
 
-In the List component's header, buttons can help us to set the sort state for each column/property. An inline handler is used to sneak in the sort-specific key (`sortKey`). When the button for the "Title" column is clicked, `'TITLE'` becomes the new sort state.
+Lege in der Kopfzeile der List-Komponente mithilfe der Schaltflächen den Sortierstatus für jede Eigenschaft fest. Ein Inline-Handler wird verwendet, um den spezifischen Schlüssel (`sortKey`) einzugeben. Wenn du auf die Schaltfläche für die Spalte "Title" klickst, wird `'TITLE'` zum neuen Sortierstatus.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -139,16 +139,16 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-State management for the new feature is implemented, but we don't see anything when our buttons are clicked yet. This happens because the sorting mechanism hasn't been applied to the actual `list`.
+Die Statusverwaltung für die neue Funktion ist implementiert, aber wir sehen keine Änderung, wenn wir auf eine Schaltfläche klicken. Dies ist so, weil der Sortiermechanismus nicht auf `list` angewendet wird.
 
-Sorting an array with JavaScript isn't trivial, because every JavaScript primitive (e.g. string, boolean, number) comes with edge cases when an array is sorted by its properties. We will use a library called [Lodash](https://lodash.com/) to solve this, which comes with many JavaScript utility functions (e.g. `sortBy`). First, install it via the command line:
+Das Sortieren eines Arrays mit JavaScript ist nicht trivial, da jedes JavaScript-Grundelement (z. B. Zeichenfolge, Boolescher Wert, Zahl) Besonderheiten vorweist. Deshalb erfinden wir das Rad nicht neu, sondern verwenden eine vorhandene Lösung: [Lodash](https://lodash.com/). Installiere die externe Bibliothek über die Befehlszeile:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm install lodash
 ~~~~~~~
 
-Second, at the top of your file, import the utility function for sorting:
+Importiere dann die Funktion:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -161,7 +161,7 @@ import { sortBy } from 'lodash';
 ...
 ~~~~~~~
 
-Third, create a JavaScript object (also called dictionary) with all the possible `sortKey` and sort function mappings. Each specific sort key is mapped to a function that sorts the incoming `list`. Sorting by `'NONE'` returns the unsorted list; sorting by `'POINT'` returns a list and its items sorted by the `points` property.
+Erstelle danach ein JavaScript-Objekt mit allen möglichen Zuordnungen von `sortKey` zu einer Suchfunktion. Jeder Sortierschlüssel ist einer Funktion zugeordnet, welche `list` sortiert. Durch Sortieren nach `'NONE'` wird die unsortierte Liste zurückgegeben. Beim Sortieren nach `'POINT'` wird die Liste anhand der Eigenschaft `points` sortiert zurückgegeben.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -180,7 +180,7 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-With the `sort`  (`sortKey`) state and all possible sort variations with `SORTS` at our disposal, we can sort the list before mapping it over each Item component:
+Mit dem Status `sort` (`sortKey`) und den Sortiervariationen `SORTS` sortieren wir die Liste, bevor wir sie der Item-Komponente zuordnen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -214,14 +214,14 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-It's done. First we extracted the sort function from the dictionary by its `sortKey` (state). Then, we applied the function to the list, before mapping it to render each Item component. Again, the initial sort state will be `'NONE'`, meaning it will sort nothing.
+Fertig! Was haben wir genau umgesetzt? Zuerst erstellten wir die Sortierfunktion mithilfe eines `sortKey` (Status). Anschließend wendeten wir die Funktion auf die Liste an, bevor wir sie zum Rendern jedem Item zuordneten. Der anfängliche Sortierstatus ist `'NONE'`, was bedeutet, dass nichts sortiert wird.
 
-Second we rendered more HTML buttons to give our users interaction. Then, we added implementation details for each button by changing the sort state. Finally, we used the sort state to sort the actual list.
+Wir haben Schaltflächen inklusive Implementierungsdetails erstellt, um unseren Benutzern die Interaktion zu ermöglichen. Dabei verwenden wir den Sortierstatus, um die Liste zu sortieren.
 
-### Exercises:
+### Übungen:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Sort).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Sort?expand=1).
-* Read more about [Lodash](https://lodash.com/).
-* Why did we use numeric properties like `points` and `num_comments` a reverse sort?
-* Use your styling skills to give the user feedback about the current active sort. This mechanism can be as straightforward as giving the active sort button a different color.
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Sort).
+  * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Sort?expand=1).
+* Lese mehr über [Lodash](https://lodash.com/).
+* Warum verwenden wir bei der Sortierung von numerischen Eigenschaften wie `points` und `num_comments` die umgekehrte Reihenfolge?
+* Zeige dem Benutzer, welche Sortierung aktiv ist. Implementiere dies auf eine unkomplizierte Art und Weise. Beispielsweise reichte es aus, der zuletzt angeklickten Schaltfläche eine andere Farbe zuzuweisen.

@@ -1,8 +1,8 @@
-## React Controlled Components
+## Kontrollierte Komponenten in React
 
-**Controlled components** are not necessary React components, but HTML elements. Here, we'll learn how to turn the Search component and its input field into a controlled component.
+**Kontrollierte Komponenten** sind nicht zwingen React-Komponenten. Es handelt sich aber immer um HTML-Elemente. In diesem Abschnitt erfährst du, wie du Search und ihr Eingabefeld in eine kontrollierte Komponente umwandelst.
 
-Let's go through a scenario that shows  why we should follow the concept of controlled components throughout our React application. After applying the following change -- giving the `searchTerm` an initial state -- can you spot the mistake in your browser?
+Lass uns ein Szenario durchdenken, das dir verdeutlicht, warum es sinnvoll ist, dass wir das Konzept der kontrollierten Komponenten in unserer gesamten Anwendung einsetzen. Sieh dir den nachfolgenden Code an: Erkennst du, was falsch ist, wenn du beim `searchTerm` einen Anfangszustand setzt?
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -17,9 +17,9 @@ const App = () => {
 };
 ~~~~~~~
 
-While the list has been filtered according to the initial search, the input field doesn't show the initial `searchTerm`. We want the input field to reflect the actual `searchTerm` used from the initial state; but it's only reflected through the filtered list.
+Falsch, oder nicht intuitiv ist das Folgende: Während List anhand des anfänglich gesetzten Suchstrings gefiltert wurde, zeigt das Eingabefeld den `searchTerm` nicht an. Uns ist wichtig, dass das Feld jederzeit den aktuell in der Anzeige verwendeten `searchTerm` widerspiegelt. Nur so ist die Ausgabe konsistent und widerspruchsfrei. Beim ersten Aufruf wird die Liste nach der letzten Änderung anhand des `searchTerm` "React" gefiltert, aber das Eingabefeld bleibt leer. Die Ausgabe ist inkonsistent.
 
-We need to convert the Search component with its input field into a controlled component. So far, the input field doesn't know anything about the `searchTerm`. It only uses the change event to inform us of a change. Actually, the input field has a `value` attribute.
+Um eine konsistente Ausgabe zu erreichen, verwandeln wir die Suchkomponente mit ihrem Eingabefeld in eine kontrollierte Komponente. Bisher weiß das Feld nichts über den `searchTerm`. Das Änderungsereignis wird nur für die Aktualisierung der Anzeige verwendet. Aber: Das Eingabefeld hat ein Attribut namens `value` welches wir nutzen werden.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -58,26 +58,26 @@ const Search = props => (
 );
 ~~~~~~~
 
-Now the input field starts with the correct initial value, using the `searchTerm` from the React state. Also, when we change the `searchTerm`, we force the input field to use the value from React's state (via props). Before, the input field managed its own internal state natively with just HTML.
+Jetzt zeigt das Eingabefeld beim Start der Anwendung den korrekten Anfangswert. Dabei verwendet es `searchTerm` aus dem React-Status. Wenn wir "searchTerm" ändern, erzwingen wir außerdem, dass das Eingabefeld den Wert aus dem React-Status verwendet (über Props). Zuvor verwaltete das Feld seinen Status nativ mit HTML.
 
 ![](images/controlled-component.png)
 
-We learned about controlled components in this section, and, taking all the previous sections as learning steps into consideration, discovered another concept called **unidirectional data flow**:
+In diesem Abschnitt haben wir kontrollierte Komponenten kennengelernt und ein neues Konzept entdeckt, das **unidirektionaler Datenfluss** genannt wird:
 
 {title="Visualization",lang="javascript"}
 ~~~~~~~
 UI -> Side-Effect -> State -> UI -> ...
 ~~~~~~~
 
-A React application and its components start with an initial state, which may be passed down as props to other components. It's rendered for the first time as a UI. Once a side-effect occurs, like user input or data loading from a remote API, the change is captured in React's state. Once state has been changed, all the components affected by the modified state or the implicitly modified props are re-rendered (the component functions runs again).
+Eine React-Anwendung und ihre Komponenten haben beim ersten Aufruf einen Anfangszustand, der gegebenenfalls als Eigenschaft (Props) an andere Komponenten weitergegeben wird. Beim ersten Aufruf wird eine Benutzeroberfläche gerendert. Sobald ein Ereignis wie zum Beispiel eine Benutzereingabe oder das Laden von Daten von einer Remote-API eintritt, wird die Änderung im Status erfasst. Wenn dann der Status geändert wurde, werden alle vom veränderten Status oder den implizit geänderten Eigenschaften (Props) betroffenen Komponenten erneut gerendert. Dies bedeutet, dass die Komponentenfunktionen nochmals aufgerufen werden.
 
-In the previous sections, we also learned about React's **component lifecycle**. At first, all components are instantiated from the top to the bottom of the component hierarchy. This includes all hooks (e.g. `useState`) that are instantiated with their initial values (e.g. initial state). From there, the UI awaits side-effects like user interactions. Once state is changed (e.g. current state changed via state updater function from `useState`), all components affected by modified state/props render again.
+In den vorherigen Abschnitten haben wir unter anderem den **Komponentenlebenszyklus** von React kennengelernt. Zunächst werden alle Komponenten von oben nach unten in der Komponentenhierarchie erstellt. Dies schließt alle Hooks (zum Beispiel `useState`) ein, die mit ihren Anfangswerten instanziiert werden. Ab dann wartet die Benutzeroberfläche auf Ereignisse wie Benutzerinteraktionen. Sobald der Status geändert wurde --- der aktuelle Status wurde beispielsweise über die Statusaktualisierungsfunktion von `useState` verändert --- werden alle von dem geänderten Status oder den geänderten Eigenschaften (Props) betroffenen Komponenten erneut gerendert.
 
-Every run through a component's function takes the *recent value* (e.g. current state) from the hooks and *doesn't* reinitialize them again (e.g. initial state). This might seem odd, as one could assume the `useState` hooks function re-initializes again with its initial value, but it doesn't. Hooks initialize only once when the component renders for the first time, after which React tracks them internally with their most recent values.
+Bei jedem erneuten Aufruf einer Komponente wird der *aktuelle Wert* (zum Beispiel der aktuelle Status) aus den Hooks entnommen und *nicht* ein weiteres Mal initialisiert. Erscheint dir das seltsam? Du meinst, es wäre intuitiv die Hook-Funktion `useState` mit ihrem Anfangswert erneut zu initialisiert? Das ist aber in Reacht nicht so! Hooks werden nur einmal initialisiert. Die Initialisierung geschieht, wenn die Komponente zum ersten Mal gerendert wird. Danach verfolgt React sie intern und aktualisiert so die Werte.
 
-### Exercises:
+### Übungen:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1).
-* Read more about [controlled components in React](https://www.robinwieruch.de/react-controlled-components/).
-* Experiment with `console.log()` in your React components and observe how your changes render, both initially and after the input field changes.
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Controlled-Components).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lifting-State-in-React...hs/React-Controlled-Components?expand=1).
+* Lese mehr zum Thema [kontrollierte Komponenten in React](https://www.robinwieruch.de/react-controlled-components/).
+* Experimentiere mit der Anweisung `console.log()` und beobachten dabei wie deine Eingaben gerendert werden --- anfangs und nach Änderungen im Eingabefeld.

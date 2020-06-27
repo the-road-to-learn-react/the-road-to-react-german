@@ -1,6 +1,6 @@
-## Lists in React
+## Listen in React
 
-So far we've rendered a few primitive variables in JSX; next we'll render a list of items. We'll experiment with sample data at first, then we'll apply that to fetch data from a remote API. First, let's define the array as a variable. As before, we can define a variable outside or inside the component. The following defines it outside:
+Bisher haben wir ausschließlich [primitive Variablen](https://developer.mozilla.org/de/docs/Web/JavaScript/Guide/Grammatik_und_Typen#Datentypen) in JSX gerendert. Als Nächstes rendern wir eine Liste, die aus mehreren Elementen besteht. Wir werden zuerst mit Beispieldaten experimentieren. Später rufen wir Daten von einer Remote-API ab. Definieren wir zunächst die Liste als [JavaScript-Array](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array). Ich hatte es bereits erwähnt: Es ist möglich, eine Variable außerhalb oder innerhalb einer Komponente zu definieren. Das folgende Beispiel zeigt dir erneut die externe Definition:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -32,9 +32,9 @@ function App() { ... }
 export default App;
 ~~~~~~~
 
-I used a `...` here as a placeholder, to keep my code snippet small (without App component implementation details) and focused on the essential parts (the `list` variable outside of the App component). I will use the `...` throughout the rest of this learning experience as placeholder for code blocks that I have established previous exercises. If you get lost, you can always verify your code using the CodeSandbox links I provide at the end of most sections.
+Im Beispiel verwendete ich drei Punkte `...` als Platzhalter, um das Code-Schnipsel übersichtlich zu halten, und mich auf den wesentlichen Teil zu konzentrieren: die neu eingeführte "list"-Variable. Ich werde die drei Punkte `...` im ganzen Buch als Platzhalter für Codeblöcke verwenden, die ich in früheren Übungen erstellt habe. Wenn dir an einer Stelle nicht klar ist, was anstelle der Punkte steht, überprüfe deinen Code bitte mithilfe des CodeSandbox-Links, den ich am Ende eines jeden Kapitels angebe.
 
-Each item in the list has a title, a url, an author, an identifier (`objectID`), points -- which indicate the popularity of an item -- and a count of comments. Next, we'll render the list within our JSX dynamically:
+Jedes Element der "list"-Variable beinhaltet einen Titel, eine URL, einen Autor, eine Anzahl von Kommentaren, Punkte (welche die Beliebtheit anzeigen) und eine Kennung (`objectID`). Als Nächstes rendern wir die Liste mit JSX. Als Erstes legen wir das Drumherum der Liste an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -53,14 +53,14 @@ function App() {
 # leanpub-end-insert
 
 # leanpub-start-insert
-      {/* render the list here */}
+      {/* Rendere die Liste hier. */}
 # leanpub-end-insert
     </div>
   );
 }
 ~~~~~~~
 
-You can use the [built-in JavaScript map method for arrays](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map) to iterate over each item of the list and return a new version of each:
+Verwende [die JavaScript-Zuordnungsmethode `map()`](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/map), um über jedes Element des Arrays zu iterieren und dabei die Liste für die Anzeige anzulegen. Nachfolgend zeige ich dir die Funktion `map()` zunächst unabhängig von unserer Beispielanwendung:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -74,7 +74,7 @@ console.log(newNumbers);
 // [2, 8, 18, 32]
 ~~~~~~~
 
-We won't map from one JavaScript data type to another in our case. Instead, we return a JSX fragment that renders each item of the list:
+Im vorherigen Beispiel haben wir eine JavaScript-Variable auf eine andere abgebildet. In unserer Beispielanwendung bilden wir diese nicht nur ab, wir zeigen Sie im Frontend an. Dazu nutzen wir ein JSX-Fragment. So rendern wir jedes Element der Liste auf eine unkomplizierte Art und Weise:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -95,11 +95,11 @@ function App() {
 }
 ~~~~~~~
 
-Actually, one of my first React "Aha" moments was using barebones JavaScript to map a list of JavaScript objects to HTML elements without any other HTML templating syntax. It's just JavaScript in HTML.
+Einer meiner ersten "Aha"-Momente mit React war dieser: Ich habe einer Liste von JavaScript-Objekten --- ohne zusätzliche HTML-Template-Syntax --- HTML-Elementen zugeordnet. Erforderlich war ausschließlich JavaScript in HTML.
 
 ![](images/jsx-mapping.png)
 
-React will display each item now, but you can still improve your code so React handles advanced dynamic lists more gracefully. By assigning a key attribute to each list item's element, React can identify modified items if the list changes (e.g. re-ordering). Fortunately, our list items come with an identifier:
+React zeigt jetzt jedes Element an. Verbessere die Ausgabe weiter, so dass React dynamische Listen effizienter handhabt. Durch Zuweisen eines Schlüsselattributs zu jedem Listenelement identifiziert React einzelne Elemente. Dies ist sinnvoll, wenn sich die Liste verändert --- zum Beispiel bei einer Änderung der Reihenfolge. Glücklicherweise verfügen unsere Listenelemente über eine ID:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -126,11 +126,11 @@ function App() {
 }
 ~~~~~~~
 
-We avoid using the index of the item in the array to make sure the key attribute is a stable identifier. If the list changes its order, for example, React will not be able to identify the items properly:
+Vermeide es, den Index vom Element losgelöst zu verwenden. So stellst du sicher, dass die ID eine stabile Kennung ist. React identifiziert die Elemente andernfalls unter Umständen nicht korrekt:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
-// don't do this
+// Bitte nicht so.
 {list.map(function(item, index) {
   return (
     <div key={index}>
@@ -140,7 +140,7 @@ We avoid using the index of the item in the array to make sure the key attribute
 })}
 ~~~~~~~
 
-So far, only the title is displayed for each item. Let's experiment with displaying more of the item's properties:
+Bisher wird für jeden Artikel der Titel angezeigt. Experimentiere mit der Anzeige weiterer Eigenschaften des Elements:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -170,14 +170,14 @@ function App() {
 }
 ~~~~~~~
 
-The map function is inlined concisely in your JSX. Within the map function, we have access to each item and its properties. The `url` property of each item is used as dynamic `href` attribute for the anchor tag. Not only can JavaScript in JSX be used to display items, but also to assign HTML attributes dynamically.
+`map` macht den Code innerhalb von JSX knapp und prägnant. Im Bereich dieser Funktion haben wir Zugriff auf jedes Element und seine Eigenschaften. Die `url` wird Attribut `href` für das Ankertag verwendet. JavaScript in JSX wird nicht nur zum Anzeigen von Elementen genutzt. Wir verwenden es ebenfalls zum dynamischen Zuweisen von HTML-Attributen.
 
-### Exercises:
+### Übungen:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Lists-in-React).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-JSX...hs/Lists-in-React?expand=1).
-* Read more about why React's key attribute is needed ([0](https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7), [1](https://www.robinwieruch.de/react-list-key), [2](https://reactjs.org/docs/lists-and-keys.html)). Don't worry if you don't understand the implementation yet, just focus on what problem it causes for dynamic lists.
-* Recap the [standard built-in array methods](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/) -- especially *map*, *filter*, and *reduce* -- which are available in native JavaScript.
-* What happens if your return `null` instead of the JSX?
-* Extend the list with some more items to make the example more realistic.
-* Practice using different JavaScript expressions in JSX.
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Lists-in-React).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-JSX...hs/Lists-in-React?expand=1).
+* Informiere dich darüber, warum das Schlüsselattribut (ID) in React benötigt wird ([0](https://dev.to/jtonzing/the-significance-of-react-keys---a-visual-explanation--56l7), [1](https://www.robinwieruch.de/react-list-key), [2](https://reactjs.org/docs/lists-and-keys.html)). Es ist nicht tragisch, wenn du die Implementierung nicht vollständig verstehst. Konzentrieren dich in diesem Fall auf die Anwendung in dynamischen Listen.
+* Wiederhole die [standardmäßig integrierten Array-Methoden](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Array/) - insbesondere *map*, *filter*, und *reduce* --- die in nativem JavaScript verfügbar sind.
+* Was passiert, wenn du `null` anstelle von JSX zurückgibst?
+* Erweitere die Liste um einige weitere Elemente, um das Beispiel realistischer zu gestalten.
+* Verwende zur Übung verschiedene JavaScript-Ausdrücke in JSX.

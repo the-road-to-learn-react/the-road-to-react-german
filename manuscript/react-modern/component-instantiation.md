@@ -1,8 +1,8 @@
-## React Component Instantiation
+## Instanziierung einer Komponente in React
 
-Next, I'll briefly explain JavaScript classes, to help clarify React components. Technically they are not related, which is important to note, but it is a fitting analogy for you to understand the concept of a component.
+Als Nächstes werde ich kurz auf JavaScript-Klassen eingehen. Dies ist hilfreich, um Komponenten in React besser einzuordnen. Technisch gesehen unterscheiden die beiden sich, was wichtig ist! Trotzdem bin ich der Meinung, dass die folgenden Erklärungen hilfreich sind, um eine React-Komponente vom Konzept her zu verstehen.
 
-Classes are most often used in object-oriented programming languages. JavaScript, always flexible in its programming paradigms, allows functional programming and object-oriented programming to co-exist side-by-side. To recap JavaScript classes for object-oriented programming, consider the following *Developer* class:
+Klassen verwenden wir in der Regel in objektorientierten Programmiersprachen. JavaScript ermöglicht es funktional und objektorientiert zu Programmierung. Sieh dir die folgende Klasse an, um dir die letztere Technik in JavaScript zu vergegenwärtigen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -18,9 +18,9 @@ class Developer {
 }
 ~~~~~~~
 
-Each class has a constructor that takes arguments and assigns them to the class instance. A class can also define functions that are associated with a subject (e.g. `getName`), called **methods** or **class methods**.
+Jede Klasse verfügt über einen Konstruktor, der Argumente als Eingabe entgegen nimmt und diese der Klasseninstanz zuweist. Eine Klasse definiert Funktionen (beispielsweise `getName`), diese nennt man im objektorientierten Kontext **Methoden** oder **Klassenmethoden**.
 
-Defining the Developer class once is just one part; instantiating it is the other. The class definition is the blueprint of its capabilities, and usage occurs when an instance is created with the `new` statement.
+Das einmalige Definieren der Klasse ist nur ein Teil, diese zu Instanziieren ist der anderer Teil, der im Ergebnis das Objekt erzeugt. Die Klassendefinition ist vereinfacht ausgedrückt die Blaupause ihrer Eigenschaften und Methoden. Wenn eine Instanz mit der Anweisung `new` erstellt wird, ergo wenn die Klasse instanziiert wird, wird diese angewendet. In der Definition weiß man, dass ein Developer die Eigenschaft `name` hat. Nachdem das Objekt instanziiert wurde, ist es möglich, *Dennis* und *Robin* zu unterscheiden:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -40,7 +40,7 @@ console.log(dennis.getName());
 // "Dennis Wieruch"
 ~~~~~~~
 
-If a JavaScript class definition exists, one can create *multiple* instances of it. It is similar to a React component, which has only *one* component definition, but can have *multiple* component instances:
+Wenn eine Klassendefinition vorhanden ist, ist es möglich *mehrere* Instanzen davon zu erstellt. Dies ähnelt einer React-Komponente, die nur *eine* Komponentendefinition, aber in der Regel *mehrere* Komponenteninstanzen hat:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -67,10 +67,10 @@ function App() {
 function List() { ... }
 ~~~~~~~
 
-Once we've defined a **component**, we can use it like an HTML **element** anywhere in our JSX. The element produces an **component instance** of your component, or in other words, the component gets instantiated. You can create as many component instances as you want. It's not much different from a JavaScript class definition and usage.
+Sobald du eine **Komponente** definiert hast, ist es möglich diese wie ein HTML-**Element** überall in JSX zu verwenden. Das Element erzeugt eine **Komponenteninstanz** --- die Komponente wird "instanziiert". Es ist möglich, beliebig viele Komponenteninstanzen zu erstellen. Das "Instanziieren" unterscheidet sich nicht wesentlich von der Definition und Verwendung einer normalen Klasse.
 
-### Exercises:
+### Übungen:
 
-* Familiarize yourself with the terms *component definition*, *component instance*, and *element*.
-* Experiment by creating multiple component instances of a List component.
-* Think about how it could be possible to give each List component its own `list`.
+* Mache dich mit den Begriffen *Komponentendefinition*, *Komponenteninstanz* und *Element* vertraut.
+* Experimentiere, indem du mehrere Komponenteninstanzen der List-Komponente erstellst.
+* Überlege, wie es möglich ist, jeder List-Komponente eine eigene `list` zuzuordnen.
