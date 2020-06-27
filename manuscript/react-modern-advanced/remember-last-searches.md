@@ -396,7 +396,7 @@ const LastSearches = ({ lastSearches, onLastSearch }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-Die Umsetzung dieser Funktion war komplex. Es waren viele grundlegende React-, aber JavaScript-Kenntnisse erforderlich, um alles, was ich hier gezeigt habe, nachzuvollziehen. Wenn du keine Probleme hattest, den Anweisungen zu folgen, bist du fortgeschritten. Sorge dich nicht, wenn du nicht alles sofort verstanden hast. Gegebenenfalls hast du sogar einen anderen Weg gefunden, um die Aufgabe zu lösen, und dieser ist intuitiver als der, den ich hier gezeigt habe.
+Die Umsetzung dieser Funktion war komplex. Es waren viele grundlegende React- und JavaScript-Kenntnisse erforderlich, um alles nachzuvollziehen, was ich hier gezeigt habe. Sorge dich nicht, wenn du nicht alles sofort verstanden hast. Gegebenenfalls hast du sogar einen anderen Weg gefunden, um die Aufgabe zu lösen, und dieser ist intuitiver als der, den ich hier gezeigt habe.
 
 ### Übungen:
 

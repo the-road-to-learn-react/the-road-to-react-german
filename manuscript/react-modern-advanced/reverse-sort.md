@@ -85,7 +85,7 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-Die umgekehrte Sortierung ist jetzt bereit. Für das an die Statusaktualisierungsfunktion übergebene Objekt verwenden wir eine sogenannte **Shorthand Object Initialisierer-Notation**:
+Die umgekehrte Sortierung ist jetzt bereit. Für das an die Statusaktualisierungsfunktion übergebene Objekt verwenden wir die **Objekt Initialisierer Kurzschreibweise**:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -113,7 +113,7 @@ console.log(user);
 // { firstName: "Robin" }
 ~~~~~~~
 
-Lese mehr über [JavaScript Object Initializers](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer) falls du diese nicht kennst.
+Lese mehr über [Objekt Initialisierer](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer) falls du diese nicht kennst.
 
 ### Übungen:
 

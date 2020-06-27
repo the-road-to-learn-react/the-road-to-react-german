@@ -32,7 +32,7 @@ Wechsele als Nächstes in den Projektordner und führe den folgenden Befehl aus,
 firebase init
 ~~~~~~~
 
-Wähle als Nächstes die Option Hosting. Füge weitere Optionen hinzu, um neben Firebase Hosting ein anderes Tool zu verwenden:
+Wähle dann die Option Hosting. Füge weitere Optionen hinzu, um neben Firebase Hosting ein anderes Tool zu verwenden:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -66,9 +66,9 @@ Einige andere Konfigurationsschritte sind erforderlich. Anstatt den Standardordn
 ? File public/index.html already exists. Overwrite? No
 ~~~~~~~
 
-React erstellt einen *build/*-Ordner, nachdem wir `npm run build` aufgerufen haben. Dieser enthält den gesamten Inhalt der Ordner *public/* und *src/*. Da es sich um eine SPA (Einzelseitenanwendung) handelt, leiten wir den Benutzer in die Datei *index.html* um, damit der React-Router das clientseitige Routing verarbeitet. Wir überschreiben die Datei nicht.
+React erstellt einen *build/*-Ordner, nachdem wir `npm run build` aufgerufen haben. Dieser enthält den gesamten Inhalt der Ordner *public/* und *src/*. Da es sich um eine [SPA](https://de.wikipedia.org/wiki/Single-Page-Webanwendung) (Single-Page-Webanwendung oder Einzelseitenanwendung) handelt, leiten wir den Benutzer in die Datei *index.html* um, damit der React-Router das clientseitige Routing verarbeitet. Wir überschreiben die Datei nicht.
 
-Deine Firebase-Initialisierung ist abgeschlossen. In diesem Schritt wurden einige Konfigurationsdateien für Firebase Hosting im Ordner deines Projekts erstellt. Weitere Informationen hierzu findest du in der [Firebase-Dokumentation](https://firebase.google.com/docs/hosting/full-config) zum Konfigurieren von Weiterleitungen, einer 404-Seite oder von Headern. Stelle jetzt die React-Anwendung mit Firebase über die Befehlszeile bereit:
+Deine Firebase-Initialisierung ist abgeschlossen. In diesem Schritt wurden einige Konfigurationsdateien für Firebase Hosting im Ordner deines Projekts erstellt. Weitere Informationen hierzu findest du in der [Firebase-Dokumentation](https://firebase.google.com/docs/hosting/full-config). Stelle jetzt die React-Anwendung mit Firebase über die Befehlszeile bereit:
 
 {title="Command Line",lang="javascript"}
 ~~~~~~~
@@ -85,10 +85,10 @@ Hosting URL: https://my-react-project-abc123.firebaseapp.com
 
 Besuche beide Seiten, um die Einrichtung zu prüfen. Der erste Link navigiert zum Dashboard deines Firebase-Projekts. Dieses ist nur zugänglich, wenn du angemeldet bist. Hier wird dir ein neues Fenster für das Firebase-Hosting angezeigt. Der zweite Link leitet dich zur bereitgestellten React-Anwendung. Diese ist öffentlich einsehbar.
 
-Wenn dir eine leere Seite angezeigt wird, stellen sicher, dass das Schlüssel-/Wertepaar `public` in der Datei *firebase.json* auf `build` oder den für diesen Ordner ausgewählten Namen festgelegt ist. Stellen außerdem sicher, dass du das Build-Skript für deine React-App mit `npm run build` ausgeführt hast. Lese abschließend den [offiziellen Fehlerbehebungsbereich für die Bereitstellung von Anwendungen zum Erstellen und Reagieren von Apps in Firebase](https): //create-react-app.dev/docs/deployment). Wiederholge die Bereitstellung mit `firebase deploy`.
+Wenn dir eine leere Seite angezeigt wird, stellen sicher, dass das Schlüssel-/Wertepaar `public` in der Datei *firebase.json* auf `build` oder den für diesen Ordner ausgewählten Namen festgelegt ist. Stelle außerdem sicher, dass du das Build-Skript für deine React-App mit `npm run build` ausgeführt hast. Lese abschließend den [offiziellen Fehlerbehebungsbereich für die Bereitstellung von Anwendungen zum Erstellen und Reagieren von Apps in Firebase](https://create-react-app.dev/docs/deployment). Wiederhole die Bereitstellung mit `firebase deploy`.
 
 ### Exercises
 
 * Lese mehr zum [Firebase Hosting](https://firebase.google.com/docs/hosting/).
 * [Verbinde deine Domain mit der Firebase-Anwendung](https://firebase.google.com/docs/hosting/custom-domain).
-* Optional: Sieh dir das Angebot von [DigitalOcean](https://m.do.co/c/fb27c90322f3) an, wenn du dich für einen Cloud-Server interessierst. Die Einrichtung ist Mehraufwand. Dafür ermöglicht diese Variante dir mehr Kontrolle. [Ich hoste dort alle meine Websites, Webanwendungen und Backend-APIs](https://www.robinwieruch.de/deploy-applications-digital-ocean/).
+* Optional: Sieh dir das Angebot von [DigitalOcean](https://m.do.co/c/fb27c90322f3) an, wenn du dich für einen Cloud-Server interessierst. Die Einrichtung ist Mehraufwand. Dafür ermöglicht diese Variante dir mehr Kontrolle. [Ich hoste dort alle meine Websites, Webanwendungen und Backend-APIs bei DigitalOcean](https://www.robinwieruch.de/deploy-applications-digital-ocean/).

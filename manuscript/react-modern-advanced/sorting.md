@@ -71,7 +71,7 @@ const Item = ({ item, onRemoveItem }) => (
 
 In der laufenden Implementierung werden ich der Übersicht halber die Inline-CSS-Stilattribute entfernen. Behalte du diese aber gerne in deiner Anwendung bei.
 
-Die List-Komponente verwaltet den Sortierstatus in meiner Version. Dieser wird mit dem Status `'NONE'` initialisiert, so werden die Listenelemente in der Reihenfolge angezeigt, in der sie die API sie ausgibt. Außerdem habe ich einen neuen Handler hinzugefügt, um den Sortierstatus mit einem spezifischen Schlüssel festzulegen.
+Die List-Komponente verwaltet den Sortierstatus. Dieser wird mit dem Status `'NONE'` initialisiert, so werden die Listenelemente in der Reihenfolge angezeigt, in der sie die API ausgibt. Außerdem habe ich einen neuen Handler hinzugefügt, um den Sortierstatus mit einem spezifischen Schlüssel festzulegen.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -141,14 +141,14 @@ const List = ({ list, onRemoveItem }) => {
 
 Die Statusverwaltung für die neue Funktion ist implementiert, aber wir sehen keine Änderung, wenn wir auf eine Schaltfläche klicken. Dies ist so, weil der Sortiermechanismus nicht auf `list` angewendet wird.
 
-Das Sortieren eines Arrays mit JavaScript ist nicht trivial, da jedes JavaScript-Grundelement (z. B. Zeichenfolge, Boolescher Wert, Zahl) Besonderheiten auf der Sortierung vorweist. Deshalb erfinden wir das Rad nicht neu, sondern verwenden eine vorhandene Lösung: [Lodash](https://lodash.com/). Installiere die externe Bibliothek über die Befehlszeile:
+Das Sortieren eines Arrays mit JavaScript ist nicht trivial, da jedes JavaScript-Grundelement (z. B. Zeichenfolge, Boolescher Wert, Zahl) Besonderheiten vorweist. Deshalb erfinden wir das Rad nicht neu, sondern verwenden eine vorhandene Lösung: [Lodash](https://lodash.com/). Installiere die externe Bibliothek über die Befehlszeile:
 
 {title="Command Line",lang="text"}
 ~~~~~~~
 npm install lodash
 ~~~~~~~
 
-Second, at the top of your file, import the utility function for sorting:
+Importiere dann die Funktion:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -161,7 +161,7 @@ import { sortBy } from 'lodash';
 ...
 ~~~~~~~
 
-Erstelle ein JavaScript-Objekt mit allen möglichen Zuordnungen von `sortKey` zu einer Suchfunktion. Jeder Sortierschlüssel ist einer Funktion zugeordnet, welche `list` sortiert. Durch Sortieren nach `'NONE'` wird die unsortierte Liste zurückgegeben. Beim Sortieren nach `'POINT'` wird die Liste anhand der Eigenschaft `points` sortiert zurückgegeben.
+Erstelle danach ein JavaScript-Objekt mit allen möglichen Zuordnungen von `sortKey` zu einer Suchfunktion. Jeder Sortierschlüssel ist einer Funktion zugeordnet, welche `list` sortiert. Durch Sortieren nach `'NONE'` wird die unsortierte Liste zurückgegeben. Beim Sortieren nach `'POINT'` wird die Liste anhand der Eigenschaft `points` sortiert zurückgegeben.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -180,7 +180,7 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-Mit dem Status `sort` (`sortKey`) und allen möglichen Sortiervariationen mit `SORTS` sortieren wir die Liste, bevor wir sie jeder Item-Komponente zuordnen:
+Mit dem Status `sort` (`sortKey`) und den Sortiervariationen `SORTS` sortieren wir die Liste, bevor wir sie der Item-Komponente zuordnen:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -214,9 +214,9 @@ const List = ({ list, onRemoveItem }) => {
 };
 ~~~~~~~
 
-Fertig! Was haben wir genau umgesetzt? Zuerst erstellten wir die Sortierfunktion mithilfe eines `sortKey` (Status). Anschließend wenden wir die Funktion auf die Liste an, bevor wir sie zum Rendern jedem Item zuordnen. Der anfängliche Sortierstatus ist `'NONE'`, was bedeutet, dass nichts sortiert wird.
+Fertig! Was haben wir genau umgesetzt? Zuerst erstellten wir die Sortierfunktion mithilfe eines `sortKey` (Status). Anschließend wendeten wir die Funktion auf die Liste an, bevor wir sie zum Rendern jedem Item zuordneten. Der anfängliche Sortierstatus ist `'NONE'`, was bedeutet, dass nichts sortiert wird.
 
-Deshalb haben wir als Nächstes Schaltflächen inklusive Implementierungsdetails erstellt, um unseren Benutzern die Interaktion zu ermöglichen. Dabei verwenden wir den Sortierstatus, um die Liste zu sortieren.
+Wir haben Schaltflächen inklusive Implementierungsdetails erstellt, um unseren Benutzern die Interaktion zu ermöglichen. Dabei verwenden wir den Sortierstatus, um die Liste zu sortieren.
 
 ### Übungen:
 

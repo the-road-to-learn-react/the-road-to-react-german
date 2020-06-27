@@ -23,7 +23,7 @@ Im Gegensatz dazu werden wir die Funktion als **unendliche Paginierung** impleme
 * Hole dir bei jeder Suche die erste Seite (`0`) der Daten.
 * Rufe die nachfolgende Seite ( `page + 1`) für jede zusätzliche Anforderung ab, die mit einer neuen HTML-Schaltfläche ausgelöst wird.
 
-Erweitere zunächst die API-Konstante, um später mit paginierten Daten zu arbeiten. Wir werden diese eine Konstante ...
+Erweitere zunächst die API-Konstante, um später mit paginierten Daten zu arbeiten. Wir werden eine Konstante ...
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -195,7 +195,7 @@ const getUrl = (searchTerm, page) =>
 # leanpub-end-insert
 ~~~~~~~
 
-Als Nächstes passen wir alle `getUrl`-Aufrufe an, indem wir das Argument `page` einsetzen. Da bei der Ersten und letzten Suche immer die Seite (`0`) abgerufen wird, übergeben wir diese als Argument an die Funktion zum Abrufen der entsprechenden URL:
+Als Nächstes passen wir alle `getUrl`-Aufrufe an, indem wir das Argument `page` einsetzen. Da bei der ersten und letzten Suche immer die Seite (`0`) abgerufen wird, übergeben wir diese als Argument an die Funktion zum Abrufen der entsprechenden URL:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -273,7 +273,7 @@ const App = () => {
 ~~~~~~~
 
 
-Wir haben das Abrufen von Daten mit dem dynamischen Argument `page` implementiert. Bei der Ersten und letzten Suche wird immer die Seite (`0`) verwendet, und bei jedem Abruf mit der Schaltfläche "More" eine inkrementierte. Beim Ausprobieren der Funktion gibt es einen entscheidenden Fehler: Die neuen Abfragen erweitern die vorherige Liste nicht, sondern ersetzen sie vollständig.
+Wir haben das Abrufen von Daten mit dem dynamischen Argument `page` implementiert. Bei der ersten und letzten Suche wird immer die Seite (`0`) verwendet, und bei jedem Abruf mit der Schaltfläche "More" eine inkrementierte. Beim Ausprobieren der Funktion gibt es einen entscheidenden Fehler: Die neuen Abfragen erweitern die vorherige Liste nicht, sondern ersetzen sie vollständig.
 
 ![](images/concat.png)
 
