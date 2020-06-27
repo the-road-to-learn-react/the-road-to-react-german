@@ -1,10 +1,10 @@
 ## Projektstruktur
 
-Wenn du schon länger programmierst, fragst du dich gewiss, warum wir bisher alle Komponenten in der Datei *src/App.js* implementierten. Denkbar ist es, denn Programmcode aufzuteilen. Wir haben diese Möglichkeit bisher nicht genutzt, weil es zum Lernen praktischer ist, alle Inhalte kompakt in einer Datei zu bearbeiten. In der Realität hat es sich dagegen bewährt, eine Anwendung übersichtlich in mehrere Module aufzuteilen. In diesem Abschnitt zeige ich dir eine etablierte Methode, um dein Projekt zu strukturieren.
+Wenn du schon länger programmierst, fragst du dich gewiss, warum wir bisher alle Komponenten in der Datei *src/App.js* implementierten. Üblich ist es, denn Programmcode aufzuteilen. Wir haben diese Möglichkeit bisher nicht genutzt, weil es zum Lernen praktischer ist, alle Inhalte kompakt in einer Datei zu bearbeiten. In der Realität hat es sich dagegen bewährt, eine Anwendung übersichtlich in mehrere Module aufzuteilen. In diesem Abschnitt zeige ich dir eine etablierte Methode, um dein Projekt zu strukturieren.
 
-Vergegenwärtige dir die [Import- und Exportanweisungen in JavaScript](https://www.robinwieruch.de/javascript-import-export), bevor du mit dem Umstrukturieren beginnst. Das Importieren und Exportieren von Dateien ist ein grundlegendes Konzept in JavaScript. Da das in React eine große Rolle spielt, ist es wichtig, dass du es beherrschst. In diesem Kapitel zeige ich dir anhand der Beispielanleitung exemplarisch, wie du eine Anwendung strukturierst. Vieles von dem was ich hier schreibe, ist nicht in Stein gemeißelt. Jedes Projekt ist individuell und deshalb ist eine Struktur nicht fix vorgegeben. Sie ergibt sich im Laufe der Entwicklung quasi von selbst. 
+Vergegenwärtige dir die [Import- und Exportanweisungen in JavaScript](https://www.robinwieruch.de/javascript-import-export), bevor du das Umstrukturieren in Angriff nimmst. Das Importieren und Exportieren von Dateien ist ein grundlegendes Konzept in JavaScript. Da das in React eine große Rolle spielt, ist es wichtig, dass du es beherrschst. In diesem Kapitel zeige ich dir anhand der Beispielanleitung exemplarisch, wie du eine Anwendung strukturierst. Vieles von dem was ich hier schreibe, ist nicht in Stein gemeißelt. Jedes Projekt ist individuell und deshalb ist eine Struktur nicht fix vorgegeben. Sie ergibt sich im Laufe der Entwicklung quasi von selbst. 
 
-Überarbeiten wir die Ordner-/Dateistruktur des Projekts, um erste Erfahrungen im Strukturierungsprozess zu sammeln. Danach teile ich mit dir meinen Erfahrungshintergrund und Best Practices bei der Umstrukturierung von React-Projekten. Im Weiteren werden wir die Beispielanwendung allein in der Datei *src/App.js* weiterentwickeln. So bleiben die Erklärungen hier im Buch kompakt. Dir steht es frei, mit dem umstrukturierten Projekt fortfahren.
+Überarbeiten wir die Ordner-/Dateistruktur des Projekts, um erste Erfahrungen im Strukturierungsprozess zu sammeln. Danach teile ich mit dir meinen Erfahrungshintergrund und Best Practices bei der Umstrukturierung von React-Projekten.
 
 Öffne über die Befehlszeile den Ordner *src/* im Rootverzeichnis des Beispielprojektes und erstelle drei Dateien:
 
@@ -52,7 +52,7 @@ export default List;
 # leanpub-end-insert
 ~~~~~~~
 
-Da nur List die Item-Komponente verwendet, speichern wir beide in derselben Datei. Wenn sich dies ändert, weil Item zusätzlich an einer anderen Stelle genutzt wird, erstellen wir dann eine eigene Datei. Jetzt ist dies nicht absehbar. Searchform importiert InputWithLabel. Es wäre möglich, beide zusammen in *src/SearchForm.js* zu speichern. Unser Ziel ist es, InputWithLabel später mit anderen Komponenten wieder zu verwendbar. Die Änderung ist somit absehbar. Deshalb speichern wir beide in separaten Dateien und schaffen so schon jetzt die Voraussetzungen dafür.
+Da nur List die Item-Komponente verwendet, speichern wir beide in derselben Datei. Wenn sich dies ändert, weil Item zusätzlich an einer anderen Stelle genutzt wird, erstellen wir dann eine eigene Datei. Jetzt ist dies nicht absehbar. SearchForm importiert InputWithLabel. Es wäre möglich, beide zusammen in *src/SearchForm.js* zu speichern. Unser Ziel ist es, InputWithLabel später mit anderen Komponenten wieder zu verwendbar. Die Änderung ist somit absehbar. Deshalb speichern wir beide in separaten Dateien und schaffen so schon jetzt die Voraussetzungen dafür.
 
 {title="src/SearchForm.js",lang="javascript"}
 ~~~~~~~
@@ -90,7 +90,7 @@ export default SearchForm;
 # leanpub-end-insert
 ~~~~~~~
 
-App importiert alle Komponenten, um diese zu rendern. InputWithLabel importieren wir hier nicht. Dies ist nur in SearchForm erforderlich, da das Label ausschließlich dort verwendet wird.
+App importiert fast alle Komponenten, um diese zu rendern. InputWithLabel importieren wir hier nicht. Dies ist nur in SearchForm erforderlich, da das Label ausschließlich dort verwendet wird.
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -111,7 +111,7 @@ const App = () => {
 export default App;
 ~~~~~~~
 
-Alle Komponenten, die von anderen verwendet werden, verfügen jetzt über eine eigene Datei. Nur wenn eine einer zugeordnet ist, wird sie in derselben gespeichert --- beispielsweise Item und List. Wenn eine Komponente als wiederverwendbare geplant ist, wird sie schon zu Beginn in einer eigenen Datei implementiert --- beispielsweise InputWithLabel. Es gibt es verschiedene Strategien, um die Dateihierarchie zu aufzubauen. Ein Szenario ist, für jede Komponente einen eigenen Ordner zu erstellen:
+Alle Komponenten, die von anderen verwendet werden, verfügen jetzt über eine eigene Datei. Nur wenn eine einer zugeordnet ist, wird sie in derselben gespeichert --- beispielsweise Item und List. Wenn eine Komponente als wiederverwendbare geplant ist, wird sie schon zu Beginn in einer eigenen Datei implementiert --- beispielsweise InputWithLabel. Es gibt verschiedene Strategien, um die Dateihierarchie aufzubauen. Ein Szenario ist, für jede Komponente einen eigenen Ordner zu erstellen:
 
 {title="Project Structure",lang="text"}
 ~~~~~~~
@@ -123,7 +123,7 @@ Alle Komponenten, die von anderen verwendet werden, verfügen jetzt über eine e
 -- index.js
 ~~~~~~~
 
-Bei einer komplexen Komponente ist es so leicht möglich, die einzelnen Aufgaben weiter in separate Teile zu gliedern. Die Datei *index.js* ist der Einstiegspunkt in die Komponente. Dies ist historisch begründet. *index.js* ist der traditionelle Startpunkt für alle [Node-Apps](https://nodejs.org/dist/latest-v7.x/docs/api/modules.html#modules_folders_as_modules). In React beinhaltet die Datei in erster Linie Code, der festlegt, was wo gerendert wird. Die anderen Dateien im selben Ordner haben ebenfalls ihre Verantwortlichkeiten, sie kümmern sich beispielsweise um CSS-Styles, Tests und Typisierung/ Typprüfung:
+Bei einer komplexen Komponente ist es so leicht möglich, die einzelnen Aufgaben weiter in separate Teile zu gliedern. Die Datei *index.js* ist der Einstiegspunkt in die Komponente. Dies ist historisch begründet. *index.js* ist der traditionelle Startpunkt für alle [Node-Apps](https://nodejs.org/dist/latest-v7.x/docs/api/modules.html#modules_folders_as_modules). In React beinhaltet *index.js* in erster Linie Code, der festlegt, was wo gerendert wird. Die anderen Dateien im selben Ordner haben ebenfalls ihre Verantwortlichkeiten, sie kümmern sich beispielsweise um CSS-Styles, Tests und Typprüfung:
 
 {title="Project Structure",lang="text"}
 ~~~~~~~
@@ -147,7 +147,7 @@ Falls du CSS-in-JS verwendest, benötigst du keine CSS-Datei. Unter Umständen e
 -- types.js
 ~~~~~~~
 
-Wenn das Projekt wächst ist es mitunter hilfreich, von einer **technisch orientierten Ordnerstruktur** zu einer **domänenorientierten** zu wechseln. Der universelle Ordner *shared/* ist für domänenspezifische Komponenten freigegeben:
+Wenn das Projekt wächst, ist es mitunter hilfreich, von einer **technisch orientierten Ordnerstruktur** zu einer **domänenorientierten** zu wechseln. Der universelle Ordner *shared/* ist für domänenspezifische Komponenten freigegeben:
 
 {title="Project Structure",lang="text"}
 ~~~~~~~
