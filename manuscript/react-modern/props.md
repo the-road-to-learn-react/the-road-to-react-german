@@ -1,8 +1,8 @@
-## React Props
+## Eigenschaften (Props) in React
 
-We are currently using the `list` variable as a global variable in the current application. We used it directly from the global scope in the App component, and again in the List component. This could work if you only had one variable, but it doesn't scale with multiple variables across multiple components from many different files.
+Wir verwenden derzeit `list` als globale Variable in der Beispiel-Anwendung. `list` benutzen wir in der List-Komponente und in der App. Das funktioniert, wenn du nur eine Variable nutzt. Wenn zahlreiche über mehrere Komponenten genutzt werden, wirst du an Grenzen stoßen. Eine Lösungsmöglichkeit ist die Verwendung von Eigenschaften (Props).
 
-Using so called props, we can pass variables as information from one component to another component. Before using props, we'll move the list from the global scope into the App component and rename it to its actual domain:
+Mithilfe von Eigenschaften übergeben wir Variablen als Informationen von einer Komponente an eine andere. Damit alles seine Ordnung hat und die liste `list` weiß wo sie hingehört und wer sie ist, verschieben wir sie aus dem globalen Bereich in die App-Komponente und geben ihr einen passenden Namen. Wir nennen sie `stories`:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -34,7 +34,7 @@ const App = () => {
 };
 ~~~~~~~
 
-Next, we'll use **React props** to pass the array to the List component:
+Jetzt verwenden wir **React Eigenschaften (Props)**, um das Array `stories` an die List-Komponente zu übergeben:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -60,7 +60,7 @@ const App = () => {
 };
 ~~~~~~~
 
-The variable is called `stories` in the App component, and we pass it under this name to the List component. In the List component's instantiation, however, it is assigned to the `list` attribute. We access it as `list` from the `props` object in the List component's function signature:
+Die Variable heißt in der App-Komponente `stories` und wird unter diesem Namen an List übergeben. Beim Instanziieren der List-Komponente wird sie dem Attribut `list` zugewiesen. Wir greifen als `list` über das `props`-Objekt in der Funktionssignatur der Listenkomponente darauf zu:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -79,10 +79,10 @@ const List = props =>
   ));
 ~~~~~~~
 
-Using this operation, we've prevented the list/stories variable from polluting the global scope in the App component. Since `stories` is not used in the App component directly, but in one of its child components, we passed them as props to the List component. There, we can access it through the first function signature's argument, called `props`.
+So haben wir verhindert, dass die Variable `list`/`stories` den globalen Bereich unnötig belegt. Sie ist jetzt innerhalb der App positioniert. `stories` wird nicht direkt in der App verwendet. Sie wird in der untergeordneten List-Komponenten eingesetzt. Deshalb übergeben wir die Variable an diese. Dort greifen wir über das erste Argument der Funktionssignatur namens `props` darauf zu.
 
-### Exercises:
+### Übungen:
 
-* Confirm your [source code for the last section](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Props).
-  * Confirm the [changes from the last section](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Handler-Function-in-JSX...hs/React-Props?expand=1).
-* Read more about [how to pass props to React components](https://www.robinwieruch.de/react-pass-props-to-component).
+* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Props).
+  * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Handler-Function-in-JSX...hs/React-Props?expand=1).
+* Lese mehr zum Thema: [Eigenschaften (Props) in React an Komponenten übergeben](https://www.robinwieruch.de/react-pass-props-to-component).
