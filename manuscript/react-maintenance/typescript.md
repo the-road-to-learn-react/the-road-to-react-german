@@ -286,7 +286,7 @@ const storiesReducer = (
 };
 ~~~~~~~
 
-Der Status der `stories`, der aktuelle Status und die Aktion sind Typen; Der zurückgegebene neue Status ist jetzt [typsicher](https://de.wikipedia.org/wiki/Typsicherheit). Wenn du beispielsweise eine Aktion mit einem nicht definierten Aktionstyp an `useReducer` sendest, wird ein Typfehler angezeigt. Wenn du der Funktion `handleRemoveStory`, die ein `item` entfernt, etwas anderes als eine `Story` übergibst, erhältst du ebenfalls einen Fehlerhinweis bezüglich des falschen Typs.
+Der Status der `stories`, der aktuelle Status und die Aktion sind Typen; Der zurückgegebene neue Status ist jetzt [typsicher](https://de.wikipedia.org/wiki/Typsicherheit). Wenn du beispielsweise eine Aktion mit einem nicht definierten Aktionstyp an `useReducer` sendest, wird ein Typfehler angezeigt. Wenn du der Funktion `handleRemoveStory`, die ein `item` entfernt, etwas anderes als ein Objekt vom Typ `Story` übergibst, erhältst du ebenfalls einen Fehlerhinweis bezüglich des falschen Typs.
 
 In der `return`-Anweisung der App für die zurückgegebene List-Komponente gibt es weiterhin ein Typensicherheitsproblem. 
 
