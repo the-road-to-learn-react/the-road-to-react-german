@@ -1,6 +1,6 @@
 ## Explizite Datenabrufe in React
 
-Das erneute Abrufen aller Daten bei jeder Eingabe in das Eingabefeld ist nicht optimal. Wir verwenden hierzu eine Drittanbieter-API, deren Interna nicht in unserem Einflussbereich ist. Wenn wir Pech haben, wird uns aufgrund einer [Durchsatzratenbegrenzung] (https://de.wikipedia.org/wiki/Durchsatzratenbegrenzung), anstelle der Daten eine Fehlermeldung zurückgeben.
+Das erneute Abrufen aller Daten bei jeder Eingabe in das Eingabefeld ist nicht optimal. Wir verwenden hierzu eine Drittanbieter-API, deren Interna nicht in unserem Einflussbereich ist. Wenn wir Pech haben, wird uns aufgrund einer [Durchsatzratenbegrenzung](https://de.wikipedia.org/wiki/Durchsatzratenbegrenzung), anstelle der Daten eine Fehlermeldung zurückgeben.
 
 Um dieses Problem zu lösen, verändern wir die Art des Datenabrufs von implizit zu explizit. Mit anderen Worten, die Anwendung ruft Daten nur dann ab, wenn jemand auf eine Bestätigungsschaltfläche klickt. Fügen wir zunächst ein Schaltflächenelement für die Bestätigung mittels JSX zu unserer Benutzeroberfläche hinzu:
 
