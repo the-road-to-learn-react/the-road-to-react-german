@@ -1,8 +1,8 @@
 # Mitwirkende
 
-Viele Leute ermöglichten es, dass *The Road to Learn React* zu dem Buch wurde, welches es heute ist: eines der derzeit meistgelesenen React.js-Bücher. Der ursprüngliche englische Text und die Beispiele stammen von [Robin Wieruch](https://www.robinwieruch.de/), einem deutschen Softwareentwickler. Übersetzungen des Buches wären ohne die Hilfe vieler anderer nicht möglich. Diese deutsche Version wurde frei übersetzt von Astrid Günther.
+Viele Leute ermöglichten es, dass *The Road to React* zu dem Buch wurde, welches es heute ist: eines der derzeit meistgelesenen React.js-Bücher. Der ursprüngliche englische Text und die Beispiele stammen von [Robin Wieruch](https://www.robinwieruch.de/), einem deutschen Softwareentwickler. Übersetzungen des Buches wären ohne die Hilfe vieler anderer nicht möglich. Diese deutsche Version wurde frei übersetzt von [Astrid Günther](https://www.astrid-guenther.de).
 
-## Über Astrid Günther
+__Über Astrid Günther__
 
 Dich interessiert wer ich bin? Darüber freue ich mich! Ich weiß nicht, welche Informationen du erwartest. Ich fange einmal an und hoffe, dass ich das Passende von mir preisgebe.
 
@@ -12,7 +12,7 @@ Ich fange vorne an: Ich habe 1969 das Licht der Welt erblickt und hatte eine uns
 
 Um im IT-Bereich einen Berufsabschluss zu erlangen, habe ich von 1997 bis 2000 abends die berufsbildende Schule Wirtschaft besucht. Am Ende hatte ich die Erlaubnis, mich __staatlich geprüfte Betriebswirtin für Informationsverarbeitung__ zu nennen. Im Anschluss nahm ich 2000 bei der FernUniversität Hagen ein Informatik-Studium in Angriff, welches ich im März 2006 mit dem Abschluss __Master of Computer Science__ erfolgreich beendete. Im Studium habe ich hauptsächlich die objektorientierte Programmierung mit *Java* gelernt.
 
-2007 habe ich die erste Website für eine Bekannte erstellt. Diese Arbeit forderte mich im Positiven. Ich habe daraufhin bei der Studiengemeinschaft Darmstadt den Kurs __Grafik-Designer/in PC (SGD)__ belegt und mit einer Prüfung beendet. Zunächst programmierte ich alles in PHP, später nutzte ich Content Management Systeme. *Wordpress* war kurz im Einsatz. Hängen geblieben sind wir bei *Joomla!*. Zur Zeit lege ich meinen Schwerpunkt auf statische System. Hier kommen *Gatsby* und *React* ins Spiel.
+2007 habe ich die erste Website für eine Bekannte erstellt. Diese Arbeit forderte mich im Positiven. Ich habe daraufhin bei der Studiengemeinschaft Darmstadt den Kurs __Grafik-Designer/in PC (SGD)__ belegt und mit einer Prüfung beendet. Zunächst programmierte ich alles in PHP, später nutzte ich Content Management Systeme. *Wordpress* war kurz im Einsatz. Hängen geblieben sind wir bei *Joomla!*. Zur Zeit lege ich meinen Schwerpunkt auf statische Systeme. Hier kommen *Gatsby* und *React* ins Spiel.
 
  Außerdem keimte in mir die Lust, mein Wissen selbst weiterzugeben. Ich habe erst für den *KnowWareVerlag*, später für *BookBoon* und heute als __SelfPublisherin__ Bücher geschrieben und veröffentlicht. Seit 2017 arbeite ich ausschließlich selbständig. Ich programmiere individuelle Webanwendungen, schreibe Fachliteratur im IT-Bereich und erstelle Websites.
 
