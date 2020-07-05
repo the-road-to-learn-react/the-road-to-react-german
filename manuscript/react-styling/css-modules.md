@@ -188,7 +188,7 @@ import cs from 'classnames';
 className={cs(styles.button, styles.buttonLarge)}
 ~~~~~~~
 
-Ich habe erwähnt, dass die Bibliothek **classnames** bedingtes Styling bietet. Diese Funktion verdeutliche ich ebenfalls kurz mit einem Beispiel. Die linke Seite der Objekteigenschaft wird beim bedingten Styling als [berechneter Eigenschaftsname]((https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer)) verwendet und nur angewendet, wenn die rechte Seite den Wert `true` hat:
+Ich habe erwähnt, dass die Bibliothek **classnames** bedingtes Styling bietet. Diese Funktion verdeutliche ich ebenfalls kurz mit einem Beispiel. Die linke Seite der Objekteigenschaft wird beim bedingten Styling als [berechneter Eigenschaftsname](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Object_initializer) verwendet und nur angewendet, wenn die rechte Seite den Wert `true` hat:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
