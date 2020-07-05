@@ -1,8 +1,8 @@
 # Mitwirkende
 
-Viele Leute ermöglichten es, dass *The Road to React* zu dem Buch wurde, welches es heute ist: eines der derzeit meistgelesenen React.js-Bücher. Der ursprüngliche englische Text und die Beispiele stammen von [Robin Wieruch](https://www.robinwieruch.de/), einem deutschen Softwareentwickler. Übersetzungen des Buches wären ohne die Hilfe vieler anderer nicht möglich. Diese deutsche Version wurde frei übersetzt von Astrid Günther.
+Viele Leute ermöglichten es, dass *The Road to React* zu dem Buch wurde, welches es heute ist: eines der derzeit meistgelesenen React.js-Bücher. Der ursprüngliche englische Text und die Beispiele stammen von [Robin Wieruch](https://www.robinwieruch.de/), einem deutschen Softwareentwickler. Übersetzungen des Buches wären ohne die Hilfe vieler anderer nicht möglich. Diese deutsche Version wurde frei übersetzt von [Astrid Günther](https://www.astrid-guenther.de).
 
-## Über Astrid Günther
+__Über Astrid Günther__
 
 Dich interessiert wer ich bin? Darüber freue ich mich! Ich weiß nicht, welche Informationen du erwartest. Ich fange einmal an und hoffe, dass ich das Passende von mir preisgebe.
 
