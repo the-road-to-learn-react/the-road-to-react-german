@@ -64,12 +64,12 @@ Wenn wir mit dem `useCallback`-Hook keine `memoized`-Funktion erstellten, würde
 ...
 ~~~~~~~
 
-In diese Schleife geraten wird nicht, denn der `useCallback`-Hook erstellt nur dann eine neue `memoized`-Funktion, wenn sich der Suchbegriff ändert. In diesem Fall ist es uns wichtig, dass die Daten erneut abgerufen werden, damit die gerenderte Liste jederzeit zum Suchwort passt.
+In diese Schleife geraten wir nicht, denn der `useCallback`-Hook erstellt nur dann eine neue `memoized`-Funktion, wenn sich der Suchbegriff ändert. In diesem Fall ist es uns wichtig, dass die Daten erneut abgerufen werden, damit die gerenderte Liste jederzeit zum Suchwort passt.
 
-Durch Verschieben der Datenabruffunktion `handleFetchStories` an eine Stelle außerhalb des `useEffect`-Hook ist diese für andere Teile der Anwendung wiederverwendet. Wir verwenden sie bisher nicht wieder, aber es wäre möglich. Der `useEffect`-Hook wird implizit aufgerufen, wenn sich `searchTerm` ändert, da `handleFetchStories` immer dann neu definiert wird. Da der `useEffect`-Hook von `handleFetchStories` abhängt, wird der Seiten-Effekt bei jedem Datenabruf aufgerufen.
+Durch Verschieben der Datenabruffunktion `handleFetchStories` an eine Stelle außerhalb des `useEffect`-Hook ist diese für andere Teile der Anwendung wiederverwendbar. Wir verwenden sie bisher nicht wieder, aber es wäre möglich. Der `useEffect`-Hook wird implizit aufgerufen, wenn sich `searchTerm` ändert, da `handleFetchStories` immer dann neu definiert wird. Da der `useEffect`-Hook von `handleFetchStories` abhängt, wird der Seiten-Effekt bei jedem Datenabruf aufgerufen.
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Memoized-Handler-in-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Memoized-Handler-in-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Data-Re-Fetching-in-React...hs/Memoized-Handler-in-React?expand=1).
 * Lese mehr über [Reacts useCallback Hook](https://de.reactjs.org/docs/hooks-reference.html#usecallback).

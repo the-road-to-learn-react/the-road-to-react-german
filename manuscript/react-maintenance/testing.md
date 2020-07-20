@@ -180,7 +180,7 @@ Tipp: Nutze gleichzeitig zwei Befehlszeilen: eine zum Überwachen deiner Tests (
 
 #### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-setup).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-setup).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/react-testing-setup?expand=1).
 * Lese mehr über [Jest](https://jestjs.io/).
 
@@ -331,7 +331,7 @@ Kommen wir zurück auf unser Beispiel: Der Test der Funktion `storiesReducer` sc
 
 #### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-function).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-function).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des letzten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-setup...hs/react-testing-unit-function?expand=1).
 * Lese mehr über Jests Funktionen wie `toBe` und `toStrictEqual`.
 
@@ -602,7 +602,7 @@ Wir haben gesehen, dass alle Callback-Handler-Tests für Item- und SearchForm nu
 
 #### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-component).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-unit-component).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-unit-function...hs/react-testing-unit-component?expand=1).
 * Lese mehr über die [React Testing Library](https://testing-library.com/docs/react-testing-library/intro).
   * Lese mehr über [Suchfunktionen](https://testing-library.com/docs/guide-which-query).
@@ -977,7 +977,7 @@ Die React Testing Library und Jest sind in Kombination der Status quo, beim Test
 
 #### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-integration).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-testing-integration).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des vorherigen Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-unit-component...hs/react-testing-integration?expand=1).
 * Lese mehr zu [E2E-Tests in React](https://www.robinwieruch.de/react-testing-cypress).
 * Halten deine Tests grün und füge neue hinzu während du weiter im Buch arbeitetst.
@@ -1056,6 +1056,6 @@ Schnappschuss-Tests eignen sich, um Tests in React schnell zum Laufen zu bringen
 
 #### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-snapshot).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/react-snapshot).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des vorherigen Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-testing-integration...hs/react-snapshot?expand=1).
 * Ergänze für jede Komponente einen Snapshot-Test und überprüfe den Inhalt des Ordners *__snapshots__*.

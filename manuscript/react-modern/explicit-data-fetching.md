@@ -113,7 +113,7 @@ const App = () => {
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Explicit-Data-Fetching-with-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Explicit-Data-Fetching-with-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Memoized-Handler-in-React...hs/Explicit-Data-Fetching-with-React?expand=1).
 * Warum wird `useState` anstelle von `useSemiPersistentState` für die `url`-Statusverwaltung verwendet?
 * Die Suche nach einem leeren `searchTerm` wird nicht mehr explizit verhindert. Warum haben wir `if (!searchTerm) return;` in der Funktion `handleFetchStories` entfernt?

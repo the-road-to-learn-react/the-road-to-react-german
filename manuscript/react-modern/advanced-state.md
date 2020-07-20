@@ -146,7 +146,7 @@ Sieh dir die in den Übungen verlinkten Websites an, um das Reduzierer-Konzept i
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Advanced-State).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Conditional-Rendering...hs/React-Advanced-State?expand=1).
 * Lese mehr zum Thema [Reduzierer in JavaScript](https://www.robinwieruch.de/javascript-reducer).
 * Lese mehr zu Reduzierern and dem `useReducer`-Hook in React ([0](https://www.robinwieruch.de/react-usereducer-hook), [1](https://de.reactjs.org/docs/hooks-reference.html#usereducer)).

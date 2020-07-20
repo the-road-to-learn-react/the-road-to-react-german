@@ -96,9 +96,9 @@ const Search = ({ search, onSearch }) => (
 # leanpub-end-insert
 ~~~~~~~
 
-`props` werden selten nur innerhalb der eigenen Komponente verwendet, sondern mit anderen geteilt. Indem wir das Objekt `props` sofort in der Funktionssignatur destrukurieren, ist es möglich, bequem auf alle Informationen zuzugreifen, ohne `props` vorher zu bearbeiten. Das Erkennen und Verinnerlichen dieser Vereinfachung ist das Lernziel des Kapitels. Im Weiteren werden wir hierauf aufbauen und die Art und Weise, wie wir destrukturieren verbessern. 
+`props` werden selten nur innerhalb der eigenen Komponente verwendet, sondern mit anderen geteilt. Indem wir das Objekt `props` sofort in der Funktionssignatur destrukurieren ist es möglich, bequem auf alle Informationen zuzugreifen, ohne `props` vorher zu bearbeiten. Das Erkennen und Verinnerlichen dieser Vereinfachung ist das Lernziel des Kapitels. Im Weiteren werden wir hierauf aufbauen und die Art und Weise, wie wir destrukturieren verbessern. 
 
-Schauen wir uns ein anderes Szenario an, und tauchen dabei tiefer in die Welt der `props` ein: Hierzu erstellen wir als erstes eine neue Item-Komponente. Dann nutzen wir unser gelerntes Wissen und setzen diese destrukturiert in List ein:
+Schauen wir uns ein anderes Szenario an, und tauchen dabei tiefer in die Welt der `props` ein: Hierzu erstellen wir als erstes eine neue Item-Komponente. Dann nutzen wir unser gelerntes Wissen und setzen dieses destrukturiert in `List` ein:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -123,7 +123,7 @@ const List = ({ list }) =>
 
 `item` in der Item-Komponente hat etwas mit den zuvor besprochenen `props` gemeinsam: Beide sind JavaScript-Objekte. `item` wurde aus den `props` in der Funktionssignatur der Item-Komponente destrukturiert. Es wird nicht direkt in Item verwendet. `item` gibt seine Informationen (Eigenschaften) einzig und allein an andere Elemente weiter.
 
-Wie du im Folgen feststellen wirst, ist diese Lösung zweckmäßig. Dessen ungeachtet zeige ich dir zwei weitere Variationen, da du so nebenbei Vieles über JavaScript-Objekte lernst und es meiner Meinung nach nie schadet über den Tellerrand zu schauen. Sehen wir uns zunächst die *verschachtelte Destrukturierung* an:
+Wie du im Folgenden feststellen wirst, ist diese Lösung zweckmäßig. Dessen ungeachtet zeige ich dir zwei weitere Variationen, da du so nebenbei Vieles über JavaScript-Objekte lernst und es meiner Meinung nach nie schadet über den Tellerrand zu schauen. Sehen wir uns zunächst die *verschachtelte Destrukturierung* an:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~
@@ -354,7 +354,7 @@ Diese Version ist nicht die prägnanteste, aber die einfachsten. Variante 1 mit 
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Props-Handling).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Props-Handling).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Controlled-Components...hs/Props-Handling?expand=1).
 * Lese mehr zum Thema [JavaScript's destructuring assignment](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment).
 * Überlege, was genau der Unterschied zwischen der Destrukturierung von JavaScript-Arrays --- die wir für den `useState`-Hook von React verwendet haben --- und der Objekt-Destrukturierung ist.
