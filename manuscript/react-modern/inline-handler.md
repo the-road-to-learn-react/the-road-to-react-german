@@ -149,7 +149,7 @@ const Item = ({ item, onRemoveItem }) => {
 };
 ~~~~~~~
 
-In diesem Abschnitt haben wir bisher Eigenschaften (Props), Handler, Callback-handler und Status angewendet. Soweit ist nichts Neues hinzugekommen. Kommen wir jetzt zum eigentlichen Thema des Abschnittes --- nachfolgend werden wir uns mit **Inline-Handlern** befassen. Mit diesen rufen wir eine Funktion direkt in JSX auf. Es gibt zwei Möglichkeiten, um `onRemoveItem` als Inline-Handler zu verwenden. Sehen wir uns zunächst die JavaScript-Methode `bind()` an:
+In diesem Abschnitt haben wir bisher Eigenschaften (Props), Handler, Callback-handler und Status angewendet. Soweit ist nichts Neues hinzugekommen. Kommen wir jetzt zum eigentlichen Thema des Abschnitts --- nachfolgend werden wir uns mit **Inline-Handlern** befassen. Mit diesen rufen wir eine Funktion direkt in JSX auf. Es gibt zwei Möglichkeiten, um `onRemoveItem` als Inline-Handler zu verwenden. Sehen wir uns zunächst die JavaScript-Methode `bind()` an:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -226,6 +226,6 @@ Alle drei Handler-Versionen sind geeignete Lösungen. Der normale Handler nutzt 
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Inline-Handler-in-JSX).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Inline-Handler-in-JSX).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Imperative-React...hs/Inline-Handler-in-JSX?expand=1).
 * Lasse Handler, Callback-Handler und Inline-Handler Revue passieren --- gehe sie gedanklich durch.

@@ -108,11 +108,11 @@ function App() {
 export default App;
 ~~~~~~~
 
-JSX wurde ursprünglich für React entwickelt. Nach und nach haben andere die Vorzüge der Sprache erkannt. So wurde JSX später in verschiedenen modernen Bibliotheken und Frameworks integriert. JSX ist eines meiner Lieblings-Features, weil es ohne zusätzliche Syntax oder Template-Strings möglich ist, JavaScript in HTML zu verwenden. Einzig und allein geschweiften Klammern sind erforderlich.
+JSX wurde ursprünglich für React entwickelt. Nach und nach haben andere die Vorzüge der Sprache erkannt. So wurde JSX später in verschiedenen modernen Bibliotheken und Frameworks integriert. JSX ist eines meiner Lieblings-Features, weil es ohne zusätzliche Syntax oder Template-Strings möglich ist, JavaScript in HTML zu verwenden. Einzig und allein geschweifte Klammern sind erforderlich.
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-JSX).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-JSX).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Meet-the-React-Component...hs/React-JSX?expand=1).
 * Lese mehr zum Thema [JSX](https://de.reactjs.org/docs/introducing-jsx.html).
 * Definiere eigene Variablen und zeige diese mithilfe von JSX im Frontend deiner Anwendung an.

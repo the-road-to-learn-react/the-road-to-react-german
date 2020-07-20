@@ -262,6 +262,6 @@ Wie jeder andere CSS-in-CSS-Ansatz unterstützen CSS-Module Sass, um CSS-Funktio
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-Modules-in-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-Modules-in-React).
   * Reflektiere die [Änderungen](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/CSS-Modules-in-React?expand=1).
 * Lese mehr zum Thema [CSS Modules in der Create React App](https://create-react-app.dev/docs/adding-a-css-modules-stylesheet).

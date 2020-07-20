@@ -418,7 +418,7 @@ Unsere gesamte React-Anwendung wird von TypeScript geprüft, sodass Tippfehler b
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/TypeScript-in-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/TypeScript-in-React).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/TypeScript-in-React?expand=1).
 * Stöbere im [React + TypeScript Cheatsheet](https://github.com/typescript-cheatsheets/react-typescript-cheatsheet#reacttypescript-cheatsheets). Dort findest du viele Anwendungsfälle und deren Lösung. Es ist nicht nötig, alles auswendig zu wissen, wenn du weißt, wo es nachlesbar ist.
 * Entscheide dich, ob du beim Weiterlesen TypeScript nutzt oder nicht. Lösche die hier vorgenommen Ergänzungen, wenn du dich dagegen entscheidest. Andernfalls füge beim Weiterarbeiten neue Typen hinzu, wenn du auf einen Kompilierungsfehler stößt.

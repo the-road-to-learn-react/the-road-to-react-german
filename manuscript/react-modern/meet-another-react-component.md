@@ -1,6 +1,6 @@
 ## Mach dich mit einer anderen React-Komponente bekannt
 
-Bisher haben wir ausschließlich die App-Komponente zum Erstellen unserer Anwendungen genutzt. Du hast die App im letzten Abschnitt verwendet, um alles abzuwickeln, was zum Rendern einer Liste in JSX erforderlich ist. Klar ist, dass die App mit Ihren Anforderungen wächst. Damit die App bei komplexeren Aufgaben übersichtlich bleibt, teilen wir die Hauptkomponente in Unterkomponenten auf. Wir erstellen eine eigenständige Komponente für die Liste:
+Bisher haben wir ausschließlich die App-Komponente zum Erstellen unserer Anwendungen genutzt. Du hast die App im letzten Abschnitt verwendet, um alles abzuwickeln, was zum Rendern einer Liste in JSX erforderlich ist. Klar ist, dass die App mit ihren Anforderungen wächst. Damit die App bei komplexeren Aufgaben übersichtlich bleibt, teilen wir die Hauptkomponente in Unterkomponenten auf. Wir erstellen eine eigenständige Komponente für die Liste:
 
 {title="src/App.js",lang="javascript"}
 ~~~~~~~
@@ -75,7 +75,7 @@ Komplexe React-Anwendungen verfügen über **Komponentenhierarchien** oder **Kom
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Meet-another-React-Component).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Meet-another-React-Component).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Lists-in-React...hs/Meet-another-React-Component?expand=1).
 * Erweitere den Komponentenbaum der am Ende dieses Kapitels abgedruckt ist mit möglichen Komponenten. Versuche herauszufinden, welche anderen Teile als eigenständige Komponenten integrierbar sind.
 * Wenn eine Suchkomponente in der App-Komponente verwendet wird, welche Vorteile hat es, dass diese eine Geschwisterkomponente der Listenkomponente ist und keine Eltern- oder Kindkomponente?

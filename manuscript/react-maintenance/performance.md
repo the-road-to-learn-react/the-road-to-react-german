@@ -284,7 +284,7 @@ Nachdem du `useMemo`, `useCallback`, und `memo` kennengelernt hast, optimiere de
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Performance-in-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Performance-in-React).
   * Reflektiere die [Änderungen](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Performance-in-React?expand=1).
 * Lese mehr zu [Reacts Memo API](https://de.reactjs.org/docs/react-api.html#reactmemo).
 * Lese mehr zum Thema [Reacts useCallback-Hook](https://de.reactjs.org/docs/hooks-reference.html#usecallback).

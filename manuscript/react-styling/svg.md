@@ -77,7 +77,7 @@ Die **Create React App** unterstützt dich bei der Verwendung von SVGs. Alles No
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/CSS-in-React-SVG).
   * Reflektiere die [Änderungen gegenüber dem Abschnitt **Styling in React**](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/CSS-in-React...hs/CSS-in-React-SVG?expand=1).
 * Lese mehr zum Thema [SVGs in der Create React App](https://create-react-app.dev/docs/adding-images-fonts-and-files).
 * Lese mehr zum Thema [SVG-Hintergrundmuster in React](https://www.robinwieruch.de/react-svg-patterns).

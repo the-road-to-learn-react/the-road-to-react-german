@@ -130,7 +130,7 @@ Wie gesagt: Formulare unterscheiden sich in React nicht wesentlich von denen in 
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Forms-in-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Forms-in-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/Async-Await-in-React...hs/Forms-in-React?expand=1).
 * Teste den Code ohne `preventDefault`.
 * Lese mehr zum Thema [`preventDefault` für Ereignisse in React](https://www.robinwieruch.de/react-preventdefault).

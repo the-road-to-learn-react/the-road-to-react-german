@@ -2,7 +2,7 @@
 
 Als Nächstes werde ich kurz auf JavaScript-Klassen eingehen. Dies ist hilfreich, um Komponenten in React besser einzuordnen. Technisch gesehen unterscheiden die beiden sich, was wichtig ist! Trotzdem bin ich der Meinung, dass die folgenden Erklärungen hilfreich sind, um eine React-Komponente vom Konzept her zu verstehen.
 
-Klassen verwenden wir in der Regel in objektorientierten Programmiersprachen. JavaScript ermöglicht es funktional und objektorientiert zu Programmierung. Sieh dir die folgende Klasse an, um dir die letztere Technik in JavaScript zu vergegenwärtigen:
+Klassen verwenden wir in der Regel in objektorientierten Programmiersprachen. JavaScript ermöglicht es funktional und objektorientiert zu programmieren. Sieh dir die folgende Klasse an, um dir die letztere Technik in JavaScript zu vergegenwärtigen:
 
 {title="Code Playground",lang="javascript"}
 ~~~~~~~

@@ -182,7 +182,7 @@ Perfekt! Wir haben unsere Anwendung insofern verbessert, dass wir unzuverlässig
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Impossible-States).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Impossible-States).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Advanced-State...hs/React-Impossible-States?expand=1).
 * Lese die zuvor verlinkten Tutorials zu Reduzierern in JavaScript und React.
 * Lese mehr zum Thema ["Wann sollte `useState` oder `useReducer` in React verwendet werden?"](https://www.robinwieruch.de/react-usereducer-vs-usestate).

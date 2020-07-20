@@ -220,7 +220,7 @@ Wir haben Schaltflächen inklusive Implementierungsdetails erstellt, um unseren 
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Sort).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Sort).
   * Reflektiere die [Änderungen gegenüber dem Stand der Anwendung am Ende des ersten Kapitels](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Sort?expand=1).
 * Lese mehr über [Lodash](https://lodash.com/).
 * Warum verwenden wir bei der Sortierung von numerischen Eigenschaften wie `points` und `num_comments` die umgekehrte Reihenfolge?

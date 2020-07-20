@@ -126,6 +126,6 @@ Dieses Feature ist insbesondere deshalb leistungsfähig, weil es JSX bedingt ren
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Conditional-Rendering).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/React-Conditional-Rendering).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/React-Asynchronous-Data...hs/React-Conditional-Rendering?expand=1).
 * Lese mehr über die bedingte Darstellung in React([0](https://www.robinwieruch.de/conditional-rendering-react/), [1](https://de.reactjs.org/docs/conditional-rendering.html)).

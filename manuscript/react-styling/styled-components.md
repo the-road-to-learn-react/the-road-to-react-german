@@ -245,7 +245,7 @@ const StyledInput = styled.input`
 
 ### Übungen:
 
-* Begutachte den [Quellcode dieses Abschnittes](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Styled-Components-in-React).
+* Begutachte den [Quellcode dieses Abschnitts](https://codesandbox.io/s/github/the-road-to-learn-react/hacker-stories/tree/hs/Styled-Components-in-React).
   * Reflektiere die [Änderungen gegenüber dem letzten Abschnitt](https://github.com/the-road-to-learn-react/hacker-stories/compare/hs/react-modern-final...hs/Styled-Components-in-React?expand=1).
 * Lese mehr zum Thema [Styled Components](https://www.robinwieruch.de/react-styled-components).
   * Normalerweise gibt es keine *src/index.css*-Datei für globale Stile, wenn **Styled Components** verwendet werden. Finde heraus, ob und wie es möglich ist, globale Stile in Kombination mit gestalteten Komponenten zu verwenden.
