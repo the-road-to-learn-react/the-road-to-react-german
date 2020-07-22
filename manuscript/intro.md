@@ -38,7 +38,9 @@ Das Buch verbindet eine Gemeinschaft von Lernenden, die sich gegenseitig helfen 
 
 **Kann ich helfen, den Inhalt zu verbessern?**
 
-Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorschläge berücksichtigen. Erwarte bitte keine direkte Antwort von mir, denn das ist mir zeitlich nicht immer möglich. Wenn du dir ein Feedback wünschst, dann frage in der Community, siehe "Wie kann ich beim Lesen des Buches Hilfe bekommen?".
+Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorschläge berücksichtigen. Erwarte bitte keine direkte Antwort von mir, denn das ist mir zeitlich nicht immer möglich. 
+
+Wenn du dir ein Feedback wünschst, dann frage in der Community, siehe "Wie kann ich beim Lesen des Buches Hilfe bekommen?".
 
 **Wie und wo melde ich einen Fehler?**
 
