@@ -36,17 +36,17 @@ Wenn du ein gedrucktes Buch gekauft hast, notiere bitte deine Lernschritte im Bu
 
 Das Buch verbindet eine Gemeinschaft von Lernenden, die sich gegenseitig helfen und  Menschen, die mitlesen. Tritt dieser Community gerne bei. So erhältst du Hilfe. Oder du hilfst anderen. Das gegenseitige Unterstützen hilft dir und anderen dabei, Wissen zu verinnerlichen. Folge der Navigation zu den Kursen auf meiner [Website](https://www.robinwieruch.de/), melde dich dort an und navigiere zum Menüpunkt Community.
 
-**Kann ich helfen, den Inhalt zu verbessern?**
-
-Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorschläge berücksichtigen. Erwarte bitte keine direkte Antwort von mir, denn das ist mir zeitlich nicht immer möglich. 
-
-Wenn du dir ein Feedback wünschst, dann frage in der Community, siehe "Wie kann ich beim Lesen des Buches Hilfe bekommen?".
-
 **Wie und wo melde ich einen Fehler?**
 
-Wenn du einen Fehler im Code findest, melde dies bitte über Github. Am Ende jedes Abschnitts findest du eine URL zum aktuellen GitHub-Projekt. Bitte eröffne hier ein Issue. Ich bin dankbar für deine Hilfe! 
+Wenn du einen Fehler im Code findest, melde dies bitte über Github. Am Ende jedes Abschnitts findest du eine URL zum aktuellen GitHub-Projekt. Bitte eröffne hier ein Issue. 
 
 Du hast einen Fehler im Text der deutschen Übersetzung gefunden? Bitte öffne ein Issue im [Repository der deutschen Übersetzung](https://github.com/the-road-to-learn-react/the-road-to-react-german) oder schreibe eine E-Mail an die Übersetzerin. Kontaktinformationen findest du auf der [Website](https://www.astrid-guenther.de).
+
+Wir sind sehr dankbar für deine Hilfe!
+
+**Kann ich helfen, den Inhalt zu verbessern?**
+
+Wenn du Feedback hast, schreibe mir gerne eine E-Mail und ich werde deine Vorschläge berücksichtigen. Erwarte bitte keine direkte Antwort von mir, denn das ist mir zeitlich nicht immer möglich. Wenn du dir ein Feedback wünschst, dann frage in der Community, siehe "Wie kann ich beim Lesen des Buches Hilfe bekommen?".
 
 **Wie unterstütze ich das Projekt idealerweise?**
 
