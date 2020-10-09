@@ -1,5 +1,7 @@
 # Der Weg zu React
 
+![https://astrid-guenther.de/images/beitragsbilder/react.png](Der Weg zu React)
+
 Offizielles Repository für die deutsche Version des Buches [The Road to React](http://roadtoreact.com/). Wenn du das Buch kaufen möchteste oder eine Bewertung abgeben möchtest, hast du mehrere Möglichkeiten:
 
 E-Book:
